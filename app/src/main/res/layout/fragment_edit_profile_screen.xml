@@ -1,0 +1,909 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/main_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/edit_profile_fragment_toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/toolbar_bg"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <View
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:visibility="invisible"/>
+
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="7">
+
+            <com.itbarx.custom.component.TextViewRegular
+                android:id="@+id/edit_profile_fragment_screen_toolbar_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:text="@string/edit_profile_fragment_screen_toolbar_text"
+                android:textColor="@color/white"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5">
+            <ImageView
+                android:id="@+id/edit_profile_fragment_screen_logOut_imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:clickable="true"
+                android:padding="9dip"
+                android:scaleType="fitCenter"
+                android:src="@drawable/btn_log_out"/>
+
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fadeScrollbars="false"
+        android:scrollY="0dip"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/edit_profile_fragment_screen_image_layout"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:orientation="horizontal"
+                android:weightSum="36"
+
+                >
+
+                <View
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="15"
+                    />
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:orientation="vertical"
+                    android:weightSum="9">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0dip"
+                        android:layout_weight="1"
+                        />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dip"
+                        android:layout_weight="6">
+
+                        <ImageView
+                            android:id="@+id/edit_profile_fragment_screen_user_photo_imageView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="true"
+                            android:layout_centerVertical="true"
+                            android:scaleType="centerInside"
+                            android:clickable="true"
+                            android:src="@drawable/user_male_icon"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dip"
+                        android:layout_weight="2"
+                        android:gravity="center_vertical|center_horizontal"
+                        >
+
+                        <com.itbarx.custom.component.TextViewBold
+                            android:id="@+id/edit_profile_fragment_screen_changePhoto_TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:text="@string/edit_profile_fragment_screen_changePhoto_text"
+                            android:textColor="#666666"
+                            />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="15"
+                    />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/edit_profile_fragment_screen_basicInfoText_layout"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+
+                >
+
+                <com.itbarx.custom.component.TextViewBold
+                    android:id="@+id/edit_profile_fragment_screen_basicInfo_TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="10dp"
+                    android:text="@string/edit_profile_fragment_screen_basicInfo_text"
+                    android:textColor="@color/fragment_orange_text"
+                    />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/edit_profile_fragment_screen_infoEditBoxes_layout"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border_editboxes"
+                android:orientation="vertical"
+                android:weightSum="503"
+                >
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="99"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:background="@color/icons_bg"
+                        >
+
+                        <ImageView
+                            android:id="@+id/edit_profile_fragment_screen_name_imageView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="true"
+                            android:layout_centerVertical="true"
+                            android:padding="9dip"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/editprofile_icon_name"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="8.5"
+                        android:background="@color/white"
+                        android:gravity="left|center_vertical">
+
+                        <com.itbarx.custom.component.EditTextRegular
+                            android:id="@+id/edit_profile_fragment_screen_name_editText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#00000000"
+                            android:hint="@string/edit_profile_fragment_screen_name_hint_editText"
+                            android:inputType="textPersonName"
+                            android:paddingLeft="10dp"
+                            android:textColor="@color/texts_editText"
+                            android:textColorHint="@color/hints_editText"
+                            >
+
+                            <requestFocus/>
+                        </com.itbarx.custom.component.EditTextRegular>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="2"
+                    android:background="#E9E9E9"
+                    android:visibility="visible"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="99"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:background="@color/icons_bg">
+
+                        <ImageView
+                            android:id="@+id/edit_profile_fragment_screen_userName_imageView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="true"
+                            android:layout_centerVertical="true"
+                            android:padding="9dip"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/editprofile_icon_username"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="8.5"
+                        android:background="@color/white"
+                        android:gravity="left|center_vertical">
+
+                        <com.itbarx.custom.component.EditTextRegular
+                            android:id="@+id/edit_profile_fragment_screen_userName_editText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#00000000"
+                            android:hint="@string/edit_profile_fragment_scree_userName_hint_editText"
+                            android:inputType="textPersonName"
+                            android:paddingLeft="10dp"
+                            android:textColor="@color/texts_editText"
+                            android:textColorHint="@color/hints_editText"
+                            >
+
+                            <requestFocus/>
+                        </com.itbarx.custom.component.EditTextRegular>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="2"
+                    android:background="#E9E9E9"
+                    android:visibility="visible"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="99"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:background="@color/icons_bg">
+
+                        <ImageView
+                            android:id="@+id/edit_profile_fragment_screen_location_imageView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="true"
+                            android:layout_centerVertical="true"
+                            android:padding="9dip"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/editprofile_icon_location"/>
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="8.5"
+                        android:background="@color/white"
+                        android:gravity="left|center_vertical">
+
+                        <com.itbarx.custom.component.EditTextRegular
+                            android:id="@+id/edit_profile_fragment_screen_location_editText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#00000000"
+                            android:hint="@string/edit_profile_fragment_screen_place_hint_editText"
+                            android:inputType="textPersonName"
+                            android:paddingLeft="10dp"
+                            android:textColor="@color/texts_editText"
+                            android:textColorHint="@color/hints_editText"
+                            >
+
+                            <requestFocus/>
+                        </com.itbarx.custom.component.EditTextRegular>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="2"
+                    android:background="#E9E9E9"
+                    android:visibility="visible"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="99"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:background="@color/icons_bg">
+
+                        <ImageView
+                            android:id="@+id/edit_profile_fragment_screen_webSite_imageView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="true"
+                            android:layout_centerVertical="true"
+                            android:padding="9dip"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/editprofile_icon_web"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="8.5"
+                        android:background="@color/white"
+                        android:gravity="left|center_vertical">
+
+                        <com.itbarx.custom.component.EditTextRegular
+                            android:id="@+id/edit_profile_fragment_screen_yourWebsite_editText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#00000000"
+                            android:hint="@string/edit_profile_fragment_screen_yourWebsite_hint_editText"
+                            android:inputType="textPersonName"
+                            android:paddingLeft="10dp"
+                            android:textColor="@color/texts_editText"
+                            android:textColorHint="@color/hints_editText"
+                            >
+
+                            <requestFocus/>
+                        </com.itbarx.custom.component.EditTextRegular>
+                    </RelativeLayout>
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="2"
+                    android:background="#E9E9E9"
+                    android:visibility="visible"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="99"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:background="@color/icons_bg">
+
+                        <ImageView
+                            android:id="@+id/edit_profile_fragment_screen_eMail_imageView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="true"
+                            android:layout_centerVertical="true"
+                            android:padding="9dip"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/editprofile_icon_mail"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="8.5"
+                        android:background="@color/white"
+                        android:gravity="left|center_vertical">
+
+                        <com.itbarx.custom.component.EditTextRegular
+                            android:id="@+id/edit_profile_fragment_screen_eMail_editText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#00000000"
+                            android:hint="@string/edit_profile_fragment_screen_mailAddress_editText"
+                            android:inputType="textPersonName"
+                            android:paddingLeft="10dp"
+                            android:textColor="@color/texts_editText"
+                            android:textColorHint="@color/hints_editText"
+                            >
+
+                            <requestFocus/>
+                        </com.itbarx.custom.component.EditTextRegular>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+            <RelativeLayout
+                android:id="@+id/edit_profile_fragment_screen_changePasswordText_layout"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+
+                >
+
+                <com.itbarx.custom.component.TextViewBold
+                    android:id="@+id/edit_profile_fragment_screen_changePassword_TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="10dp"
+                    android:text="@string/edit_profile_fragment_screen_changePassword_text"
+                    android:textColor="@color/fragment_orange_text"
+                    />
+            </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/edit_profile_fragment_screen_passwordEditBoxes_layout"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/border_editboxes"
+            android:orientation="vertical"
+            android:weightSum="301"
+            >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="99"
+                android:orientation="horizontal"
+                android:weightSum="10"
+
+                >
+
+                <RelativeLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:background="@color/icons_bg"
+                    >
+
+                    <ImageView
+                        android:id="@+id/edit_profile_fragment_screen_oldPassword_imageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:padding="9dip"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/editprofile_icon_oldpassword"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8.5"
+                    android:background="@color/white"
+                    android:gravity="left|center_vertical">
+
+                    <com.itbarx.custom.component.EditTextRegular
+                        android:id="@+id/edit_profile_fragment_screen_oldPassword_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#00000000"
+                        android:hint="@string/edit_profile_fragment_screen_oldPassword_hint_editText"
+                        android:inputType="textPersonName"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/texts_editText"
+                        android:textColorHint="@color/hints_editText"
+                        >
+
+                        <requestFocus/>
+                    </com.itbarx.custom.component.EditTextRegular>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="2"
+                android:background="#E9E9E9"
+                android:visibility="visible"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="99"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                >
+
+                <RelativeLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:background="@color/icons_bg">
+
+                    <ImageView
+                        android:id="@+id/edit_profile_fragment_screen_newPassword_imageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:padding="9dip"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/editprofile_icon_repassword"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8.5"
+                    android:background="@color/white"
+                    android:gravity="left|center_vertical">
+
+                    <com.itbarx.custom.component.EditTextRegular
+                        android:id="@+id/edit_profile_fragment_screen_newPassword_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#00000000"
+                        android:hint="@string/edit_profile_fragment_screen_newPassword_hint_editText"
+                        android:inputType="textPersonName"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/texts_editText"
+                        android:textColorHint="@color/hints_editText"
+                        >
+
+                        <requestFocus/>
+                    </com.itbarx.custom.component.EditTextRegular>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="2"
+                android:background="#E9E9E9"
+                android:visibility="visible"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="99"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                >
+
+                <RelativeLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:background="@color/icons_bg">
+
+                    <ImageView
+                        android:id="@+id/edit_profile_fragment_screen_rePassword_imageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:padding="9dip"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/editprofile_icon_repassword"/>
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8.5"
+                    android:background="@color/white"
+                    android:gravity="left|center_vertical">
+
+                    <com.itbarx.custom.component.EditTextRegular
+                        android:id="@+id/edit_profile_fragment_screen_rePassword_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#00000000"
+                        android:hint="@string/edit_profile_fragment_screen_rePassword_hint_editText"
+                        android:inputType="textPersonName"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/texts_editText"
+                        android:textColorHint="@color/hints_editText"
+                        >
+
+                        <requestFocus/>
+                    </com.itbarx.custom.component.EditTextRegular>
+                </RelativeLayout>
+            </LinearLayout>
+</LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/edit_profile_fragment_screen_aboutMeText_layout"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+
+
+                >
+
+                <com.itbarx.custom.component.TextViewBold
+                    android:id="@+id/edit_profile_fragment_screen_aboutMe_TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="10dp"
+                    android:text="@string/edit_profile_fragment_screen_aboutMe_text"
+                    android:textColor="@color/fragment_orange_text"
+                    />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:weightSum="10"
+                android:orientation="horizontal"
+                android:background="@drawable/border_edit_profile_boxes"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                >
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:background="@color/icons_bg"
+                    android:weightSum="12"
+                    android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="5"
+                >
+
+                    <ImageView
+                        android:id="@+id/edit_profile_fragment_screen_aboutMe_imageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:padding="9dip"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/editprofile_icon_about_me"/>
+                </RelativeLayout>
+                    <View  android:layout_width="match_parent"
+                           android:layout_height="0dip"
+                           android:layout_weight="7"/>
+
+                </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/edit_profile_fragment_screen_aboutMeEditBox_layout"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="8.5"
+                android:src="@color/white">
+                <com.itbarx.custom.component.EditTextRegular
+                    android:id="@+id/edit_profile_fragment_screen_aboutMe_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:lines="3"
+                    android:maxLines="3"
+                    android:minLines="3"
+                    android:scrollbars="vertical"
+                    android:background="#00000000"
+                    android:hint="@string/edit_profile_fragment_screen_aboutMe_hint_editText"
+                    android:inputType="textMultiLine"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/texts_editText"
+                    android:textColorHint="@color/hints_editText"
+                    >
+
+                    <requestFocus/>
+                </com.itbarx.custom.component.EditTextRegular>
+
+                </RelativeLayout>
+            </LinearLayout>
+            <View
+                android:id="@+id/edit_profile_fragment_screen_upperNotification_View"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+
+                />
+
+        <RelativeLayout
+            android:id="@+id/edit_profile_fragment_screen_notification_layout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/border_edit_profile_boxes"
+
+            >
+            <com.itbarx.custom.component.TextViewRegular
+                android:id="@+id/edit_profile_fragment_screen_notification_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:paddingLeft="10dp"
+                android:text="@string/edit_profile_fragment_screen_notification_hint_editText"
+                android:textColor="@color/hints_editText"
+                />
+
+
+            <Switch
+                android:layout_width="140dp"
+                android:layout_height="70dp"
+                android:textOn="On"
+                android:textOff="Off"
+                android:checked="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="30dp"
+
+                />
+
+        </RelativeLayout>
+
+
+
+            <View
+                android:id="@+id/edit_profile_fragment_screen_bottomNotification_View"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+
+                />
+
+            <LinearLayout
+                android:id="@+id/edit_profile_fragment_screen_saveButton_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                >
+
+                <com.itbarx.custom.component.ButtonBold
+                    android:id="@+id/edit_profile_fragment_screen_save_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/select_orange_button"
+                    android:text="@string/edit_profile_fragment_screen_save_button_text"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/edit_profile_fragment_screen_bottomSavebutton_View"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+
+                />
+            <RelativeLayout
+                android:id="@+id/edit_profile_fragment_screen_deleteAccount_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border_edit_profile_boxes"
+
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="36">
+
+
+                   <RelativeLayout
+                       android:layout_width="0dip"
+                       android:layout_height="match_parent"
+                       android:layout_weight="28"
+                       >
+                <com.itbarx.custom.component.TextViewRegular
+                    android:id="@+id/edit_profile_fragment_screen_deleteAccount_TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingLeft="10dp"
+                    android:text="@string/edit_profile_fragment_screen_deleteAccount_text"
+                    android:textColor="@color/hints_editText"
+                    /></RelativeLayout>
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="6"
+                        android:weightSum="6"
+                        android:orientation="vertical"
+                        >
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0dip"
+                            android:layout_weight="1"/>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dip"
+                            android:layout_weight="4"
+                                                        >
+                            <ImageView
+                                android:id="@+id/edit_profile_fragment_screen_deleteAccount_imageView"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerInParent="true"
+                                android:layout_centerVertical="true"
+                                android:scaleType="centerInside"
+                                android:clickable="true"
+                                android:src="@drawable/edit_profile_icon_delete"/>
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0dip"
+                            android:layout_weight="1"/>
+
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"/>
+                </LinearLayout>
+
+            </RelativeLayout>
+            <View
+                android:id="@+id/edit_profile_fragment_screen_bottomDeleteAccount_View"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+
+                />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

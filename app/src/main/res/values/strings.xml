@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Itbarx</string>
+    <string name="Ok">Tamam</string>
+    <string name="Yes">Evet</string>
+    <string name="No">Hayır</string>
+    
+    
+      <!-- Webservis Timeout Süresi -->
+    <string name="httpCallTimeout">60000</string>
+    <string name="root_service_url">http://itbarxapp.azurewebsites.net/api</string>
+    <string name="BrokenData">Doğrulanamayan data alındı</string>
+    <string name="ItbarxConnecting">Itbarx\u0027a bağlanılıyor . . . </string>
+    <!-- tabs text -->
+    <string name="t1">t1</string>
+    <string name="t2">t2</string>
+    <string name="t3">t3</string>
+    <string name="t4">t4</string>
+    <string name="t5">t5</string>
+    <!-- login activity screen -->
+    <string name="login_activity_screen_toolbar_text">giriş</string>
+    <string name="login_activity_screen_username_text">kullanıcı adı</string>
+    <string name="login_activity_screen_password_text">şifre</string>
+    <string name="login_activity_screen_rememberme_text">beni hatırla</string>
+    <string name="login_activity_screen_forgotpassword_button_text">şifremi unuttum</string>
+    <string name="login_activity_screen_login_button_text">giriş</string>
+    <string name="login_activity_screen_createnewaccount_button_text">yeni kullanıcı oluştur</string>
+    <string name="login_activity_screen_or_text">veya</string>
+    <string name="login_activity_screen_facebook_button_text">facebook</string>
+    <string name="login_activity_screen_googlePlus_button_text">google+</string>
+    <string name="pause">durdur</string>
+    <string name="recording">kaydediyor</string>
+    <string name="start_recording">kayıt başlıyor</string>
+    <string name="finish_recording">kayıt tamamlandı</string>
+    <string name="record_playing">oynatılıyor</string>
+    <!-- create new account activity screen -->
+    <string name="createnewaccount_activity_screen_toolbar_text">yeni kullanıcı oluştur</string>
+    <string name="createnewaccount_activity_screen_addphoto_text">add\nphoto\nhere</string>
+    <string name="createnewaccount_activity_screen_name_text">kullanıcı adı</string>
+    <string name="createnewaccount_activity_screen_email_text">e-posta</string>
+    <string name="createnewaccount_activity_screen_password_text">yeni şifre</string>
+    <string name="createnewaccount_activity_screen_repassword_text">yeni şifre tekrar</string>
+    <string name="createnewaccount_activity_screen_iagreetothe_text">Kabul ediyorum</string>
+    <string name="createnewaccount_activity_screen_user_agreement_text">\u00A0<u>kullanıcı anlaşmasını</u>.</string>
+    <string name="createnewaccount_activity_screen_remembermeafterregister_text">Kayıt sonrası beni hatırla.</string>
+    <string name="createnewaccount_activity_screen_done_button_text">tamam!</string>
+    <string name="createnewaccount_activity_screen_or_text">veya</string>
+    <string name="createnewaccount_activity_screen_facebook_button_text">facebook</string>
+    <string name="createnewaccount_activity_screen_googlePlus_button_text">google+</string>
+
+    <!-- forgot password? activity screen -->
+    <string name="forgotpassword_activity_screen_toolbar_text">şifrenizi mi unuttunuz?</string>
+    <string name="forgotpassword_activity_screen_toptext_text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris</string>
+    <string name="forgotpassword_activity_screen_email_hint_text">e-posta adresinizi giriniz</string>
+    <string name="forgotpassword_activity_screen_sendemail_button_text">e-pasta kodu gönder</string>
+    <string name="forgotpassword_activity_screen_passwordchange_text">şifre değiştir</string>
+    <string name="forgotpassword_activity_screen_emailcode_hint_text">e-posta kodu</string>
+    <string name="forgotpassword_activity_screen_newpassword_hint_text">yeni şifre</string>
+    <string name="forgotpassword_activity_screen_newrepassword_hint_text">yeni şifre tekrar</string>
+    <string name="forgotpassword_activity_screen_change_button_text">değiştir</string>
+
+    <string name="convert_to_text">Metin çevirme işlemi gerçekleştiriliyor.</string>
+    <!-- bark activity screen -->
+    <string name="bark_activity_screen_toolbar_text">kullanıcı adı</string>
+    <string name="bark_activity_screen_are_you_exit">Bark ekranından çıkış yapmak istiyor musunuz?</string>
+    <string name="sample_bark">Welcome to the way through americas news worth therefore it does not mean something good several municipalities declared bankruptcy before Detroit did but their deaths with smaller Stockton Calif million dollars while Detroit post eighteen and a half billion</string>
+    <!-- user agreement activity screen -->
+    <string name="useragreement_activity_screen_toolbar_text">kullanıcı anlaşması</string>
+    <string name="useragreement_activity_screen_accept_button_text">kullanıcı anlaşmasını kabul et</string>
+    <string name="web_ipsum_text">Webtwo ipsum dolor sit amet, eskobo chumby doostang bebo. Twitter glogster grockit divvyshot groupon yoono zoho, sclipo sococo skype zlio ngmoco. Zlio zoodles plaxo nuvvo napster odeo cloudera glogster meebo, jaiku wakoopa glogster voxy lala udemy flickr zoosk, wakoopa trulia glogster foodzie diigo voki imvu. Dropio zoho insala trulia xobni plickers lanyrd ifttt zooomr klout joyent, bubbli grockit zlio jaiku orkut cuil vimeo joyent zanga bubbli, jiglu akismet diigo whrrl ideeli squidoo zanga kiko reddit. Balihoo qeyno orkut lala jajah blekko trulia chartly, mozy qeyno airbnb jumo kippt oooooc oooj, joyent ning kosmix greplin xobni heekya. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris </string>
+
+    <!-- new user done activity screen -->
+    <string name="newuserdone_activity_screen_toolbar_text">Kullanıcı antlaşması</string>
+    <string name="newuserdone_activity_screen_middletext_text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris</string>
+    <string name="newuserdone_activity_screen_startusing_button_text">Itbarx\u0027ı kullanmaya başla</string>
+
+
+    <!-- other user activity screen -->
+    <string name="other_user_activity_screen_toolbar_text">profil</string>
+    <string name="other_user_activity_screen_follow_text">takip et</string>
+    <string name="other_user_activity_screen_unFollow_text">takibi bırak</string>
+     <string name="other_user_activity_screen_userInfo_name_text">güncelle</string>
+    <string name="other_user_activity_screen_userInfo_place_text">güncelle</string>
+    <string name="other_user_activity_screen_userInfo_personalInfo_text">güncelle</string>
+    <string name="other_user_activity_screen_userInfo_atMail_text">güncelle</string>
+    <string name="other_user_activity_screen_reBarks_text">rebarks</string>
+    <string name="other_user_activity_screen_followers_text">followers</string>
+    <string name="other_user_activity_screen_following_text">following</string>
+
+
+    <!-- fragment profile screen -->
+    <string name="profile_fragment_screen_toolbar_text">profil</string>
+    <string name="profile_fragment_screen_userInfo_name_text">güncelle</string>
+    <string name="profile_fragment_screen_userInfo_place_text">güncelle</string>
+    <string name="profile_fragment_screen_userInfo_personalInfo_text">güncelle</string>
+    <string name="profile_fragment_screen_userInfo_atMail_text">\güncelle</string>
+
+    <string name="profile_fragment_screen_reBarks_text">rebarks</string>
+    <string name="profile_fragment_screen_followers_text">followers</string>
+    <string name="profile_fragment_screen_following_text">following</string>
+    <string name="profile_fragment_screen_edit_profile_text">profil düzenle</string>
+
+
+    <!-- fragment edit profile screen -->
+    <string name="edit_profile_fragment_screen_toolbar_text">profil düzenle</string>
+    <string name="edit_profile_fragment_screen_changePhoto_text">değiştir</string>
+    <string name="edit_profile_fragment_screen_basicInfo_text">kullanıcı bilgileri</string>
+    <string name="edit_profile_fragment_screen_name_hint_editText">isim soyisim</string>
+    <string name="edit_profile_fragment_scree_userName_hint_editText">kullanıcı adı</string>
+    <string name="edit_profile_fragment_screen_place_hint_editText">Türkiye</string>
+    <string name="edit_profile_fragment_screen_yourWebsite_hint_editText">internet siteniz</string>
+    <string name="edit_profile_fragment_screen_mailAddress_editText">e-posta adresiniz</string>
+    <string name="edit_profile_fragment_screen_changePassword_text">şifre değiştir</string>
+    <string name="edit_profile_fragment_screen_oldPassword_hint_editText">eski şifre</string>
+    <string name="edit_profile_fragment_screen_newPassword_hint_editText">yeni şifre</string>
+    <string name="edit_profile_fragment_screen_rePassword_hint_editText">yeni şifre tekrar</string>
+    <string name="edit_profile_fragment_screen_aboutMe_text">hakkımda?</string>
+    <string name="edit_profile_fragment_screen_aboutMe_hint_editText">hakkımda \n \n </string>
+    <string name="edit_profile_fragment_screen_notification_hint_editText">haber ver</string>
+    <string name="edit_profile_fragment_screen_save_button_text">Kaydet</string>
+    <string name="edit_profile_fragment_screen_deleteAccount_text">hesabımı sil</string>
+
+
+
+    <!-- fragment friends screen -->
+    <string name="friends_fragment_screen_toolbar_text">arkadaş profili</string>
+    <string name="friends_fragment_screen_userinfo_name_text">kullanıcı adı</string>
+    <string name="friends_fragment_screen_userinfo_place_text">bayrampaşa / istanbul - Türkiye</string>
+    <string name="friends_fragment_screen_userinfo_personalinfo_text">User Experience Developer / Designer, Adobe Certified Expert, Adobe Certified Instructor, AdobeAddict, Web Craftsman</string>
+    <string name="friends_fragment_screen_userinfo_atmail_text">\u0040gokhangokova</string>
+    <string name="friends_fragment_screen_imagebutton_count_text">135</string>
+    <string name="friends_fragment_screen_imagebutton_rebarks_text">rebarks</string>
+    <string name="friends_fragment_screen_imagebutton_followers_text">followers</string>
+    <string name="friends_fragment_screen_imagebutton_following_text">following</string>
+    <string name="friends_fragment_screen_unfollow_text">unfollow</string>
+
+    <!-- fragment activity screen -->
+    <string name="activity_fragment_screen_activity_buttonlayout_text">activity</string>
+    <string name="activity_fragment_screen_request_buttonlayout_text">request</string>
+
+    <!-- fragment request screen -->
+
+    <string name="request_fragment_screen_activity_buttonlayout_text">activity</string>
+    <string name="request_fragment_screen_request_buttonlayout_text">request</string>
+
+    <!-- fragment populer/timeline screen -->
+    <string name="populartimeline_fragment_screen_popular_text">popüler</string>
+    <string name="populartimeline_fragment_screen_timeline_text">zaman tüneli</string>
+
+    <!-- fragment request screen -->
+    <string name="activityrequest_fragment_screen_activity_text">etkinlik</string>
+    <string name="activityrequest_fragment_screen_request_text">istek</string>
+
+    <!-- fragment record screen -->
+    <string name="record_fragment_screen_toolbar_text">yeni barx</string>
+
+
+
+    <string name="make_working">işleminiz gerçekleştiriliyor. Lütfen bekleyiniz . . </string>
+    <string name="make_working_success">işleminiz başarıyla gerçekleştirildi </string>
+    <string name="make_working_failure">işleminiz gerçekleştirilirken bir sorun oluştu! </string>
+    <!-- fragment search/friendbarks/followers/following -->
+    <string name="fragment_screen_search_hint_text">kişi ara</string>
+
+    <!-- fragment search screen -->
+    <string name="search_fragment_screen_toolbar_text">search</string>
+
+    <!-- fragment friendsbark screen -->
+    <string name="friendsbark_fragment_screen_toolbar_text">friend barks</string>
+
+    <!-- fragment followers screen -->
+    <string name="followers_fragment_screen_toolbar_text">takipçiler</string>
+
+    <!-- fragment following screen -->
+    <string name="following_fragment_screen_toolbar_text">takiptekiler</string>
+
+
+    <!-- images descriptions-->
+    <string name="row_all_fragments_user_imageView_description">user profile photo</string>
+
+
+
+
+    <string name="are_you_logout">Oturumu kapatmak istediinize emin misiniz?</string>
+
+
+    <string name="action_settings">Settings</string>
+
+    <string-array name="sports_array">
+        <item>Shuttle Badminton</item>
+        <item>Tennis</item>
+        <item>FootBall</item>
+        <item>Basket Ball</item>
+        <item>Table Tennis</item>
+        <item>Chess</item>
+        <item>Hockey</item>
+        <item>Tennis</item>
+        <item>FootBall</item>
+        <item>Basket Ball</item>
+        <item>Table Tennis</item>
+        <item>Chess</item>
+        <item>Hockey</item>
+        <item>Tennis</item>
+        <item>FootBall</item>
+        <item>Basket Ball</item>
+        <item>Table Tennis</item>
+        <item>Chess</item>
+        <item>Hockey</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/tab_fragment_third_record_pause_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    android:orientation="vertical"
+    android:weightSum="530"
+    >
+
+
+    <RelativeLayout
+        android:id="@+id/record_pause_toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="50"
+        android:background="@color/toolbar_bg">
+
+        <com.itbarx.custom.component.TextViewRegular
+            android:id="@+id/media_record_preview_toolbar_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="@string/record_fragment_screen_toolbar_text"
+            android:textColor="@color/white"
+
+            />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/record_pause_space_toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="5"
+        android:visibility="invisible"/>
+
+    <LinearLayout
+        android:id="@+id/media_record_preview_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="475"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:weightSum="34">
+
+
+        <View
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:visibility="invisible"/>
+
+        <LinearLayout
+            android:id="@+id/media_record_preview_content"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="33"
+            android:orientation="vertical"
+            android:weightSum="50">
+
+            <RelativeLayout
+                android:id="@+id/media_record_preview_main_videoView_relative"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="29.75"
+                android:background="#E5E8ED">
+
+
+                <TextureView
+                    android:id="@+id/media_record_preview_main_videoView"
+                    android:layout_width="fill_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_height="fill_parent"
+
+                    android:src="@drawable/record_fragment_image"/>
+                <ImageView
+                    android:id="@+id/media_record_preview_play_imageView"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="#00000000"
+                    android:layout_centerVertical="true"
+                    android:clickable="true"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/bark_play_icon"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="0.25"
+                android:visibility="invisible"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="13"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:weightSum="31"
+
+                >
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="5"
+                    android:visibility="invisible"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="15"
+                    android:orientation="horizontal"
+                    android:weightSum="50"
+
+                    >
+
+                    <View
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:visibility="invisible"/>
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_weight="10"
+                        >
+
+                        <ImageView
+                            android:id="@+id/media_record_preview_pause_imageView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerHorizontal="true"
+                            android:background="#00000000"
+                            android:layout_centerVertical="true"
+                            android:clickable="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/record_frag_pause_icon"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_weight="6"
+                    >
+
+                    <com.itbarx.custom.component.TextViewBold
+                        android:id="@+id/media_record_preview_pause_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/pause"
+                        android:textColor="#FFDA4453"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="5"
+                    android:visibility="invisible"/>
+
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="0.5"
+                android:visibility="invisible"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="6"
+                android:orientation="horizontal"
+                android:weightSum="100"
+                >
+
+                <View
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
+                    android:visibility="invisible"/>
+
+
+                <ImageButton
+                    android:id="@+id/media_record_preview_deny_button"
+                    android:src="@drawable/record_frag_red_cancel_icon"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="49"
+                    android:background="#FFF"
+                    android:clickable="true"
+                    android:scaleType="centerCrop"/>
+                <View
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:visibility="invisible"/>
+
+                <ImageButton
+
+                    android:id="@+id/media_record_preview_accept_button"
+                    android:src="@drawable/record_frag_green_accept_icon"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="49"
+                    android:background="#FFF"
+                    android:clickable="true"
+                    android:scaleType="centerCrop"/>
+
+                <View
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
+                    android:visibility="invisible"/>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="0.5"
+                android:visibility="invisible"/>
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:visibility="invisible"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

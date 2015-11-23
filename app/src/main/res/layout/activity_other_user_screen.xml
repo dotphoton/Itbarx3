@@ -1,0 +1,513 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/main_bg"
+              android:orientation="vertical"
+              android:weightSum="600">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="50"
+        android:background="@color/toolbar_bg"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <View
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="invisible"
+            />
+
+
+        <com.itbarx.custom.component.TextViewRegular
+            android:id="@+id/other_user_activity_screen_toolbar_textView"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:gravity="center_vertical|center_horizontal|center"
+            android:text="@string/other_user_activity_screen_toolbar_text"
+            android:textColor="@color/white"/>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="5"
+        android:visibility="invisible"/>
+
+    <LinearLayout
+        android:id="@+id/other_user_activity_screen_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="545"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:weightSum="34">
+
+        <View
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:visibility="invisible"/>
+
+
+        <LinearLayout
+            android:id="@+id/other_user_activity_content"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="33"
+            android:orientation="vertical"
+            android:weightSum="545">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="135"
+                android:orientation="vertical"
+                android:weightSum="135"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="95"
+                    android:orientation="horizontal"
+                    android:weightSum="34">
+
+                    <View
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:visibility="invisible"/>
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5">
+
+                        <ImageView
+                            android:id="@+id/other_user_activity_screen_user_photo_imageView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="true"
+                            android:layout_centerVertical="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/user_male_icon"/>
+                    </RelativeLayout>
+
+
+                    <View
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:visibility="invisible"/>
+
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="27.5"
+                        android:orientation="vertical"
+                        android:weightSum="10">
+
+                        <com.itbarx.custom.component.TextViewBold
+                            android:id="@+id/other_user_activity_screen_username_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:lines="1"
+                            android:text="@string/other_user_activity_screen_userInfo_name_text"
+                            />
+
+                        <com.itbarx.custom.component.TextViewRegular
+                            android:id="@+id/other_user_activity_screen_place_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:lines="1"
+                            android:text="@string/other_user_activity_screen_userInfo_place_text"
+
+                            />
+
+                        <com.itbarx.custom.component.TextViewRegular
+                            android:id="@+id/other_user_activity_screen_user_bio_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:lines="2"
+                            android:text="@string/other_user_activity_screen_userInfo_personalInfo_text"
+
+                            />
+
+                        <com.itbarx.custom.component.TextViewBold
+                            android:id="@+id/other_user_activity_screen_itBarkUserName_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:lines="1"
+                            android:text="@string/other_user_activity_screen_userInfo_atMail_text"
+                            android:textColor="@color/create_new_user_button_done_bg"
+
+                            />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/other_user_activity_screen_buttons_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="40"
+                    android:background="@drawable/border_row_timeline_fragment_buttons"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+
+                    <LinearLayout
+                        android:id="@+id/other_user_activity_screen_like_count_button_container"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:orientation="vertical"
+                        android:weightSum="7"
+
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dip"
+                            android:layout_weight="4"
+                            android:gravity="center_horizontal"
+                            >
+
+                            <com.itbarx.custom.component.TextViewBold
+                                android:id="@+id/other_user_activity_screen_reBarksCount_TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:text="0"
+                                android:textColor="#666666"
+
+                                />
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0dip"
+                            android:layout_weight="0.5"
+                            />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dip"
+                            android:layout_weight="2.5"
+                            android:gravity="center_vertical|center_horizontal"
+                            >
+
+                            <com.itbarx.custom.component.TextViewRegular
+                                android:id="@+id/other_user_activity_screen_reBarks_TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerInParent="true"
+                                android:layout_centerVertical="true"
+                                android:text="@string/other_user_activity_screen_reBarks_text"
+                                android:textColor="#666666"
+
+                                />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/other_user_activity_screen_followers_count_button_container"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:orientation="vertical"
+                        android:weightSum="7"
+
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dip"
+                            android:layout_weight="4"
+                            android:gravity="center_horizontal"
+                            >
+
+                            <com.itbarx.custom.component.TextViewBold
+                                android:id="@+id/other_user_activity_screen_followersCount_TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:text="0"
+                                android:textColor="#666666"
+
+                                />
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0dip"
+                            android:layout_weight="0.5"
+                            />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dip"
+                            android:layout_weight="2.5"
+                            android:gravity="center_vertical|center_horizontal"
+                            >
+
+                            <com.itbarx.custom.component.TextViewRegular
+                                android:id="@+id/other_user_activity_screen_followers_TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerInParent="true"
+                                android:layout_centerVertical="true"
+                                android:text="@string/profile_fragment_screen_followers_text"
+                                android:textColor="#666666"
+
+                                />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/other_user_activity_screen_following_count_button_container"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:orientation="vertical"
+                        android:weightSum="7"
+
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dip"
+                            android:layout_weight="4"
+                            android:gravity="center_horizontal"
+                            >
+
+                            <com.itbarx.custom.component.TextViewBold
+                                android:id="@+id/other_user_activity_screen_followingCount_TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:text="0"
+                                android:textColor="#666666"
+
+                                />
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0dip"
+                            android:layout_weight="0.5"
+                            />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dip"
+                            android:layout_weight="2.5"
+                            android:gravity="center_vertical|center_horizontal"
+                            >
+
+                            <com.itbarx.custom.component.TextViewRegular
+                                android:id="@+id/other_user_activity_screen_following_TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerInParent="true"
+                                android:layout_centerVertical="true"
+                                android:text="@string/profile_fragment_screen_following_text"
+                                android:textColor="#666666"
+
+                                />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="5"/>
+
+
+
+            <LinearLayout
+                android:id="@+id/other_user_activity_screen_follow_unFollow_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="40"
+                android:background="@drawable/select_green_button"
+                android:weightSum="34"
+                android:orientation="horizontal"
+                >
+
+<!--
+                <com.itbarx.custom.component.ButtonBold
+                    android:id="@+id/other_user_activity_screen_follow_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/select_green_button"
+                    android:text="@string/other_user_activity_screen_follow_text"
+                    android:textColor="@color/white"
+                    android:visibility="visible"
+                    />
+                <com.itbarx.custom.component.ButtonBold
+                    android:id="@+id/other_user_activity_screen_unFollow_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/select_unfollow_button"
+                    android:text="@string/other_user_activity_screen_unFollow_text"
+                    android:textColor="@color/white"
+                    android:visibility="gone"
+                    />
+-->
+                <RelativeLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                 android:layout_weight="14"
+
+
+                    >
+
+                    <ImageView
+                        android:id="@+id/other_user_activity_screen_follow_imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                         android:visibility="visible"
+                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:padding="9dip"
+                        android:clickable="true"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/icon_follow_profile"/>
+                    <ImageView
+                        android:id="@+id/other_user_activity_screen_unFollow_imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:visibility="gone"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:padding="9dip"
+                        android:clickable="true"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/icon_unfollow_profile"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:visibility="invisible"
+                    />
+
+
+                <RelativeLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="18"
+
+
+                    >
+                    <com.itbarx.custom.component.TextViewBold
+                        android:id="@+id/other_user_activity_screen_follow_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                      android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/other_user_activity_screen_follow_text"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20dp"
+                        android:visibility="visible"
+                        />
+                    <com.itbarx.custom.component.TextViewBold
+                        android:id="@+id/other_user_activity_screen_unFollow_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/other_user_activity_screen_unFollow_text"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20dp"
+                        android:visibility="gone"
+                        />
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="5"
+                android:visibility="invisible"/>
+
+            <RelativeLayout
+                android:id="@+id/other_user_activity_others"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="360"
+                android:orientation="vertical"
+                >
+
+
+                <ListView
+                    android:id="@+id/other_user_activity_screen_listView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:divider="#00000000"
+                    android:dividerHeight="3dp"
+                    android:overScrollMode="ifContentScrolls"
+                    android:scrollbars="vertical"
+                    android:scrollingCache="true"
+                    android:transcriptMode="alwaysScroll" >
+                </ListView>
+            </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

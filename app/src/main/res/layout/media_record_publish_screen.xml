@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/tab_fragment_third_record_publish_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    android:orientation="vertical"
+    android:weightSum="530"
+    >
+
+
+    <RelativeLayout
+        android:id="@+id/record_publish_toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="50"
+        android:background="@color/toolbar_bg">
+
+        <com.itbarx.custom.component.TextViewRegular
+            android:id="@+id/media_record_publish_toolbar_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="@string/record_fragment_screen_toolbar_text"
+            android:textColor="@color/white"
+
+            />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/record_publish_space_toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="5"
+        android:visibility="invisible"/>
+
+    <LinearLayout
+        android:id="@+id/media_record_publish_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="475"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:weightSum="34">
+
+
+        <View
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:visibility="invisible"/>
+
+        <LinearLayout
+            android:id="@+id/media_record_publish_content"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="33"
+            android:orientation="vertical"
+            android:weightSum="50">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="29.75"
+                android:background="#E5E8ED">
+
+
+                <ImageView
+                    android:id="@+id/media_record_publish_main_information_imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/record_fragment_image"/>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="0.25"
+                android:visibility="invisible"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="13"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+
+
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+                    <EditText
+                        android:id="@+id/media_record_publish_bark_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                       android:layout_centerInParent="true"
+                    android:paddingLeft="10dp"
+                        android:background="#00000000"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:lineSpacingExtra="2dp"
+                        android:editable="true"
+                        android:text="@string/sample_bark"
+                        android:textColor="#666666"/>
+
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="0.5"
+                android:visibility="invisible"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="6"
+                android:orientation="horizontal"
+                android:weightSum="100"
+                >
+
+                <com.itbarx.custom.component.ButtonBold
+                    android:id="@+id/media_record_publish_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#6FC387"
+                    android:textStyle="bold"
+                    android:textSize="24sp"
+                    android:text="barkı yayınla"
+                    android:textColor="@color/white"
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="0.5"
+                android:visibility="invisible"/>
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:visibility="invisible"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

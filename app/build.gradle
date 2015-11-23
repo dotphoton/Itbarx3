@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "com.itbarx"
+        minSdkVersion 16
+        targetSdkVersion 16
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+
+
+
+}
+repositories {
+    mavenCentral()
+    flatDir {
+
+        dirs 'libs'
+    }
+}
+dependencies {
+
+   
+  //  compile 'com.google.code.gson:gson:2.2.4'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    //compile fileTree(dir: 'libs', include: '**/*.aar')
+      //      .each { File file ->
+        //dependencies.add("compile", [name: file.name.lastIndexOf('.').with {
+          //  it != -1 ? file.name[0..<it] : file.name
+        //}, ext                           : 'aar'])
+    //}
+
+    compile files ('libs/jspeex.jar')
+    compile files ('libs/gson-2.2.4.jar')
+    compile project(':FFmpegAndroid-0.2.5')
+   // compile project(':ffmpeg4android_lib')
+   // compile files ('FFmpegAndroid-0.2.5.aar')
+    //compile(name:'FFmpegAndroid', ext:'aar')
+compile 'com.android.support:support-v4:22.2.0'
+    compile 'com.android.support:percent:22.2.0'
+}
+/*
+tasks.withType(com.android.build.gradle.tasks.PackageApplication) {
+    it.jniFolders = [file("libs")] as Set
+}
+*/
+
+
+

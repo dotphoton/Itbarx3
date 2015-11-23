@@ -1,0 +1,146 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+       android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    android:orientation="vertical"
+    android:weightSum="60" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="5"
+        android:background="@color/toolbar_bg" >
+
+        <com.itbarx.custom.component.TextViewRegular
+            android:id="@+id/activity_userAgreement_screen_toolbar_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="@string/useragreement_activity_screen_toolbar_text"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="49"
+        android:orientation="vertical"
+        android:weightSum="490" >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="5"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="480"
+            android:orientation="horizontal"
+            android:weightSum="35" >
+
+            <View
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="invisible" />
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="33"
+                android:orientation="vertical"
+                android:weightSum="480" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="100"
+                    android:background="@drawable/bg_user_aggrement" >
+
+                    <ImageView
+                        android:id="@+id/activity_useragreement_screen_agreement_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="false"
+                        android:layout_alignWithParentIfMissing="false"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:paddingRight="15dip"
+                        android:src="@drawable/icon_user_aggrement" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="10"
+                    android:visibility="invisible" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="370"
+                    android:weightSum="34" 
+                    android:orientation="horizontal">
+                     <View
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                     android:visibility="invisible"
+                   />
+
+                    <com.itbarx.custom.component.TextViewRegular
+                        android:id="@+id/activity_userAgreement_screen_agreement_Text"
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="28"
+                        android:gravity="top|left"
+                        android:singleLine="@bool/choose_false"
+                        android:text="@string/web_ipsum_text"
+                        android:textColor="@color/textview_useragreemnet_useragreemnet_activity"
+                        android:textSize="@dimen/createnewuser_secreen_useragreement_text_size" />
+
+                     <View
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                      android:visibility="invisible"
+                    />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="5"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="6"
+        android:orientation="horizontal" >
+
+        <com.itbarx.custom.component.ButtonBold
+            android:id="@+id/activity_userAgreement_screen_accept_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/button_bg_acceptuseragreement_useragreemnet_activity"
+            android:text="@string/useragreement_activity_screen_accept_button_text"
+            android:textColor="@color/white"
+            android:textSize="@dimen/login_secreen_login_button_text_size" />
+    </LinearLayout>
+
+</LinearLayout>

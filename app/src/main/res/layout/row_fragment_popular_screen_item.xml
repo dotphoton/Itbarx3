@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:minHeight="90dip"
+
+              android:baselineAligned="false"
+              android:background="@drawable/border_timeline_textbox"
+              android:layout_height="90dp"
+    android:orientation="horizontal"
+              android:layout_weight="34"
+    >
+    <RelativeLayout
+        android:id="@+id/row_fragment_popular_screen_user_videoView_container"
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="8"
+        android:layout_marginLeft="10dp"
+        >
+
+
+   <ImageView
+       android:id="@+id/row_fragment_popular_screen_user_videoView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+       android:clickable="true"
+       android:adjustViewBounds="true"
+       android:src="@drawable/thumbnail"
+android:scaleType="centerCrop"
+       android:background="#0000"
+       />
+        <ImageView
+            android:id="@+id/row_fragment_popular_screen_userPlayIcon_videoView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:padding="25dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/bark_play_icon"
+            android:scaleType="centerInside"
+            android:background="#0000"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            />
+
+
+
+        </RelativeLayout>
+
+
+    <View
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        />
+
+<RelativeLayout
+    android:layout_width="0dip"
+    android:layout_height="match_parent"
+    android:layout_weight="25"
+
+    >
+
+<com.itbarx.custom.component.TextViewListItemReg
+    android:id="@+id/row_fragment_popular_screen_subtitle_textView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="left|center_horizontal"
+    android:padding="10dp"
+    android:textColor="#666666"
+    android:lines="5"/>
+
+
+
+
+</RelativeLayout>
+
+</LinearLayout>

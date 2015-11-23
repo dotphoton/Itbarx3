@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10dp"
+
+    android:padding="2dp"
+
+    >
+
+    <com.itbarx.custom.component.SquareImageView
+        android:id="@+id/column_fragment_search_screen_userProfile_imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/profile_b"
+        android:scaleType="fitCenter"
+        android:visibility="visible"
+        android:clickable="true"
+
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@android:color/transparent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/border_column_search_orange_gridview"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            >
+            <com.itbarx.custom.component.TextViewGridItemBold
+                android:id="@+id/column_fragment_search_screen_name_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="FirstName"
+
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                />
+            <com.itbarx.custom.component.TextViewGridItemBold
+                android:id="@+id/column_fragment_search_screen_surname_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:paddingTop="5dp"
+                android:text="Surname"
+                android:layout_below="@+id/column_fragment_search_screen_name_textView"/>
+
+
+            <ImageView
+                android:id="@+id/column_fragment_search_screen_addIcon_imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_search_user_add_search_fragment"
+                android:scaleType="centerInside"
+                android:layout_alignParentRight="true"
+                android:clickable="true"
+                android:visibility="visible"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:padding="5dp"
+
+                />
+            <ImageView
+                android:id="@+id/column_fragment_search_screen_okIcon_imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_search_user_ok_search_fragment"
+                android:scaleType="centerInside"
+                android:clickable="true"
+                android:visibility="gone"
+                android:padding="5dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+
+                />
+
+
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

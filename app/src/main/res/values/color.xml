@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- shared in activites -->
+    <item name="white" type="color">#FFFFFFFF</item>
+    <item name="button_facebook_bg" type="color">#FF3B5998</item>
+    <item name="button_twitter_bg" type="color">#FF28AAE1</item>
+    <item name="toolbar_bg" type="color">#FF464646</item>
+    <item name="text_or" type="color">#FF666666</item>
+    <item name="fragment_orange_button" type="color">#FFF89938</item>
+    <item name="fragment_orange_text" type="color">#FFF89938</item>
+    <item name="hints_editText" type="color">#FFDEDEDE</item>
+    <item name="texts_editText" type="color">#FFB7B7B7</item>
+    <item name="icons_bg" type="color">#FFF6F6F6</item>
+
+    <!-- login activity -->
+
+    <item name="login_activity_button_login_bg" type="color">#FFF89938</item>
+    <item name="login_activity_button_forgotpassword_bg" type="color">#FFF6F6F6</item>
+    <item name="login_activity_button_forgotpassword_text" type="color">#FF3E3C3D</item>
+    <item name="login_activity_button_createnewaccount_bg" type="color">#FFDA4453</item>
+    <item name="login_activity_text_or" type="color">#FF666666</item>
+    <item name="login_activity_icons_bg" type="color">#FFF6F6F6</item>
+
+    <!-- create new user activity activity -->
+    <item name="create_new_user_addPhoto_icon_imageView" type="color">#FFF6F6F6</item>
+    <item name="create_new_user_addPhoto_text" type="color">#FFB7B7B7</item>
+    <item name="create_new_user_userAgreemnt_text" type="color">#FFB7B7B7</item>
+    <item name="create_new_user_button_done_bg" type="color">#FFFF9933</item>
+    <item name="create_new_user_iAgreeTo_text" type="color">#FFFF9933</item>
+
+    <!-- edit profile activity activity -->
+    <item name="editprofile_activity_imageview_addphoto_bg" type="color">#FFF6F6F6</item>
+    <item name="editprofile_activity_changephoto_text" type="color">#FF666666</item>
+    <item name="editprofile_activity_info_text" type="color">#FFF89938</item>
+    <item name="editprofile_activity_hints_edittext" type="color">#FFDEDEDE</item>
+    <item name="editprofile_activity_changepassword_text" type="color">#FFF89938</item>
+    <item name="editprofile_activity_icons_bg" type="color">#FFF6F6F6</item>
+    <item name="editprofile_activity_save_button" type="color">#FFF89938</item>
+
+    <!-- forgot password activity activity -->
+    <item name="forgot_password_activity_info_text" type="color">#FF464646</item>
+    <item name="forgot_password_activity_line" type="color">#FF464646</item>
+    <item name="forgot_password_activity_change_password_text" type="color">#E98B2C</item>
+
+    <!-- user agreement activity -->
+    <item name="textview_useragreemnet_useragreemnet_activity" type="color">#FF666666</item>
+    <item name="button_bg_acceptuseragreement_useragreemnet_activity" type="color">#FF6FC387</item>
+
+    <!-- new user done activity -->
+    <item name="textview_info_newuserdone_activity" type="color">#FF666666</item>
+    <item name="button_bg_startusing_newuserdone_activity" type="color">#FFF89938</item>
+
+    <!-- profile fragment -->
+
+
+    <!-- friends fragment -->
+    <item name="frame_bg_unfollow_friends_fragment" type="color">#FFBDB2AA</item>
+
+    <!-- activity fragment -->
+    <item name="buttonlayout_bg_activity_activity_fragment" type="color">#FFF89938</item>
+    <item name="buttonlayout_text_request_activity_fragment" type="color">#FF666666</item>
+    <!-- request fragment -->
+    <item name="buttonlayout_bg_request_request_fragment" type="color">#FFF89938</item>
+    <item name="buttonlayout_text_activity_request_fragment" type="color">#FF666666</item>
+
+    <!-- popular fragment -->
+    <item name="buttonlayout_bg_popular_popular_fragment" type="color">#FFF89938</item>
+    <item name="buttonlayout_text_timeline_popular_fragment" type="color">#FF666666</item>
+
+    <!-- timeline fragment -->
+    <item name="buttonlayout_bg_timeline_timeline_fragment" type="color">#FFF89938</item>
+    <item name="buttonlayout_text_popular_timeline_fragment" type="color">#FF666666</item>
+
+    <!-- search/friendsbark/followers/following fragment -->
+    <item name="icon_bg_search_fragment" type="color">#FFF89938</item>
+    
+    
+    <!-- tab colors -->
+    
+      <color name="tabMedium">#F89938</color>
+  <color name="tabDark">#F89938</color>
+  <color name="tabTransparent">#F89938</color>
+
+   <!-- <integer-array name="androidcolors">
+        <item>@color/white</item>
+        <item>@color/toolbar_bg</item>
+        <item>@color/button_login_bg_login_activity</item>
+        <item>@color/button_forgotpassword_bg_login_activity</item>
+        <item>@color/button_forgotpassword_text_login_activity</item>
+        <item>@color/button_createnewaccount_bg_login_activity</item>
+        <item>@color/text_or</item>
+        <item>@color/button_facebook_bg</item>
+        <item>@color/button_twitter_bg</item>
+        <item>@color/imageview_addphoto_bg_createnewuser_activity</item>
+        <item>@color/textview_addphoto_createnewuser_activity</item>
+        <item>@color/textview_userinputs_hints_createnewuser_activity</item>
+        <item>@color/line_forgotpassword_activity</item>
+        <item>@color/icons_bg_forgotpassword_activity</item>
+        <item>@color/textview_userinputs_hints_forgotpassword_activity</item>
+        <item>@color/button_sendmeemailcode_bg_forgotpassword_activity</item>
+        <item>@color/button_change_bg_forgotpassword_activity</item>
+        <item>@color/textview_changepassword_forgotpassword_activity</item>
+        <item>@color/textview_useragreemnet_useragreemnet_activity</item>
+        <item>@color/button_bg_acceptuseragreement_useragreemnet_activity</item>
+        <item>@color/frame_bg_unfollow_friends_fragment</item>
+        <item>@color/buttonlayout_bg_activity_activity_fragment</item>
+        <item>@color/buttonlayout_text_request_activity_fragment</item>
+        <item>@color/buttonlayout_bg_request_request_fragment</item>
+        <item>@color/buttonlayout_text_activity_request_fragment</item>
+    </integer-array>
+    
+     --> 
+
+    <color name="tab_transparent_light">#38FFFFFF</color>
+    <color name="tab_bar_text_press_color">#FF0000</color>
+    <color name="background_color">#CFF4FB</color>
+    <color name="exercise_detail_text_color">#29bec5</color>
+    <color name="step8_radio_back_color">#27AFB7</color>
+    <color name="dietlist_meal_text_color">#1E8D92</color>
+    <color name="transparent_color">#ff000000</color>
+    <color name="facebook_blue">#3B5998</color>
+    <color name="text_color">#303040</color>
+    <color name="text_color2">#2b3538</color>
+    <color name="alt_bar_backcolor">#f5f6f6</color>
+    <color name="alt_bar_select_text_color">#fd7a10</color>
+    <color name="alt_bar_backcolor_drawline">#b2b2b2</color>
+
+</resources>

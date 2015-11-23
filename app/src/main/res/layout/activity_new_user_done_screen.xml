@@ -1,0 +1,169 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    android:orientation="vertical"
+    android:weightSum="60" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="5"
+        android:background="@color/toolbar_bg" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="@string/newuserdone_activity_screen_toolbar_text"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="49"
+        android:orientation="vertical"
+        android:weightSum="490" >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="5"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="480"
+            android:orientation="horizontal"
+            android:weightSum="35" >
+
+            <View
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="invisible" />
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="33"
+                android:orientation="vertical"
+                android:weightSum="480" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="100"
+                    android:background="@drawable/bg_header_new_user_done" >
+
+                    <ImageView
+                        android:id="@+id/activity_newuserdone_screen_info_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="false"
+                        android:layout_alignWithParentIfMissing="false"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:paddingRight="15dip"
+                        android:src="@drawable/icon_check_new_user_done" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="10"
+                    android:visibility="invisible" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="370"
+                    android:orientation="horizontal"
+                    android:weightSum="34" >
+
+                    <View
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:visibility="invisible" />
+
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="28"
+                        android:orientation="vertical"
+                        android:weightSum="2" >
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dip"
+                            android:layout_weight="1" >
+
+                            <ImageView
+                                android:id="@+id/activity_usernewdone_screen_smile_icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerInParent="true"
+                                android:layout_centerVertical="true"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/icon_smile_new_user_done" />
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/activity_newuserdone_screen_info_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="top|left"
+                            android:singleLine="@bool/choose_false"
+                            android:text="@string/newuserdone_activity_screen_middletext_text"
+                            android:textColor="@color/textview_info_newuserdone_activity"
+                            android:textSize="@dimen/createnewuser_secreen_useragreement_text_size" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:visibility="invisible" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="5"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="6"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/activity_newuserdone_screen_startusing_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/button_bg_startusing_newuserdone_activity"
+            android:text="@string/newuserdone_activity_screen_startusing_button_text"
+            android:textColor="@color/white"
+            android:textSize="@dimen/login_secreen_login_button_text_size" />
+    </LinearLayout>
+
+</LinearLayout>

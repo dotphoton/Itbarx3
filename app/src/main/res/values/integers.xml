@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="text_size_listview">20</integer>
+    <integer name="text_size_mini_button">23</integer>
+    <integer name="text_size_button">27</integer>
+    <integer name="text_size_toolbar">27</integer>
+    <integer name="text_size_editbox">25</integer>
+    <integer name="login_text_size_or">30</integer>
+    <integer name="login_text_size_remember">30</integer>
+
+
+</resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:minHeight="70dp"
+              android:baselineAligned="false"
+              android:background="@color/white"
+              android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+        <RelativeLayout
+            android:id="@+id/row_fragment_profile_screen_user_videoView_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical|center_horizontal" >
+            <VideoView
+                android:id="@+id/row_fragment_profile_screen_user_videoView"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:adjustViewBounds="true"
+                android:maxWidth="70dip"
+                android:maxHeight="70dip"
+
+                />
+
+
+
+        </RelativeLayout>
+
+        <com.itbarx.custom.component.TextViewListItemReg
+            android:id="@+id/row_fragment_profile_screen_subtitle_textView"
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@id/row_fragment_profile_screen_user_videoView_container"
+            android:layout_height="wrap_content"
+            android:text="Welcome to the way through america's news worth therefore it does not mean something good several municipalities declared bankruptcy before Detroit did but their deaths with smaller Stockton Calif million dollars while Detroit post eighteen and a half billion..."
+            android:layout_marginLeft="5dp"
+            android:textColor="#666666"
+            android:layout_centerInParent="true"
+            android:lines="5"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignBottom="@+id/row_fragment_profile_screen_user_videoView_container"
+            android:background="@color/editprofile_activity_icons_bg" />
+    </RelativeLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="70dip"
+              android:minHeight="60dp"
+              android:baselineAligned="false"
+              android:background="@color/white"
+              android:orientation="vertical"
+              android:weightSum="8"
+             >
+<View
+    android:layout_width="match_parent"
+    android:layout_height="0dip"
+    android:layout_weight="1"
+    android:visibility="invisible"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="6"
+        android:orientation="horizontal"
+        android:weightSum="34"
+        >
+
+        <View
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:visibility="invisible"
+            />
+
+        <RelativeLayout
+            android:id="@+id/row_fragment_request_screen_user_imageView_container"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="3.5"
+
+            android:gravity="center_vertical|center_horizontal" >
+            <ImageView
+                android:id="@+id/row_fragment_request_screen_user_imageView"
+                android:background="@android:color/white"
+                android:scaleType="centerInside"
+                android:src="@drawable/person"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:contentDescription="@string/row_all_fragments_user_imageView_description"
+                />
+        </RelativeLayout>
+        <View
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:visibility="invisible"
+            />
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="13.5"
+
+            >
+            <com.itbarx.custom.component.TextViewListItemBold
+                android:id="@+id/row_fragment_request_screen_fullName_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:layout_centerVertical="true"
+                android:text="full name"
+                />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="12.5"
+            android:weightSum="12.5"
+            android:orientation="horizontal"
+            >
+
+            <RelativeLayout
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="3.5"
+                android:gravity="center_vertical|center_horizontal" >
+
+                <ImageView
+                    android:id="@+id/row_fragment_request_screen_follow_imageButton"
+                    android:src="@drawable/req_icon_unfollow"
+                    android:scaleType="centerInside"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="true"
+
+                    />
+            </RelativeLayout>
+            <View
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="invisible"
+                />
+
+            <RelativeLayout
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="3.5"
+                android:gravity="center_vertical|center_horizontal" >
+
+                <ImageView
+                    android:id="@+id/row_fragment_request_screen_ok_imageButton"
+                    android:src="@drawable/req_icon_request_ok"
+                    android:scaleType="centerInside"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="true"
+
+                    />
+            </RelativeLayout>
+            <View
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="invisible"
+                />
+
+            <RelativeLayout
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="3.5"
+                android:gravity="center_vertical|center_horizontal" >
+
+                <ImageView
+                    android:id="@+id/row_fragment_request_screen_deny_imageButton"
+                    android:src="@drawable/req_icon_request_deny"
+                    android:scaleType="centerInside"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="true"
+
+                    />
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:visibility="invisible"
+            />
+    </LinearLayout>
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:visibility="invisible"
+        />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

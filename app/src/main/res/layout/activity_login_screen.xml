@@ -1,0 +1,460 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/basicinfo_name_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    android:orientation="vertical"
+    android:weightSum="600"
+    tools:ignore="MissingPrefix" >
+
+    <RelativeLayout
+        android:id="@+id/toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="50"
+        android:background="@color/toolbar_bg" >
+
+        <com.itbarx.custom.component.TextViewRegular
+            android:id="@+id/login_activity_screen_toolbar_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="@string/login_activity_screen_toolbar_text"
+            android:textColor="@color/white"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/container_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="550"
+        android:orientation="horizontal"
+        android:weightSum="34" >
+
+        <View
+            android:id="@+id/left_space"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:id="@+id/content_layout"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="33"
+            android:orientation="vertical"
+            android:weightSum="550" >
+
+            <LinearLayout
+                android:id="@+id/logo_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="100"
+                android:orientation="vertical"
+                android:weightSum="10" >
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="3" >
+                </View>
+
+                <ImageView
+                    android:id="@+id/login_activity_screen_login_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dip"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_weight="4"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/logo_itbarx_login" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="3" >
+                </View>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/username_password_boxes_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="100"
+                android:orientation="vertical"
+                android:weightSum="200"
+                android:background="@drawable/border_editboxes">
+
+                <LinearLayout
+                    android:id="@+id/username_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="99"
+                    android:orientation="horizontal"
+                    android:weightSum="10" >
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:background="@color/login_activity_icons_bg" >
+
+                        <ImageView
+                            android:id="@+id/login_activity_screen_username_icon"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="9dip"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="true"
+                            android:layout_centerVertical="true"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/icon_username_login" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="8.5"
+                        android:background="@color/white"
+                        android:gravity="left|center_vertical" >
+
+                        <com.itbarx.custom.component.EditTextRegular
+                            android:id="@+id/login_activity_screen_username_edittext"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#00000000"
+                            android:hint="@string/login_activity_screen_username_text"
+                            android:inputType="textPersonName"
+                            android:paddingLeft="10dp"
+                            android:textColor="@color/texts_editText"
+                            android:textColorHint="@color/hints_editText"
+
+                           >
+                            <requestFocus />
+                        </com.itbarx.custom.component.EditTextRegular>
+                    </RelativeLayout>
+                </LinearLayout>
+<View
+    android:layout_width="match_parent"
+    android:layout_height="0dip"
+    android:layout_weight="2"
+    android:background="#E9E9E9"
+    android:visibility="visible"
+    />
+                <LinearLayout
+                    android:id="@+id/password_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="99"
+
+                    android:orientation="horizontal"
+                    android:weightSum="10" >
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:background="@color/login_activity_icons_bg" >
+
+                        <ImageView
+                            android:id="@+id/login_activity_screen_password_icon"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="9dip"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerInParent="true"
+                            android:layout_centerVertical="true"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/icon_password_login" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dip"
+                        android:layout_height="match_parent"
+                        android:layout_weight="8.5"
+                        android:background="@color/white"
+                        android:gravity="left|center_vertical" >
+
+                        <com.itbarx.custom.component.EditTextRegular
+                            android:id="@+id/login_activity_screen_password_edittext"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#00000000"
+                            android:hint="@string/login_activity_screen_password_text"
+                            android:inputType="textPassword"
+                            android:paddingLeft="10dp"
+                            android:textColor="@color/texts_editText"
+
+                            android:textColorHint="@color/hints_editText"
+                          >
+                             <requestFocus />
+                        </com.itbarx.custom.component.EditTextRegular>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="40"
+                android:orientation="horizontal"
+                android:weightSum="10" >
+
+                <RelativeLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5" >
+
+                    <ImageView
+                        android:id="@+id/login_activity_screen_rememberMe_unchecked_icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:clickable="true"
+                        android:visibility="visible"
+                        android:padding="9dip"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/icon_remember_me_not_checked_login" />
+                    <ImageView
+                        android:id="@+id/login_activity_screen_rememberMe_checked_icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:clickable="true"
+                        android:visibility="gone"
+                        android:padding="9dip"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/icon_remember_me_checked_login" />
+                </RelativeLayout>
+
+                <com.itbarx.custom.component.TextViewBold
+                    android:id="@+id/login_activity_screen_rememberMe_plaintext"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_weight="8.5"
+
+                    android:text="@string/login_activity_screen_rememberme_text"
+                    />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="10" >
+            </View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="50"
+                android:orientation="horizontal"
+                android:weightSum="345" >
+
+                <LinearLayout
+                    android:id="@+id/forgotpassword_button_layout"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="165"
+                     >
+
+                    <com.itbarx.custom.component.ButtonBold
+                        android:id="@+id/login_activity_screen_forgotpassword_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/select_gray_button"
+                        android:text="@string/login_activity_screen_forgotpassword_button_text"
+                        android:textColor="@color/login_activity_button_forgotpassword_text"
+                         />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="15" />
+
+                <LinearLayout
+                    android:id="@+id/login_button_layout"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="165"
+                    >
+
+                    <com.itbarx.custom.component.ButtonBold
+                        android:id="@+id/login_activity_screen_login_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/select_orange_button"
+                        android:text="@string/login_activity_screen_login_button_text"
+                        android:textColor="@color/white"
+                         />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="10" >
+            </View>
+
+            <LinearLayout
+                android:id="@+id/createnewaccount_button_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="50"
+                 >
+
+                <com.itbarx.custom.component.ButtonBold
+                    android:id="@+id/login_activity_screen_createnewaccount_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/select_red_button"
+                    android:text="@string/login_activity_screen_createnewaccount_button_text"
+                    android:textColor="@color/white"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/login_activitry_or_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="40"
+                android:orientation="horizontal"
+                android:weightSum="34" >
+
+                <View
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10"
+                    android:visibility="invisible" >
+                </View>
+
+                <RelativeLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4" >
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#c0c0c0"
+                       android:layout_centerHorizontal="true"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"/>
+                    
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6" >
+
+                    <com.itbarx.custom.component.TextViewBold
+                        android:id="@+id/login_activity_screen_or_plaintext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:text="@string/login_activity_screen_or_text"
+                        android:textColor="@color/login_activity_text_or"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4" >
+
+                   <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#c0c0c0"
+                       android:layout_centerHorizontal="true"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10"
+                    android:visibility="invisible" >
+                </View>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="50"
+                android:orientation="horizontal"
+                android:weightSum="345" >
+
+                <LinearLayout
+                    android:id="@+id/facebook_button_layout"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="165"
+                    >
+
+                    <com.itbarx.custom.component.ButtonBold
+                        android:id="@+id/login_activity_screen_facebook_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/select_facebook_button"
+                        android:text="@string/login_activity_screen_facebook_button_text"
+                        android:textColor="@color/white"
+                        />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="15" />
+
+                <LinearLayout
+                    android:id="@+id/twitter_button_layout"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="165"
+                 >
+
+                    <com.itbarx.custom.component.ButtonBold
+                        android:id="@+id/login_activity_screen_googlePlus_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/select_google_plus_button"
+                        android:text="@string/login_activity_screen_googlePlus_button_text"
+                      android:textColor="@color/white"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="100" >
+            </View>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/rigth_space"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+</LinearLayout>
