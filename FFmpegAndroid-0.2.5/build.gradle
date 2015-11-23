@@ -1,0 +1,2 @@
+configurations.create("default")
+artifacts.add("default", file('FFmpegAndroid-0.2.5.aar'))
