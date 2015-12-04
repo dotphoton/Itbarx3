@@ -3,8 +3,8 @@ package com.itbarx.listener;
 import java.util.List;
 
 import com.itbarx.error.listener.BaseServiceListener;
-import com.itbarx.model.rebark.ReBarkGetPostSharedUserListModel;
-import com.itbarx.model.rebark.ReBarkGetSharedPostListModel;
+import com.itbarx.model.rebark.ReBarkGetPostSharedUserListByPostIdModel;
+import com.itbarx.model.rebark.ReBarkGetSharedPostListByUserIdModel;
 
 public interface ReBarkProcessesServiceListener<T> extends BaseServiceListener<T> {
 
@@ -12,9 +12,9 @@ public interface ReBarkProcessesServiceListener<T> extends BaseServiceListener<T
 
 	public void delete(String isDeleted);
 
-	public void getSharedPostList(List<ReBarkGetSharedPostListModel> reBarkGetSharedPostListModel);
+	public void getSharedPostList(List<ReBarkGetSharedPostListByUserIdModel> reBarkGetSharedPostListByUserIdModel);
 
-	public void getPostSharedUserList(List<ReBarkGetPostSharedUserListModel> reBarkPostSharedUserListModel);
+	public void getPostSharedUserList(List<ReBarkGetPostSharedUserListByPostIdModel> reBarkPostSharedUserListModel);
 
 	public void getSharedPostCount(String count);
 

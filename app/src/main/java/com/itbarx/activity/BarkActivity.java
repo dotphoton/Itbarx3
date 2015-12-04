@@ -1,29 +1,39 @@
 package com.itbarx.activity;
 
 import android.app.Dialog;
-import android.app.DownloadManager;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
-import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.itbarx.R;
+import com.itbarx.application.ItbarxGlobal;
 import com.itbarx.common.DownloadManagerAsync;
 import com.itbarx.custom.component.TextViewBold;
 import com.itbarx.custom.component.TextViewRegular;
 import com.itbarx.error.common.ResponseServiceModel;
 import com.itbarx.error.model.BarxErrorModel;
+import com.itbarx.listener.LikeProcessesServiceListener;
 import com.itbarx.listener.OneShotOnClickListener;
 import com.itbarx.listener.PostProcessesServiceListener;
+import com.itbarx.listener.ReBarkProcessesServiceListener;
+import com.itbarx.model.like.LikePostsByUserIdModel;
+import com.itbarx.model.like.LikeUserListModel;
+import com.itbarx.model.like.LikeUsersByPostIdModel;
 import com.itbarx.model.post.PostGetPostDetailModel;
 import com.itbarx.model.post.PostGetWallInfoModel;
 import com.itbarx.model.post.PostNewPostListModel;
@@ -31,29 +41,47 @@ import com.itbarx.model.post.PostPopularPostListModel;
 import com.itbarx.model.post.PostPostDetailModel;
 import com.itbarx.model.post.PostTimelineListForUserModel;
 import com.itbarx.model.post.PostWallListForUserModel;
+import com.itbarx.model.rebark.ReBarkGetPostSharedUserListByPostIdModel;
+import com.itbarx.model.rebark.ReBarkGetSharedPostListByUserIdModel;
+import com.itbarx.model.rebark.ReBarkSendPostSharedUserModel;
+import com.itbarx.model.send_to_fragment.LikeData;
+import com.itbarx.model.send_to_fragment.ReBarksData;
+import com.itbarx.sl.LikeProcessesServiceSL;
 import com.itbarx.sl.PostProcessesServiceSL;
+import com.itbarx.sl.ReBarkProcessesServiceSL;
 import com.itbarx.utils.BarkUtility;
-import com.itbarx.utils.Base64Utility;
-import com.itbarx.utils.FileUtility;
 import com.itbarx.utils.TextSizeUtil;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- * TODO: Add a class header comment!
- */
-public class BarkActivity extends BaseActivity implements DownloadManagerAsync.DownloadManagerCallback,TextureView.SurfaceTextureListener  {
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
+public class BarkActivity extends BaseActivity implements DownloadManagerAsync.DownloadManagerCallback, TextureView.SurfaceTextureListener {
+
+	@Bind(R.id.bark_activity_screen_like_icon_imageView) ImageView imgLike;
+	@Bind(R.id.bark_activity_screen_reBark_icon) ImageView imgReBark;
+	@Bind(R.id.bark_activity_screen_reply_icon) ImageView imgReply;
+	@Bind(R.id.bark_activity_screen_side_panel) FrameLayout sidePanel;
+	@Bind(R.id.bark_activity_screen_drawer_layout) DrawerLayout drawerLayout;
+
+	private S_Fragment_Like sFragmentLike;
+	private S_Fragment_ReBark sFragmentReBark;
+	private S_Fragment_Reply sFragmentReply;
+	private FragmentTransaction ft;
+	private FragmentManager fm;
+	private ViewGroup.LayoutParams params;
 	private MediaPlayer mMediaPlayer;
 	private PostGetPostDetailModel selectedModel;
 	private String VIDEO_VIRTUAL_PATH_NAME = Environment.getExternalStorageDirectory() + "/com.itbarx";
-	private String filePath="";
+	private String filePath = "";
 	protected String POST_ID = null;
 	private TextViewRegular txtToolbar, txtSubtitle;
 	private TextViewBold txtLikeCount, txtReBarkCount, txtReplyCount, txtLike, txtReBark, txtReply;
-	private ImageView imgVideoPlay,imgVideoPause;
+	private ImageView imgVideoPlay, imgVideoPause;
 	private TextureView videoView;
 	protected boolean isMediaRunning = false;
 	boolean isMirrored = true;
@@ -61,7 +89,19 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 	boolean isFileDelete = false;
 	boolean isStop = false;
 	private boolean isConfigOk = false;
-	private boolean hasVideoFile=false;
+	private boolean hasVideoFile = false;
+	private static final int WIDTH_5_4;
+	private ArrayList<LikeData> likeDataList;
+	private ArrayList<ReBarksData> reBarksDataList;
+	private static final String KEY_LIKE_DATA_LIST;
+	private static final String KEY_REBARK_DATA_LIST;
+
+	static {
+		WIDTH_5_4 = (int) (ItbarxGlobal.getDisplayPxWidth() / 5 * 4);
+		KEY_LIKE_DATA_LIST = "KeyLikeData";
+		KEY_REBARK_DATA_LIST = "KeyReBarkData";
+	}
+
 	@Override protected int getLayoutResourceId() {
 		return R.layout.activity_bark_screen;
 	}
@@ -72,10 +112,10 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 
 	@Override protected void initViews() {
 
-		if((POST_ID =BarkUtility.getPostId(BarkActivity.this))!=null)
-		{
-			imgVideoPlay = (ImageView)findViewById(R.id.bark_activity_screen_video_thumbnail_play_ImageView);
-			imgVideoPause = (ImageView)findViewById(R.id.bark_activity_screen_video_thumbnail_pause_ImageView);
+		if ((POST_ID = BarkUtility.getPostId(BarkActivity.this)) != null) {
+			ButterKnife.bind(this);
+			imgVideoPlay = (ImageView) findViewById(R.id.bark_activity_screen_video_thumbnail_play_ImageView);
+			imgVideoPause = (ImageView) findViewById(R.id.bark_activity_screen_video_thumbnail_pause_ImageView);
 			imgVideoPause.setVisibility(View.INVISIBLE);
 			imgVideoPlay.setOnClickListener(playVideoClickListener);
 			imgVideoPause.setOnClickListener(pauseVideoClickListener);
@@ -87,25 +127,77 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 			txtLikeCount = (TextViewBold) findViewById(R.id.bark_activity_screen_like_count_TextView);
 			txtReBarkCount = (TextViewBold) findViewById(R.id.bark_activity_screen_rebark_count_TextView);
 			txtReplyCount = (TextViewBold) findViewById(R.id.bark_activity_screen_reply_count_TextView);
-			videoView= (TextureView) findViewById(R.id.media_record_preview_main_videoView);
+			videoView = (TextureView) findViewById(R.id.media_record_preview_main_videoView);
 			setCompText();
+			//SET SIDE PANEL'S WIDTH.
+			sidePanel.post(new Runnable() {
+				@Override public void run() {
+
+					params = sidePanel.getLayoutParams();
+					params.width = WIDTH_5_4;
+					sidePanel.setLayoutParams(params);
+				}
+			});
+
+			//START FRAGMENT MANAGER
+			fm = getFragmentManager();
 			videoView.setSurfaceTextureListener(this);
 			videoView.setScaleX(isMirrored ? -1 : 1);
 
+			//*******************************************************************************
 			try {
 				PostPostDetailModel postDetailModel = new PostPostDetailModel();
 				postDetailModel.setPostID(POST_ID);
-				PostProcessesServiceSL processesServiceSL = new PostProcessesServiceSL(getContext(),postProcessesServiceListener,R.string.root_service_url);
+				PostProcessesServiceSL processesServiceSL = new PostProcessesServiceSL(getContext(), postProcessesServiceListener, R.string.root_service_url);
 				processesServiceSL.setGetPostDetail(postDetailModel);
 				showProgress(getString(R.string.ItbarxConnecting));
 			} catch (Exception e) {
-
-				writeLog("ITbarx","BarkActivity  initViews" + e.getMessage());
+				writeLog("ITbarx", "BarkActivity  initViews" + e.getMessage());
 			}
+			//*******************************************************************************
 
-		}
-		else
-		{
+			imgLike.setOnClickListener(new OneShotOnClickListener(500) {
+				@Override public void onOneShotClick(View v) {
+					//-------------------------------------------------------------------
+					LikeUserListModel likeUserListModel = new LikeUserListModel("48d8ceb2-de98-4dd7-b53b-000049db2753", "1", "20");
+					LikeProcessesServiceSL likeProcessesServiceSL = new LikeProcessesServiceSL(getContext(), likeProcessesServiceListener, R.string.root_service_url);
+					likeProcessesServiceSL.setGetLikeUsersByPostId(likeUserListModel);
+					showProgress(getString(R.string.ItbarxConnecting));
+					//-------------------------------------------------------------------
+
+				}
+			});
+			imgReBark.setOnClickListener(new OneShotOnClickListener(500) {
+				@Override public void onOneShotClick(View v) {
+					ReBarkSendPostSharedUserModel sendUserModel = new ReBarkSendPostSharedUserModel("6B2BDE44-8B31-4874-9EA9-00000437C69F", "1", "20");
+					ReBarkProcessesServiceSL reBarkProcessesServiceSL = new ReBarkProcessesServiceSL(getContext(), reBarkProcessesServiceListener, R.string.root_service_url);
+					reBarkProcessesServiceSL.setGetPostSharedUser(sendUserModel);
+					showProgress(getString(R.string.ItbarxConnecting));
+				}
+			});
+
+			imgReply.setOnClickListener(new OneShotOnClickListener(500) {
+				@Override public void onOneShotClick(View v) {
+/*
+					ft = fm.beginTransaction();
+					if (sFragmentReBark.isVisible()) {
+						ft.hide(sFragmentReply);
+					}
+					if (sFragmentLike.isVisible()) {
+						ft.hide(sFragmentLike);
+					}
+					ft.show(sFragmentReply);
+					ft.commit();
+					drawerLayout.post(new Runnable() {
+						@Override public void run() {
+							drawerLayout.openDrawer(sidePanel);
+						}
+					});
+				*/
+				}
+			});
+
+		} else {
 			finish();
 		}
 
@@ -122,6 +214,7 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 		txtReplyCount.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getBarkCountTextSize());
 
 	}
+
 	protected void stopPlayer() {
 		mMediaPlayer.stop();
 		mMediaPlayer.pause();
@@ -129,8 +222,8 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 		((ImageView) findViewById(R.id.bark_activity_screen_video_thumbnail_play_ImageView)).setVisibility(View.VISIBLE);
 
 	}
-	private  void  setBarkDetail(PostGetPostDetailModel postDetailModel)
-	{
+
+	private void setBarkDetail(PostGetPostDetailModel postDetailModel) {
 		selectedModel = postDetailModel;
 		txtReBarkCount.setText(postDetailModel.getPostRebarkCount());
 		txtLikeCount.setText(postDetailModel.getPostLikeCount());
@@ -139,70 +232,59 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 		txtToolbar.setText(postDetailModel.getItBarxUserName());
 
 	}
+
 	PostProcessesServiceListener<String> postProcessesServiceListener = new PostProcessesServiceListener<String>() {
-		@Override
-		public void getTimelineListForUser(List<PostTimelineListForUserModel> postTimelineListForUserModel) {
+		@Override public void getTimelineListForUser(List<PostTimelineListForUserModel> postTimelineListForUserModel) {
 
 		}
 
-		@Override
-		public void getWallListForUser(List<PostWallListForUserModel> postWallListForUserModel) {
+		@Override public void getWallListForUser(List<PostWallListForUserModel> postWallListForUserModel) {
 
 		}
 
-		@Override
-		public void getPopularPostList(List<PostPopularPostListModel> popularPostListModel) {
+		@Override public void getPopularPostList(List<PostPopularPostListModel> popularPostListModel) {
 
 		}
 
-		@Override
-		public void getNewPostList(List<PostNewPostListModel> postNewPostListModels) {
+		@Override public void getNewPostList(List<PostNewPostListModel> postNewPostListModels) {
 
 		}
 
-		@Override
-		public void getWallInfo(PostGetWallInfoModel postGetWallInfoModel) {
+		@Override public void getWallInfo(PostGetWallInfoModel postGetWallInfoModel) {
 
 		}
 
-		@Override
-		public void getPostDetail(PostGetPostDetailModel postDetailModel) {
+		@Override public void getPostDetail(PostGetPostDetailModel postDetailModel) {
 			dismissProgress();
 			setBarkDetail(postDetailModel);
-			if(postDetailModel!=null&&postDetailModel.getPostURL().length()>0){
-				String url ="https://itbarxmediastorage.blob.core.windows.net"+postDetailModel.getPostURL();
-				filePath =VIDEO_VIRTUAL_PATH_NAME+postDetailModel.getPostURL().substring(0,8)+".mp4";
+			if (postDetailModel != null && postDetailModel.getPostURL().length() > 0) {
+				String url = "https://itbarxmediastorage.blob.core.windows.net" + postDetailModel.getPostURL();
+				filePath = VIDEO_VIRTUAL_PATH_NAME + postDetailModel.getPostURL().substring(0, 8) + ".mp4";
 
 				File file = new File(filePath);
-				if(file.exists())
-				{
+				if (file.exists()) {
 					try {
 						mMediaPlayer.setDataSource(file.getAbsolutePath());
 						mMediaPlayer.prepare();
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
-					hasVideoFile =true;
+					hasVideoFile = true;
 
 				}
-
 
 			}
 		}
 
-		@Override
-		public void isAdded(String isAdded) {
-
+		@Override public void isAdded(String isAdded) {
 
 		}
 
-		@Override
-		public void onComplete(ResponseServiceModel<String> onComplete) {
+		@Override public void onComplete(ResponseServiceModel<String> onComplete) {
 
 		}
 
-		@Override
-		public void onError(BarxErrorModel onError) {
+		@Override public void onError(BarxErrorModel onError) {
 			dismissProgress();
 			finish();
 		}
@@ -218,23 +300,19 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 		}
 	};
 	OneShotOnClickListener playVideoClickListener = new OneShotOnClickListener(500) {
-		@Override
-		public void onOneShotClick(View v) {
+		@Override public void onOneShotClick(View v) {
 			((ImageView) findViewById(R.id.bark_activity_screen_video_thumbnail_play_ImageView)).setVisibility(View.INVISIBLE);
 			((ImageView) findViewById(R.id.bark_activity_screen_video_thumbnail_pause_ImageView)).setVisibility(View.VISIBLE);
-			if(isPauseClick)
-			{
+			if (isPauseClick) {
 				mMediaPlayer.start();
-				isPauseClick=false;
-			}
-			else {
+				isPauseClick = false;
+			} else {
 				if (hasVideoFile) {
 
 					mMediaPlayer.start();
 				} else {
 					if (selectedModel != null) {
-						DownloadManagerAsync managerAsync = new DownloadManagerAsync(BarkActivity.this,
-								filePath.indexOf("/") == 0 ? filePath : "/" + filePath);
+						DownloadManagerAsync managerAsync = new DownloadManagerAsync(BarkActivity.this, filePath.indexOf("/") == 0 ? filePath : "/" + filePath);
 						String rootVideoUrl = "https://itbarxmediastorage.blob.core.windows.net";
 						managerAsync.execute(rootVideoUrl + (selectedModel.getPostURL().indexOf("/") == 0 ? selectedModel.getPostURL() : "/" + selectedModel.getPostURL()));
 					}
@@ -251,25 +329,23 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 			isStop = false;
 			*/
 		}
-	} ;
-	boolean isPauseClick =false;
+	};
+	boolean isPauseClick = false;
 	OneShotOnClickListener pauseVideoClickListener = new OneShotOnClickListener(500) {
 
-		@Override
-		public void onOneShotClick(View v) {
+		@Override public void onOneShotClick(View v) {
 			((ImageView) findViewById(R.id.bark_activity_screen_video_thumbnail_pause_ImageView)).setVisibility(View.INVISIBLE);
 			((ImageView) findViewById(R.id.bark_activity_screen_video_thumbnail_play_ImageView)).setVisibility(View.VISIBLE);
-			isPauseClick=true;
-				mMediaPlayer.pause();
+			isPauseClick = true;
+			mMediaPlayer.pause();
 		}
 	};
-	@Override
-	public void onCompleteFileDownload(Boolean status, String file) {
-		if(status){
+
+	@Override public void onCompleteFileDownload(Boolean status, String file) {
+		if (status) {
 			File videoFile = new File(file);
 			// videoView.setRotation(270);
 			if (videoFile.exists()) {
-
 
 				try {
 					isConfigOk = true;
@@ -283,49 +359,187 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 		}
 	}
 
-	@Override
-	public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
+	@Override public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
 		mMediaPlayer = new MediaPlayer();
 		mMediaPlayer.setSurface(new Surface(surface));
 		mMediaPlayer.setOnCompletionListener(onCompletionListener);
 	}
 
-	@Override
-	public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
+	@Override public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
 
 	}
 
-	@Override
-	public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
+	@Override public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
 		return false;
 	}
 
-	@Override
-	public void onSurfaceTextureUpdated(SurfaceTexture surface) {
+	@Override public void onSurfaceTextureUpdated(SurfaceTexture surface) {
 
 	}
 
-	@Override
-	protected void onDestroy() {
+	@Override protected void onDestroy() {
 		super.onDestroy();
 
 		//FileUtility.deleteAllFileUnderFolder(VIDEO_VIRTUAL_PATH_NAME);
 	}
 
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
+	@Override public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			Dialog dialog = showAlert(getString(R.string.bark_activity_screen_are_you_exit), getString(R.string.Yes), new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
+				@Override public void onClick(DialogInterface dialog, int which) {
 					mMediaPlayer.stop();
 					mMediaPlayer.release();
 					finish();
 				}
-			},getString(R.string.No),null);
+			}, getString(R.string.No), null);
 			dialog.show();
-			return  true;
+			return true;
 		}
 		return super.onKeyDown(keyCode, event);
 	}
+
+	LikeProcessesServiceListener<String> likeProcessesServiceListener = new LikeProcessesServiceListener<String>() {
+		@Override public void addLike(String isAdded) {
+
+		}
+
+		@Override public void deleteLike(String isDeleted) {
+
+		}
+
+		@Override public void countLikeByUser(String count) {
+
+		}
+
+		@Override public void countLikeByPost(String count) {
+
+		}
+
+		@Override public void getLikePostByUserId(List<LikePostsByUserIdModel> likePostsByUserIdModel) {
+
+		}
+
+		@Override public void getLikeUsersByPostId(List<LikeUsersByPostIdModel> likeUsersByPostIdModel) {
+			dismissProgress();
+			likeDataList = new ArrayList<>();
+
+			if (likeUsersByPostIdModel != null) {
+				for (LikeUsersByPostIdModel models : likeUsersByPostIdModel) {
+					LikeData data = new LikeData(null, models.getItBarxUserName(), models.getName(), "true");
+
+					likeDataList.add(data);
+					Log.d("data list : ", data.getName() + " " + data.getItBarxUserName());
+				}
+			}
+			Log.d("data list size : ", likeDataList.size() + "");
+
+			Bundle bundle = new Bundle();
+			bundle.putParcelableArrayList(KEY_LIKE_DATA_LIST, likeDataList);
+
+			ft = fm.beginTransaction();
+			if (sFragmentReply != null && sFragmentReply.isAdded()) {
+				ft.remove(sFragmentReply);
+			}
+			if (sFragmentReBark != null && sFragmentReBark.isAdded()) {
+				ft.remove(sFragmentReBark);
+			}
+			if (sFragmentLike != null && sFragmentLike.isAdded()) {
+				ft.remove(sFragmentLike);
+
+			}
+			sFragmentLike = new S_Fragment_Like(BarkActivity.this);
+			sFragmentLike.setArguments(bundle);
+			ft.add(R.id.bark_activity_screen_side_panel, sFragmentLike);
+			ft.show(sFragmentLike);
+			ft.commit();
+
+			drawerLayout.post(new Runnable() {
+				@Override public void run() {
+					drawerLayout.openDrawer(sidePanel);
+				}
+			});
+
+		}
+
+		@Override public void onComplete(ResponseServiceModel<String> onComplete) {
+
+		}
+
+		@Override public void onError(BarxErrorModel onError) {
+
+		}
+	};
+	//REPLY SERVICES
+
+	//RE_BARK SERVICES
+	ReBarkProcessesServiceListener<String> reBarkProcessesServiceListener = new ReBarkProcessesServiceListener<String>() {
+		@Override public void add(String isAdded) {
+
+		}
+
+		@Override public void delete(String isDeleted) {
+
+		}
+
+		@Override
+		public void getSharedPostList(List<ReBarkGetSharedPostListByUserIdModel> reBarkGetSharedPostListByUserIdModel) {
+
+		}
+
+		@Override
+		public void getPostSharedUserList(List<ReBarkGetPostSharedUserListByPostIdModel> reBarkPostSharedUserListModel) {
+			dismissProgress();
+			reBarksDataList=new ArrayList<>();
+			if (reBarkPostSharedUserListModel != null) {
+				for (ReBarkGetPostSharedUserListByPostIdModel models : reBarkPostSharedUserListModel) {
+					ReBarksData data = new ReBarksData(null, models.getSharerName(), models.getSharerName(), "true");
+
+					reBarksDataList.add(data);
+					Log.d("data list : ", data.getName() + " " + data.getItBarxUserName());
+				}
+			}
+			Log.d("data list size : ", reBarksDataList.size() + "");
+
+			Bundle bundle = new Bundle();
+			bundle.putParcelableArrayList(KEY_REBARK_DATA_LIST, reBarksDataList);
+			ft = fm.beginTransaction();
+			if (sFragmentReply != null && sFragmentReply.isAdded()) {
+				ft.remove(sFragmentReply);
+			}
+			if (sFragmentReBark != null && sFragmentReBark.isAdded()) {
+				ft.remove(sFragmentReBark);
+			}
+			if (sFragmentLike != null && sFragmentLike.isAdded()) {
+				ft.remove(sFragmentLike);
+
+			}
+			sFragmentReBark = new S_Fragment_ReBark(BarkActivity.this);
+			sFragmentReBark.setArguments(bundle);
+			ft.add(R.id.bark_activity_screen_side_panel, sFragmentReBark);
+			ft.show(sFragmentReBark);
+			ft.commit();
+			drawerLayout.post(new Runnable() {
+				@Override public void run() {
+					drawerLayout.openDrawer(sidePanel);
+				}
+			});
+
+		}
+
+		@Override public void getSharedPostCount(String count) {
+
+		}
+
+		@Override public void getUserCount(String count) {
+
+		}
+
+		@Override public void onComplete(ResponseServiceModel<String> onComplete) {
+
+		}
+
+		@Override public void onError(BarxErrorModel onError) {
+
+		}
+	};
 }

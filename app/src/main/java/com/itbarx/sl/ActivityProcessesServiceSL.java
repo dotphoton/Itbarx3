@@ -3,8 +3,7 @@ package com.itbarx.sl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
+import android.util.Pair;
 
 import com.itbarx.R;
 import com.itbarx.error.common.ResponseServiceModel;
@@ -39,11 +38,11 @@ public class ActivityProcessesServiceSL extends BasePostServiceSL<String> {
 
 	// SEARCHAUTOCOMPLETE
 	public void setActivityList(ActivityModel activityModel) {
-
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.USER_ID.toString(), activityModel.getUserID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.PAGE.toString(), activityModel.getPage()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.REC_PER_PAGE.toString(), activityModel.getRecPerPage()));
+//List<Pair<String,String>>
+	List<Pair<String,String>> params = new ArrayList<>();
+	params.add(new Pair(GlobalDataForWS.USER_ID.toString(), activityModel.getUserID()));
+	params.add(new Pair(GlobalDataForWS.PAGE.toString(), activityModel.getPage()));
+	params.add(new Pair(GlobalDataForWS.REC_PER_PAGE.toString(), activityModel.getRecPerPage()));
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
 	postClient.addServiceClientListener(this);

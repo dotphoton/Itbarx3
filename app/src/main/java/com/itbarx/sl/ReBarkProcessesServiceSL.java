@@ -3,8 +3,7 @@ package com.itbarx.sl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
+
 
 import com.itbarx.R;
 import com.itbarx.error.common.ResponseServiceModel;
@@ -16,17 +15,18 @@ import com.itbarx.error.sl.BasePostServiceSL;
 import com.itbarx.error.sl.BaseServicePostClientSL;
 import com.itbarx.json.ReBarkModelParserJSON;
 import com.itbarx.listener.ReBarkProcessesServiceListener;
-import com.itbarx.model.rebark.ReBarkDeleteModel;
-import com.itbarx.model.rebark.ReBarkGetPostSharedUserListModel;
-import com.itbarx.model.rebark.ReBarkGetSharedPostListModel;
-import com.itbarx.model.rebark.ReBarkPostShareAddModel;
-import com.itbarx.model.rebark.ReBarkPostSharedUserCountModel;
-import com.itbarx.model.rebark.ReBarkPostSharedUserModel;
-import com.itbarx.model.rebark.ReBarkSharedPostCountModel;
-import com.itbarx.model.rebark.ReBarkSharedPostModel;
+import com.itbarx.model.rebark.ReBarkSendDeleteModel;
+import com.itbarx.model.rebark.ReBarkGetPostSharedUserListByPostIdModel;
+import com.itbarx.model.rebark.ReBarkGetSharedPostListByUserIdModel;
+import com.itbarx.model.rebark.ReBarkSendPostShareAddModel;
+import com.itbarx.model.rebark.ReBarkSendSharedPostModel;
+import com.itbarx.model.rebark.ReBarkSendSharedUserCountModel;
+import com.itbarx.model.rebark.ReBarkSendPostSharedUserModel;
+import com.itbarx.model.rebark.ReBarkSendSharedPostCountModel;
 import com.itbarx.utils.ItbarxUtils;
 
 import android.content.Context;
+import android.util.Pair;
 
 public class ReBarkProcessesServiceSL extends BasePostServiceSL<String> {
 
@@ -43,12 +43,12 @@ public class ReBarkProcessesServiceSL extends BasePostServiceSL<String> {
 	// **********************************//
 
 	// SHAREPOST ADD (REBARK INSERT)
-	public void setAddPostShare(ReBarkPostShareAddModel reBarkPostShareAddModel) {
+	public void setAddPostShare(ReBarkSendPostShareAddModel reBarkSendPostShareAddModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.USER_ID.toString(), reBarkPostShareAddModel.getUserID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.POST_ID.toString(), reBarkPostShareAddModel.getPostID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.SHARED_TEXT.toString(), reBarkPostShareAddModel.getSharedText()));
+	List<Pair<String,String>> params = new ArrayList<>();
+	params.add(new Pair(GlobalDataForWS.USER_ID.toString(), reBarkSendPostShareAddModel.getUserId()));
+	params.add(new Pair(GlobalDataForWS.POST_ID.toString(), reBarkSendPostShareAddModel.getPostId()));
+	params.add(new Pair(GlobalDataForWS.SHARED_TEXT.toString(), reBarkSendPostShareAddModel.getSharedText()));
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
 	postClient.addServiceClientListener(this);
@@ -59,11 +59,11 @@ public class ReBarkProcessesServiceSL extends BasePostServiceSL<String> {
 	}
 
 	// DELETE (REBARK DELETE)
-	public void setDeletePostShare(ReBarkDeleteModel reBarkDeleteModel) {
+	public void setDeletePostShare(ReBarkSendDeleteModel reBarkSendDeleteModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.SHARE_ID.toString(), reBarkDeleteModel.getShareID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.POST_ID.toString(), reBarkDeleteModel.getPostID()));
+	List<Pair<String,String>> params = new ArrayList<>();
+	params.add(new Pair(GlobalDataForWS.SHARE_ID.toString(), reBarkSendDeleteModel.getShareId()));
+	params.add(new Pair(GlobalDataForWS.POST_ID.toString(), reBarkSendDeleteModel.getPostId()));
 
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -75,12 +75,12 @@ public class ReBarkProcessesServiceSL extends BasePostServiceSL<String> {
 	}
 
 	// GET SHARED POST (KULLANICININ REBARK ETTIKLERI)
-	public void setGetSharedPost(ReBarkSharedPostModel reBarkSharedPostModel) {
+	public void setGetSharedPost(ReBarkSendSharedPostModel reBarkSendSharedPostModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.USER_ID.toString(), reBarkSharedPostModel.getUserID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.PAGE.toString(), reBarkSharedPostModel.getPage()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.REC_PER_PAGE.toString(), reBarkSharedPostModel.getRecPerPage()));
+	List<Pair<String,String>> params = new ArrayList<>();
+	params.add(new Pair(GlobalDataForWS.USER_ID.toString(), reBarkSendSharedPostModel.getUserId()));
+	params.add(new Pair(GlobalDataForWS.PAGE.toString(), reBarkSendSharedPostModel.getPage()));
+	params.add(new Pair(GlobalDataForWS.REC_PER_PAGE.toString(), reBarkSendSharedPostModel.getRecPerPage()));
 
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -92,12 +92,12 @@ public class ReBarkProcessesServiceSL extends BasePostServiceSL<String> {
 	}
 
 	// GET POSTSHARED USER (REBARK EDEN KULLANICILAR - POST BAZLI)
-	public void setGetPostSharedUser(ReBarkPostSharedUserModel reBarkPostSharedUserModel) {
+	public void setGetPostSharedUser(ReBarkSendPostSharedUserModel reBarkSendPostSharedUserModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.POST_ID.toString(), reBarkPostSharedUserModel.getPostID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.PAGE.toString(), reBarkPostSharedUserModel.getPage()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.REC_PER_PAGE.toString(), reBarkPostSharedUserModel.getRecPerPage()));
+		List<Pair<String,String>> params = new ArrayList<>();
+	params.add(new Pair(GlobalDataForWS.POST_ID.toString(), reBarkSendPostSharedUserModel.getPostId()));
+	params.add(new Pair(GlobalDataForWS.PAGE.toString(), reBarkSendPostSharedUserModel.getPage()));
+	params.add(new Pair(GlobalDataForWS.REC_PER_PAGE.toString(), reBarkSendPostSharedUserModel.getRecPerPage()));
 
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -109,10 +109,10 @@ public class ReBarkProcessesServiceSL extends BasePostServiceSL<String> {
 	}
 
 	// SHARED POST COUNT (REBARK EDİLEN POST SAYISI - USER BAZLI)
-	public void setSharedPostCount(ReBarkSharedPostCountModel reBarkSharedPostCountModel) {
+	public void setSharedPostCount(ReBarkSendSharedPostCountModel reBarkSendSharedPostCountModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.USER_ID.toString(), reBarkSharedPostCountModel.getUserID()));
+		List<Pair<String,String>> params = new ArrayList<>();
+	params.add(new Pair(GlobalDataForWS.USER_ID.toString(), reBarkSendSharedPostCountModel.getUserID()));
 
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -124,10 +124,10 @@ public class ReBarkProcessesServiceSL extends BasePostServiceSL<String> {
 	}
 
 	// COUNT OF USER THAT THEY SHARED THE POST (REBARK EDEN KULLANICI SAYISI - POST BAZLI)
-	public void setUserCount(ReBarkPostSharedUserCountModel ReBarkPostSharedUserCountModel) {
+	public void setUserCount(ReBarkSendSharedUserCountModel ReBarkSendSharedUserCountModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.POST_ID.toString(), ReBarkPostSharedUserCountModel.getPostID()));
+	List<Pair<String,String>> params = new ArrayList<>();
+	params.add(new Pair(GlobalDataForWS.POST_ID.toString(), ReBarkSendSharedUserCountModel.getPostID()));
 
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -176,32 +176,32 @@ public class ReBarkProcessesServiceSL extends BasePostServiceSL<String> {
 	}
 	// GET SHAREDPOST LIST
 	else if (responseEvent.getMethodName().equalsIgnoreCase(ReBarkprocessesLinks.GET_SHARED_POST.toString())) {
-		ServiceResponseModel model = ItbarxUtils.getServiceResponseModelDataKey(result);
-		List<ReBarkGetSharedPostListModel> reBarkGetSharedPostListModelResponse = null;
+		ServiceResponseModel model = ItbarxUtils.getServiceResponseArrayModelDataKey(result);
+		List<ReBarkGetSharedPostListByUserIdModel> reBarkGetSharedPostListByUserIdModelResponse = null;
 		if (model != null) {
-		reBarkGetSharedPostListModelResponse = new ReBarkModelParserJSON().getReBarkGetSharedPostListModelFromJSON(model.getModel());
+		reBarkGetSharedPostListByUserIdModelResponse = new ReBarkModelParserJSON().getReBarkGetSharedPostListModelFromJSON(model.getModel());
 		}
-		if (reBarkGetSharedPostListModelResponse == null) {
+		if (reBarkGetSharedPostListByUserIdModelResponse == null) {
 			BarxErrorModel<String> errorModel = new BarxErrorModel<String>();
 		errorModel.setErrMessage(context.getString(R.string.BrokenData));
 		reBarkProcessesServiceListener.onError(errorModel);
 		} else {
-		reBarkProcessesServiceListener.getSharedPostList(reBarkGetSharedPostListModelResponse);
+		reBarkProcessesServiceListener.getSharedPostList(reBarkGetSharedPostListByUserIdModelResponse);
 		}
 	}
 	// GET POSTSHARED USER LIST
 	else if (responseEvent.getMethodName().equalsIgnoreCase(ReBarkprocessesLinks.GET_POSTSHARED_USER.toString())) {
-		ServiceResponseModel model = ItbarxUtils.getServiceResponseModelDataKey(result);
-		List<ReBarkGetPostSharedUserListModel> reBarkGetPostSharedUserListModelResponse = null;
+		ServiceResponseModel model = ItbarxUtils.getServiceResponseArrayModelDataKey(result);
+		List<ReBarkGetPostSharedUserListByPostIdModel> reBarkGetPostSharedUserListByPostIdModelResponse = null;
 		if (model != null) {
-		reBarkGetPostSharedUserListModelResponse = new ReBarkModelParserJSON().getReBarkGetPostSharedUserListModelFromJSON(model.getModel());
+		reBarkGetPostSharedUserListByPostIdModelResponse = new ReBarkModelParserJSON().getReBarkGetPostSharedUserListModelFromJSON(model.getModel());
 		}
-		if (reBarkGetPostSharedUserListModelResponse == null) {
+		if (reBarkGetPostSharedUserListByPostIdModelResponse == null) {
 			BarxErrorModel<String> errorModel = new BarxErrorModel<String>();
 		errorModel.setErrMessage(context.getString(R.string.BrokenData));
 		reBarkProcessesServiceListener.onError(errorModel);
 		} else {
-		reBarkProcessesServiceListener.getPostSharedUserList(reBarkGetPostSharedUserListModelResponse);
+		reBarkProcessesServiceListener.getPostSharedUserList(reBarkGetPostSharedUserListByPostIdModelResponse);
 		}
 	}
 	// GET SHAREDPOST COUNT BY USERID

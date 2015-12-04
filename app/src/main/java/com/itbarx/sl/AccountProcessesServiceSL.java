@@ -3,8 +3,6 @@ package com.itbarx.sl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 
 import com.itbarx.R;
 import com.itbarx.error.common.ResponseServiceModel;
@@ -28,6 +26,7 @@ import com.itbarx.model.account.LoginModel;
 import com.itbarx.utils.ItbarxUtils;
 
 import android.content.Context;
+import android.util.Pair;
 
 public class AccountProcessesServiceSL extends BasePostServiceSL<String> {
 
@@ -49,9 +48,9 @@ public class AccountProcessesServiceSL extends BasePostServiceSL<String> {
 	// ---LOGIN---KULLANICI GİRİŞİ
 	public void setLogInAccount(LoginModel loginModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.USERNAME.toString(), loginModel.getUsername()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.PASSWORD.toString(), loginModel.getPassword()));
+		List<Pair<String,String>> params = new ArrayList<>();
+	params.add(new Pair(GlobalDataForWS.USERNAME.toString(), loginModel.getUsername()));
+	params.add(new Pair(GlobalDataForWS.PASSWORD.toString(), loginModel.getPassword()));
 	String postData = ItbarxUtils.formattedData(params);
 	// Post service CALL
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -65,12 +64,12 @@ public class AccountProcessesServiceSL extends BasePostServiceSL<String> {
 	// ---SIGNUP---KULLANICI KAYIT
 	public void setSignUpAccount(AccountSignUpModel signupModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.USERNAME.toString(), signupModel.getUsername()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.PASSWORD.toString(), signupModel.getPassword()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.PASSWORD_CONFIRM.toString(), signupModel.getPasswordConfirm()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.EMAIL.toString(), signupModel.getEmail()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.PHOTO_BASE64_STRING.toString(), signupModel.getPhoto()));
+		List<Pair<String,String>> params = new ArrayList<>();
+	params.add(new Pair(GlobalDataForWS.USERNAME.toString(), signupModel.getUsername()));
+	params.add(new Pair(GlobalDataForWS.PASSWORD.toString(), signupModel.getPassword()));
+	params.add(new Pair(GlobalDataForWS.PASSWORD_CONFIRM.toString(), signupModel.getPasswordConfirm()));
+	params.add(new Pair(GlobalDataForWS.EMAIL.toString(), signupModel.getEmail()));
+	params.add(new Pair(GlobalDataForWS.PHOTO_BASE64_STRING.toString(), signupModel.getPhoto()));
 	String postData = ItbarxUtils.formattedData(params);
 	// Post service CALL
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -84,8 +83,8 @@ public class AccountProcessesServiceSL extends BasePostServiceSL<String> {
 	// ---FORGOT---KULLANICI ŞİFRE UNUTTUM
 	public void setForgotAccount(AccountForgotSendMailModel accountForgotSendMailModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.EMAIL.toString(), accountForgotSendMailModel.getEmail()));
+		List<Pair<String,String>> params = new ArrayList<>();
+	params.add(new Pair(GlobalDataForWS.EMAIL.toString(), accountForgotSendMailModel.getEmail()));
 	String postData = ItbarxUtils.formattedData(params);
 	// Post service CALL
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -99,10 +98,10 @@ public class AccountProcessesServiceSL extends BasePostServiceSL<String> {
 	// ---CHANGE BY CODE---KULLANICI SİFRE DEĞİŞTİRME
 	public void setChangePassByCodeAccount(AccountSendEmailCodeModel accountSendEmailCodeModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.EMAIL_CODE.toString(), accountSendEmailCodeModel.getEmailCode()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.PASSWORD.toString(), accountSendEmailCodeModel.getPassword()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.PASSWORD_CONFIRM.toString(), accountSendEmailCodeModel.getPasswordConfirm()));
+		List<Pair<String,String>> params = new ArrayList<>();
+	params.add(new Pair(GlobalDataForWS.EMAIL_CODE.toString(), accountSendEmailCodeModel.getEmailCode()));
+	params.add(new Pair(GlobalDataForWS.PASSWORD.toString(), accountSendEmailCodeModel.getPassword()));
+	params.add(new Pair(GlobalDataForWS.PASSWORD_CONFIRM.toString(), accountSendEmailCodeModel.getPasswordConfirm()));
 	String postData = ItbarxUtils.formattedData(params);
 	// Post service CALL
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -116,8 +115,8 @@ public class AccountProcessesServiceSL extends BasePostServiceSL<String> {
 	// ---GET_EDIT_PROFILE---KULLANICI EDİT SAYFASI BİLGİLERİ AL
 	public void setGetEditProfile(GetEditProfileIdModel gEditProfileIdModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.USER_ID.toString(), gEditProfileIdModel.getUserID()));
+		List<Pair<String,String>> params = new ArrayList<>();
+	params.add(new Pair(GlobalDataForWS.USER_ID.toString(), gEditProfileIdModel.getUserID()));
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
 	postClient.addServiceClientListener(this);
@@ -130,19 +129,19 @@ public class AccountProcessesServiceSL extends BasePostServiceSL<String> {
 	// ---EDIT_PROFILE---
 	public void setEditProfile(EditProfileModel editProfileModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.USER_ID.toString(), editProfileModel.getUserId()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.NAME.toString(), editProfileModel.getName()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.USERNAME.toString(), editProfileModel.getUserName()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.LOCATION.toString(), editProfileModel.getLocation()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.WEBSITE.toString(), editProfileModel.getWebSite()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.OLD_PASSWORD.toString(), editProfileModel.getOldPassword()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.NEW_PASSWORD.toString(), editProfileModel.getNewPassword()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.CONFIRM_PASSWORD.toString(), editProfileModel.getConfirmPassword()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.OLD_PHOTO_URL.toString(), editProfileModel.getOldPhotoUrl()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.NEW_PHOTO_BYTES.toString(), editProfileModel.getNewPhotoBase64String()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.IS_NOTIFICATION_ACTIVE.toString(), editProfileModel.getIsNotificationActive()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.USER_BIO.toString(), editProfileModel.getUserBio()));
+		List<Pair<String,String>>  params = new ArrayList<>();
+	params.add(new Pair(GlobalDataForWS.USER_ID.toString(), editProfileModel.getUserId()));
+	params.add(new Pair(GlobalDataForWS.NAME.toString(), editProfileModel.getName()));
+	params.add(new Pair(GlobalDataForWS.USERNAME.toString(), editProfileModel.getUserName()));
+	params.add(new Pair(GlobalDataForWS.LOCATION.toString(), editProfileModel.getLocation()));
+	params.add(new Pair(GlobalDataForWS.WEBSITE.toString(), editProfileModel.getWebSite()));
+	params.add(new Pair(GlobalDataForWS.OLD_PASSWORD.toString(), editProfileModel.getOldPassword()));
+	params.add(new Pair(GlobalDataForWS.NEW_PASSWORD.toString(), editProfileModel.getNewPassword()));
+	params.add(new Pair(GlobalDataForWS.CONFIRM_PASSWORD.toString(), editProfileModel.getConfirmPassword()));
+	params.add(new Pair(GlobalDataForWS.OLD_PHOTO_URL.toString(), editProfileModel.getOldPhotoUrl()));
+	params.add(new Pair(GlobalDataForWS.NEW_PHOTO_BYTES.toString(), editProfileModel.getNewPhotoBase64String()));
+	params.add(new Pair(GlobalDataForWS.IS_NOTIFICATION_ACTIVE.toString(), editProfileModel.getIsNotificationActive()));
+	params.add(new Pair(GlobalDataForWS.USER_BIO.toString(), editProfileModel.getUserBio()));
 
 	String postData = ItbarxUtils.formattedData(params);
 	// Post service CALL
@@ -157,8 +156,8 @@ public class AccountProcessesServiceSL extends BasePostServiceSL<String> {
 	// ---DELETE_PROFILE---
 	public void setDeleteProfile(DeleteProfileModel deleteProfileModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.USER_ID.toString(), deleteProfileModel.getUserID()));
+		List<Pair<String,String>> params = new ArrayList<>();
+	params.add(new Pair(GlobalDataForWS.USER_ID.toString(), deleteProfileModel.getUserID()));
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
 	postClient.addServiceClientListener(this);

@@ -3,8 +3,7 @@ package com.itbarx.sl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
+
 
 import com.itbarx.R;
 import com.itbarx.error.common.ResponseServiceModel;
@@ -29,6 +28,7 @@ import com.itbarx.model.follow.SendPendingListByFollowerIdModel;
 import com.itbarx.utils.ItbarxUtils;
 
 import android.content.Context;
+import android.util.Pair;
 
 public class FollowingProcessesServiceSL extends BasePostServiceSL<String> {
 
@@ -50,9 +50,9 @@ public class FollowingProcessesServiceSL extends BasePostServiceSL<String> {
 	// ---ADD---
 	public void setAdd(FollowUserModel followUserModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.FOLLOWER_ID.toString(), followUserModel.getFollowerID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.FOLLOWING_ID.toString(), followUserModel.getFollowingID()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.FOLLOWER_ID.toString(), followUserModel.getFollowerID()));
+	params.add(new Pair(GlobalDataForWS.FOLLOWING_ID.toString(), followUserModel.getFollowingID()));
 	String postData = ItbarxUtils.formattedData(params);
 	// Post service CALL
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -66,9 +66,9 @@ public class FollowingProcessesServiceSL extends BasePostServiceSL<String> {
 	// ---UPDATE_AS_FRIEND---
 	public void setUpdateAsFriend(FollowUserModel followUserModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.FOLLOWER_ID.toString(), followUserModel.getFollowerID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.FOLLOWING_ID.toString(), followUserModel.getFollowingID()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.FOLLOWER_ID.toString(), followUserModel.getFollowerID()));
+	params.add(new Pair(GlobalDataForWS.FOLLOWING_ID.toString(), followUserModel.getFollowingID()));
 	String postData = ItbarxUtils.formattedData(params);
 	// Post service CALL
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -82,9 +82,9 @@ public class FollowingProcessesServiceSL extends BasePostServiceSL<String> {
 	// ---UPDATE_AS_BLOCKED---
 	public void setUpdateAsBlocked(FollowUserModel followUserModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.FOLLOWER_ID.toString(), followUserModel.getFollowerID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.FOLLOWING_ID.toString(), followUserModel.getFollowingID()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.FOLLOWER_ID.toString(), followUserModel.getFollowerID()));
+	params.add(new Pair(GlobalDataForWS.FOLLOWING_ID.toString(), followUserModel.getFollowingID()));
 	String postData = ItbarxUtils.formattedData(params);
 	// Post service CALL
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -101,8 +101,8 @@ public class FollowingProcessesServiceSL extends BasePostServiceSL<String> {
 	 */
 	public void setCountFollower(FollowingModel followingModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.FOLLOWING_ID.toString(), followingModel.getFollowingId()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.FOLLOWING_ID.toString(), followingModel.getFollowingId()));
 	String postData = ItbarxUtils.formattedData(params);
 	// Post service CALL
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -119,8 +119,8 @@ public class FollowingProcessesServiceSL extends BasePostServiceSL<String> {
 	 */
 	public void setCountFollowing(FollowerModel followerModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.FOLLOWER_ID.toString(), followerModel.getFollowerId()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.FOLLOWER_ID.toString(), followerModel.getFollowerId()));
 	String postData = ItbarxUtils.formattedData(params);
 	// Post service CALL
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -137,8 +137,8 @@ public class FollowingProcessesServiceSL extends BasePostServiceSL<String> {
 	 */
 	public void setCountPending(FollowingModel followingModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.FOLLOWING_ID.toString(), followingModel.getFollowingId()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.FOLLOWING_ID.toString(), followingModel.getFollowingId()));
 	String postData = ItbarxUtils.formattedData(params);
 	// Post service CALL
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -155,8 +155,8 @@ public class FollowingProcessesServiceSL extends BasePostServiceSL<String> {
 	 */
 	public void setCountSendPending(FollowerModel followerModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.FOLLOWING_ID.toString(), followerModel.getFollowerId()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.FOLLOWING_ID.toString(), followerModel.getFollowerId()));
 	String postData = ItbarxUtils.formattedData(params);
 	// Post service CALL
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -170,9 +170,9 @@ public class FollowingProcessesServiceSL extends BasePostServiceSL<String> {
 	// ---DELETE FOLLOW (TAKİBİ BIRAK VEYA İSTEGİ GERİ AL İÇİN KULLANILABİLİR)---
 	public void setDeleteFollow(FollowUserModel followUserModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.FOLLOWER_ID.toString(), followUserModel.getFollowerID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.FOLLOWING_ID.toString(), followUserModel.getFollowingID()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.FOLLOWER_ID.toString(), followUserModel.getFollowerID()));
+	params.add(new Pair(GlobalDataForWS.FOLLOWING_ID.toString(), followUserModel.getFollowingID()));
 	String postData = ItbarxUtils.formattedData(params);
 	// Post service CALL
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -186,11 +186,11 @@ public class FollowingProcessesServiceSL extends BasePostServiceSL<String> {
 	// --- FOLLOWER LIST ---
 	public void setFollowerList(FollowerListModel followerListModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.SEARCHER_ID.toString(), followerListModel.getSearcherId()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.FOLLOWING_ID.toString(), followerListModel.getFollowingId()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.PAGE.toString(), followerListModel.getPage()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.REC_PER_PAGE.toString(), followerListModel.getRecPerPage()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.SEARCHER_ID.toString(), followerListModel.getSearcherId()));
+	params.add(new Pair(GlobalDataForWS.FOLLOWING_ID.toString(), followerListModel.getFollowingId()));
+	params.add(new Pair(GlobalDataForWS.PAGE.toString(), followerListModel.getPage()));
+	params.add(new Pair(GlobalDataForWS.REC_PER_PAGE.toString(), followerListModel.getRecPerPage()));
 	String postData = ItbarxUtils.formattedData(params);
 	// Post service CALL
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -204,11 +204,11 @@ public class FollowingProcessesServiceSL extends BasePostServiceSL<String> {
 	// --- FOLLOWING LIST ---
 	public void setFollowingList(FollowingListModel followingListModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.SEARCHER_ID.toString(), followingListModel.getSearcherId()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.FOLLOWER_ID.toString(), followingListModel.getFollowerId()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.PAGE.toString(), followingListModel.getPage()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.REC_PER_PAGE.toString(), followingListModel.getRecPerPage()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.SEARCHER_ID.toString(), followingListModel.getSearcherId()));
+	params.add(new Pair(GlobalDataForWS.FOLLOWER_ID.toString(), followingListModel.getFollowerId()));
+	params.add(new Pair(GlobalDataForWS.PAGE.toString(), followingListModel.getPage()));
+	params.add(new Pair(GlobalDataForWS.REC_PER_PAGE.toString(), followingListModel.getRecPerPage()));
 	String postData = ItbarxUtils.formattedData(params);
 	// Post service CALL
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -225,10 +225,10 @@ public class FollowingProcessesServiceSL extends BasePostServiceSL<String> {
 	 */
 	public void setGetPendingList(FollowerListModel followerListModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.FOLLOWING_ID.toString(), followerListModel.getFollowingId()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.PAGE.toString(), followerListModel.getPage()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.REC_PER_PAGE.toString(), followerListModel.getRecPerPage()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.FOLLOWING_ID.toString(), followerListModel.getFollowingId()));
+	params.add(new Pair(GlobalDataForWS.PAGE.toString(), followerListModel.getPage()));
+	params.add(new Pair(GlobalDataForWS.REC_PER_PAGE.toString(), followerListModel.getRecPerPage()));
 	String postData = ItbarxUtils.formattedData(params);
 	// Post service CALL
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -245,10 +245,10 @@ public class FollowingProcessesServiceSL extends BasePostServiceSL<String> {
 	 */
 	public void setGetSendPendingList(FollowingListModel followingListModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.FOLLOWER_ID.toString(), followingListModel.getFollowerId()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.PAGE.toString(), followingListModel.getPage()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.REC_PER_PAGE.toString(), followingListModel.getRecPerPage()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.FOLLOWER_ID.toString(), followingListModel.getFollowerId()));
+	params.add(new Pair(GlobalDataForWS.PAGE.toString(), followingListModel.getPage()));
+	params.add(new Pair(GlobalDataForWS.REC_PER_PAGE.toString(), followingListModel.getRecPerPage()));
 	String postData = ItbarxUtils.formattedData(params);
 	// Post service CALL
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);

@@ -1,206 +1,460 @@
 package com.itbarx.model.like;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+
 public class LikePostsByUserIdModel {
 
-	private String rowNum;
-	private String postID;
-	private String postSenderUserId;
-	private String addedDate;
-	private String postSpeechToText;
-	private String postText;
-	private String postSenderIP;
-	private String postTypeE;
-	private String isDeleted;
-	private String postLikeCount;
-	private String postReplyCount;
-	private String postShareCount;
-	private String postComplainCount;
-	private String postCommentCount;
-	private String isAdultContent;
-	private String postURL;
-	private String postPictureURL;
-	private String postVoiceUrl;
-	private String addedTimeZoneId;
+	@SerializedName("RowNum")
+	@Expose
+	private Long RowNum;
+	@SerializedName("PostID")
+	@Expose
+	private String PostID;
+	@SerializedName("PostSenderUserId")
+	@Expose
+	private String PostSenderUserId;
+	@SerializedName("AddedDate")
+	@Expose
+	private String AddedDate;
+	@SerializedName("PostSpeechToText")
+	@Expose
+	private String PostSpeechToText;
+	@SerializedName("PostText")
+	@Expose
+	private String PostText;
+	@SerializedName("PostSenderIP")
+	@Expose
+	private String PostSenderIP;
+	@SerializedName("PostTypeE")
+	@Expose
+	private String PostTypeE;
+	@SerializedName("IsDeleted")
+	@Expose
+	private String IsDeleted;
+	@SerializedName("PostLikeCount")
+	@Expose
+	private String PostLikeCount;
+	@SerializedName("PostReplyCount")
+	@Expose
+	private String PostReplyCount;
+	@SerializedName("PostShareCount")
+	@Expose
+	private String PostShareCount;
+	@SerializedName("PostComplainCount")
+	@Expose
+	private String PostComplainCount;
+	@SerializedName("PostCommentCount")
+	@Expose
+	private String PostCommentCount;
+	@SerializedName("IsAdultContent")
+	@Expose
+	private String IsAdultContent;
+	@SerializedName("PostURL")
+	@Expose
+	private String PostURL;
+	@SerializedName("PostPictureURL")
+	@Expose
+	private String PostPictureURL;
+	@SerializedName("PostVoiceUrl")
+	@Expose
+	private String PostVoiceUrl;
+	@SerializedName("AddedTimeZoneId")
+	@Expose
+	private String AddedTimeZoneId;
 
+	/**
+	 * No args constructor for use in serialization
+	 *
+	 */
 	public LikePostsByUserIdModel() {
-	super();
 	}
 
-	public LikePostsByUserIdModel(String rowNum, String postID, String postSenderUserId, String addedDate, String postSpeechToText, String postText, String postSenderIP, String postTypeE,
-		String isDeleted, String postLikeCount, String postReplyCount, String postShareCount, String postComplainCount, String postCommentCount, String isAdultContent, String postURL,
-		String postPictureURL, String postVoiceUrl, String addedTimeZoneId) {
-	super();
-	this.rowNum = rowNum;
-	this.postID = postID;
-	this.postSenderUserId = postSenderUserId;
-	this.addedDate = addedDate;
-	this.postSpeechToText = postSpeechToText;
-	this.postText = postText;
-	this.postSenderIP = postSenderIP;
-	this.postTypeE = postTypeE;
-	this.isDeleted = isDeleted;
-	this.postLikeCount = postLikeCount;
-	this.postReplyCount = postReplyCount;
-	this.postShareCount = postShareCount;
-	this.postComplainCount = postComplainCount;
-	this.postCommentCount = postCommentCount;
-	this.isAdultContent = isAdultContent;
-	this.postURL = postURL;
-	this.postPictureURL = postPictureURL;
-	this.postVoiceUrl = postVoiceUrl;
-	this.addedTimeZoneId = addedTimeZoneId;
+	/**
+	 *
+	 * @param PostVoiceUrl
+	 * @param PostComplainCount
+	 * @param PostReplyCount
+	 * @param AddedTimeZoneId
+	 * @param PostPictureURL
+	 * @param IsAdultContent
+	 * @param RowNum
+	 * @param PostCommentCount
+	 * @param PostText
+	 * @param PostSenderIP
+	 * @param PostShareCount
+	 * @param PostID
+	 * @param PostSenderUserId
+	 * @param PostTypeE
+	 * @param PostSpeechToText
+	 * @param PostLikeCount
+	 * @param PostURL
+	 * @param IsDeleted
+	 * @param AddedDate
+	 */
+	public LikePostsByUserIdModel(Long RowNum, String PostID, String PostSenderUserId, String AddedDate, String PostSpeechToText, String PostText, String PostSenderIP, String PostTypeE, String IsDeleted, String PostLikeCount, String PostReplyCount, String PostShareCount, String PostComplainCount, String PostCommentCount, String IsAdultContent, String PostURL, String PostPictureURL, String PostVoiceUrl, String AddedTimeZoneId) {
+		this.RowNum = RowNum;
+		this.PostID = PostID;
+		this.PostSenderUserId = PostSenderUserId;
+		this.AddedDate = AddedDate;
+		this.PostSpeechToText = PostSpeechToText;
+		this.PostText = PostText;
+		this.PostSenderIP = PostSenderIP;
+		this.PostTypeE = PostTypeE;
+		this.IsDeleted = IsDeleted;
+		this.PostLikeCount = PostLikeCount;
+		this.PostReplyCount = PostReplyCount;
+		this.PostShareCount = PostShareCount;
+		this.PostComplainCount = PostComplainCount;
+		this.PostCommentCount = PostCommentCount;
+		this.IsAdultContent = IsAdultContent;
+		this.PostURL = PostURL;
+		this.PostPictureURL = PostPictureURL;
+		this.PostVoiceUrl = PostVoiceUrl;
+		this.AddedTimeZoneId = AddedTimeZoneId;
 	}
 
-	public String getRowNum() {
-	return rowNum;
+	/**
+	 *
+	 * @return
+	 * The RowNum
+	 */
+	public Long getRowNum() {
+		return RowNum;
 	}
 
-	public void setRowNum(String rowNum) {
-	this.rowNum = rowNum;
+	/**
+	 *
+	 * @param RowNum
+	 * The RowNum
+	 */
+	public void setRowNum(Long RowNum) {
+		this.RowNum = RowNum;
 	}
 
+	/**
+	 *
+	 * @return
+	 * The PostID
+	 */
 	public String getPostID() {
-	return postID;
+		return PostID;
 	}
 
-	public void setPostID(String postID) {
-	this.postID = postID;
+	/**
+	 *
+	 * @param PostID
+	 * The PostID
+	 */
+	public void setPostID(String PostID) {
+		this.PostID = PostID;
 	}
 
+	/**
+	 *
+	 * @return
+	 * The PostSenderUserId
+	 */
 	public String getPostSenderUserId() {
-	return postSenderUserId;
+		return PostSenderUserId;
 	}
 
-	public void setPostSenderUserId(String postSenderUserId) {
-	this.postSenderUserId = postSenderUserId;
+	/**
+	 *
+	 * @param PostSenderUserId
+	 * The PostSenderUserId
+	 */
+	public void setPostSenderUserId(String PostSenderUserId) {
+		this.PostSenderUserId = PostSenderUserId;
 	}
 
+	/**
+	 *
+	 * @return
+	 * The AddedDate
+	 */
 	public String getAddedDate() {
-	return addedDate;
+		return AddedDate;
 	}
 
-	public void setAddedDate(String addedDate) {
-	this.addedDate = addedDate;
+	/**
+	 *
+	 * @param AddedDate
+	 * The AddedDate
+	 */
+	public void setAddedDate(String AddedDate) {
+		this.AddedDate = AddedDate;
 	}
 
+	/**
+	 *
+	 * @return
+	 * The PostSpeechToText
+	 */
 	public String getPostSpeechToText() {
-	return postSpeechToText;
+		return PostSpeechToText;
 	}
 
-	public void setPostSpeechToText(String postSpeechToText) {
-	this.postSpeechToText = postSpeechToText;
+	/**
+	 *
+	 * @param PostSpeechToText
+	 * The PostSpeechToText
+	 */
+	public void setPostSpeechToText(String PostSpeechToText) {
+		this.PostSpeechToText = PostSpeechToText;
 	}
 
+	/**
+	 *
+	 * @return
+	 * The PostText
+	 */
 	public String getPostText() {
-	return postText;
+		return PostText;
 	}
 
-	public void setPostText(String postText) {
-	this.postText = postText;
+	/**
+	 *
+	 * @param PostText
+	 * The PostText
+	 */
+	public void setPostText(String PostText) {
+		this.PostText = PostText;
 	}
 
+	/**
+	 *
+	 * @return
+	 * The PostSenderIP
+	 */
 	public String getPostSenderIP() {
-	return postSenderIP;
+		return PostSenderIP;
 	}
 
-	public void setPostSenderIP(String postSenderIP) {
-	this.postSenderIP = postSenderIP;
+	/**
+	 *
+	 * @param PostSenderIP
+	 * The PostSenderIP
+	 */
+	public void setPostSenderIP(String PostSenderIP) {
+		this.PostSenderIP = PostSenderIP;
 	}
 
+	/**
+	 *
+	 * @return
+	 * The PostTypeE
+	 */
 	public String getPostTypeE() {
-	return postTypeE;
+		return PostTypeE;
 	}
 
-	public void setPostTypeE(String postTypeE) {
-	this.postTypeE = postTypeE;
+	/**
+	 *
+	 * @param PostTypeE
+	 * The PostTypeE
+	 */
+	public void setPostTypeE(String PostTypeE) {
+		this.PostTypeE = PostTypeE;
 	}
 
+	/**
+	 *
+	 * @return
+	 * The IsDeleted
+	 */
 	public String getIsDeleted() {
-	return isDeleted;
+		return IsDeleted;
 	}
 
-	public void setIsDeleted(String isDeleted) {
-	this.isDeleted = isDeleted;
+	/**
+	 *
+	 * @param IsDeleted
+	 * The IsDeleted
+	 */
+	public void setIsDeleted(String IsDeleted) {
+		this.IsDeleted = IsDeleted;
 	}
 
+	/**
+	 *
+	 * @return
+	 * The PostLikeCount
+	 */
 	public String getPostLikeCount() {
-	return postLikeCount;
+		return PostLikeCount;
 	}
 
-	public void setPostLikeCount(String postLikeCount) {
-	this.postLikeCount = postLikeCount;
+	/**
+	 *
+	 * @param PostLikeCount
+	 * The PostLikeCount
+	 */
+	public void setPostLikeCount(String PostLikeCount) {
+		this.PostLikeCount = PostLikeCount;
 	}
 
+	/**
+	 *
+	 * @return
+	 * The PostReplyCount
+	 */
 	public String getPostReplyCount() {
-	return postReplyCount;
+		return PostReplyCount;
 	}
 
-	public void setPostReplyCount(String postReplyCount) {
-	this.postReplyCount = postReplyCount;
+	/**
+	 *
+	 * @param PostReplyCount
+	 * The PostReplyCount
+	 */
+	public void setPostReplyCount(String PostReplyCount) {
+		this.PostReplyCount = PostReplyCount;
 	}
 
+	/**
+	 *
+	 * @return
+	 * The PostShareCount
+	 */
 	public String getPostShareCount() {
-	return postShareCount;
+		return PostShareCount;
 	}
 
-	public void setPostShareCount(String postShareCount) {
-	this.postShareCount = postShareCount;
+	/**
+	 *
+	 * @param PostShareCount
+	 * The PostShareCount
+	 */
+	public void setPostShareCount(String PostShareCount) {
+		this.PostShareCount = PostShareCount;
 	}
 
+	/**
+	 *
+	 * @return
+	 * The PostComplainCount
+	 */
 	public String getPostComplainCount() {
-	return postComplainCount;
+		return PostComplainCount;
 	}
 
-	public void setPostComplainCount(String postComplainCount) {
-	this.postComplainCount = postComplainCount;
+	/**
+	 *
+	 * @param PostComplainCount
+	 * The PostComplainCount
+	 */
+	public void setPostComplainCount(String PostComplainCount) {
+		this.PostComplainCount = PostComplainCount;
 	}
 
+	/**
+	 *
+	 * @return
+	 * The PostCommentCount
+	 */
 	public String getPostCommentCount() {
-	return postCommentCount;
+		return PostCommentCount;
 	}
 
-	public void setPostCommentCount(String postCommentCount) {
-	this.postCommentCount = postCommentCount;
+	/**
+	 *
+	 * @param PostCommentCount
+	 * The PostCommentCount
+	 */
+	public void setPostCommentCount(String PostCommentCount) {
+		this.PostCommentCount = PostCommentCount;
 	}
 
+	/**
+	 *
+	 * @return
+	 * The IsAdultContent
+	 */
 	public String getIsAdultContent() {
-	return isAdultContent;
+		return IsAdultContent;
 	}
 
-	public void setIsAdultContent(String isAdultContent) {
-	this.isAdultContent = isAdultContent;
+	/**
+	 *
+	 * @param IsAdultContent
+	 * The IsAdultContent
+	 */
+	public void setIsAdultContent(String IsAdultContent) {
+		this.IsAdultContent = IsAdultContent;
 	}
 
+	/**
+	 *
+	 * @return
+	 * The PostURL
+	 */
 	public String getPostURL() {
-	return postURL;
+		return PostURL;
 	}
 
-	public void setPostURL(String postURL) {
-	this.postURL = postURL;
+	/**
+	 *
+	 * @param PostURL
+	 * The PostURL
+	 */
+	public void setPostURL(String PostURL) {
+		this.PostURL = PostURL;
 	}
 
+	/**
+	 *
+	 * @return
+	 * The PostPictureURL
+	 */
 	public String getPostPictureURL() {
-	return postPictureURL;
+		return PostPictureURL;
 	}
 
-	public void setPostPictureURL(String postPictureURL) {
-	this.postPictureURL = postPictureURL;
+	/**
+	 *
+	 * @param PostPictureURL
+	 * The PostPictureURL
+	 */
+	public void setPostPictureURL(String PostPictureURL) {
+		this.PostPictureURL = PostPictureURL;
 	}
 
+	/**
+	 *
+	 * @return
+	 * The PostVoiceUrl
+	 */
 	public String getPostVoiceUrl() {
-	return postVoiceUrl;
+		return PostVoiceUrl;
 	}
 
-	public void setPostVoiceUrl(String postVoiceUrl) {
-	this.postVoiceUrl = postVoiceUrl;
+	/**
+	 *
+	 * @param PostVoiceUrl
+	 * The PostVoiceUrl
+	 */
+	public void setPostVoiceUrl(String PostVoiceUrl) {
+		this.PostVoiceUrl = PostVoiceUrl;
 	}
 
+	/**
+	 *
+	 * @return
+	 * The AddedTimeZoneId
+	 */
 	public String getAddedTimeZoneId() {
-	return addedTimeZoneId;
+		return AddedTimeZoneId;
 	}
 
-	public void setAddedTimeZoneId(String addedTimeZoneId) {
-	this.addedTimeZoneId = addedTimeZoneId;
+	/**
+	 *
+	 * @param AddedTimeZoneId
+	 * The AddedTimeZoneId
+	 */
+	public void setAddedTimeZoneId(String AddedTimeZoneId) {
+		this.AddedTimeZoneId = AddedTimeZoneId;
 	}
 
 }

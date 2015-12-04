@@ -11,6 +11,7 @@ import com.itbarx.error.common.ServiceResponseModel;
 import com.itbarx.enums.GlobalDataForWS;
 
 import android.util.Log;
+import android.util.Pair;
 
 public class ItbarxUtils {
 
@@ -60,7 +61,7 @@ public class ItbarxUtils {
 		}
 
 	} catch (Exception e) {
-		//Log.d("ItbarxUtils getServiceResponseModel", e.getMessage());
+		Log.d("ItbarxUtils getServiceResponseModel", e.getMessage());
 	}
 
 	return model;
@@ -88,7 +89,7 @@ public class ItbarxUtils {
 		return model;
 
 	}
-	public static String formattedData(List<NameValuePair> params) {
+	public static String formattedData(List<Pair<String,String>> params) {
 
 	if (params == null) {
 		return null;
@@ -102,17 +103,17 @@ public class ItbarxUtils {
 		if (params.size() > 1) {
 
 			if (params.size() - 1 == i) {
-			retunValue += "\"" + params.get(i).getName() + "\" : ";
-			retunValue += "\"" + params.get(i).getValue() + "\"";
+			retunValue += "\"" + params.get(i).first + "\" : ";
+			retunValue += "\"" + params.get(i).second + "\"";
 			} else {
-			retunValue += "\"" + params.get(i).getName() + "\" : ";
-			retunValue += "\"" + params.get(i).getValue() + "\"";
+			retunValue += "\"" + params.get(i).first + "\" : ";
+			retunValue += "\"" + params.get(i).second + "\"";
 			retunValue += " , ";
 			}
 
 		} else {
-			retunValue += "\"" + params.get(i).getName() + "\" : ";
-			retunValue += "\"" + params.get(i).getValue() + "\"";
+			retunValue += "\"" + params.get(i).first + "\" : ";
+			retunValue += "\"" + params.get(i).second + "\"";
 		}
 
 		}

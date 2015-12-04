@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10dp"
+    android:padding="2dp"
+    >
+
+    <com.itbarx.custom.component.SquareImageView
+        android:id="@+id/column_like_userProfile_imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/profile_b"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/column_like_userProfile_imageView"
+        android:layout_alignLeft="@+id/column_like_userProfile_imageView"
+        android:layout_alignRight="@+id/column_like_userProfile_imageView"
+        android:layout_alignTop="@+id/column_like_userProfile_imageView"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        >
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:visibility="invisible"
+            />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="84"
+            android:orientation="vertical"
+            android:weightSum="100"
+            >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="66"
+                android:visibility="invisible"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="27"
+                android:background="@drawable/border_column_search_orange_gridview"
+                android:orientation="vertical"
+                android:weightSum="100">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    android:visibility="invisible"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="94"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:visibility="invisible"
+                        />
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="67"
+
+                        >
+
+                        <com.itbarx.custom.component.TextViewRegular
+                            android:id="@+id/column_like_name_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+
+                          android:gravity="top"
+                           android:textSize="8sp"
+                            android:text="FirstName"
+                            android:textColor="@color/white"
+
+                            />
+
+
+
+                        <com.itbarx.custom.component.TextViewRegular
+                            android:id="@+id/column_like_surname_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+android:layout_below="@+id/column_like_name_textView"
+
+                            android:textSize="8sp"
+                            android:text="S."
+                            android:textColor="@color/white"
+
+                            />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+
+                        >
+
+                        <ImageView
+                            android:id="@+id/column_like_addIcon_imageView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:clickable="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/icon_search_user_add_search_fragment"
+                            android:visibility="visible"
+
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/column_like_okIcon_imageView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:clickable="true"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/icon_search_user_ok_search_fragment"
+                            android:visibility="gone"
+
+
+                            />
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="8"
+                        android:visibility="invisible"
+                        />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    android:visibility="invisible"
+                    />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="7"
+                android:visibility="invisible"/>
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:visibility="invisible"
+            />
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

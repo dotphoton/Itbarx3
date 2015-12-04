@@ -3,9 +3,6 @@ package com.itbarx.sl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-
 import com.itbarx.R;
 import com.itbarx.error.common.ResponseServiceModel;
 import com.itbarx.error.common.ServiceResponseModel;
@@ -32,6 +29,7 @@ import com.itbarx.model.post.PostWallModel;
 import com.itbarx.utils.ItbarxUtils;
 
 import android.content.Context;
+import android.util.Pair;
 
 public class PostProcessesServiceSL extends BasePostServiceSL<String> {
 
@@ -51,10 +49,10 @@ public class PostProcessesServiceSL extends BasePostServiceSL<String> {
 	// TIMELINE
 	public void setTimeline(PostTimelineModel postTimelineModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.USER_ID.toString(), postTimelineModel.getUserID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.PAGE.toString(), postTimelineModel.getPage()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.REC_PER_PAGE.toString(), postTimelineModel.getRecPerPage()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.USER_ID.toString(), postTimelineModel.getUserID()));
+	params.add(new Pair(GlobalDataForWS.PAGE.toString(), postTimelineModel.getPage()));
+	params.add(new Pair(GlobalDataForWS.REC_PER_PAGE.toString(), postTimelineModel.getRecPerPage()));
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
 	postClient.addServiceClientListener(this);
@@ -67,10 +65,10 @@ public class PostProcessesServiceSL extends BasePostServiceSL<String> {
 	// WALL
 	public void setWall(PostWallModel postWallModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.USER_ID.toString(), postWallModel.getUserID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.PAGE.toString(), postWallModel.getPage()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.REC_PER_PAGE.toString(), postWallModel.getRecPerPage()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.USER_ID.toString(), postWallModel.getUserID()));
+	params.add(new Pair(GlobalDataForWS.PAGE.toString(), postWallModel.getPage()));
+	params.add(new Pair(GlobalDataForWS.REC_PER_PAGE.toString(), postWallModel.getRecPerPage()));
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
 	postClient.addServiceClientListener(this);
@@ -83,10 +81,10 @@ public class PostProcessesServiceSL extends BasePostServiceSL<String> {
 	// POPULAR POST
 	public void setPopular(PostPopularModel postPopularModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.USER_ID.toString(), postPopularModel.getUserID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.PAGE.toString(), postPopularModel.getPage()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.REC_PER_PAGE.toString(), postPopularModel.getRecPerPage()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.USER_ID.toString(), postPopularModel.getUserID()));
+	params.add(new Pair(GlobalDataForWS.PAGE.toString(), postPopularModel.getPage()));
+	params.add(new Pair(GlobalDataForWS.REC_PER_PAGE.toString(), postPopularModel.getRecPerPage()));
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
 	postClient.addServiceClientListener(this);
@@ -99,10 +97,10 @@ public class PostProcessesServiceSL extends BasePostServiceSL<String> {
 	// NEW POST
 	public void setNew(PostNewModel postNewModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.USER_ID.toString(), postNewModel.getUserID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.PAGE.toString(), postNewModel.getPage()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.REC_PER_PAGE.toString(), postNewModel.getRecPerPage()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.USER_ID.toString(), postNewModel.getUserID()));
+	params.add(new Pair(GlobalDataForWS.PAGE.toString(), postNewModel.getPage()));
+	params.add(new Pair(GlobalDataForWS.REC_PER_PAGE.toString(), postNewModel.getRecPerPage()));
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
 	postClient.addServiceClientListener(this);
@@ -115,9 +113,9 @@ public class PostProcessesServiceSL extends BasePostServiceSL<String> {
 	// WALL INFO
 	public void setWallInfo(PostWallInfoModel postWallInfoModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.SEARCHER_ID.toString(), postWallInfoModel.getSearcherID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.USER_ID.toString(), postWallInfoModel.getUserID()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.SEARCHER_ID.toString(), postWallInfoModel.getSearcherID()));
+	params.add(new Pair(GlobalDataForWS.USER_ID.toString(), postWallInfoModel.getUserID()));
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
 	postClient.addServiceClientListener(this);
@@ -130,8 +128,8 @@ public class PostProcessesServiceSL extends BasePostServiceSL<String> {
 	// POST DETAIL
 	public void setGetPostDetail(PostPostDetailModel postPostDetailModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.POST_ID.toString(), postPostDetailModel.getPostID()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.POST_ID.toString(), postPostDetailModel.getPostID()));
 
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -145,12 +143,12 @@ public class PostProcessesServiceSL extends BasePostServiceSL<String> {
 	// ADD POST
 	public void setAddPost(PostAddPostModel postAddPostModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.POST_SPEECH_TEXT.toString(), postAddPostModel.getPostSpeechText()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.POST_SENDER_USER_ID.toString(), postAddPostModel.getPostSenderUserId()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.POST_SENDER_IP.toString(), postAddPostModel.getPostSenderIp()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.VIDEO_BYTES.toString(), postAddPostModel.getVideoBytes()));
-		params.add(new BasicNameValuePair(GlobalDataForWS.POST_ADDED_TIME_ZONE_ID.toString(), postAddPostModel.getPostAddedTimeZoneId()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.POST_SPEECH_TEXT.toString(), postAddPostModel.getPostSpeechText()));
+	params.add(new Pair(GlobalDataForWS.POST_SENDER_USER_ID.toString(), postAddPostModel.getPostSenderUserId()));
+	params.add(new Pair(GlobalDataForWS.POST_SENDER_IP.toString(), postAddPostModel.getPostSenderIp()));
+	params.add(new Pair(GlobalDataForWS.VIDEO_BYTES.toString(), postAddPostModel.getVideoBytes()));
+		params.add(new Pair(GlobalDataForWS.POST_ADDED_TIME_ZONE_ID.toString(), postAddPostModel.getPostAddedTimeZoneId()));
 
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);

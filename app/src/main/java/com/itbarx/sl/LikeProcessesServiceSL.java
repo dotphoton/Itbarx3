@@ -3,9 +3,6 @@ package com.itbarx.sl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-
 import com.itbarx.R;
 import com.itbarx.error.common.ResponseServiceModel;
 import com.itbarx.error.common.ServiceResponseModel;
@@ -26,6 +23,7 @@ import com.itbarx.model.like.LikeUsersByPostIdModel;
 import com.itbarx.utils.ItbarxUtils;
 
 import android.content.Context;
+import android.util.Pair;
 
 public class LikeProcessesServiceSL extends BasePostServiceSL<String> {
 
@@ -45,9 +43,9 @@ public class LikeProcessesServiceSL extends BasePostServiceSL<String> {
 	// ADD LIKE
 	public void setAddLike(LikeModel likeModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.USER_ID.toString(), likeModel.getUserID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.POST_ID.toString(), likeModel.getPostID()));
+		List<Pair<String,String>> params = new ArrayList<>();
+	params.add(new Pair(GlobalDataForWS.USER_ID.toString(), likeModel.getUserId()));
+	params.add(new Pair(GlobalDataForWS.POST_ID.toString(), likeModel.getPostId()));
 
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -61,9 +59,9 @@ public class LikeProcessesServiceSL extends BasePostServiceSL<String> {
 	// DELETE LIKE
 	public void setDeleteLike(LikeModel likeModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.USER_ID.toString(), likeModel.getUserID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.POST_ID.toString(), likeModel.getPostID()));
+		List<Pair<String,String>> params = new ArrayList<>();
+	params.add(new Pair(GlobalDataForWS.USER_ID.toString(), likeModel.getUserId()));
+	params.add(new Pair(GlobalDataForWS.POST_ID.toString(), likeModel.getPostId()));
 
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
@@ -77,8 +75,8 @@ public class LikeProcessesServiceSL extends BasePostServiceSL<String> {
 	// COUNT LIKE ACOORDING TO USER (KULLANICI KAC TANE POST BEGENMİS)
 	public void setCountLikeByUser(LikeCountUserModel likeCountUserModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.USER_ID.toString(), likeCountUserModel.getUserID()));
+		List<Pair<String,String>> params = new ArrayList<>();
+	params.add(new Pair(GlobalDataForWS.USER_ID.toString(), likeCountUserModel.getUserId()));
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
 	postClient.addServiceClientListener(this);
@@ -91,8 +89,8 @@ public class LikeProcessesServiceSL extends BasePostServiceSL<String> {
 	// COUNT LIKE ACOORDING TO POST (POST U KAC KULLANICI BEGENMİS)
 	public void setCountLikeByPost(LikeCountPostModel likeCountPostModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.POST_ID.toString(), likeCountPostModel.getPostID()));
+		List<Pair<String,String>> params = new ArrayList<>();
+	params.add(new Pair(GlobalDataForWS.POST_ID.toString(), likeCountPostModel.getPostId()));
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
 	postClient.addServiceClientListener(this);
@@ -105,10 +103,10 @@ public class LikeProcessesServiceSL extends BasePostServiceSL<String> {
 	// GET POSTLIST LIKED BY THE USER (KULLANICININ BEGENDİGİ POSTLAR)
 	public void setGetLikePostsByUserId(LikePostListModel likePostListModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.USER_ID.toString(), likePostListModel.getUserID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.PAGE.toString(), likePostListModel.getPage()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.REC_PER_PAGE.toString(), likePostListModel.getRecPerPage()));
+		List<Pair<String,String>> params = new ArrayList<>();
+	params.add(new Pair(GlobalDataForWS.USER_ID.toString(), likePostListModel.getUserId()));
+	params.add(new Pair(GlobalDataForWS.PAGE.toString(), likePostListModel.getPage()));
+	params.add(new Pair(GlobalDataForWS.REC_PER_PAGE.toString(), likePostListModel.getRecPerPage()));
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
 	postClient.addServiceClientListener(this);
@@ -121,10 +119,10 @@ public class LikeProcessesServiceSL extends BasePostServiceSL<String> {
 
 	public void setGetLikeUsersByPostId(LikeUserListModel likeUserListModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.POST_ID.toString(), likeUserListModel.getPostID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.PAGE.toString(), likeUserListModel.getPage()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.REC_PER_PAGE.toString(), likeUserListModel.getRecPerPage()));
+		List<Pair<String,String>> params = new ArrayList<>();
+	params.add(new Pair(GlobalDataForWS.POST_ID.toString(), likeUserListModel.getPostId()));
+	params.add(new Pair(GlobalDataForWS.PAGE.toString(), likeUserListModel.getPage()));
+	params.add(new Pair(GlobalDataForWS.REC_PER_PAGE.toString(), likeUserListModel.getRecPerPage()));
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
 	postClient.addServiceClientListener(this);

@@ -2,10 +2,6 @@ package com.itbarx.sl;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-
 import com.itbarx.R;
 import com.itbarx.error.common.ResponseServiceModel;
 import com.itbarx.error.common.ServiceResponseModel;
@@ -23,6 +19,7 @@ import com.itbarx.model.search.SearchUserListResultModel;
 import com.itbarx.utils.ItbarxUtils;
 
 import android.content.Context;
+import android.util.Pair;
 
 public class SearchProcessesServiceSL extends BasePostServiceSL<String> {
 
@@ -42,9 +39,9 @@ public class SearchProcessesServiceSL extends BasePostServiceSL<String> {
 	// SEARCHAUTOCOMPLETE
 	public void setSearchAutoComplete(SearchAutoCompleteModel searchAutoCompleteModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.USER_ID.toString(), searchAutoCompleteModel.getUserID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.SHARED_TEXT.toString(), searchAutoCompleteModel.getSearchText()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.USER_ID.toString(), searchAutoCompleteModel.getUserID()));
+	params.add(new Pair(GlobalDataForWS.SHARED_TEXT.toString(), searchAutoCompleteModel.getSearchText()));
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
 	postClient.addServiceClientListener(this);
@@ -57,11 +54,11 @@ public class SearchProcessesServiceSL extends BasePostServiceSL<String> {
 	// SEARCH USER
 	public void setSearchUser(SearchModel searchModel) {
 
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.USER_ID.toString(), searchModel.getUserID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.SEARCH_TEXT.toString(), searchModel.getSearchText()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.PAGE.toString(), searchModel.getPage()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.REC_PER_PAGE.toString(), searchModel.getRecPerPage()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.USER_ID.toString(), searchModel.getUserID()));
+	params.add(new Pair(GlobalDataForWS.SEARCH_TEXT.toString(), searchModel.getSearchText()));
+	params.add(new Pair(GlobalDataForWS.PAGE.toString(), searchModel.getPage()));
+	params.add(new Pair(GlobalDataForWS.REC_PER_PAGE.toString(), searchModel.getRecPerPage()));
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
 	postClient.addServiceClientListener(this);

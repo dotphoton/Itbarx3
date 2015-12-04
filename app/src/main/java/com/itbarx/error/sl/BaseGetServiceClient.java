@@ -18,6 +18,8 @@ import org.apache.http.params.HttpParams;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Pair;
+
 import com.itbarx.R;
 import com.itbarx.error.common.ResponseServiceModel;
 import com.itbarx.common.ServiceUtil;

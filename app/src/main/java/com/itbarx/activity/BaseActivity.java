@@ -20,6 +20,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Pair;
 import android.widget.Toast;
 
 public abstract class BaseActivity extends ActivityGroup {
@@ -163,10 +164,10 @@ public abstract class BaseActivity extends ActivityGroup {
 		startActivity(i);
 	}
 
-	public void launchSubActivityAddStringExtra(Class subActivityClass, List<NameValuePair> extraDictionary) {
+	public void launchSubActivityAddStringExtra(Class subActivityClass, List<Pair<String,String>> extraDictionary) {
 		Intent i = new Intent(this, subActivityClass);
-		for (NameValuePair nameValue : extraDictionary) {
-			i.putExtra(nameValue.getName(), nameValue.getValue());
+		for (Pair<String,String> nameValue : extraDictionary) {
+			i.putExtra(nameValue.first, nameValue.second);
 		}
 
 		Random rand = new Random();

@@ -20,10 +20,8 @@ import com.itbarx.model.post.PostTimelineListForUserModel;
 import com.itbarx.utils.BarkUtility;
 import com.itbarx.utils.TextSizeUtil;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class TimelineFragmentListAdapter extends BaseAdapter {

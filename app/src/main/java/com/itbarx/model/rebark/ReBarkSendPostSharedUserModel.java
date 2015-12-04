@@ -1,9 +1,9 @@
-package com.itbarx.model.like;
+package com.itbarx.model.rebark;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LikeUserListModel {
+public class ReBarkSendPostSharedUserModel {
 
 	@SerializedName("PostId")
 	@Expose
@@ -11,19 +11,27 @@ public class LikeUserListModel {
 	@SerializedName("Page")
 	@Expose
 	private String Page;
-	@SerializedName("RecPerPage")
+	@SerializedName("recPerPage")
 	@Expose
-	private String RecPerPage;
+	private String recPerPage;
 
-
-	public LikeUserListModel() {
-		super();
+	/**
+	 * No args constructor for use in serialization
+	 *
+	 */
+	public ReBarkSendPostSharedUserModel() {
 	}
 
-	public LikeUserListModel(String postId, String page, String recPerPage) {
-		PostId = postId;
-		Page = page;
-		RecPerPage = recPerPage;
+	/**
+	 *
+	 * @param Page
+	 * @param recPerPage
+	 * @param PostId
+	 */
+	public ReBarkSendPostSharedUserModel(String PostId, String Page, String recPerPage) {
+		this.PostId = PostId;
+		this.Page = Page;
+		this.recPerPage = recPerPage;
 	}
 
 	/**
@@ -65,24 +73,19 @@ public class LikeUserListModel {
 	/**
 	 *
 	 * @return
-	 * The RecPerPage
+	 * The recPerPage
 	 */
 	public String getRecPerPage() {
-		return RecPerPage;
+		return recPerPage;
 	}
 
 	/**
 	 *
-	 * @param RecPerPage
-	 * The RecPerPage
+	 * @param recPerPage
+	 * The recPerPage
 	 */
-	public void setRecPerPage(String RecPerPage) {
-		this.RecPerPage = RecPerPage;
+	public void setRecPerPage(String recPerPage) {
+		this.recPerPage = recPerPage;
 	}
-
-
-
-
-
 
 }

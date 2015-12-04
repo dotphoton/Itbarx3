@@ -25,6 +25,7 @@ public class ItbarxGlobal extends Application {
 	private static float DENSITY;
 	private static float DISPLAY_PX_HEIGHT;
 	private static float DISPLAY_DP_HEIGHT;
+	private static float DISPLAY_PX_WIDTH;
 
 
 	@Override
@@ -34,6 +35,7 @@ public class ItbarxGlobal extends Application {
 		setDensity();
 		setDisplayPxHeight();
 		setDisplayDpHeight();
+		setDisplayPxWidth();
 		super.onCreate();
 	}
 
@@ -135,6 +137,16 @@ public class ItbarxGlobal extends Application {
 
 
 	}
+
+	private static void setDisplayPxWidth(){
+		DisplayMetrics metrics = getInstance().getResources().getDisplayMetrics();
+		DISPLAY_PX_WIDTH = metrics.widthPixels;
+
+	}
+	public static float getDisplayPxWidth(){
+		return  DISPLAY_PX_WIDTH;
+	}
+
 	public static  float getDisplayDpHeight(){
 		return DISPLAY_DP_HEIGHT;
 	}

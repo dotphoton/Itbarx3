@@ -201,6 +201,7 @@ public class LoginActivity extends BaseActivity {
 	OneShotOnClickListener facebookClickListener = new OneShotOnClickListener(500) {
 
 		@Override public void onOneShotClick(View v) {
+
 		}
 	};
 

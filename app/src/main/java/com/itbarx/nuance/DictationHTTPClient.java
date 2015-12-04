@@ -22,6 +22,7 @@ package com.itbarx.nuance;
 
 import android.os.Environment;
 import android.util.Log;
+import android.util.Pair;
 
 import com.itbarx.common.MySSLSocketFactory;
 
@@ -208,7 +209,7 @@ public class DictationHTTPClient {
 	 */
 	private List<NameValuePair> setParams()
 	{
-		List<NameValuePair> qparams = new ArrayList<NameValuePair>();
+		List<NameValuePair> qparams = new ArrayList<>();
 
 		qparams.add(new BasicNameValuePair("appId", APP_ID));
 		qparams.add(new BasicNameValuePair("appKey", APP_KEY));

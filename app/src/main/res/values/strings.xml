@@ -5,9 +5,9 @@
     <string name="Ok">Tamam</string>
     <string name="Yes">Evet</string>
     <string name="No">Hayır</string>
-    
-    
-      <!-- Webservis Timeout Süresi -->
+
+
+    <!-- Webservis Timeout Süresi -->
     <string name="httpCallTimeout">60000</string>
     <string name="root_service_url">http://itbarxapp.azurewebsites.net/api</string>
     <string name="BrokenData">Doğrulanamayan data alındı</string>
@@ -80,7 +80,7 @@
     <string name="other_user_activity_screen_toolbar_text">profil</string>
     <string name="other_user_activity_screen_follow_text">takip et</string>
     <string name="other_user_activity_screen_unFollow_text">takibi bırak</string>
-     <string name="other_user_activity_screen_userInfo_name_text">güncelle</string>
+    <string name="other_user_activity_screen_userInfo_name_text">güncelle</string>
     <string name="other_user_activity_screen_userInfo_place_text">güncelle</string>
     <string name="other_user_activity_screen_userInfo_personalInfo_text">güncelle</string>
     <string name="other_user_activity_screen_userInfo_atMail_text">güncelle</string>
@@ -122,7 +122,6 @@
     <string name="edit_profile_fragment_screen_deleteAccount_text">hesabımı sil</string>
 
 
-
     <!-- fragment friends screen -->
     <string name="friends_fragment_screen_toolbar_text">arkadaş profili</string>
     <string name="friends_fragment_screen_userinfo_name_text">kullanıcı adı</string>
@@ -156,7 +155,6 @@
     <string name="record_fragment_screen_toolbar_text">yeni barx</string>
 
 
-
     <string name="make_working">işleminiz gerçekleştiriliyor. Lütfen bekleyiniz . . </string>
     <string name="make_working_success">işleminiz başarıyla gerçekleştirildi </string>
     <string name="make_working_failure">işleminiz gerçekleştirilirken bir sorun oluştu! </string>
@@ -178,8 +176,6 @@
 
     <!-- images descriptions-->
     <string name="row_all_fragments_user_imageView_description">user profile photo</string>
-
-
 
 
     <string name="are_you_logout">Oturumu kapatmak istediinize emin misiniz?</string>
@@ -208,5 +204,8 @@
         <item>Chess</item>
         <item>Hockey</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

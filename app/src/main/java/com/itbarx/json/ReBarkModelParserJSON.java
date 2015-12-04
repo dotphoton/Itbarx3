@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.itbarx.model.rebark.ReBarkGetPostSharedUserListModel;
-import com.itbarx.model.rebark.ReBarkGetSharedPostListModel;
+import com.itbarx.model.rebark.ReBarkGetPostSharedUserListByPostIdModel;
+import com.itbarx.model.rebark.ReBarkGetSharedPostListByUserIdModel;
 
 import android.util.Log;
 
@@ -25,11 +25,11 @@ public class ReBarkModelParserJSON {
 	return isOK;
 	}
 
-	public List<ReBarkGetSharedPostListModel> getReBarkGetSharedPostListModelFromJSON(String json) {
+	public List<ReBarkGetSharedPostListByUserIdModel> getReBarkGetSharedPostListModelFromJSON(String json) {
 
-	List<ReBarkGetSharedPostListModel> model = null;
+	List<ReBarkGetSharedPostListByUserIdModel> model = null;
 	try {
-		Type type = new TypeToken<List<ReBarkGetSharedPostListModel>>() {
+		Type type = new TypeToken<List<ReBarkGetSharedPostListByUserIdModel>>() {
 		}.getType();
 
 		model = new Gson().fromJson(json, type);
@@ -41,11 +41,11 @@ public class ReBarkModelParserJSON {
 	return model;
 	}
 
-	public List<ReBarkGetPostSharedUserListModel> getReBarkGetPostSharedUserListModelFromJSON(String json) {
+	public List<ReBarkGetPostSharedUserListByPostIdModel> getReBarkGetPostSharedUserListModelFromJSON(String json) {
 
-	List<ReBarkGetPostSharedUserListModel> model = null;
+	List<ReBarkGetPostSharedUserListByPostIdModel> model = null;
 	try {
-		Type type = new TypeToken<List<ReBarkGetPostSharedUserListModel>>() {
+		Type type = new TypeToken<List<ReBarkGetPostSharedUserListByPostIdModel>>() {
 		}.getType();
 
 		model = new Gson().fromJson(json, type);

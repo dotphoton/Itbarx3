@@ -1,0 +1,69 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.itbarx.activity.S_Fragment_Reply"
+    android:orientation="vertical"
+    android:weightSum="600">
+
+
+    <RelativeLayout
+        android:id="@+id/reply_side_fragment_toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="50"
+        android:background="@color/toolbar_bg">
+
+        <com.itbarx.custom.component.TextViewRegular
+            android:id="@+id/reply_side_fragment_toolbar_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="Reply"
+            android:textColor="@color/white"
+
+            />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:orientation="horizontal"
+        android:layout_weight="550"
+        android:background="#45fe32"
+        android:weightSum="550"
+            >
+        <View
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:background="#E36700"/>
+<ListView
+    android:layout_width="0dip"
+    android:layout_height="fill_parent"
+    android:background="#22eeee"
+    android:layout_weight="530"
+    android:id="@+id/reply_side_fragment_listView"
+    />
+
+
+        <View
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:background="#E36700"/>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

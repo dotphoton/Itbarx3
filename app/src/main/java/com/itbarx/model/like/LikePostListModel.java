@@ -1,44 +1,91 @@
 package com.itbarx.model.like;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class LikePostListModel {
 
-	private String userID;
-	private String page;
-	private String recPerPage;
+		@SerializedName("UserId")
+		@Expose
+		private String UserId;
+		@SerializedName("Page")
+		@Expose
+		private String Page;
+		@SerializedName("RecPerPage")
+		@Expose
+		private String RecPerPage;
 
-	public LikePostListModel() {
-	super();
+		/**
+		 * No args constructor for use in serialization
+		 *
+		 */
+		public LikePostListModel() {
+		}
+
+		/**
+		 *
+		 * @param RecPerPage
+		 * @param Page
+		 * @param UserId
+		 */
+		public LikePostListModel(String UserId, String Page, String RecPerPage) {
+			this.UserId = UserId;
+			this.Page = Page;
+			this.RecPerPage = RecPerPage;
+		}
+
+		/**
+		 *
+		 * @return
+		 * The UserId
+		 */
+		public String getUserId() {
+			return UserId;
+		}
+
+		/**
+		 *
+		 * @param UserId
+		 * The UserId
+		 */
+		public void setUserId(String UserId) {
+			this.UserId = UserId;
+		}
+
+		/**
+		 *
+		 * @return
+		 * The Page
+		 */
+		public String getPage() {
+			return Page;
+		}
+
+		/**
+		 *
+		 * @param Page
+		 * The Page
+		 */
+		public void setPage(String Page) {
+			this.Page = Page;
+		}
+
+		/**
+		 *
+		 * @return
+		 * The RecPerPage
+		 */
+		public String getRecPerPage() {
+			return RecPerPage;
+		}
+
+		/**
+		 *
+		 * @param RecPerPage
+		 * The RecPerPage
+		 */
+		public void setRecPerPage(String RecPerPage) {
+			this.RecPerPage = RecPerPage;
+		}
+
 	}
-
-	public LikePostListModel(String userID, String page, String recPerPage) {
-	super();
-	this.userID = userID;
-	this.page = page;
-	this.recPerPage = recPerPage;
-	}
-
-	public String getUserID() {
-	return userID;
-	}
-
-	public void setUserID(String userID) {
-	this.userID = userID;
-	}
-
-	public String getPage() {
-	return page;
-	}
-
-	public void setPage(String page) {
-	this.page = page;
-	}
-
-	public String getRecPerPage() {
-	return recPerPage;
-	}
-
-	public void setRecPerPage(String recPerPage) {
-	this.recPerPage = recPerPage;
-	}
-
-}

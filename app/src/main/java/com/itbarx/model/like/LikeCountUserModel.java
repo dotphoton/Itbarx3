@@ -1,24 +1,37 @@
 package com.itbarx.model.like;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class LikeCountUserModel {
 
-	private String userID;
+	@SerializedName("UserId") @Expose private String UserId;
 
+	/**
+	 * No args constructor for use in serialization
+	 */
 	public LikeCountUserModel() {
-	super();
 	}
 
-	public LikeCountUserModel(String userID) {
-	super();
-	this.userID = userID;
+	/**
+	 * @param UserId
+	 */
+	public LikeCountUserModel(String UserId) {
+		this.UserId = UserId;
 	}
 
-	public String getUserID() {
-	return userID;
+	/**
+	 * @return The UserId
+	 */
+	public String getUserId() {
+		return UserId;
 	}
 
-	public void setUserID(String userID) {
-	this.userID = userID;
+	/**
+	 * @param UserId The UserId
+	 */
+	public void setUserId(String UserId) {
+		this.UserId = UserId;
 	}
 
 }

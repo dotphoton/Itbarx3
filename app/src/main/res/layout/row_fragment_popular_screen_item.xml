@@ -24,9 +24,9 @@
     android:layout_height="match_parent"
        android:clickable="true"
        android:adjustViewBounds="true"
-       android:src="@drawable/thumbnail"
+       android:src="@drawable/thumbnail_mini"
 android:scaleType="centerCrop"
-       android:background="#0000"
+       android:background="#00000000"
        />
         <ImageView
             android:id="@+id/row_fragment_popular_screen_userPlayIcon_videoView"

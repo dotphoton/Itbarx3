@@ -1,13 +1,13 @@
 package com.itbarx.utils;
 
-import android.content.Context;
+
+import android.util.Pair;
 
 import com.itbarx.activity.BarkActivity;
 import com.itbarx.activity.BaseActivity;
 import com.itbarx.activity.OtherUserActivity;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +22,8 @@ public class BarkUtility {
 
     public static  void  goBarkDetail(BaseActivity activity,String postId)
     {
-        List<NameValuePair> extras = new ArrayList<NameValuePair>();
-        extras.add(new BasicNameValuePair(POST_ID_KEY,postId));
+        List<Pair<String,String>> extras = new ArrayList<>();
+        extras.add(new Pair(POST_ID_KEY,postId));
         activity.launchSubActivityAddStringExtra(BarkActivity.class, extras);
     }
 
@@ -41,8 +41,8 @@ public class BarkUtility {
 
     public static  void  goOtherUserProfil(BaseActivity activity,String userId)
     {
-        List<NameValuePair> extras = new ArrayList<NameValuePair>();
-        extras.add(new BasicNameValuePair(USER_ID_KEY,userId));
+        List<Pair<String,String>> extras = new ArrayList<>();
+        extras.add(new Pair(USER_ID_KEY,userId));
         activity.launchSubActivityAddStringExtra(OtherUserActivity.class, extras);
     }
 

@@ -1,24 +1,46 @@
 package com.itbarx.model.like;
 
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class LikeCountPostModel {
 
-	private String postID;
+	@SerializedName("PostId")
+	@Expose
+	private String PostId;
 
+	/**
+	 * No args constructor for use in serialization
+	 *
+	 */
 	public LikeCountPostModel() {
-	super();
 	}
 
-	public LikeCountPostModel(String postID) {
-	super();
-	this.postID = postID;
+	/**
+	 *
+	 * @param PostId
+	 */
+	public LikeCountPostModel(String PostId) {
+		this.PostId = PostId;
 	}
 
-	public String getPostID() {
-	return postID;
+	/**
+	 *
+	 * @return
+	 * The PostId
+	 */
+	public String getPostId() {
+		return PostId;
 	}
 
-	public void setPostID(String postID) {
-	this.postID = postID;
+	/**
+	 *
+	 * @param PostId
+	 * The PostId
+	 */
+	public void setPostId(String PostId) {
+		this.PostId = PostId;
 	}
 
 }

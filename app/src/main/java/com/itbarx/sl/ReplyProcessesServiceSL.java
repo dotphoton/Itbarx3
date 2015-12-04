@@ -3,8 +3,7 @@ package com.itbarx.sl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
+
 
 import com.itbarx.R;
 import com.itbarx.error.common.ResponseServiceModel;
@@ -24,6 +23,7 @@ import com.itbarx.model.reply.ReplyModel;
 import com.itbarx.utils.ItbarxUtils;
 
 import android.content.Context;
+import android.util.Pair;
 
 public class ReplyProcessesServiceSL extends BasePostServiceSL<String> {
 
@@ -41,8 +41,8 @@ public class ReplyProcessesServiceSL extends BasePostServiceSL<String> {
 
 	// DELETE POSTREPLY (POSTA VERİLEN CEVABI SİLME)
 	public void setDeleteReply(ReplyDeleteModel replyDeleteModel) {
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.REPLY_ID.toString(), replyDeleteModel.getReplyID()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.REPLY_ID.toString(), replyDeleteModel.getReplyID()));
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
 	postClient.addServiceClientListener(this);
@@ -54,10 +54,10 @@ public class ReplyProcessesServiceSL extends BasePostServiceSL<String> {
 
 	// GET POSTREPLY LIST (POST A GONDERİLEN CEVAPLAR LİSTESİ)
 	public void setGetPostRepliesList(ReplyModel replyModel) {
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.POST_ID.toString(), replyModel.getPostID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.PAGE.toString(), replyModel.getPage()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.REC_PER_PAGE.toString(), replyModel.getRecPerPage()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.POST_ID.toString(), replyModel.getPostID()));
+	params.add(new Pair(GlobalDataForWS.PAGE.toString(), replyModel.getPage()));
+	params.add(new Pair(GlobalDataForWS.REC_PER_PAGE.toString(), replyModel.getRecPerPage()));
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
 	postClient.addServiceClientListener(this);
@@ -69,13 +69,13 @@ public class ReplyProcessesServiceSL extends BasePostServiceSL<String> {
 
 	// ADD POSTREPLY
 	public void setAddReply(ReplyAddModel replyAddModel) {
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
-	params.add(new BasicNameValuePair(GlobalDataForWS.POST_ID.toString(), replyAddModel.getPostID()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.POST_SENDER_USER_ID.toString(), replyAddModel.getPostSenderUserId()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.POST_SPEECH_TO_TEXT.toString(), replyAddModel.getPostSpeechToText()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.POST_TEXT.toString(), replyAddModel.getPostText()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.POST_SENDER_IP.toString(), replyAddModel.getPostSenderIp()));
-	params.add(new BasicNameValuePair(GlobalDataForWS.POST_REPLY_BYTE.toString(), replyAddModel.getPostReplyByte()));
+	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
+	params.add(new Pair(GlobalDataForWS.POST_ID.toString(), replyAddModel.getPostID()));
+	params.add(new Pair(GlobalDataForWS.POST_SENDER_USER_ID.toString(), replyAddModel.getPostSenderUserId()));
+	params.add(new Pair(GlobalDataForWS.POST_SPEECH_TO_TEXT.toString(), replyAddModel.getPostSpeechToText()));
+	params.add(new Pair(GlobalDataForWS.POST_TEXT.toString(), replyAddModel.getPostText()));
+	params.add(new Pair(GlobalDataForWS.POST_SENDER_IP.toString(), replyAddModel.getPostSenderIp()));
+	params.add(new Pair(GlobalDataForWS.POST_REPLY_BYTE.toString(), replyAddModel.getPostReplyByte()));
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
 	postClient.addServiceClientListener(this);

@@ -1,286 +1,414 @@
 package com.itbarx.model.like;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class LikeUsersByPostIdModel {
-	private String rowNum;
-	private String postID;
-	private String addedDate;
-	private String userID;
-	private String name;
-	private String itBarxUserName;
-	private String locationId_FK;
-	private String signUpDate;
-	private String profileUpdateDate;
-	private String userBio;
-	private String genderEnumCode;
-	private String userFollowStatus;
-	private String userEmail;
-	private String userPassword;
-	private String userAccountStatus;
-	private String userProfilePhoto;
-	private String lastWallSeenDate;
-	private String favouriteUserCount;
-	private String notificationCount;
-	private String userRole;
-	private String mentionName;
-	private String userWebsite;
-	private String userPassEmailCode;
-	private String userPasswordChangedDate;
-	private String mediaContainerId;
-	private String isNotificationActive;
-	private String photoContainerId;
 
-	public LikeUsersByPostIdModel() {
-	super();
-	}
+	@SerializedName("RowNum") @Expose private String RowNum;
+	@SerializedName("PostId") @Expose private String PostId;
+	@SerializedName("AddDate") @Expose private String AddDate;
+	@SerializedName("userID") @Expose private String userID;
+	@SerializedName("name") @Expose private String name;
+	@SerializedName("itBarxUserName") @Expose private String itBarxUserName;
+	@SerializedName("locationID_fk") @Expose private String locationIDFk;
+	@SerializedName("signUpDate") @Expose private String signUpDate;
+	@SerializedName("profileUpdateDate") @Expose private String profileUpdateDate;
+	@SerializedName("userBio") @Expose private String userBio;
+	@SerializedName("genderEnumCode") @Expose private String genderEnumCode;
+	@SerializedName("userFollowStatus") @Expose private String userFollowStatus;
+	@SerializedName("userEmail") @Expose private String userEmail;
+	@SerializedName("userPassword") @Expose private String userPassword;
+	@SerializedName("userAccountStatus") @Expose private String userAccountStatus;
+	@SerializedName("userProfilePhoto") @Expose private String userProfilePhoto;
+	@SerializedName("LastWallSeenDate") @Expose private String LastWallSeenDate;
+	@SerializedName("FavouriteUserCount") @Expose private String FavouriteUserCount;
+	@SerializedName("NotificationCount") @Expose private String NotificationCount;
+	@SerializedName("userrole") @Expose private String userrole;
+	@SerializedName("mentionname") @Expose private String mentionname;
+	@SerializedName("userwebsite") @Expose private String userwebsite;
+	@SerializedName("userPassEmailCode") @Expose private String userPassEmailCode;
+	@SerializedName("userPasswordChangedDate") @Expose private String userPasswordChangedDate;
+	@SerializedName("MediaContainerId") @Expose private String MediaContainerId;
+	@SerializedName("IsNotificationActive") @Expose private String IsNotificationActive;
+	@SerializedName("PhotoContainerId") @Expose private String PhotoContainerId;
 
-	public LikeUsersByPostIdModel(String rowNum, String postID, String addedDate, String userID, String name, String itBarxUserName, String locationId_FK, String signUpDate, String profileUpdateDate,
-		String userBio, String genderEnumCode, String userFollowStatus, String userEmail, String userPassword, String userAccountStatus, String userProfilePhoto, String lastWallSeenDate,
-		String favouriteUserCount, String notificationCount, String userRole, String mentionName, String userWebsite, String userPassEmailCode, String userPasswordChangedDate, String mediaContainerId,
-		String isNotificationActive, String photoContainerId) {
-	super();
-	this.rowNum = rowNum;
-	this.postID = postID;
-	this.addedDate = addedDate;
-	this.userID = userID;
-	this.name = name;
-	this.itBarxUserName = itBarxUserName;
-	this.locationId_FK = locationId_FK;
-	this.signUpDate = signUpDate;
-	this.profileUpdateDate = profileUpdateDate;
-	this.userBio = userBio;
-	this.genderEnumCode = genderEnumCode;
-	this.userFollowStatus = userFollowStatus;
-	this.userEmail = userEmail;
-	this.userPassword = userPassword;
-	this.userAccountStatus = userAccountStatus;
-	this.userProfilePhoto = userProfilePhoto;
-	this.lastWallSeenDate = lastWallSeenDate;
-	this.favouriteUserCount = favouriteUserCount;
-	this.notificationCount = notificationCount;
-	this.userRole = userRole;
-	this.mentionName = mentionName;
-	this.userWebsite = userWebsite;
-	this.userPassEmailCode = userPassEmailCode;
-	this.userPasswordChangedDate = userPasswordChangedDate;
-	this.mediaContainerId = mediaContainerId;
-	this.isNotificationActive = isNotificationActive;
-	this.photoContainerId = photoContainerId;
-	}
-
+	/**
+	 * @return The RowNum
+	 */
 	public String getRowNum() {
-	return rowNum;
+		return RowNum;
 	}
 
-	public void setRowNum(String rowNum) {
-	this.rowNum = rowNum;
+	/**
+	 * @param RowNum The RowNum
+	 */
+	public void setRowNum(String RowNum) {
+		this.RowNum = RowNum;
 	}
 
-	public String getPostID() {
-	return postID;
+	/**
+	 * @return The PostId
+	 */
+	public String getPostId() {
+		return PostId;
 	}
 
-	public void setPostID(String postID) {
-	this.postID = postID;
+	/**
+	 * @param PostId The PostId
+	 */
+	public void setPostId(String PostId) {
+		this.PostId = PostId;
 	}
 
-	public String getAddedDate() {
-	return addedDate;
+	/**
+	 * @return The AddDate
+	 */
+	public String getAddDate() {
+		return AddDate;
 	}
 
-	public void setAddedDate(String addedDate) {
-	this.addedDate = addedDate;
+	/**
+	 * @param AddDate The AddDate
+	 */
+	public void setAddDate(String AddDate) {
+		this.AddDate = AddDate;
 	}
 
+	/**
+	 * @return The userID
+	 */
 	public String getUserID() {
-	return userID;
+		return userID;
 	}
 
+	/**
+	 * @param userID The userID
+	 */
 	public void setUserID(String userID) {
-	this.userID = userID;
+		this.userID = userID;
 	}
 
+	/**
+	 * @return The name
+	 */
 	public String getName() {
-	return name;
+		return name;
 	}
 
+	/**
+	 * @param name The name
+	 */
 	public void setName(String name) {
-	this.name = name;
+		this.name = name;
 	}
 
+	/**
+	 * @return The itBarxUserName
+	 */
 	public String getItBarxUserName() {
-	return itBarxUserName;
+		return itBarxUserName;
 	}
 
+	/**
+	 * @param itBarxUserName The itBarxUserName
+	 */
 	public void setItBarxUserName(String itBarxUserName) {
-	this.itBarxUserName = itBarxUserName;
+		this.itBarxUserName = itBarxUserName;
 	}
 
-	public String getLocationId_FK() {
-	return locationId_FK;
+	/**
+	 * @return The locationIDFk
+	 */
+	public String getLocationIDFk() {
+		return locationIDFk;
 	}
 
-	public void setLocationId_FK(String locationId_FK) {
-	this.locationId_FK = locationId_FK;
+	/**
+	 * @param locationIDFk The locationID_fk
+	 */
+	public void setLocationIDFk(String locationIDFk) {
+		this.locationIDFk = locationIDFk;
 	}
 
+	/**
+	 * @return The signUpDate
+	 */
 	public String getSignUpDate() {
-	return signUpDate;
+		return signUpDate;
 	}
 
+	/**
+	 * @param signUpDate The signUpDate
+	 */
 	public void setSignUpDate(String signUpDate) {
-	this.signUpDate = signUpDate;
+		this.signUpDate = signUpDate;
 	}
 
+	/**
+	 * @return The profileUpdateDate
+	 */
 	public String getProfileUpdateDate() {
-	return profileUpdateDate;
+		return profileUpdateDate;
 	}
 
+	/**
+	 * @param profileUpdateDate The profileUpdateDate
+	 */
 	public void setProfileUpdateDate(String profileUpdateDate) {
-	this.profileUpdateDate = profileUpdateDate;
+		this.profileUpdateDate = profileUpdateDate;
 	}
 
+	/**
+	 * @return The userBio
+	 */
 	public String getUserBio() {
-	return userBio;
+		return userBio;
 	}
 
+	/**
+	 * @param userBio The userBio
+	 */
 	public void setUserBio(String userBio) {
-	this.userBio = userBio;
+		this.userBio = userBio;
 	}
 
+	/**
+	 * @return The genderEnumCode
+	 */
 	public String getGenderEnumCode() {
-	return genderEnumCode;
+		return genderEnumCode;
 	}
 
+	/**
+	 * @param genderEnumCode The genderEnumCode
+	 */
 	public void setGenderEnumCode(String genderEnumCode) {
-	this.genderEnumCode = genderEnumCode;
+		this.genderEnumCode = genderEnumCode;
 	}
 
+	/**
+	 * @return The userFollowStatus
+	 */
 	public String getUserFollowStatus() {
-	return userFollowStatus;
+		return userFollowStatus;
 	}
 
+	/**
+	 * @param userFollowStatus The userFollowStatus
+	 */
 	public void setUserFollowStatus(String userFollowStatus) {
-	this.userFollowStatus = userFollowStatus;
+		this.userFollowStatus = userFollowStatus;
 	}
 
+	/**
+	 * @return The userEmail
+	 */
 	public String getUserEmail() {
-	return userEmail;
+		return userEmail;
 	}
 
+	/**
+	 * @param userEmail The userEmail
+	 */
 	public void setUserEmail(String userEmail) {
-	this.userEmail = userEmail;
+		this.userEmail = userEmail;
 	}
 
+	/**
+	 * @return The userPassword
+	 */
 	public String getUserPassword() {
-	return userPassword;
+		return userPassword;
 	}
 
+	/**
+	 * @param userPassword The userPassword
+	 */
 	public void setUserPassword(String userPassword) {
-	this.userPassword = userPassword;
+		this.userPassword = userPassword;
 	}
 
+	/**
+	 * @return The userAccountStatus
+	 */
 	public String getUserAccountStatus() {
-	return userAccountStatus;
+		return userAccountStatus;
 	}
 
+	/**
+	 * @param userAccountStatus The userAccountStatus
+	 */
 	public void setUserAccountStatus(String userAccountStatus) {
-	this.userAccountStatus = userAccountStatus;
+		this.userAccountStatus = userAccountStatus;
 	}
 
+	/**
+	 * @return The userProfilePhoto
+	 */
 	public String getUserProfilePhoto() {
-	return userProfilePhoto;
+		return userProfilePhoto;
 	}
 
+	/**
+	 * @param userProfilePhoto The userProfilePhoto
+	 */
 	public void setUserProfilePhoto(String userProfilePhoto) {
-	this.userProfilePhoto = userProfilePhoto;
+		this.userProfilePhoto = userProfilePhoto;
 	}
 
+	/**
+	 * @return The LastWallSeenDate
+	 */
 	public String getLastWallSeenDate() {
-	return lastWallSeenDate;
+		return LastWallSeenDate;
 	}
 
-	public void setLastWallSeenDate(String lastWallSeenDate) {
-	this.lastWallSeenDate = lastWallSeenDate;
+	/**
+	 * @param LastWallSeenDate The LastWallSeenDate
+	 */
+	public void setLastWallSeenDate(String LastWallSeenDate) {
+		this.LastWallSeenDate = LastWallSeenDate;
 	}
 
+	/**
+	 * @return The FavouriteUserCount
+	 */
 	public String getFavouriteUserCount() {
-	return favouriteUserCount;
+		return FavouriteUserCount;
 	}
 
-	public void setFavouriteUserCount(String favouriteUserCount) {
-	this.favouriteUserCount = favouriteUserCount;
+	/**
+	 * @param FavouriteUserCount The FavouriteUserCount
+	 */
+	public void setFavouriteUserCount(String FavouriteUserCount) {
+		this.FavouriteUserCount = FavouriteUserCount;
 	}
 
+	/**
+	 * @return The NotificationCount
+	 */
 	public String getNotificationCount() {
-	return notificationCount;
+		return NotificationCount;
 	}
 
-	public void setNotificationCount(String notificationCount) {
-	this.notificationCount = notificationCount;
+	/**
+	 * @param NotificationCount The NotificationCount
+	 */
+	public void setNotificationCount(String NotificationCount) {
+		this.NotificationCount = NotificationCount;
 	}
 
-	public String getUserRole() {
-	return userRole;
+	/**
+	 * @return The userrole
+	 */
+	public String getUserrole() {
+		return userrole;
 	}
 
-	public void setUserRole(String userRole) {
-	this.userRole = userRole;
+	/**
+	 * @param userrole The userrole
+	 */
+	public void setUserrole(String userrole) {
+		this.userrole = userrole;
 	}
 
-	public String getMentionName() {
-	return mentionName;
+	/**
+	 * @return The mentionname
+	 */
+	public String getMentionname() {
+		return mentionname;
 	}
 
-	public void setMentionName(String mentionName) {
-	this.mentionName = mentionName;
+	/**
+	 * @param mentionname The mentionname
+	 */
+	public void setMentionname(String mentionname) {
+		this.mentionname = mentionname;
 	}
 
-	public String getUserWebsite() {
-	return userWebsite;
+	/**
+	 * @return The userwebsite
+	 */
+	public String getUserwebsite() {
+		return userwebsite;
 	}
 
-	public void setUserWebsite(String userWebsite) {
-	this.userWebsite = userWebsite;
+	/**
+	 * @param userwebsite The userwebsite
+	 */
+	public void setUserwebsite(String userwebsite) {
+		this.userwebsite = userwebsite;
 	}
 
+	/**
+	 * @return The userPassEmailCode
+	 */
 	public String getUserPassEmailCode() {
-	return userPassEmailCode;
+		return userPassEmailCode;
 	}
 
+	/**
+	 * @param userPassEmailCode The userPassEmailCode
+	 */
 	public void setUserPassEmailCode(String userPassEmailCode) {
-	this.userPassEmailCode = userPassEmailCode;
+		this.userPassEmailCode = userPassEmailCode;
 	}
 
+	/**
+	 * @return The userPasswordChangedDate
+	 */
 	public String getUserPasswordChangedDate() {
-	return userPasswordChangedDate;
+		return userPasswordChangedDate;
 	}
 
+	/**
+	 * @param userPasswordChangedDate The userPasswordChangedDate
+	 */
 	public void setUserPasswordChangedDate(String userPasswordChangedDate) {
-	this.userPasswordChangedDate = userPasswordChangedDate;
+		this.userPasswordChangedDate = userPasswordChangedDate;
 	}
 
+	/**
+	 * @return The MediaContainerId
+	 */
 	public String getMediaContainerId() {
-	return mediaContainerId;
+		return MediaContainerId;
 	}
 
-	public void setMediaContainerId(String mediaContainerId) {
-	this.mediaContainerId = mediaContainerId;
+	/**
+	 * @param MediaContainerId The MediaContainerId
+	 */
+	public void setMediaContainerId(String MediaContainerId) {
+		this.MediaContainerId = MediaContainerId;
 	}
 
+	/**
+	 * @return The IsNotificationActive
+	 */
 	public String getIsNotificationActive() {
-	return isNotificationActive;
+		return IsNotificationActive;
 	}
 
-	public void setIsNotificationActive(String isNotificationActive) {
-	this.isNotificationActive = isNotificationActive;
+	/**
+	 * @param IsNotificationActive The IsNotificationActive
+	 */
+	public void setIsNotificationActive(String IsNotificationActive) {
+		this.IsNotificationActive = IsNotificationActive;
 	}
 
+	/**
+	 * @return The PhotoContainerId
+	 */
 	public String getPhotoContainerId() {
-	return photoContainerId;
+		return PhotoContainerId;
 	}
 
-	public void setPhotoContainerId(String photoContainerId) {
-	this.photoContainerId = photoContainerId;
+	/**
+	 * @param PhotoContainerId The PhotoContainerId
+	 */
+	public void setPhotoContainerId(String PhotoContainerId) {
+		this.PhotoContainerId = PhotoContainerId;
 	}
 
 }

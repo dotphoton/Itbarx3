@@ -1,14 +1,16 @@
 package com.itbarx.model.rebark;
 
-public class ReBarkPostSharedUserCountModel {
+
+//rebark eden kullanıcı sayısı - post bazlı
+public class ReBarkSendSharedUserCountModel {
 
 	private String postID;
 
-	public ReBarkPostSharedUserCountModel() {
+	public ReBarkSendSharedUserCountModel() {
 	super();
 	}
 
-	public ReBarkPostSharedUserCountModel(String postID) {
+	public ReBarkSendSharedUserCountModel(String postID) {
 	super();
 	this.postID = postID;
 	}

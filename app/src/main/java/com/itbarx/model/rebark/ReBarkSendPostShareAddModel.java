@@ -1,9 +1,10 @@
-package com.itbarx.model.like;
+package com.itbarx.model.rebark;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LikeModel {
+
+public class ReBarkSendPostShareAddModel {
 
 	@SerializedName("UserId")
 	@Expose
@@ -11,22 +12,27 @@ public class LikeModel {
 	@SerializedName("PostId")
 	@Expose
 	private String PostId;
+	@SerializedName("SharedText")
+	@Expose
+	private String SharedText;
 
 	/**
 	 * No args constructor for use in serialization
 	 *
 	 */
-	public LikeModel() {
+	public ReBarkSendPostShareAddModel() {
 	}
 
 	/**
 	 *
+	 * @param SharedText
 	 * @param UserId
 	 * @param PostId
 	 */
-	public LikeModel(String UserId, String PostId) {
+	public ReBarkSendPostShareAddModel(String UserId, String PostId, String SharedText) {
 		this.UserId = UserId;
 		this.PostId = PostId;
+		this.SharedText = SharedText;
 	}
 
 	/**
@@ -63,6 +69,24 @@ public class LikeModel {
 	 */
 	public void setPostId(String PostId) {
 		this.PostId = PostId;
+	}
+
+	/**
+	 *
+	 * @return
+	 * The SharedText
+	 */
+	public String getSharedText() {
+		return SharedText;
+	}
+
+	/**
+	 *
+	 * @param SharedText
+	 * The SharedText
+	 */
+	public void setSharedText(String SharedText) {
+		this.SharedText = SharedText;
 	}
 
 }

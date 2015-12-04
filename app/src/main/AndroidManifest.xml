@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    package="com.itbarx"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-
-    android:installLocation="preferExternal"
-    android:versionCode="2"
-    android:versionName="2.0">
+<manifest package="com.itbarx"
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          android:installLocation="preferExternal"
+          android:versionCode="2"
+          android:versionName="2.0">
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -15,13 +13,13 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-<!--
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <!--
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
         <uses-permission android:name="android.permission.CAMERA" >
             <uses-feature android:name="android.hardware.camera" android:required="true" />
@@ -31,21 +29,22 @@
             android:required="false" />
     </uses-permission>
     -->
-    <uses-feature android:name="android.hardware.camera.front" />
+    <uses-feature android:name="android.hardware.camera.front"/>
     <uses-feature android:name="android.hardware.microphone"/>
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.CAMERA" />
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
-        android:name="com.itbarx.application.ItbarxGlobal"
+        android:name=".application.ItbarxGlobal"
         android:allowBackup="true"
         android:icon="@drawable/logo_512"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar">
         <activity
-            android:name="com.itbarx.activity.LoginActivity" android:screenOrientation="portrait"
-            android:label="@string/app_name">
+            android:name=".activity.LoginActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -53,63 +52,66 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.itbarx.activity.CreateNewAccountActivity" android:screenOrientation="portrait"
-            >
-        </activity>
-
-
-
-        <activity
-            android:name="com.itbarx.activity.ForgotPasswordActivity" android:screenOrientation="portrait"
-            >
-        </activity>
-
-        <activity
-            android:name="com.itbarx.activity.UserAgreementActivity" android:screenOrientation="portrait"
-            >
-        </activity>
-
-        <activity
-            android:name="com.itbarx.activity.MediaRecorderActivity" android:screenOrientation="portrait"
-            >
+            android:name=".activity.CreateNewAccountActivity"
+            android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="com.itbarx.activity.MediaPreviewActivity" android:screenOrientation="portrait"
-            >
+            android:name=".activity.ForgotPasswordActivity"
+            android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="com.itbarx.activity.NewUserDoneActivity" android:screenOrientation="portrait"
-            >
+            android:name=".activity.UserAgreementActivity"
+            android:screenOrientation="portrait">
         </activity>
         <activity
-        android:name="com.itbarx.activity.BarkActivity" android:screenOrientation="portrait"
-        >
-    </activity>
-        <activity
-            android:name="com.itbarx.activity.OtherUserActivity" android:screenOrientation="portrait"
-            >
-        </activity>
-
-        <activity
-            android:name="com.itbarx.activity.MediaPublishActivity" android:screenOrientation="portrait"
-            >
+            android:name=".activity.MediaRecorderActivity"
+            android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="com.itbarx.activity.TestActivity" android:screenOrientation="portrait"
-            >
+            android:name=".activity.MediaPreviewActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".activity.NewUserDoneActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".activity.BarkActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".activity.OtherUserActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".activity.MediaPublishActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".activity.DrawerActivity"
+            android:screenOrientation="portrait">
         </activity>
 
-
-        <!-- TAB AND TAB ACTIVITIES-->
-        <activity android:screenOrientation="portrait" android:name="com.itbarx.activity.TabContainer"></activity>
-        <activity android:screenOrientation="portrait"  android:name="com.itbarx.activity.T_HomeActivity"></activity>
-        <activity android:screenOrientation="portrait"  android:name="com.itbarx.activity.T_SecondActivity"></activity>
-        <activity android:screenOrientation="portrait"  android:name="com.itbarx.activity.T_RecordActivity"></activity>
-        <activity android:screenOrientation="portrait"   android:name="com.itbarx.activity.T_SearchActivity">
+        <!-- TAB AND TAB ACTIVITIES -->
+        <activity
+            android:name=".activity.TabContainer"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.T_HomeActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.T_SecondActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.T_RecordActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.T_SearchActivity"
+            android:screenOrientation="portrait">
         </activity>
-
-        <activity android:screenOrientation="portrait"  android:name="com.itbarx.activity.T_ProfileActivity"></activity>
-
+        <activity
+            android:name=".activity.T_ProfileActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 
