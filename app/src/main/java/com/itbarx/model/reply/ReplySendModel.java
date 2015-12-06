@@ -1,16 +1,16 @@
 package com.itbarx.model.reply;
 
-public class ReplyModel {
+public class ReplySendModel {
 
 	private String postID;
 	private String page;
 	private String recPerPage;
 
-	public ReplyModel() {
+	public ReplySendModel() {
 	super();
 	}
 
-	public ReplyModel(String postID, String page, String recPerPage) {
+	public ReplySendModel(String postID, String page, String recPerPage) {
 	super();
 	this.postID = postID;
 	this.page = page;

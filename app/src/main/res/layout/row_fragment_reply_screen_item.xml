@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:weightSum="100"
+    android:background="@drawable/border_editboxes"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+    android:id="@+id/reply_up_container"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:orientation="horizontal"
+    android:layout_weight="45"
+    android:weightSum="550"
+    >
+        <View
+             android:layout_width="0dp"
+            android:layout_height="match_parent"
+             android:layout_weight="10"
+             android:visibility="invisible"
+          />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="60"
+            android:orientation="vertical"
+
+            >
+            <com.itbarx.custom.component.SquareImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/robo"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:scaleType="fitCenter"
+                />
+
+        </RelativeLayout>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:visibility="invisible"
+            />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="470"
+            android:orientation="vertical"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="11"
+                >
+                <com.itbarx.custom.component.TextViewBold
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jeffrey Pearson"
+                    android:textColor="#000000"
+                    android:layout_alignParentBottom="true"
+                    />
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="11"
+                >
+                <com.itbarx.custom.component.TextViewRegular
+                    android:id="@+id/row_fragment_reply_screen_time_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3 Min."
+                    android:textColor="#000000"
+                    />
+                <com.itbarx.custom.component.TextViewRegular
+                    android:id="@+id/row_fragment_reply_screen_from_textView"
+                    android:layout_toRightOf="@+id/row_fragment_reply_screen_time_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" ago. from "
+                    android:textColor="#000000"
+                    />
+                <com.itbarx.custom.component.TextViewRegular
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/row_fragment_reply_screen_place_textView"
+                    android:layout_toRightOf="@+id/row_fragment_reply_screen_from_textView"
+                    android:text="England"
+                    android:textColor="#000000"
+                    />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/reply_down_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="53.5"
+        android:orientation="horizontal"
+        android:weightSum="550"
+        >
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="140"
+
+            >
+            <ImageView
+                android:id="@+id/row_fragment_reply_screen_thumbnail_textView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:adjustViewBounds="true"
+                android:src="@drawable/thumbnail" />
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:id="@+id/row_fragment_reply_screen_video_thumbnail_play_ImageView"
+                android:layout_centerInParent="true"
+                android:src="@drawable/play_icon"
+                android:scaleType="centerInside"
+                android:clickable="true"
+                />
+
+        </RelativeLayout>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:visibility="invisible"
+            />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="400"
+
+            >
+            <com.itbarx.custom.component.TextViewRegular
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/friends_fragment_screen_userinfo_personalinfo_text"
+                android:lines="7"
+                android:ellipsize="end"
+
+                />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:visibility="invisible"
+        />
+
+</LinearLayout>

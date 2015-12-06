@@ -109,14 +109,10 @@
                     android:id="@+id/timeline_fragment_screen_ListView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:clickable="false"
                     android:divider="@drawable/pencere_alt_gorunum"
                     android:dividerHeight="3dp"
-                    android:layerType="software"
-                    android:overScrollMode="ifContentScrolls"
-                    android:scrollbars="vertical"
-                    android:scrollingCache="true"
-                    android:transcriptMode="alwaysScroll"/>
+                   style="@style/VerticalListStyles"
+                    />
             </LinearLayout>
 
 

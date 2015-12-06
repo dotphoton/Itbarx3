@@ -2,8 +2,8 @@
 <manifest package="com.itbarx"
           xmlns:android="http://schemas.android.com/apk/res/android"
           android:installLocation="preferExternal"
-          android:versionCode="2"
-          android:versionName="2.0">
+          android:versionCode="3"
+          android:versionName="3.0">
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -87,12 +87,7 @@
             android:name=".activity.MediaPublishActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity
-            android:name=".activity.DrawerActivity"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <!-- TAB AND TAB ACTIVITIES -->
+               <!-- TAB AND TAB ACTIVITIES -->
         <activity
             android:name=".activity.TabContainer"
             android:screenOrientation="portrait"/>

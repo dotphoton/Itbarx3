@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="VerticalListStyles">
+        <item name="android:clickable">false</item>
+        <item name="android:layerType">software</item>
+        <item name="android:overScrollMode">ifContentScrolls</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:scrollingCache">true</item>
+        <item name="android:transcriptMode">alwaysScroll</item>
+
+    </style>
+</resources>

@@ -31,6 +31,7 @@ import com.itbarx.listener.LikeProcessesServiceListener;
 import com.itbarx.listener.OneShotOnClickListener;
 import com.itbarx.listener.PostProcessesServiceListener;
 import com.itbarx.listener.ReBarkProcessesServiceListener;
+import com.itbarx.listener.ReplyProcessesServiceListener;
 import com.itbarx.model.like.LikePostsByUserIdModel;
 import com.itbarx.model.like.LikeUserListModel;
 import com.itbarx.model.like.LikeUsersByPostIdModel;
@@ -44,11 +45,13 @@ import com.itbarx.model.post.PostWallListForUserModel;
 import com.itbarx.model.rebark.ReBarkGetPostSharedUserListByPostIdModel;
 import com.itbarx.model.rebark.ReBarkGetSharedPostListByUserIdModel;
 import com.itbarx.model.rebark.ReBarkSendPostSharedUserModel;
+import com.itbarx.model.reply.ReplySendModel;
 import com.itbarx.model.send_to_fragment.LikeData;
 import com.itbarx.model.send_to_fragment.ReBarksData;
 import com.itbarx.sl.LikeProcessesServiceSL;
 import com.itbarx.sl.PostProcessesServiceSL;
 import com.itbarx.sl.ReBarkProcessesServiceSL;
+import com.itbarx.sl.ReplyProcessesServiceSL;
 import com.itbarx.utils.BarkUtility;
 import com.itbarx.utils.TextSizeUtil;
 
@@ -178,22 +181,11 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 
 			imgReply.setOnClickListener(new OneShotOnClickListener(500) {
 				@Override public void onOneShotClick(View v) {
-/*
-					ft = fm.beginTransaction();
-					if (sFragmentReBark.isVisible()) {
-						ft.hide(sFragmentReply);
-					}
-					if (sFragmentLike.isVisible()) {
-						ft.hide(sFragmentLike);
-					}
-					ft.show(sFragmentReply);
-					ft.commit();
-					drawerLayout.post(new Runnable() {
-						@Override public void run() {
-							drawerLayout.openDrawer(sidePanel);
-						}
-					});
-				*/
+					ReplySendModel replySendModel = new ReplySendModel("40BF425A-0853-4DF0-868B-6848978E6239","1","10");
+					ReplyProcessesServiceSL replyProcessesServiceSL = new ReplyProcessesServiceSL(getContext(),null,R.string.root_service_url);
+					replyProcessesServiceSL.setGetPostRepliesList(replySendModel);
+					showProgress(getString(R.string.ItbarxConnecting));
+
 				}
 			});
 
@@ -469,7 +461,7 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 
 		}
 	};
-	//REPLY SERVICES
+
 
 	//RE_BARK SERVICES
 	ReBarkProcessesServiceListener<String> reBarkProcessesServiceListener = new ReBarkProcessesServiceListener<String>() {
@@ -535,6 +527,55 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 		}
 
 		@Override public void onComplete(ResponseServiceModel<String> onComplete) {
+
+		}
+
+		@Override public void onError(BarxErrorModel onError) {
+
+		}
+	};
+
+	//REPLY SERVICES
+	ReplyProcessesServiceListener replyProcessesServiceListener = new ReplyProcessesServiceListener() {
+		@Override public void deleteReply(String idDeleted) {
+
+		}
+
+		@Override public void getPostRepliesList(List replyListModel) {
+dismissProgress();
+
+					/*
+
+
+					ft = fm.beginTransaction();
+			if (sFragmentReply != null && sFragmentReply.isAdded()) {
+				ft.remove(sFragmentReply);
+			}
+			if (sFragmentReBark != null && sFragmentReBark.isAdded()) {
+				ft.remove(sFragmentReBark);
+			}
+			if (sFragmentLike != null && sFragmentLike.isAdded()) {
+				ft.remove(sFragmentLike);
+
+			}
+			sFragmentReply = new S_Fragment_Reply(BarkActivity.this);
+				//	sFragmentReply.setArguments(bundle);
+			ft.add(R.id.bark_activity_screen_side_panel, sFragmentReply);
+			ft.show(sFragmentReply);
+			ft.commit();
+			drawerLayout.post(new Runnable() {
+				@Override public void run() {
+					drawerLayout.openDrawer(sidePanel);
+				}
+			});
+					*/
+		}
+
+		@Override public void addReply(String isAdded) {
+
+		}
+
+		@Override public void onComplete(ResponseServiceModel onComplete) {
 
 		}
 

@@ -10,7 +10,6 @@ import com.itbarx.error.common.ResponseServiceModel;
 import com.itbarx.error.common.ServiceResponseModel;
 import com.itbarx.enums.GlobalDataForWS;
 import com.itbarx.enums.ReplyProcessesLinks;
-import com.itbarx.error.listener.BarxErrorListener;
 import com.itbarx.error.model.BarxErrorModel;
 import com.itbarx.error.sl.BasePostServiceSL;
 import com.itbarx.error.sl.BaseServicePostClientSL;
@@ -19,7 +18,7 @@ import com.itbarx.listener.ReplyProcessesServiceListener;
 import com.itbarx.model.reply.ReplyAddModel;
 import com.itbarx.model.reply.ReplyDeleteModel;
 import com.itbarx.model.reply.ReplyListModel;
-import com.itbarx.model.reply.ReplyModel;
+import com.itbarx.model.reply.ReplySendModel;
 import com.itbarx.utils.ItbarxUtils;
 
 import android.content.Context;
@@ -53,11 +52,11 @@ public class ReplyProcessesServiceSL extends BasePostServiceSL<String> {
 	}
 
 	// GET POSTREPLY LIST (POST A GONDERİLEN CEVAPLAR LİSTESİ)
-	public void setGetPostRepliesList(ReplyModel replyModel) {
+	public void setGetPostRepliesList(ReplySendModel replySendModel) {
 	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
-	params.add(new Pair(GlobalDataForWS.POST_ID.toString(), replyModel.getPostID()));
-	params.add(new Pair(GlobalDataForWS.PAGE.toString(), replyModel.getPage()));
-	params.add(new Pair(GlobalDataForWS.REC_PER_PAGE.toString(), replyModel.getRecPerPage()));
+	params.add(new Pair(GlobalDataForWS.POST_ID.toString(), replySendModel.getPostID()));
+	params.add(new Pair(GlobalDataForWS.PAGE.toString(), replySendModel.getPage()));
+	params.add(new Pair(GlobalDataForWS.REC_PER_PAGE.toString(), replySendModel.getRecPerPage()));
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
 	postClient.addServiceClientListener(this);

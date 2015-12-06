@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-      android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="10dp"
     android:padding="2dp"
@@ -90,24 +90,23 @@
                             android:layout_height="wrap_content"
 
 
-                          android:gravity="top"
-                           android:textSize="8sp"
+                            android:gravity="top"
                             android:text="FirstName"
                             android:textColor="@color/white"
+                            android:textSize="7sp"
 
                             />
-
 
 
                         <com.itbarx.custom.component.TextViewRegular
                             android:id="@+id/column_like_surname_textView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-android:layout_below="@+id/column_like_name_textView"
+                            android:layout_below="@+id/column_like_name_textView"
 
-                            android:textSize="8sp"
                             android:text="S."
                             android:textColor="@color/white"
+                            android:textSize="7sp"
 
                             />
                     </RelativeLayout>
@@ -181,7 +180,6 @@ android:layout_below="@+id/column_like_name_textView"
             />
 
     </LinearLayout>
-
 
 
 </RelativeLayout>

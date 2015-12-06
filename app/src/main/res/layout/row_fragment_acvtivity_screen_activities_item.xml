@@ -20,7 +20,7 @@
         <ImageView
             android:id="@+id/row_fragment_activity_screen_activities_imageView"
             android:background="@android:color/white"
-            android:src="@drawable/user_male_icon"
+            android:src="@drawable/robo"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_centerHorizontal="true"
