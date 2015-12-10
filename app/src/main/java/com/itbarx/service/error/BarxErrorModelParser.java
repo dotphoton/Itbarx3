@@ -1,12 +1,12 @@
-package com.itbarx.error.json;
+package com.itbarx.service.error;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-import com.itbarx.error.model.BarxErrorModel;
-import com.itbarx.error.model.BarxErrorModelDeserializer;
-import com.itbarx.error.model.BarxErrorModelSerializer;
+import com.itbarx.service.error.BarxErrorModel;
+import com.itbarx.service.error.BarxErrorModelDeserializer;
+import com.itbarx.service.error.BarxErrorModelSerializer;
 
 import java.lang.reflect.Type;
 

@@ -2,12 +2,10 @@ package com.itbarx.utils;
 
 import java.util.List;
 
-import org.apache.http.NameValuePair;
-
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.itbarx.error.common.ServiceResponseModel;
+import com.itbarx.service.ServiceResponseModel;
 import com.itbarx.enums.GlobalDataForWS;
 
 import android.util.Log;

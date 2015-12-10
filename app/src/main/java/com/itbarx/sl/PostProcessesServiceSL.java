@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.itbarx.R;
-import com.itbarx.error.common.ResponseServiceModel;
-import com.itbarx.error.common.ServiceResponseModel;
+import com.itbarx.service.ResponseEventModel;
+import com.itbarx.service.ServiceResponseModel;
 import com.itbarx.enums.GlobalDataForWS;
 import com.itbarx.enums.PostProcessLinks;
-import com.itbarx.error.model.BarxErrorModel;
-import com.itbarx.error.sl.BasePostServiceSL;
+import com.itbarx.service.error.BarxErrorModel;
+import com.itbarx.service.BasePostServiceSL;
 import com.itbarx.error.sl.BaseServicePostClientSL;
 import com.itbarx.json.PostModelParserJSON;
 import com.itbarx.listener.PostProcessesServiceListener;
@@ -163,7 +163,7 @@ public class PostProcessesServiceSL extends BasePostServiceSL<String> {
 	// ************************//
 
 	@Override
-	public void onPOSTCommit(ResponseServiceModel<String> responseEvent) {
+	public void onPOSTCommit(ResponseEventModel<String> responseEvent) {
 	String result = responseEvent.getResponseData();
 
 	// ---GET TIMELINE LIST FOR USER---
@@ -272,12 +272,7 @@ public class PostProcessesServiceSL extends BasePostServiceSL<String> {
 	}
 	}
 
-	/*
-	@Override
-	public void onGETReceive(ResponseServiceModel<String> responseEvent) {
-	// TODO Auto-generated method stub
 
-	}*/
 
 	@Override
 	public void onError(BarxErrorModel responseServiceErrorModel) {

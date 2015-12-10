@@ -1,5 +1,5 @@
 
-package com.itbarx.error.model;
+package com.itbarx.service.error;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;

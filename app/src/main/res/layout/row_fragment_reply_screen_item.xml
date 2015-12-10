@@ -2,11 +2,11 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="120dp"
     android:weightSum="100"
     android:background="@drawable/border_editboxes"
     android:orientation="vertical"
-    >
+      >
     <LinearLayout
     android:id="@+id/reply_up_container"
     android:layout_width="match_parent"
@@ -29,6 +29,7 @@
 
             >
             <com.itbarx.custom.component.SquareImageView
+                android:id="@+id/row_fragment_reply_screen_profilePhoto_imageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/robo"
@@ -50,14 +51,15 @@
             android:layout_height="match_parent"
             android:layout_weight="470"
             android:orientation="vertical"
+            android:weightSum="20"
             >
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="11"
+                android:layout_weight="9"
                 >
                 <com.itbarx.custom.component.TextViewBold
-
+                    android:id="@+id/row_fragment_reply_screen_name_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Jeffrey Pearson"
@@ -68,12 +70,12 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="3"/>
+                android:layout_weight="2"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="11"
+                android:layout_weight="9"
                 >
                 <com.itbarx.custom.component.TextViewRegular
                     android:id="@+id/row_fragment_reply_screen_time_textView"
@@ -119,11 +121,10 @@
 
             >
             <ImageView
-                android:id="@+id/row_fragment_reply_screen_thumbnail_textView"
+                android:id="@+id/row_fragment_reply_screen_thumbnail_imageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
-                android:adjustViewBounds="true"
+               android:scaleType="fitXY"
                 android:src="@drawable/thumbnail" />
             <ImageView
                 android:layout_width="36dp"
@@ -149,13 +150,14 @@
 
             >
             <com.itbarx.custom.component.TextViewRegular
+                android:id="@+id/row_fragment_reply_screen_postReply_textView"
                 android:padding="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/friends_fragment_screen_userinfo_personalinfo_text"
                 android:lines="7"
                 android:ellipsize="end"
-
+                android:textSize="15sp"
                 />
 
         </RelativeLayout>

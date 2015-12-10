@@ -6,12 +6,12 @@ import java.util.List;
 
 
 import com.itbarx.R;
-import com.itbarx.error.common.ResponseServiceModel;
-import com.itbarx.error.common.ServiceResponseModel;
+import com.itbarx.service.ResponseEventModel;
+import com.itbarx.service.ServiceResponseModel;
 import com.itbarx.enums.GlobalDataForWS;
 import com.itbarx.enums.ReplyProcessesLinks;
-import com.itbarx.error.model.BarxErrorModel;
-import com.itbarx.error.sl.BasePostServiceSL;
+import com.itbarx.service.error.BarxErrorModel;
+import com.itbarx.service.BasePostServiceSL;
 import com.itbarx.error.sl.BaseServicePostClientSL;
 import com.itbarx.json.ReplyModelParserJSON;
 import com.itbarx.listener.ReplyProcessesServiceListener;
@@ -89,7 +89,7 @@ public class ReplyProcessesServiceSL extends BasePostServiceSL<String> {
 	// ************************//
 
 	@Override
-	public void onPOSTCommit(ResponseServiceModel<String> responseEvent) {
+	public void onPOSTCommit(ResponseEventModel<String> responseEvent) {
 	String result = responseEvent.getResponseData();
 	// ---GET DELETE REPLY ---
 	if (responseEvent.getMethodName().equalsIgnoreCase(ReplyProcessesLinks.POSTREPLY_DELETE.toString())) {
@@ -108,7 +108,7 @@ public class ReplyProcessesServiceSL extends BasePostServiceSL<String> {
 	}
 	// ---GET POST REPLIES LIST ---
 	else if (responseEvent.getMethodName().equalsIgnoreCase(ReplyProcessesLinks.GET_POST_REPLIES.toString())) {
-		ServiceResponseModel model = ItbarxUtils.getServiceResponseModelDataKey(result);
+		ServiceResponseModel model = ItbarxUtils.getServiceResponseArrayModelDataKey(result);
 		List<ReplyListModel> replyListModelResponse = null;
 		if (model != null) {
 		replyListModelResponse = new ReplyModelParserJSON().getReplyListModelFromJSON(model.getModel());

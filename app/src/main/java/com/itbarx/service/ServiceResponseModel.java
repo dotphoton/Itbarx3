@@ -1,4 +1,4 @@
-package com.itbarx.error.common;
+package com.itbarx.service;
 
 public class ServiceResponseModel {
 

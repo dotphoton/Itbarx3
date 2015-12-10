@@ -1,7 +1,6 @@
 package com.itbarx.activity;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,11 +10,10 @@ import android.widget.ListView;
 import com.itbarx.R;
 import com.itbarx.adapter.PopularFragmentListAdapter;
 import com.itbarx.application.ItbarxGlobal;
-import com.itbarx.custom.component.ButtonBold;
 import com.itbarx.custom.component.TextViewBold;
 import com.itbarx.custom.component.TextViewRegular;
-import com.itbarx.error.common.ResponseServiceModel;
-import com.itbarx.error.model.BarxErrorModel;
+import com.itbarx.service.ResponseEventModel;
+import com.itbarx.service.error.BarxErrorModel;
 import com.itbarx.listener.OneShotOnClickListener;
 import com.itbarx.listener.PostProcessesServiceListener;
 import com.itbarx.model.post.PostGetPostDetailModel;
@@ -152,7 +150,7 @@ public class OtherUserActivity extends BaseActivity {
 
 	}
 
-	PostProcessesServiceListener postProcessesServiceListener = new PostProcessesServiceListener() {
+	PostProcessesServiceListener postProcessesServiceListener = new PostProcessesServiceListener<String>() {
 		@Override public void getTimelineListForUser(List postTimelineListForUserModel) {
 			dismissProgress();
 		}
@@ -192,7 +190,7 @@ public class OtherUserActivity extends BaseActivity {
 			dismissProgress();
 		}
 
-		@Override public void onComplete(ResponseServiceModel onComplete) {
+		@Override public void onComplete(ResponseEventModel<String> onComplete) {
 			dismissProgress();
 		}
 

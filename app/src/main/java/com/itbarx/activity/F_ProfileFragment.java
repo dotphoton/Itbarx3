@@ -4,18 +4,15 @@ import com.itbarx.R;
 import com.itbarx.adapter.PopularFragmentListAdapter;
 import com.itbarx.application.ItbarxGlobal;
 import com.itbarx.enums.Fragments;
-import com.itbarx.error.common.ResponseServiceModel;
-
-import com.itbarx.custom.component.ButtonBold;
 import com.itbarx.custom.component.TextViewBold;
 import com.itbarx.custom.component.TextViewRegular;
-import com.itbarx.error.model.BarxErrorModel;
+import com.itbarx.service.ResponseEventModel;
+import com.itbarx.service.error.BarxErrorModel;
 import com.itbarx.listener.OneShotOnClickListener;
 import com.itbarx.listener.PostProcessesServiceListener;
 import com.itbarx.model.account.AccountGetUserByLoginInfoModel;
 import com.itbarx.model.post.PostGetPostDetailModel;
 import com.itbarx.model.post.PostGetWallInfoModel;
-import com.itbarx.model.post.PostPopularModel;
 import com.itbarx.model.post.PostWallInfoModel;
 import com.itbarx.sl.PostProcessesServiceSL;
 import com.itbarx.utils.TextSizeUtil;
@@ -177,7 +174,7 @@ lstPopular.setAdapter(new PopularFragmentListAdapter(t_profileActivity, ItbarxGl
 
 	}
 
-	PostProcessesServiceListener postProcessesServiceListener = new PostProcessesServiceListener() {
+	PostProcessesServiceListener postProcessesServiceListener = new PostProcessesServiceListener<String>() {
 		@Override public void getTimelineListForUser(List postTimelineListForUserModel) {
 			t_profileActivity.dismissProgress();
 		}
@@ -213,7 +210,7 @@ lstPopular.setAdapter(new PopularFragmentListAdapter(t_profileActivity, ItbarxGl
 			t_profileActivity.dismissProgress();
 		}
 
-		@Override public void onComplete(ResponseServiceModel onComplete) {
+		@Override public void onComplete(ResponseEventModel<String> onComplete) {
 			t_profileActivity.dismissProgress();
 		}
 

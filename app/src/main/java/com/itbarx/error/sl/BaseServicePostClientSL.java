@@ -17,12 +17,12 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HTTP;
 
 import com.itbarx.R;
-import com.itbarx.error.common.ResponseServiceModel;
 import com.itbarx.common.ServiceUtil;
-import com.itbarx.error.listener.BarxErrorListener;
-import com.itbarx.error.listener.BarxPostErrorListener;
-import com.itbarx.error.model.BarxErrorModel;
-import com.itbarx.error.util.BarxErrorHelper;
+import com.itbarx.service.ResponseEventModel;
+import com.itbarx.service.error.BarxErrorListener;
+import com.itbarx.service.BarxPostListener;
+import com.itbarx.service.error.BarxErrorModel;
+import com.itbarx.service.error.BarxErrorHelper;
 
 
 import android.content.Context;
@@ -41,7 +41,7 @@ public class BaseServicePostClientSL<T> extends AsyncTask<String, Void, String> 
 
     //	private ArrayList<ServicePostClientListener<T>> _listeners = new ArrayList<ServicePostClientListener<T>>();
 //	private ArrayList<ServiceErrorClientListener> errorlisteners = new ArrayList<ServiceErrorClientListener>();
-    private ArrayList<BarxPostErrorListener<T>> _listeners = new ArrayList<BarxPostErrorListener<T>>();
+    private ArrayList<BarxPostListener<T>> _listeners = new ArrayList<BarxPostListener<T>>();
     private ArrayList<BarxErrorListener> errorlisteners = new ArrayList<BarxErrorListener>();
     Boolean serviceStatus = false;
     Context context = null;
@@ -97,6 +97,8 @@ public class BaseServicePostClientSL<T> extends AsyncTask<String, Void, String> 
 
             DefaultHttpClient httpClient = new DefaultHttpClient(httpParameters);
             HttpPost httpPost = new HttpPost(uri);
+
+
             if (!isBasicHttpBinding()) {
                 String SOAPRequestXML = "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\">\n";
                 SOAPRequestXML += "<s:Body>\n";
@@ -135,7 +137,7 @@ public class BaseServicePostClientSL<T> extends AsyncTask<String, Void, String> 
                 httpPost.setEntity(se);
                 methodName = uriParam;
 
-            }
+           }
 
             HttpResponse response = httpClient.execute(httpPost);
 
@@ -156,6 +158,8 @@ public class BaseServicePostClientSL<T> extends AsyncTask<String, Void, String> 
                     if (isIsGzipEncode()) {
                         responseData = ServiceUtil.EncodeGZipStream(inputStream);
                     } else {
+
+                        //***************
                         responseData = ServiceUtil.EncodeUTF8InputStream(inputStream);
                     }
 
@@ -238,22 +242,26 @@ public class BaseServicePostClientSL<T> extends AsyncTask<String, Void, String> 
         errorlisteners.add(l);
     }
 
-    public synchronized void removeServiceClientListener(BarxPostErrorListener<T> l) {
+    public synchronized void removeServiceClientListener(BarxPostListener<T> l) {
         _listeners.remove(l);
     }
 
-    public synchronized void addServiceClientListener(BarxPostErrorListener<T> l) {
+    public synchronized void addServiceClientListener(BarxPostListener<T> l) {
         _listeners.add(l);
     }
 
     private synchronized void fireResponseEvent(String responseData) {
 
-        ResponseServiceModel<T> responseEvent = new ResponseServiceModel<T>(this, this._serviceName, responseData, serviceStatus, errorMessage);
-        responseEvent.setStream(inputStream);
-        responseEvent.setSendData(sendData);
-        responseEvent.setIsArrived(isArrived);
-        responseEvent.setSentParams(nameValuePair);
-        responseEvent.setMethodName(methodName);
+
+        ResponseEventModel<T> responseEvent = new ResponseEventModel<T>(this);
+        responseEvent.setServiceName(this._serviceName);
+        responseEvent.setSendData(this.sendData);
+        responseEvent.setErrorMessage(this.errorMessage);
+        responseEvent.setStream(this.inputStream);
+        responseEvent.setIsArrived(this.isArrived);
+        responseEvent.setServiceStatus(this.serviceStatus);
+        responseEvent.setMethodName(this.methodName);
+        responseEvent.setResponseData(responseData);
         if (serviceStatus) {
 
             //	ServiceErrorHelper helper = new ServiceErrorHelper();
@@ -268,7 +276,7 @@ public class BaseServicePostClientSL<T> extends AsyncTask<String, Void, String> 
                 }
 
             } else {
-                for (BarxPostErrorListener<T> listener : _listeners) {
+                for (BarxPostListener<T> listener : _listeners) {
                     listener.onPOSTCommit(responseEvent);
                 }
             }

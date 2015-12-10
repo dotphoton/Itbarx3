@@ -1,6 +1,6 @@
-package com.itbarx.error.listener;
+package com.itbarx.service.error;
 
-import com.itbarx.error.model.BarxErrorModel;
+import com.itbarx.service.error.BarxErrorModel;
 
 /**
  * TODO: Add a class header comment!

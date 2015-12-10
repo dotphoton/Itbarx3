@@ -3,11 +3,11 @@ package com.itbarx.activity;
 import com.itbarx.R;
 import com.itbarx.adapter.TimelineFragmentListAdapter;
 import com.itbarx.application.ItbarxGlobal;
-import com.itbarx.error.common.ResponseServiceModel;
 import com.itbarx.custom.component.ButtonRegular;
 import com.itbarx.custom.component.TextViewRegular;
 import com.itbarx.enums.Fragments;
-import com.itbarx.error.model.BarxErrorModel;
+import com.itbarx.service.ResponseEventModel;
+import com.itbarx.service.error.BarxErrorModel;
 import com.itbarx.listener.OneShotOnClickListener;
 import com.itbarx.listener.PostProcessesServiceListener;
 import com.itbarx.model.account.AccountGetUserByLoginInfoModel;
@@ -103,7 +103,7 @@ public class F_TimelineFragment extends Fragment {
 
 	PostProcessesServiceListener<String> postProcessesServiceListener = new PostProcessesServiceListener<String>() {
 
-		@Override public void onComplete(ResponseServiceModel<String> onComplete) {
+		@Override public void onComplete(ResponseEventModel<String> onComplete) {
 			t_homeActivity.dismissProgress();
 		}
 

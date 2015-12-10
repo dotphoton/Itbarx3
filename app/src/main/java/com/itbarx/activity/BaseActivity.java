@@ -225,7 +225,7 @@ public abstract class BaseActivity extends ActivityGroup {
 
 	}
 
-	public static interface ResultCallbackIF {
+	public  interface ResultCallbackIF {
 
 		public void resultOk(Intent data);
 

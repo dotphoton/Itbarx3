@@ -1,28 +1,22 @@
 package com.itbarx.activity;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Environment;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
-import com.itbarx.BuildConfig;
 import com.itbarx.R;
 import com.itbarx.application.ItbarxGlobal;
 import com.itbarx.common.FileAttribute;
 import com.itbarx.custom.component.ButtonBold;
-import com.itbarx.error.common.ResponseServiceModel;
-import com.itbarx.error.model.BarxErrorModel;
+import com.itbarx.service.ResponseEventModel;
+import com.itbarx.service.error.BarxErrorModel;
 import com.itbarx.listener.OneShotOnClickListener;
 import com.itbarx.listener.PostProcessesServiceListener;
 import com.itbarx.model.post.PostAddPostModel;
@@ -213,7 +207,7 @@ public class MediaPublishActivity extends BaseActivity {
 		}
 
 		@Override
-		public void onComplete(ResponseServiceModel<String> onComplete) {
+		public void onComplete(ResponseEventModel<String> onComplete) {
 
 		}
 

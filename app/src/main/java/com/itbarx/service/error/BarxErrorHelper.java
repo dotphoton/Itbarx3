@@ -1,7 +1,6 @@
-package com.itbarx.error.util;
+package com.itbarx.service.error;
 
-import com.itbarx.error.json.BarxErrorModelParser;
-import com.itbarx.error.model.BarxErrorModel;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,9 +28,11 @@ public class BarxErrorHelper {
 
     public BarxErrorModel getServiceErrorModel(String response) {
         BarxErrorModel errorModel = null;
+        BarxErrorModelParser parser=null;
         if (hasJsonErrorCode(response)) {
 
-            BarxErrorModelParser parser = new BarxErrorModelParser();
+
+            parser =new BarxErrorModelParser();
             errorModel= parser.getErrModelParserFromJson(response);
         }
         return errorModel;

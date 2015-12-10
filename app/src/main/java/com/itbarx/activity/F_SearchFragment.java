@@ -3,11 +3,10 @@ package com.itbarx.activity;
 import com.itbarx.R;
 import com.itbarx.adapter.SearchFragmentGridAdapter;
 import com.itbarx.application.ItbarxGlobal;
-import com.itbarx.error.common.ResponseServiceModel;
-
 import com.itbarx.custom.component.EditTextRegular;
 import com.itbarx.custom.component.TextViewRegular;
-import com.itbarx.error.model.BarxErrorModel;
+import com.itbarx.service.ResponseEventModel;
+import com.itbarx.service.error.BarxErrorModel;
 import com.itbarx.listener.FollowingProcessesServiceListener;
 import com.itbarx.listener.OneShotOnClickListener;
 import com.itbarx.listener.SearchProcessesServiceListener;
@@ -22,7 +21,6 @@ import com.itbarx.utils.TextSizeUtil;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -111,7 +109,7 @@ public class F_SearchFragment extends Fragment {
 		t_searchActivity.showProgress(getString(R.string.ItbarxConnecting));
 	}
 
-	FollowingProcessesServiceListener followingProcessesServiceListener = new FollowingProcessesServiceListener() {
+	FollowingProcessesServiceListener followingProcessesServiceListener = new FollowingProcessesServiceListener<String>() {
 		@Override public void add(String isAdded) {
 			t_searchActivity.dismissProgress();
 		}
@@ -162,7 +160,7 @@ public class F_SearchFragment extends Fragment {
 			t_searchActivity.dismissProgress();
 		}
 
-		@Override public void onComplete(ResponseServiceModel onComplete) {
+		@Override public void onComplete(ResponseEventModel<String> onComplete) {
 			t_searchActivity.dismissProgress();
 		}
 
@@ -172,7 +170,7 @@ public class F_SearchFragment extends Fragment {
 	};
 	
 	
-	SearchProcessesServiceListener searchProcessesServiceListener = new SearchProcessesServiceListener() {
+	SearchProcessesServiceListener searchProcessesServiceListener = new SearchProcessesServiceListener<String>() {
 		@Override public void getSearchUserForAutoCompleteList(List searchUserForAutoCompleteResultModel) {
 			t_searchActivity.dismissProgress();
 		}
@@ -198,7 +196,7 @@ public class F_SearchFragment extends Fragment {
 			
 		}
 
-		@Override public void onComplete(ResponseServiceModel onComplete) {
+		@Override public void onComplete(ResponseEventModel<String> onComplete) {
 			t_searchActivity.dismissProgress();
 		}
 

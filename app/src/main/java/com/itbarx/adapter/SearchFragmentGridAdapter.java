@@ -9,19 +9,11 @@ import android.widget.ImageView;
 
 import com.itbarx.R;
 import com.itbarx.activity.BaseActivity;
-import com.itbarx.application.ItbarxGlobal;
 import com.itbarx.custom.component.TextViewGridItemBold;
-import com.itbarx.error.common.ResponseServiceModel;
-import com.itbarx.error.model.BarxErrorModel;
 import com.itbarx.listener.OneShotOnClickListener;
-import com.itbarx.listener.SearchProcessesServiceListener;
 import com.itbarx.model.follow.FollowerListByFollowingIdModel;
-import com.itbarx.model.search.SearchModel;
-import com.itbarx.model.search.SearchUserListResultModel;
-import com.itbarx.sl.SearchProcessesServiceSL;
 import com.itbarx.utils.BarkUtility;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

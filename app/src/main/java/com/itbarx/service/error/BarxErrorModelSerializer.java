@@ -1,4 +1,4 @@
-package com.itbarx.error.model;
+package com.itbarx.service.error;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;

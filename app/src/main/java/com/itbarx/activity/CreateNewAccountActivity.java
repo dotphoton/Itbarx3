@@ -2,13 +2,12 @@ package com.itbarx.activity;
 
 import com.itbarx.R;
 import com.itbarx.application.ItbarxGlobal;
-import com.itbarx.error.common.ResponseServiceModel;
-
 import com.itbarx.custom.component.ButtonBold;
 import com.itbarx.custom.component.EditTextRegular;
 import com.itbarx.custom.component.TextViewBold;
 import com.itbarx.custom.component.TextViewRegular;
-import com.itbarx.error.model.BarxErrorModel;
+import com.itbarx.service.ResponseEventModel;
+import com.itbarx.service.error.BarxErrorModel;
 import com.itbarx.listener.AccountProcessesServiceListener;
 import com.itbarx.listener.OneShotOnClickListener;
 import com.itbarx.model.account.AccountGetUserByLoginInfoModel;
@@ -181,7 +180,7 @@ public class CreateNewAccountActivity extends BaseActivity implements Communicat
 			dismissProgress();
 		}
 
-		@Override public void onComplete(ResponseServiceModel onComplete) {
+		@Override public void onComplete(ResponseEventModel onComplete) {
 			dismissProgress();
 		}
 

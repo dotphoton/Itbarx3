@@ -6,13 +6,12 @@ import java.util.List;
 
 
 import com.itbarx.R;
-import com.itbarx.error.common.ResponseServiceModel;
-
-import com.itbarx.error.common.ServiceResponseModel;
+import com.itbarx.service.ResponseEventModel;
+import com.itbarx.service.ServiceResponseModel;
 import com.itbarx.enums.FollowingProcessLinks;
 import com.itbarx.enums.GlobalDataForWS;
-import com.itbarx.error.model.BarxErrorModel;
-import com.itbarx.error.sl.BasePostServiceSL;
+import com.itbarx.service.error.BarxErrorModel;
+import com.itbarx.service.BasePostServiceSL;
 import com.itbarx.error.sl.BaseServicePostClientSL;
 import com.itbarx.json.FollowModelParserJSON;
 import com.itbarx.listener.FollowingProcessesServiceListener;
@@ -263,7 +262,7 @@ public class FollowingProcessesServiceSL extends BasePostServiceSL<String> {
 	// ************************//
 
 	@Override
-	public void onPOSTCommit(ResponseServiceModel<String> responseEvent) {
+	public void onPOSTCommit(ResponseEventModel<String>  responseEvent) {
 	String result = responseEvent.getResponseData();
 	// ---ADD---
 	if (responseEvent.getMethodName().equalsIgnoreCase(FollowingProcessLinks.ADD_LINK.toString())) {
@@ -488,12 +487,6 @@ public class FollowingProcessesServiceSL extends BasePostServiceSL<String> {
 	}
 	}
 
-	/*@Override
-	public void onGETReceive(ResponseServiceModel<String> responseEvent) {
-		String result = responseEvent.getResponseData();
-
-	}
-*/
 	@Override
 	public void onError(BarxErrorModel responseServiceErrorModel) {
 	followingProcessesServiceListener.onError(responseServiceErrorModel);

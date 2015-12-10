@@ -2,7 +2,7 @@ package com.itbarx.listener;
 
 import java.util.List;
 
-import com.itbarx.error.listener.BaseServiceListener;
+import com.itbarx.service.BaseServiceListener;
 import com.itbarx.model.post.PostGetPostDetailModel;
 import com.itbarx.model.post.PostGetWallInfoModel;
 import com.itbarx.model.post.PostNewPostListModel;

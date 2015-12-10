@@ -2,7 +2,7 @@ package com.itbarx.listener;
 
 import java.util.List;
 
-import com.itbarx.error.listener.BaseServiceListener;
+import com.itbarx.service.BaseServiceListener;
 import com.itbarx.model.follow.FollowerListByFollowingIdModel;
 import com.itbarx.model.follow.FollowingListByFollowerIdModel;
 import com.itbarx.model.follow.PendingListByFollowingIdModel;

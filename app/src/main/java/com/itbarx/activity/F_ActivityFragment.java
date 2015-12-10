@@ -3,12 +3,11 @@ package com.itbarx.activity;
 import com.itbarx.R;
 import com.itbarx.adapter.ActivityFragmentListAdapter;
 import com.itbarx.application.ItbarxGlobal;
-import com.itbarx.error.common.ResponseServiceModel;
-
 import com.itbarx.custom.component.ButtonRegular;
 import com.itbarx.custom.component.TextViewRegular;
 import com.itbarx.enums.Fragments;
-import com.itbarx.error.model.BarxErrorModel;
+import com.itbarx.service.ResponseEventModel;
+import com.itbarx.service.error.BarxErrorModel;
 import com.itbarx.listener.ActivityProcessesServiceListener;
 import com.itbarx.listener.OneShotOnClickListener;
 import com.itbarx.model.activity.ActivityListModel;
@@ -98,7 +97,7 @@ public class F_ActivityFragment extends Fragment {
 
 	ActivityProcessesServiceListener<String> activityProcessesServiceListener = new ActivityProcessesServiceListener<String>() {
 
-		@Override public void onComplete(ResponseServiceModel<String> onComplete) {
+		@Override public void onComplete(ResponseEventModel<String> onComplete) {
 			t_secondActivity.dismissProgress();
 
 		}

@@ -25,8 +25,8 @@ import com.itbarx.application.ItbarxGlobal;
 import com.itbarx.common.DownloadManagerAsync;
 import com.itbarx.custom.component.TextViewBold;
 import com.itbarx.custom.component.TextViewRegular;
-import com.itbarx.error.common.ResponseServiceModel;
-import com.itbarx.error.model.BarxErrorModel;
+import com.itbarx.service.ResponseEventModel;
+import com.itbarx.service.error.BarxErrorModel;
 import com.itbarx.listener.LikeProcessesServiceListener;
 import com.itbarx.listener.OneShotOnClickListener;
 import com.itbarx.listener.PostProcessesServiceListener;
@@ -45,13 +45,18 @@ import com.itbarx.model.post.PostWallListForUserModel;
 import com.itbarx.model.rebark.ReBarkGetPostSharedUserListByPostIdModel;
 import com.itbarx.model.rebark.ReBarkGetSharedPostListByUserIdModel;
 import com.itbarx.model.rebark.ReBarkSendPostSharedUserModel;
+import com.itbarx.model.reply.ReplyListModel;
 import com.itbarx.model.reply.ReplySendModel;
 import com.itbarx.model.send_to_fragment.LikeData;
 import com.itbarx.model.send_to_fragment.ReBarksData;
+import com.itbarx.model.send_to_fragment.ReplyData;
 import com.itbarx.sl.LikeProcessesServiceSL;
+import com.itbarx.sl.LikeSL;
 import com.itbarx.sl.PostProcessesServiceSL;
 import com.itbarx.sl.ReBarkProcessesServiceSL;
+import com.itbarx.sl.ReBarkSL;
 import com.itbarx.sl.ReplyProcessesServiceSL;
+import com.itbarx.sl.ReplySL;
 import com.itbarx.utils.BarkUtility;
 import com.itbarx.utils.TextSizeUtil;
 
@@ -96,13 +101,16 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 	private static final int WIDTH_5_4;
 	private ArrayList<LikeData> likeDataList;
 	private ArrayList<ReBarksData> reBarksDataList;
+	private ArrayList<ReplyData> replyDataList;
 	private static final String KEY_LIKE_DATA_LIST;
 	private static final String KEY_REBARK_DATA_LIST;
+	private static final String KEY_REPLY_DATA_LIST;
 
 	static {
 		WIDTH_5_4 = (int) (ItbarxGlobal.getDisplayPxWidth() / 5 * 4);
 		KEY_LIKE_DATA_LIST = "KeyLikeData";
 		KEY_REBARK_DATA_LIST = "KeyReBarkData";
+		KEY_REPLY_DATA_LIST = "KeyReplyData";
 	}
 
 	@Override protected int getLayoutResourceId() {
@@ -163,8 +171,10 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 				@Override public void onOneShotClick(View v) {
 					//-------------------------------------------------------------------
 					LikeUserListModel likeUserListModel = new LikeUserListModel("48d8ceb2-de98-4dd7-b53b-000049db2753", "1", "20");
-					LikeProcessesServiceSL likeProcessesServiceSL = new LikeProcessesServiceSL(getContext(), likeProcessesServiceListener, R.string.root_service_url);
-					likeProcessesServiceSL.setGetLikeUsersByPostId(likeUserListModel);
+					//LikeProcessesServiceSL likeProcessesServiceSL = new LikeProcessesServiceSL(getContext(), likeProcessesServiceListener, R.string.root_service_url);
+					//likeProcessesServiceSL.setGetLikeUsersByPostId(likeUserListModel);
+					LikeSL likeSL = new LikeSL(getContext(), likeProcessesServiceListener, R.string.root_service_url);
+					likeSL.setGetLikeUsersByPostId(likeUserListModel);
 					showProgress(getString(R.string.ItbarxConnecting));
 					//-------------------------------------------------------------------
 
@@ -172,18 +182,22 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 			});
 			imgReBark.setOnClickListener(new OneShotOnClickListener(500) {
 				@Override public void onOneShotClick(View v) {
-					ReBarkSendPostSharedUserModel sendUserModel = new ReBarkSendPostSharedUserModel("6B2BDE44-8B31-4874-9EA9-00000437C69F", "1", "20");
-					ReBarkProcessesServiceSL reBarkProcessesServiceSL = new ReBarkProcessesServiceSL(getContext(), reBarkProcessesServiceListener, R.string.root_service_url);
-					reBarkProcessesServiceSL.setGetPostSharedUser(sendUserModel);
+				ReBarkSendPostSharedUserModel sendUserModel = new ReBarkSendPostSharedUserModel("6B2BDE44-8B31-4874-9EA9-00000437C69F", "1", "20");
+					//ReBarkProcessesServiceSL reBarkProcessesServiceSL = new ReBarkProcessesServiceSL(getContext(), reBarkProcessesServiceListener, R.string.root_service_url);
+					//	reBarkProcessesServiceSL.setGetPostSharedUser(sendUserModel);
+					ReBarkSL reBarkSL = new ReBarkSL(getContext(), reBarkProcessesServiceListener, R.string.root_service_url);
+					reBarkSL.setGetPostSharedUser(sendUserModel);
 					showProgress(getString(R.string.ItbarxConnecting));
 				}
 			});
 
 			imgReply.setOnClickListener(new OneShotOnClickListener(500) {
 				@Override public void onOneShotClick(View v) {
-					ReplySendModel replySendModel = new ReplySendModel("40BF425A-0853-4DF0-868B-6848978E6239","1","10");
-					ReplyProcessesServiceSL replyProcessesServiceSL = new ReplyProcessesServiceSL(getContext(),null,R.string.root_service_url);
-					replyProcessesServiceSL.setGetPostRepliesList(replySendModel);
+					ReplySendModel replySendModel = new ReplySendModel("40BF425A-0853-4DF0-868B-6848978E6239", "1", "10");
+				//	ReplyProcessesServiceSL replyProcessesServiceSL = new ReplyProcessesServiceSL(getContext(), replyProcessesServiceListener, R.string.root_service_url);
+				//	replyProcessesServiceSL.setGetPostRepliesList(replySendModel);
+					ReplySL replySL = new ReplySL(getContext(), replyProcessesServiceListener, R.string.root_service_url);
+					replySL.setGetPostRepliesList(replySendModel);
 					showProgress(getString(R.string.ItbarxConnecting));
 
 				}
@@ -272,7 +286,7 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 
 		}
 
-		@Override public void onComplete(ResponseServiceModel<String> onComplete) {
+		@Override public void onComplete(ResponseEventModel<String> onComplete) {
 
 		}
 
@@ -420,10 +434,10 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 					LikeData data = new LikeData(null, models.getItBarxUserName(), models.getName(), "true");
 
 					likeDataList.add(data);
-					Log.d("data list : ", data.getName() + " " + data.getItBarxUserName());
+					Log.d("like data list : ", data.getName() + " " + data.getItBarxUserName());
 				}
 			}
-			Log.d("data list size : ", likeDataList.size() + "");
+			Log.d("like data list size : ", likeDataList.size() + "");
 
 			Bundle bundle = new Bundle();
 			bundle.putParcelableArrayList(KEY_LIKE_DATA_LIST, likeDataList);
@@ -453,7 +467,7 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 
 		}
 
-		@Override public void onComplete(ResponseServiceModel<String> onComplete) {
+		@Override public void onComplete(ResponseEventModel<String> onComplete) {
 
 		}
 
@@ -461,7 +475,6 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 
 		}
 	};
-
 
 	//RE_BARK SERVICES
 	ReBarkProcessesServiceListener<String> reBarkProcessesServiceListener = new ReBarkProcessesServiceListener<String>() {
@@ -481,16 +494,15 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 		@Override
 		public void getPostSharedUserList(List<ReBarkGetPostSharedUserListByPostIdModel> reBarkPostSharedUserListModel) {
 			dismissProgress();
-			reBarksDataList=new ArrayList<>();
+			reBarksDataList = new ArrayList<>();
 			if (reBarkPostSharedUserListModel != null) {
 				for (ReBarkGetPostSharedUserListByPostIdModel models : reBarkPostSharedUserListModel) {
 					ReBarksData data = new ReBarksData(null, models.getSharerName(), models.getSharerName(), "true");
-
 					reBarksDataList.add(data);
-					Log.d("data list : ", data.getName() + " " + data.getItBarxUserName());
+					Log.d("rebark data list : ", data.getName() + " " + data.getItBarxUserName());
 				}
 			}
-			Log.d("data list size : ", reBarksDataList.size() + "");
+			Log.d("reBarkData list size : ", reBarksDataList.size() + "");
 
 			Bundle bundle = new Bundle();
 			bundle.putParcelableArrayList(KEY_REBARK_DATA_LIST, reBarksDataList);
@@ -526,7 +538,7 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 
 		}
 
-		@Override public void onComplete(ResponseServiceModel<String> onComplete) {
+		@Override public void onComplete(ResponseEventModel<String> onComplete) {
 
 		}
 
@@ -535,19 +547,31 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 		}
 	};
 
+
 	//REPLY SERVICES
-	ReplyProcessesServiceListener replyProcessesServiceListener = new ReplyProcessesServiceListener() {
+
+	ReplyProcessesServiceListener replyProcessesServiceListener = new ReplyProcessesServiceListener<String>() {
 		@Override public void deleteReply(String idDeleted) {
 
 		}
 
-		@Override public void getPostRepliesList(List replyListModel) {
-dismissProgress();
+		@Override public void getPostRepliesList(List<ReplyListModel> replyListModel) {
+			dismissProgress();
 
-					/*
+			replyDataList = new ArrayList<>();
+			if (replyListModel != null) {
+				for (ReplyListModel model : replyListModel) {
+					ReplyData data = new ReplyData("", "", "", model.getPostText(), "", model.getAddedDate(), model.getItBarxUserName());
+					replyDataList.add(data);
+					Log.d("reply data list : ", data.getTimeAgo() + " " + data.getItBarxUserName());
+				}
 
+			}
+			Log.d("reply data list size : ", replyDataList.size() + "");
 
-					ft = fm.beginTransaction();
+			Bundle bundle = new Bundle();
+			bundle.putParcelableArrayList(KEY_REPLY_DATA_LIST, replyDataList);
+			ft = fm.beginTransaction();
 			if (sFragmentReply != null && sFragmentReply.isAdded()) {
 				ft.remove(sFragmentReply);
 			}
@@ -559,7 +583,7 @@ dismissProgress();
 
 			}
 			sFragmentReply = new S_Fragment_Reply(BarkActivity.this);
-				//	sFragmentReply.setArguments(bundle);
+			sFragmentReply.setArguments(bundle);
 			ft.add(R.id.bark_activity_screen_side_panel, sFragmentReply);
 			ft.show(sFragmentReply);
 			ft.commit();
@@ -568,14 +592,15 @@ dismissProgress();
 					drawerLayout.openDrawer(sidePanel);
 				}
 			});
-					*/
+
+
 		}
 
 		@Override public void addReply(String isAdded) {
 
 		}
 
-		@Override public void onComplete(ResponseServiceModel onComplete) {
+		@Override public void onComplete(ResponseEventModel<String> onComplete) {
 
 		}
 
@@ -583,4 +608,5 @@ dismissProgress();
 
 		}
 	};
+
 }

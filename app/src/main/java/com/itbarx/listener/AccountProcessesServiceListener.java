@@ -1,6 +1,6 @@
 package com.itbarx.listener;
 
-import com.itbarx.error.listener.BaseServiceListener;
+import com.itbarx.service.BaseServiceListener;
 import com.itbarx.model.account.AccountGetUserByLoginInfoModel;
 import com.itbarx.model.account.EditProfileModel;
 import com.itbarx.model.account.GetEditProfileModel;

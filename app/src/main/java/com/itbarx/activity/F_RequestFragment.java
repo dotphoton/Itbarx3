@@ -2,12 +2,11 @@ package com.itbarx.activity;
 
 import com.itbarx.R;
 import com.itbarx.adapter.RequestFragmentListAdapter;
-import com.itbarx.error.common.ResponseServiceModel;
-
 import com.itbarx.custom.component.ButtonRegular;
 import com.itbarx.custom.component.TextViewRegular;
 import com.itbarx.enums.Fragments;
-import com.itbarx.error.model.BarxErrorModel;
+import com.itbarx.service.ResponseEventModel;
+import com.itbarx.service.error.BarxErrorModel;
 import com.itbarx.listener.FollowingProcessesServiceListener;
 import com.itbarx.listener.OneShotOnClickListener;
 import com.itbarx.model.follow.FollowerListByFollowingIdModel;
@@ -150,7 +149,7 @@ public class F_RequestFragment extends Fragment {
 			t_secondActivity.dismissProgress();
 		}
 
-		@Override public void onComplete(ResponseServiceModel<String> onComplete) {
+		@Override public void onComplete(ResponseEventModel<String> onComplete) {
 			t_secondActivity.dismissProgress();
 		}
 

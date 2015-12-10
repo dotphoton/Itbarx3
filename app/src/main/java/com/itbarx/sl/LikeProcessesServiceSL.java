@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.itbarx.R;
-import com.itbarx.error.common.ResponseServiceModel;
-import com.itbarx.error.common.ServiceResponseModel;
+import com.itbarx.service.ResponseEventModel;
+import com.itbarx.service.ServiceResponseModel;
 import com.itbarx.enums.GlobalDataForWS;
 import com.itbarx.enums.LikeProcessesLinks;
-import com.itbarx.error.model.BarxErrorModel;
-import com.itbarx.error.sl.BasePostServiceSL;
+import com.itbarx.service.error.BarxErrorModel;
+import com.itbarx.service.BasePostServiceSL;
 import com.itbarx.error.sl.BaseServicePostClientSL;
 import com.itbarx.json.LikeModelParserJSON;
 import com.itbarx.listener.LikeProcessesServiceListener;
@@ -137,7 +137,7 @@ public class LikeProcessesServiceSL extends BasePostServiceSL<String> {
 	// ************************//
 
 	@Override
-	public void onPOSTCommit(ResponseServiceModel<String> responseEvent) {
+	public void onPOSTCommit(ResponseEventModel<String> responseEvent) {
 	String result = responseEvent.getResponseData();
 
 	// ADD LIKE
@@ -230,13 +230,7 @@ public class LikeProcessesServiceSL extends BasePostServiceSL<String> {
 	}
 	}
 
-	/*
-	@Override
-	public void onGETReceive(ResponseServiceModel<String> responseEvent) {
-		String result = responseEvent.getResponseData();
 
-	}
-*/
 	@Override
 	public void onError(BarxErrorModel responseServiceErrorModel) {
 	likeProcessesServiceListener.onError(responseServiceErrorModel);

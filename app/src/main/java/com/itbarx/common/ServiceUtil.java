@@ -229,7 +229,7 @@ public class ServiceUtil {
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
-
+		Log.e("service response read",ex.getMessage());
 		}
 		return sb.toString();
 	}

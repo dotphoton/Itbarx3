@@ -2,13 +2,7 @@ package com.itbarx.activity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.Point;
-import android.os.AsyncTask;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.TypedValue;
-import android.view.Display;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
@@ -20,8 +14,8 @@ import com.itbarx.custom.component.ButtonBold;
 import com.itbarx.custom.component.EditTextRegular;
 import com.itbarx.custom.component.TextViewBold;
 import com.itbarx.custom.component.TextViewRegular;
-import com.itbarx.error.common.ResponseServiceModel;
-import com.itbarx.error.model.BarxErrorModel;
+import com.itbarx.service.ResponseEventModel;
+import com.itbarx.service.error.BarxErrorModel;
 import com.itbarx.listener.AccountProcessesServiceListener;
 import com.itbarx.listener.OneShotOnClickListener;
 import com.itbarx.model.account.AccountForgotSendMailModel;
@@ -33,16 +27,8 @@ import com.itbarx.model.account.EditProfileModel;
 import com.itbarx.model.account.GetEditProfileIdModel;
 import com.itbarx.model.account.GetEditProfileModel;
 import com.itbarx.model.account.LoginModel;
-import com.itbarx.nuance.DictationHTTPClient;
 import com.itbarx.sl.AccountProcessesServiceSL;
 import com.itbarx.utils.TextSizeUtil;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.InputStreamEntity;
-
-import java.net.URI;
 
 public class LoginActivity extends BaseActivity {
 
@@ -318,7 +304,7 @@ public class LoginActivity extends BaseActivity {
 			showAlert(onError.getErrMessage());
 		}
 
-		@Override public void onComplete(ResponseServiceModel<String> onComplete) {
+		@Override public void onComplete(ResponseEventModel<String> onComplete) {
 			dismissProgress();
 
 		}
