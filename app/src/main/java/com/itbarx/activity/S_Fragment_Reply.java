@@ -33,8 +33,10 @@ public class S_Fragment_Reply extends Fragment {
 	public S_Fragment_Reply() {
 		// Required empty public constructor
 	}
-	public S_Fragment_Reply(BarkActivity activity) {
-		this.activity = activity  ;
+	public static S_Fragment_Reply newInstance(BarkActivity activity) {
+		S_Fragment_Reply myFragment = new S_Fragment_Reply();
+		myFragment.activity = activity;
+		return myFragment;
 	}
 
 

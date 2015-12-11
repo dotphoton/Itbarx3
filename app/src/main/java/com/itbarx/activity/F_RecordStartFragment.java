@@ -46,10 +46,10 @@ public class F_RecordStartFragment extends Fragment implements TextureView.Surfa
 	public F_RecordStartFragment() {
 	}
 
-	public F_RecordStartFragment(T_RecordActivity t_recordActivity) {
-
-		this.t_recordActivity = t_recordActivity;
-
+	public static F_RecordStartFragment newInstance(T_RecordActivity t_recordActivity) {
+		F_RecordStartFragment myFragment = new F_RecordStartFragment();
+		myFragment.t_recordActivity = t_recordActivity;
+		return myFragment;
 	}
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

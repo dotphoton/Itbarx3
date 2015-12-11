@@ -10,6 +10,7 @@ import android.widget.FrameLayout;
 
 import com.itbarx.R;
 import com.itbarx.enums.Fragments;
+import com.itbarx.exception.ExceptionHandler;
 
 /**
  * TODO: Add a class header comment!
@@ -35,9 +36,12 @@ public class T_ProfileActivity extends BaseActivity implements Communicator {
 		super.onCreate(savedInstanceState);
 
 	}
+	@Override protected void exceptionHandler() {
+		Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
+	}
 
 	@Override protected void initViews() {
-		setFragment(new F_ProfileFragment(T_ProfileActivity.this), new F_EditProfileFragment(T_ProfileActivity.this));
+		setFragment(F_ProfileFragment.newInstance(T_ProfileActivity.this),  F_EditProfileFragment.newInstance(T_ProfileActivity.this));
 
 	}
 

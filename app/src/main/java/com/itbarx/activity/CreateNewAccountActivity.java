@@ -6,6 +6,7 @@ import com.itbarx.custom.component.ButtonBold;
 import com.itbarx.custom.component.EditTextRegular;
 import com.itbarx.custom.component.TextViewBold;
 import com.itbarx.custom.component.TextViewRegular;
+import com.itbarx.exception.ExceptionHandler;
 import com.itbarx.service.ResponseEventModel;
 import com.itbarx.service.error.BarxErrorModel;
 import com.itbarx.listener.AccountProcessesServiceListener;
@@ -43,6 +44,9 @@ public class CreateNewAccountActivity extends BaseActivity implements Communicat
 		// TODO Auto-generated method stub
 		return CreateNewAccountActivity.this;
 	}
+	@Override protected void exceptionHandler() {
+		Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
+	}
 
 	@Override protected void initViews() {
 
@@ -69,6 +73,7 @@ public class CreateNewAccountActivity extends BaseActivity implements Communicat
 		txtUserAgreement.setOnClickListener(openUserAgreementClickListener);
 		setCompText();
 		signUp();
+		Integer.parseInt(" fssfs");
 	}
 
 	private void setCompText() {

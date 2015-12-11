@@ -7,6 +7,7 @@ import android.content.Context;
 import android.view.KeyEvent;
 
 import com.itbarx.R;
+import com.itbarx.exception.ExceptionHandler;
 
 /**
  * TODO: Add a class header comment!
@@ -19,10 +20,12 @@ public class T_SearchActivity extends BaseActivity {
 	@Override protected Context getContext() {
 		return T_SearchActivity.this;
 	}
-
+	@Override protected void exceptionHandler() {
+		Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
+	}
 	@Override protected void initViews() {
 
-		setFragment(new F_SearchFragment(T_SearchActivity.this));
+		setFragment(F_SearchFragment.newInstance(T_SearchActivity.this));
 	}
 
 	protected void setFragment(Fragment fragment1) {

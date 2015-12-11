@@ -42,13 +42,14 @@ public class F_TimelineFragment extends Fragment {
 	ListView timelineListView;
 	TextViewRegular txtTimelineToolbar;
 
-	@SuppressLint("ValidFragment") F_TimelineFragment() {
+	public F_TimelineFragment() {
 	}
 
-	F_TimelineFragment(T_HomeActivity t_homeActivity) {
-		this.t_homeActivity = t_homeActivity;
+	public static F_TimelineFragment newInstance(T_HomeActivity t_homeActivity) {
+		F_TimelineFragment myFragment = new F_TimelineFragment();
+		myFragment.t_homeActivity = t_homeActivity;
+		return myFragment;
 	}
-
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		return inflater.inflate(R.layout.fragment_timeline_screen, container, false);

@@ -38,9 +38,10 @@ public class F_ActivityFragment extends Fragment {
 
 	}
 
-	public F_ActivityFragment(T_SecondActivity activity) {
-		t_secondActivity = activity;
-
+	public static F_ActivityFragment newInstance(T_SecondActivity t_secondActivity) {
+		F_ActivityFragment myFragment = new F_ActivityFragment();
+		myFragment.t_secondActivity = t_secondActivity;
+		return myFragment;
 	}
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -63,6 +64,7 @@ public class F_ActivityFragment extends Fragment {
 		//activityListView.setAdapter(null);
 		getActivityList(sendModel());
 		setTextSize();
+
 	}
 
 	private void setTextSize() {

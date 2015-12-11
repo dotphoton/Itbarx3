@@ -31,6 +31,7 @@ import com.itbarx.R;
 import com.itbarx.application.ItbarxGlobal;
 import com.itbarx.common.FileAttribute;
 import com.itbarx.custom.component.TextViewBold;
+import com.itbarx.exception.ExceptionHandler;
 import com.itbarx.listener.OneShotOnClickListener;
 import com.itbarx.utils.DateUtility;
 import com.itbarx.utils.FileUtility;
@@ -79,6 +80,9 @@ public class MediaRecorderActivity extends BaseActivity implements SurfaceHolder
 	@Override protected Context getContext() {
 		// TODO Auto-generated method stub
 		return MediaRecorderActivity.this;
+	}
+	@Override protected void exceptionHandler() {
+		Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
 	}
 
 	@Override protected void initViews() {

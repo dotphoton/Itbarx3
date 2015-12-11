@@ -12,6 +12,7 @@ import android.widget.FrameLayout;
 import com.itbarx.R;
 import com.itbarx.application.ItbarxGlobal;
 import com.itbarx.enums.Fragments;
+import com.itbarx.exception.ExceptionHandler;
 
 public class T_RecordActivity extends BaseActivity implements Communicator {
 
@@ -30,15 +31,16 @@ public class T_RecordActivity extends BaseActivity implements Communicator {
 	@Override protected Context getContext() {
 		return T_RecordActivity.this;
 	}
+	@Override protected void exceptionHandler() {
+		Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
+	}
 
-	F_RecordStartFragment recordStartFragment;
 	@Override protected void initViews() {
-		recordStartFragment=new F_RecordStartFragment(T_RecordActivity.this);
-		setFragments(recordStartFragment, null);
+		setFragments(F_RecordStartFragment.newInstance(T_RecordActivity.this));
 	}
 
 	//adds fragments into activity.
-	protected void setFragments(Fragment fragment1, Fragment fragment2) {
+	protected void setFragments(Fragment fragment1) {
 		FragmentManager fragmentManager = getFragmentManager();
 		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 		fragmentTransaction.add(R.id.start1_fragment_container, fragment1, "start");

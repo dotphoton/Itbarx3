@@ -41,12 +41,16 @@ public class F_PopularFragment extends Fragment {
 	private ListView reqVidListView;
 	private TextViewRegular txtPopularToolbar;
 
-	F_PopularFragment() {
+	public F_PopularFragment() {
+
 	}
 
-	F_PopularFragment(T_HomeActivity t_homeActivity) {
-		this.t_homeActivity = t_homeActivity;
-	}
+public static F_PopularFragment newInstance(T_HomeActivity t_homeActivity) {
+	F_PopularFragment myFragment = new F_PopularFragment();
+myFragment.t_homeActivity = t_homeActivity;
+	return myFragment;
+}
+
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.fragment_popular_screen, container, false);
@@ -65,7 +69,7 @@ public class F_PopularFragment extends Fragment {
 		comm = (Communicator) getActivity();
 		btnOpenTimeline = (ButtonRegular) getActivity().findViewById(R.id.popular_fragment_timeline_button);
 		btnOpenTimeline.setOnClickListener(openTimelineClickListener);
-		btnPopular = (ButtonRegular) getActivity().findViewById(R.id.popular_fragment_popular_button);
+		btnPopular = (ButtonRegular) t_homeActivity.findViewById(R.id.popular_fragment_popular_button);
 		txtPopularToolbar = (TextViewRegular) t_homeActivity.findViewById(R.id.popular_toolbar_text);
 
 		//fills up the listview

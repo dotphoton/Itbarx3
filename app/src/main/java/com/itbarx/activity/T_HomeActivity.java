@@ -10,6 +10,7 @@ import android.widget.FrameLayout;
 
 import com.itbarx.R;
 import com.itbarx.enums.Fragments;
+import com.itbarx.exception.ExceptionHandler;
 
 public class T_HomeActivity extends BaseActivity implements Communicator {
 	@Override protected int getLayoutResourceId() {
@@ -19,10 +20,14 @@ public class T_HomeActivity extends BaseActivity implements Communicator {
 	@Override protected Context getContext() {
 		return T_HomeActivity.this;
 	}
+	@Override protected void exceptionHandler() {
+		Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
+	}
 
 	@Override protected void initViews() {
 
-		setFragments(new F_PopularFragment(T_HomeActivity.this), new F_TimelineFragment(T_HomeActivity.this));
+		//setFragments(new F_PopularFragment(T_HomeActivity.this), new F_TimelineFragment(T_HomeActivity.this));
+		setFragments(F_PopularFragment.newInstance(T_HomeActivity.this), F_TimelineFragment.newInstance(T_HomeActivity.this));
 	}
 
 	//adds fragments into activity.

@@ -2,6 +2,7 @@ package com.itbarx.activity;
 
 import com.itbarx.R;
 import com.itbarx.application.ItbarxGlobal;
+import com.itbarx.exception.ExceptionHandler;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +21,9 @@ public class TabContainer extends BaseActivity {
 
 	@Override protected Context getContext() {
 		return TabContainer.this;
+	}
+	@Override protected void exceptionHandler() {
+		Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
 	}
 
 	@Override protected void initViews() {

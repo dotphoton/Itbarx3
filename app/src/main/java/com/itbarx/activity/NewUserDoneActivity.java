@@ -1,6 +1,7 @@
 package com.itbarx.activity;
 
 import com.itbarx.R;
+import com.itbarx.exception.ExceptionHandler;
 
 import android.content.Context;
 
@@ -15,10 +16,14 @@ public class NewUserDoneActivity extends BaseActivity {
 		// TODO Auto-generated method stub
 		return NewUserDoneActivity.this;
 	}
+	@Override protected void exceptionHandler() {
+		Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
+	}
 
 	@Override protected void initViews() {
 		// TODO Auto-generated method stub
 
 	}
+
 
 }

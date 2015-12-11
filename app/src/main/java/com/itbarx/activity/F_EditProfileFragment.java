@@ -48,8 +48,10 @@ public class F_EditProfileFragment extends Fragment {
 	public F_EditProfileFragment() {
 	}
 
-	public F_EditProfileFragment(T_ProfileActivity t_profileActivity) {
-		this.t_profileActivity = t_profileActivity;
+	public static F_EditProfileFragment newInstance(T_ProfileActivity t_profileActivity) {
+		F_EditProfileFragment myFragment = new F_EditProfileFragment();
+		myFragment.t_profileActivity = t_profileActivity;
+		return myFragment;
 	}
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

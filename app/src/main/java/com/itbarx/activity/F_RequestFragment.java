@@ -40,8 +40,10 @@ public class F_RequestFragment extends Fragment {
 	public F_RequestFragment() {
 	}
 
-	public F_RequestFragment(T_SecondActivity t_secondActivity) {
-		this.t_secondActivity = t_secondActivity;
+	public static F_RequestFragment newInstance(T_SecondActivity t_secondActivity) {
+		F_RequestFragment myFragment = new F_RequestFragment();
+		myFragment.t_secondActivity = t_secondActivity;
+		return myFragment;
 	}
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

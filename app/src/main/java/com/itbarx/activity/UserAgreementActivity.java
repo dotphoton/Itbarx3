@@ -4,6 +4,7 @@ import com.itbarx.R;
 import com.itbarx.custom.component.ButtonBold;
 import com.itbarx.custom.component.EditTextRegular;
 import com.itbarx.custom.component.TextViewRegular;
+import com.itbarx.exception.ExceptionHandler;
 import com.itbarx.listener.OneShotOnClickListener;
 import com.itbarx.utils.TextSizeUtil;
 
@@ -26,6 +27,9 @@ public class UserAgreementActivity extends BaseActivity {
 	@Override protected Context getContext() {
 		// TODO Auto-generated method stub
 		return UserAgreementActivity.this;
+	}
+	@Override protected void exceptionHandler() {
+		Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
 	}
 
 	@Override protected void initViews() {

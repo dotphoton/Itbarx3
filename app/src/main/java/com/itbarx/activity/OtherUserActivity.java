@@ -12,6 +12,7 @@ import com.itbarx.adapter.PopularFragmentListAdapter;
 import com.itbarx.application.ItbarxGlobal;
 import com.itbarx.custom.component.TextViewBold;
 import com.itbarx.custom.component.TextViewRegular;
+import com.itbarx.exception.ExceptionHandler;
 import com.itbarx.service.ResponseEventModel;
 import com.itbarx.service.error.BarxErrorModel;
 import com.itbarx.listener.OneShotOnClickListener;
@@ -45,6 +46,9 @@ public class OtherUserActivity extends BaseActivity {
 
 	@Override protected Context getContext() {
 		return OtherUserActivity.this;
+	}
+	@Override protected void exceptionHandler() {
+		Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
 	}
 
 	@Override protected void initViews() {

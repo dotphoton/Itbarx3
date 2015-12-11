@@ -15,6 +15,7 @@ import com.itbarx.R;
 import com.itbarx.application.ItbarxGlobal;
 import com.itbarx.common.FileAttribute;
 import com.itbarx.custom.component.ButtonBold;
+import com.itbarx.exception.ExceptionHandler;
 import com.itbarx.service.ResponseEventModel;
 import com.itbarx.service.error.BarxErrorModel;
 import com.itbarx.listener.OneShotOnClickListener;
@@ -60,6 +61,9 @@ public class MediaPublishActivity extends BaseActivity {
 	@Override protected Context getContext() {
 		// TODO Auto-generated method stub
 		return MediaPublishActivity.this;
+	}
+	@Override protected void exceptionHandler() {
+		Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
 	}
 
 	@Override protected void initViews() {

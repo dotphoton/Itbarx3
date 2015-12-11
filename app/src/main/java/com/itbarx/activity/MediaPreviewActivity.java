@@ -21,6 +21,7 @@ import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegNotSupportedExceptio
 import com.itbarx.R;
 import com.itbarx.common.FileAttribute;
 import com.itbarx.custom.component.TextViewBold;
+import com.itbarx.exception.ExceptionHandler;
 import com.itbarx.listener.OneShotOnClickListener;
 import com.itbarx.nuance.NuanceOperatorHelper;
 import com.itbarx.utils.FileUtility;
@@ -61,6 +62,9 @@ public class MediaPreviewActivity extends BaseActivity implements NuanceOperator
 	@Override protected Context getContext() {
 		// TODO Auto-generated method stub
 		return MediaPreviewActivity.this;
+	}
+	@Override protected void exceptionHandler() {
+		Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
 	}
 
 	@Override protected void initViews() {

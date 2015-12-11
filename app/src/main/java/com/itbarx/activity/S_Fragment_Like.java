@@ -31,8 +31,10 @@ public class S_Fragment_Like extends Fragment {
 		// Required empty public constructor
 	}
 
-	public S_Fragment_Like(BarkActivity activity) {
-		this.activity = activity;
+	public static S_Fragment_Like newInstance(BarkActivity activity) {
+		S_Fragment_Like myFragment = new S_Fragment_Like();
+		myFragment.activity = activity;
+		return myFragment;
 	}
 
 	@Override

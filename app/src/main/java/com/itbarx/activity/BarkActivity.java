@@ -25,6 +25,7 @@ import com.itbarx.application.ItbarxGlobal;
 import com.itbarx.common.DownloadManagerAsync;
 import com.itbarx.custom.component.TextViewBold;
 import com.itbarx.custom.component.TextViewRegular;
+import com.itbarx.exception.ExceptionHandler;
 import com.itbarx.service.ResponseEventModel;
 import com.itbarx.service.error.BarxErrorModel;
 import com.itbarx.listener.LikeProcessesServiceListener;
@@ -119,6 +120,10 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 
 	@Override protected Context getContext() {
 		return BarkActivity.this;
+	}
+
+	@Override protected void exceptionHandler() {
+		Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(BarkActivity.this));
 	}
 
 	@Override protected void initViews() {
@@ -453,7 +458,7 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 				ft.remove(sFragmentLike);
 
 			}
-			sFragmentLike = new S_Fragment_Like(BarkActivity.this);
+			sFragmentLike = S_Fragment_Like.newInstance(BarkActivity.this);
 			sFragmentLike.setArguments(bundle);
 			ft.add(R.id.bark_activity_screen_side_panel, sFragmentLike);
 			ft.show(sFragmentLike);
@@ -517,7 +522,7 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 				ft.remove(sFragmentLike);
 
 			}
-			sFragmentReBark = new S_Fragment_ReBark(BarkActivity.this);
+			sFragmentReBark =  S_Fragment_ReBark.newInstance(BarkActivity.this);
 			sFragmentReBark.setArguments(bundle);
 			ft.add(R.id.bark_activity_screen_side_panel, sFragmentReBark);
 			ft.show(sFragmentReBark);
@@ -582,7 +587,7 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 				ft.remove(sFragmentLike);
 
 			}
-			sFragmentReply = new S_Fragment_Reply(BarkActivity.this);
+			sFragmentReply = S_Fragment_Reply.newInstance(BarkActivity.this);
 			sFragmentReply.setArguments(bundle);
 			ft.add(R.id.bark_activity_screen_side_panel, sFragmentReply);
 			ft.show(sFragmentReply);

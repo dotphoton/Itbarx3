@@ -48,8 +48,10 @@ public class F_SearchFragment extends Fragment {
 	public F_SearchFragment() {
 	}
 
-	public F_SearchFragment(T_SearchActivity t_searchActivity) {
-		this.t_searchActivity = t_searchActivity;
+	public static F_SearchFragment newInstance(T_SearchActivity t_searchActivity) {
+		F_SearchFragment myFragment = new F_SearchFragment();
+		myFragment.t_searchActivity = t_searchActivity;
+		return myFragment;
 	}
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

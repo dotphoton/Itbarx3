@@ -33,10 +33,11 @@ public class S_Fragment_ReBark extends Fragment {
 	public S_Fragment_ReBark() {
 
 	}
-	public S_Fragment_ReBark(BarkActivity activity) {
-this.activity = activity;
+	public static S_Fragment_ReBark newInstance(BarkActivity activity) {
+		S_Fragment_ReBark myFragment = new S_Fragment_ReBark();
+		myFragment.activity = activity;
+		return myFragment;
 	}
-
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// Inflate the layout for this fragment

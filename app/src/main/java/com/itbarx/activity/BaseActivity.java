@@ -31,6 +31,8 @@ public abstract class BaseActivity extends ActivityGroup {
 
 	protected abstract void initViews();
 
+	protected abstract void exceptionHandler();
+
 	private ProgressDialog mProgressDialog;
 
 	/**
@@ -41,8 +43,8 @@ public abstract class BaseActivity extends ActivityGroup {
 
 	@Override public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		exceptionHandler();
 		setContentView(getLayoutResourceId());
-
 		initViews();
 	}
 

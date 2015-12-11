@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 
 import com.itbarx.R;
 import com.itbarx.enums.Fragments;
+import com.itbarx.exception.ExceptionHandler;
 
 public class T_SecondActivity extends BaseActivity implements Communicator{
 	@Override protected int getLayoutResourceId() {
@@ -20,10 +21,12 @@ public class T_SecondActivity extends BaseActivity implements Communicator{
 	@Override protected Context getContext() {
 		return T_SecondActivity.this;
 	}
-
+	@Override protected void exceptionHandler() {
+		Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
+	}
 	@Override protected void initViews() {
 
-		setFragments(new F_ActivityFragment(T_SecondActivity.this), new F_RequestFragment(T_SecondActivity.this));
+		setFragments(F_ActivityFragment.newInstance(T_SecondActivity.this), F_RequestFragment.newInstance(T_SecondActivity.this));
 	}
 
 	//adds fragments into activity.

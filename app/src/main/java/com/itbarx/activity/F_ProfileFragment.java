@@ -52,13 +52,10 @@ public class F_ProfileFragment extends Fragment {
 
 	}
 
-	public F_ProfileFragment(T_ProfileActivity t_profileActivity) {
-		this.t_profileActivity = t_profileActivity;
-	}
-
-	@Override public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
+	public static F_ProfileFragment newInstance(T_ProfileActivity t_profileActivity) {
+		F_ProfileFragment myFragment = new F_ProfileFragment();
+		myFragment.t_profileActivity = t_profileActivity;
+		return myFragment;
 	}
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
