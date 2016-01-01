@@ -271,18 +271,21 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 			dismissProgress();
 			setBarkDetail(postDetailModel);
 			if (postDetailModel != null && postDetailModel.getPostURL().length() > 0) {
-				String url = "https://itbarxmediastorage.blob.core.windows.net" + postDetailModel.getPostURL();
-				filePath = VIDEO_VIRTUAL_PATH_NAME + postDetailModel.getPostURL().substring(0, 8) + ".mp4";
+				String url ="https://itbarxmediastorage.blob.core.windows.net"+postDetailModel.getPostURL();
+				int lastIndex = postDetailModel.getPostURL().lastIndexOf("/");
+				String fileName=	postDetailModel.getPostURL().substring(lastIndex+1);
+				filePath =VIDEO_VIRTUAL_PATH_NAME+"/"+fileName+".mp4";
 
 				File file = new File(filePath);
-				if (file.exists()) {
+				if(file.exists())
+				{
 					try {
 						mMediaPlayer.setDataSource(file.getAbsolutePath());
 						mMediaPlayer.prepare();
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
-					hasVideoFile = true;
+					hasVideoFile =true;
 
 				}
 
@@ -308,6 +311,7 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 				((ImageView) findViewById(R.id.bark_activity_screen_video_thumbnail_play_ImageView)).setVisibility(View.VISIBLE);
 				((ImageView) findViewById(R.id.bark_activity_screen_video_thumbnail_pause_ImageView)).setVisibility(View.INVISIBLE);
 				//mMediaPlayer.reset();
+				isPauseClick=true;
 			}
 
 		}
@@ -325,9 +329,13 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 					mMediaPlayer.start();
 				} else {
 					if (selectedModel != null) {
-						DownloadManagerAsync managerAsync = new DownloadManagerAsync(BarkActivity.this, filePath.indexOf("/") == 0 ? filePath : "/" + filePath);
 						String rootVideoUrl = "https://itbarxmediastorage.blob.core.windows.net";
-						managerAsync.execute(rootVideoUrl + (selectedModel.getPostURL().indexOf("/") == 0 ? selectedModel.getPostURL() : "/" + selectedModel.getPostURL()));
+						int lastIndex = selectedModel.getPostURL().lastIndexOf("/");
+						String fileName= selectedModel.getPostURL().substring(lastIndex + 1) + ".mp4";
+						DownloadManagerAsync managerAsync = new DownloadManagerAsync(BarkActivity.this,
+								fileName);
+
+						managerAsync.execute(rootVideoUrl +selectedModel.getPostURL());
 					}
 
 				}
@@ -359,7 +367,7 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 			File videoFile = new File(file);
 			// videoView.setRotation(270);
 			if (videoFile.exists()) {
-
+				hasVideoFile=true;
 				try {
 					isConfigOk = true;
 					mMediaPlayer.setDataSource(videoFile.getAbsolutePath());
