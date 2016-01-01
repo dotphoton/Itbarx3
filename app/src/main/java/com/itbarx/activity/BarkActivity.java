@@ -2,6 +2,8 @@ package com.itbarx.activity;
 
 import android.app.Dialog;
 import android.app.FragmentManager;
+import android.app.DownloadManager;
+import android.net.Uri;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
