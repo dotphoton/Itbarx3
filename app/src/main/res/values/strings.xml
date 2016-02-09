@@ -2,6 +2,10 @@
 <resources>
 
     <string name="app_name">Itbarx</string>
+
+    <string name="app_facebook_id">122426691474639</string>
+
+
     <string name="Ok">Tamam</string>
     <string name="Yes">Evet</string>
     <string name="No">Hayır</string>

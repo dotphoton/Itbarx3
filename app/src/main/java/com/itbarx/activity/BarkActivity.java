@@ -189,12 +189,14 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 			});
 			imgReBark.setOnClickListener(new OneShotOnClickListener(500) {
 				@Override public void onOneShotClick(View v) {
-				ReBarkSendPostSharedUserModel sendUserModel = new ReBarkSendPostSharedUserModel("6B2BDE44-8B31-4874-9EA9-00000437C69F", "1", "20");
+			/*
+					ReBarkSendPostSharedUserModel sendUserModel = new ReBarkSendPostSharedUserModel("6B2BDE44-8B31-4874-9EA9-00000437C69F", "1", "20");
 					//ReBarkProcessesServiceSL reBarkProcessesServiceSL = new ReBarkProcessesServiceSL(getContext(), reBarkProcessesServiceListener, R.string.root_service_url);
 					//	reBarkProcessesServiceSL.setGetPostSharedUser(sendUserModel);
 					ReBarkSL reBarkSL = new ReBarkSL(getContext(), reBarkProcessesServiceListener, R.string.root_service_url);
 					reBarkSL.setGetPostSharedUser(sendUserModel);
 					showProgress(getString(R.string.ItbarxConnecting));
+					*/
 				}
 			});
 

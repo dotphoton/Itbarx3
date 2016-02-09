@@ -1,5 +1,7 @@
 package com.itbarx.application;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Locale;
 
@@ -10,13 +12,20 @@ import com.itbarx.utils.TextSizeUtil;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.graphics.Bitmap;
 import android.hardware.Camera;
+import android.util.Base64;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.widget.TabHost;
 
 public class ItbarxGlobal extends Application {
 
 	private String userToken;
+	private static Bitmap googlePlusPhoto;
 	private AccountGetUserByLoginInfoModel userLoginInfoModel;
 	private List<PostPopularPostListModel> popularListModel;
 	private static Context appContext;
@@ -36,8 +45,26 @@ public class ItbarxGlobal extends Application {
 		setDisplayPxHeight();
 		setDisplayDpHeight();
 		setDisplayPxWidth();
+		printHashKey();
 		super.onCreate();
 	}
+	private void printHashKey(){
+		try {
+			PackageInfo info = getPackageManager().getPackageInfo(
+					"com.itbarx",
+					PackageManager.GET_SIGNATURES);
+			for (Signature signature : info.signatures) {
+				MessageDigest md = MessageDigest.getInstance("SHA");
+				md.update(signature.toByteArray());
+				Log.d("KeyHash: Test APP", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+			}
+		} catch (PackageManager.NameNotFoundException e) {
+
+		} catch (NoSuchAlgorithmException e) {
+
+
+
+		}}
 
 	public static Context getContext(){
 		return instance;
@@ -150,5 +177,14 @@ public class ItbarxGlobal extends Application {
 	public static  float getDisplayDpHeight(){
 		return DISPLAY_DP_HEIGHT;
 	}
+
+	public static Bitmap getGooglePlusPhoto() {
+		return googlePlusPhoto;
+	}
+
+	public static void setGooglePlusPhoto(Bitmap sPlusPhoto) {
+		ItbarxGlobal.googlePlusPhoto = sPlusPhoto;
+	}
+
 
 }
