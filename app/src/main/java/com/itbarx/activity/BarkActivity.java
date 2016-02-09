@@ -3,6 +3,7 @@ package com.itbarx.activity;
 import android.app.Dialog;
 import android.app.FragmentManager;
 import android.app.DownloadManager;
+import android.media.AudioManager;
 import android.net.Uri;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -11,6 +12,7 @@ import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.util.TypedValue;
@@ -71,7 +73,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class BarkActivity extends BaseActivity implements DownloadManagerAsync.DownloadManagerCallback, TextureView.SurfaceTextureListener {
+public class BarkActivity extends BaseActivity implements TextureView.SurfaceTextureListener {
 
 	@Bind(R.id.bark_activity_screen_like_icon_imageView) ImageView imgLike;
 	@Bind(R.id.bark_activity_screen_reBark_icon) ImageView imgReBark;
@@ -100,7 +102,7 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 	boolean isFileDelete = false;
 	boolean isStop = false;
 	private boolean isConfigOk = false;
-	private boolean hasVideoFile = false;
+
 	private static final int WIDTH_5_4;
 	private ArrayList<LikeData> likeDataList;
 	private ArrayList<ReBarksData> reBarksDataList;
@@ -271,6 +273,7 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 			dismissProgress();
 			setBarkDetail(postDetailModel);
 			if (postDetailModel != null && postDetailModel.getPostURL().length() > 0) {
+				/*
 				String url ="https://itbarxmediastorage.blob.core.windows.net"+postDetailModel.getPostURL();
 				int lastIndex = postDetailModel.getPostURL().lastIndexOf("/");
 				String fileName=	postDetailModel.getPostURL().substring(lastIndex+1);
@@ -279,15 +282,14 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 				File file = new File(filePath);
 				if(file.exists())
 				{
+					*/
 					try {
-						mMediaPlayer.setDataSource(file.getAbsolutePath());
+						//mMediaPlayer.setDataSource(file.getAbsolutePath());
+						mMediaPlayer.setDataSource(postDetailModel.getPostURL());
 						mMediaPlayer.prepare();
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
-					hasVideoFile =true;
-
-				}
 
 			}
 		}
@@ -324,11 +326,14 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 				mMediaPlayer.start();
 				isPauseClick = false;
 			} else {
-				if (hasVideoFile) {
+				mMediaPlayer.start();
+			}}};
+				/*if (hasVideoFile) {
 
-					mMediaPlayer.start();
+
 				} else {
 					if (selectedModel != null) {
+
 						String rootVideoUrl = "https://itbarxmediastorage.blob.core.windows.net";
 						int lastIndex = selectedModel.getPostURL().lastIndexOf("/");
 						String fileName= selectedModel.getPostURL().substring(lastIndex + 1) + ".mp4";
@@ -336,11 +341,12 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 								fileName);
 
 						managerAsync.execute(rootVideoUrl +selectedModel.getPostURL());
-					}
 
+					}
+/*
 				}
 			}
-/*
+
 			if (!isStop) {
 
 				mMediaPlayer.start();
@@ -348,9 +354,9 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 				mMediaPlayer.start();
 			}
 			isStop = false;
-			*/
-		}
-	};
+
+		}*/
+
 	boolean isPauseClick = false;
 	OneShotOnClickListener pauseVideoClickListener = new OneShotOnClickListener(500) {
 
@@ -361,7 +367,7 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 			mMediaPlayer.pause();
 		}
 	};
-
+/*
 	@Override public void onCompleteFileDownload(Boolean status, String file) {
 		if (status) {
 			File videoFile = new File(file);
@@ -379,9 +385,10 @@ public class BarkActivity extends BaseActivity implements DownloadManagerAsync.D
 			}
 		}
 	}
-
+*/
 	@Override public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
 		mMediaPlayer = new MediaPlayer();
+		mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 		mMediaPlayer.setSurface(new Surface(surface));
 		mMediaPlayer.setOnCompletionListener(onCompletionListener);
 	}
