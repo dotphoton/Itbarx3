@@ -1,12 +1,15 @@
 package com.itbarx.activity;
 
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -16,6 +19,7 @@ import com.itbarx.custom.component.ButtonBold;
 import com.itbarx.custom.component.EditTextRegular;
 import com.itbarx.custom.component.TextViewBold;
 import com.itbarx.custom.component.TextViewRegular;
+import com.itbarx.listener.OneShotOnClickListener;
 import com.itbarx.utils.TextSizeUtil;
 
 public class F_EditProfileFragment extends Fragment {
@@ -43,6 +47,7 @@ public class F_EditProfileFragment extends Fragment {
 	private TextViewBold txtBasicInfo, txtChangePass, txtAboutMe, txtChangePhoto;
 	private EditTextRegular nameEdtTxt, userNameEdtTxt, locationEdtTxt, webSiteEdtTxt, eMailEdtTxt, oldPassEdtTxt, newPassEdtTxt, rePassEdtTxt, aboutMeEdtTxt;
 	private ButtonBold btnSave;
+	private ImageView imgBtnLogOut;
 
 
 	public F_EditProfileFragment() {
@@ -56,6 +61,7 @@ public class F_EditProfileFragment extends Fragment {
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.fragment_edit_profile_screen, container, false);
+
 
 	}
 
@@ -93,10 +99,12 @@ public class F_EditProfileFragment extends Fragment {
 		rePassEdtTxt = (EditTextRegular)  t_profileActivity.findViewById(R.id.edit_profile_fragment_screen_rePassword_editText);
 		aboutMeEdtTxt = (EditTextRegular)  t_profileActivity.findViewById(R.id.edit_profile_fragment_screen_aboutMe_editText);
 		btnSave = (ButtonBold)  t_profileActivity.findViewById(R.id.edit_profile_fragment_screen_save_button);
+		imgBtnLogOut = (ImageView) t_profileActivity.findViewById(R.id.edit_profile_fragment_screen_logOut_imageView);
 		setHeight();
 		setTextSize();
 		Log.d("Tag", "Getting Height >> " + layoutToolbar.getLayoutParams().height);
 		Log.d("Tag", "Getting Height * 5  >> " + layoutInfoEdtBoxes.getLayoutParams().height);
+		imgBtnLogOut.setOnClickListener(logOutClickListener);
 
 	}
 
@@ -140,6 +148,36 @@ public class F_EditProfileFragment extends Fragment {
 		vBottomSaveBtn.getLayoutParams().height = UNIT_VIEW;
 		vBottomNotification.getLayoutParams().height = UNIT_VIEW;
 		vUpperNotification.getLayoutParams().height = UNIT_VIEW;
+	}
+
+	OneShotOnClickListener logOutClickListener = new OneShotOnClickListener(500) {
+		@Override
+		public void onOneShotClick(View v) {
+
+			createAndShowAlertDialog();
+		}
+	};
+	private void createAndShowAlertDialog() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+		builder.setTitle("My Title");
+		builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				//TODO
+				dialog.dismiss();
+				if (LoginActivity.isConnect()){
+					LoginActivity.disConnect();
+
+				}
+			}
+		});
+		builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				//TODO
+				dialog.dismiss();
+			}
+		});
+		AlertDialog dialog = builder.create();
+		dialog.show();
 	}
 
 }

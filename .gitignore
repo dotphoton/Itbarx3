@@ -51,3 +51,6 @@ build
 *~
 
 *.swp
+
+#GOOGLE SERVICES FILES
+.json
