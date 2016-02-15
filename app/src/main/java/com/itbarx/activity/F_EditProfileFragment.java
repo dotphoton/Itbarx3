@@ -1,9 +1,10 @@
 package com.itbarx.activity;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
+
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -164,10 +165,12 @@ public class F_EditProfileFragment extends Fragment {
 			public void onClick(DialogInterface dialog, int id) {
 				//TODO
 				dialog.dismiss();
-				if (LoginActivity.isConnect()){
+			/*
+					if (LoginActivity.isConnect()){
 					LoginActivity.disConnect();
 
 				}
+				*/
 			}
 		});
 		builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {

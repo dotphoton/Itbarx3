@@ -2,6 +2,7 @@ package com.itbarx.adapter;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Pair;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,10 +19,11 @@ import com.itbarx.custom.component.TextViewRegular;
 import com.itbarx.listener.OneShotOnClickListener;
 import com.itbarx.model.post.PostTimelineListForUserModel;
 import com.itbarx.utils.BarkUtility;
+import com.itbarx.utils.DateUtility;
 import com.itbarx.utils.TextSizeUtil;
 
 
-
+import java.util.Date;
 import java.util.List;
 
 public class TimelineFragmentListAdapter extends BaseAdapter {
@@ -88,9 +90,14 @@ public class TimelineFragmentListAdapter extends BaseAdapter {
 			//user name
 			txtFullname.setText(model.getPostOwner());
 			//post time info
-			String addedDate = model.getAddedDate().replace("T", " ").substring(0, model.getAddedDate().indexOf("."));
-			txtTimeInfo.setText(addedDate + " " + " eklendi.");
+			//String addedDate = model.getAddedDate().replace("T", " ").substring(0, model.getAddedDate().indexOf("."));
+			//txtTimeInfo.setText(addedDate + " " + " eklendi.");
 			//posted video
+			if (model.getAddedDate() != null || !model.getAddedDate().equals("")) {
+				Date replyDate = DateUtility.itBarxDateParser(model.getAddedDate());
+				Pair<String, Long> pair = DateUtility.getDateDiff(replyDate, new Date(System.currentTimeMillis()));
+				txtTimeInfo.setText(pair.second + " " + pair.first+ " ago.");
+			}
 
 			videoPlayImg.setTag(model.getPostID());
 			videoPlayImg.setOnClickListener(playClickListener);
@@ -106,7 +113,7 @@ public class TimelineFragmentListAdapter extends BaseAdapter {
 				//  video.start();
 			}
 			//text to speech
-			txtSubs.setText((model.getPostSpeechToText() != null) ? model.getPostSpeechToText() : txtSubs.getText());
+			txtSubs.setText((model.getPostSpeechToText() != null&&!model.getPostSpeechToText().equals("")) ? model.getPostSpeechToText() : "...");
 
 			//add like count
 			txtLike.setText((model.getPostLikeCount() != null && !model.getPostLikeCount().equals("")) ? model.getPostLikeCount() : "0");

@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dip"
         android:layout_weight="50"
+
         android:background="@color/toolbar_bg" >
 
         <com.itbarx.custom.component.TextViewRegular
@@ -408,11 +409,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="165"
                     >
+               <!--
                     <com.facebook.login.widget.LoginButton
                         android:id="@+id/login_activity_screen_facebook_signIn_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:visibility="gone" />
+                        -->
 
                     <com.itbarx.custom.component.ButtonBold
                         android:id="@+id/login_activity_screen_facebook_button"

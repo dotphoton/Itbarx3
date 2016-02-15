@@ -112,7 +112,7 @@ public class F_ActivityFragment extends Fragment {
 		@Override public void getActivityList(List<ActivityListModel> activityListModel) {
 			t_secondActivity.dismissProgress();
 			activityListModels = activityListModel;
-			activityListView.setAdapter(new ActivityFragmentListAdapter(t_secondActivity.getContext(), activityListModel));
+			activityListView.setAdapter(new ActivityFragmentListAdapter(t_secondActivity, activityListModel));
 		}
 	};
 

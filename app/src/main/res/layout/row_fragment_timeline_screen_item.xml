@@ -9,7 +9,7 @@ android:paddingTop="5dp"
     android:layout_marginTop="15dp"
 
               android:orientation="vertical"
-              android:weightSum="400">
+              android:weightSum="390">
 
     <View
         android:layout_width="match_parent"
@@ -82,7 +82,7 @@ android:paddingTop="5dp"
     <View
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="20"/>
+        android:layout_weight="10"/>
 
 
     <LinearLayout
@@ -155,6 +155,7 @@ android:paddingTop="5dp"
                 android:padding="10dp"
                 android:text="Text text deneme text subtitle. Text text deneme text subtitle. Text text deneme text subtitle. "
                 android:id="@+id/row_fragment_timeline_screen_subtitles_TextView"
+                android:ellipsize="end"
                 />
 
             </RelativeLayout>

@@ -8,6 +8,10 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:id="@+id/row_fragment_activity_screen_clickable_layout"
         >
 
     <RelativeLayout
@@ -40,7 +44,7 @@
             android:layout_marginLeft="10dp"
             android:textColor="@android:color/black"
             android:layout_centerVertical="true"
-            android:text="full name"
+            android:text=""
             />
         <com.itbarx.custom.component.TextViewListItemReg
             android:id="@+id/row_fragment_activity_screen_activities_action_textView"
