@@ -105,7 +105,7 @@ private	TextViewGridItemBold txtName, txtSurname;
 	OneShotOnClickListener openUserProfileClickListener = new OneShotOnClickListener(500) {
 		@Override public void onOneShotClick(View v) {
 			String userId = v.getTag().toString();
-			BarkUtility.goOtherUserProfil(activity, userId);
+			BarkUtility.goProfileScreen(activity, userId);
 
 
 

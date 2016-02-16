@@ -21,6 +21,8 @@
         android:layout_weight="6"
         android:orientation="horizontal"
         android:weightSum="34"
+        android:id="@+id/row_fragment_request_screen_clickable_layout"
+        android:clickable="true"
         >
 
         <View

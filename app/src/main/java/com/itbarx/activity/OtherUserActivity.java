@@ -1,6 +1,7 @@
 package com.itbarx.activity;
 
 import android.content.Context;
+import android.opengl.Visibility;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
@@ -39,6 +40,7 @@ public class OtherUserActivity extends BaseActivity {
 	private ImageView imgUserPhoto, imgFollow, imgUnFollow;
 	private ListView lstPopular;
 	private LinearLayout layoutFollowUnFollow;
+	private String postSenderUserId;
 
 	@Override protected int getLayoutResourceId() {
 		return R.layout.activity_other_user_screen;
@@ -53,8 +55,8 @@ public class OtherUserActivity extends BaseActivity {
 
 	@Override protected void initViews() {
 
-		if ((user_Id = BarkUtility.getUserId(OtherUserActivity.this)) != null) {
 
+		postSenderUserId = BarkUtility.getPostSenderUserId(OtherUserActivity.this);
 			layoutFollowUnFollow = (LinearLayout) findViewById(R.id.other_user_activity_screen_follow_unFollow_layout);
 			imgFollow = (ImageView) findViewById(R.id.other_user_activity_screen_follow_imageView);
 			imgUnFollow = (ImageView) findViewById(R.id.other_user_activity_screen_unFollow_imageView);
@@ -74,20 +76,19 @@ public class OtherUserActivity extends BaseActivity {
 			txtFollowerText = (TextViewRegular) findViewById(R.id.other_user_activity_screen_followers_TextView);
 			txtFollowingText = (TextViewRegular) findViewById(R.id.other_user_activity_screen_following_TextView);
 			lstPopular = (ListView)findViewById(R.id.other_user_activity_screen_listView);
-			imgFollow.setOnClickListener(imgFollowClickListener);
-			imgUnFollow.setOnClickListener(imgUnFollowClickListener);
+		//	imgFollow.setOnClickListener(imgFollowClickListener);
+		//	imgUnFollow.setOnClickListener(imgUnFollowClickListener);
+			layoutFollowUnFollow.setOnClickListener(layoutFollowProcessesClickListener);
 			setTextSize();
 			getPopularList();
 			try {
-				getUserWallInfoModel(sendUserWallInfoModel(user_Id));
+				getUserWallInfoModel(sendUserWallInfoModel(postSenderUserId));
 
 			} catch (Exception e) {
 
 				writeLog("ITbarx", "OtherUserActivity  initViews" + e.getMessage());
 			}
-		} else {
-			finish();
-		}
+
 	}
 
 	//TAKE POPULAR LIST
@@ -118,7 +119,7 @@ public class OtherUserActivity extends BaseActivity {
 		txtFollowingText.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getProfileMiniButtonTextSize());
 
 	}
-
+/*
 	OneShotOnClickListener imgFollowClickListener = new OneShotOnClickListener(500) {
 		@Override public void onOneShotClick(View v) {
 			layoutFollowUnFollow.setBackground(getResources().getDrawable(R.drawable.select_unfollow_button));
@@ -140,6 +141,34 @@ public class OtherUserActivity extends BaseActivity {
 			txtUnFollow.setVisibility(View.INVISIBLE);
 			txtUnFollow.setVisibility(View.GONE);
 			txtFollow.setVisibility(View.VISIBLE);
+		}
+	};
+	*/
+	OneShotOnClickListener layoutFollowProcessesClickListener = new OneShotOnClickListener(500) {
+		@Override
+		public void onOneShotClick(View v) {
+
+			if (imgFollow.getVisibility() == View.VISIBLE ){
+				layoutFollowUnFollow.setBackground(getResources().getDrawable(R.drawable.select_unfollow_button));
+				imgFollow.setVisibility(View.INVISIBLE);
+				imgFollow.setVisibility(View.GONE);
+				imgUnFollow.setVisibility(View.VISIBLE);
+				txtFollow.setVisibility(View.INVISIBLE);
+				txtFollow.setVisibility(View.GONE);
+				txtUnFollow.setVisibility(View.VISIBLE);
+			}
+			else{
+				layoutFollowUnFollow.setBackground(getResources().getDrawable(R.drawable.select_green_button));
+				imgUnFollow.setVisibility(View.INVISIBLE);
+				imgUnFollow.setVisibility(View.GONE);
+				imgFollow.setVisibility(View.VISIBLE);
+				txtUnFollow.setVisibility(View.INVISIBLE);
+				txtUnFollow.setVisibility(View.GONE);
+				txtFollow.setVisibility(View.VISIBLE);
+
+			}
+
+
 		}
 	};
 

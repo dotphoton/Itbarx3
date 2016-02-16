@@ -212,7 +212,7 @@ public class LoginActivity extends BaseActivity {
 
         @Override
         public void onOneShotClick(View v) {
-            showToast("hello");
+
 
             strUserName = edtUserName.getText().toString();
             strPassword = edtPassword.getText().toString();

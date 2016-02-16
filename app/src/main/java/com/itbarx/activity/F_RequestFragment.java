@@ -143,7 +143,7 @@ public class F_RequestFragment extends Fragment {
 		@Override public void getPendingListById(List<PendingListByFollowingIdModel> pendingListByFollowingIdModel) {
 			t_secondActivity.dismissProgress();
 			pendingListModels = pendingListByFollowingIdModel;
-			requestListView.setAdapter(new RequestFragmentListAdapter(t_secondActivity.getContext(), pendingListModels));
+			requestListView.setAdapter(new RequestFragmentListAdapter(t_secondActivity, pendingListModels));
 		}
 
 		@Override
