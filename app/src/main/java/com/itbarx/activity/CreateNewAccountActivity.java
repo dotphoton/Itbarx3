@@ -73,7 +73,7 @@ public class CreateNewAccountActivity extends BaseActivity implements Communicat
 		txtUserAgreement.setOnClickListener(openUserAgreementClickListener);
 		setCompText();
 		signUp();
-		Integer.parseInt(" fssfs");
+
 	}
 
 	private void setCompText() {

@@ -19,6 +19,14 @@ public class BarkUtility {
 
     protected final static String POST_ID_KEY ="POST_ID";
     protected final static String USER_ID_KEY ="USER_ID";
+    protected  final static String POST_SENDER_USER_ID="POST_SENDER_USER_ID";
+
+    public static void goProfileScreen(BaseActivity activity,String userId){
+        List<Pair<String,String>> extras = new ArrayList<>();
+        extras.add(new Pair(POST_SENDER_USER_ID,userId));
+        activity.launchSubActivityAddStringExtra(OtherUserActivity.class, extras);
+
+    }
 
     public static  void  goBarkDetail(BaseActivity activity,String postId)
     {

@@ -70,7 +70,7 @@ myFragment.t_homeActivity = t_homeActivity;
 		btnOpenTimeline = (ButtonRegular) getActivity().findViewById(R.id.popular_fragment_timeline_button);
 		btnOpenTimeline.setOnClickListener(openTimelineClickListener);
 		btnPopular = (ButtonRegular) t_homeActivity.findViewById(R.id.popular_fragment_popular_button);
-		txtPopularToolbar = (TextViewRegular) t_homeActivity.findViewById(R.id.popular_toolbar_text);
+
 
 		//fills up the listview
 		reqVidListView = (ListView) getActivity().findViewById(R.id.popular_fragment_screen_listview);
@@ -84,7 +84,7 @@ myFragment.t_homeActivity = t_homeActivity;
 	}
 
 	private void setTextSize() {
-		txtPopularToolbar.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getToolbarTextSize());
+	//	txtPopularToolbar.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getToolbarTextSize());
 		btnOpenTimeline.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getFragBtnTextSize());
 		btnPopular.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getFragBtnTextSize());
 

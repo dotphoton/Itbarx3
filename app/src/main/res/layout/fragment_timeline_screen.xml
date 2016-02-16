@@ -9,38 +9,11 @@
     android:weightSum="530">
 
 
-    <RelativeLayout
-        android:id="@+id/timeline_toolbar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="50"
-        android:background="@color/toolbar_bg">
-
-        <com.itbarx.custom.component.TextViewRegular
-            android:id="@+id/timeline_toolbar_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerInParent="true"
-            android:layout_centerVertical="true"
-            android:text="@string/populartimeline_fragment_screen_timeline_text"
-            android:textColor="@color/white"
-
-            />
-    </RelativeLayout>
-
-    <View
-        android:id="@+id/timeline_space_toolbar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="5"
-        android:visibility="invisible"/>
-
     <LinearLayout
         android:id="@+id/timeline_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="475"
+        android:layout_weight="530"
         android:background="@color/white"
         android:orientation="horizontal"
         android:weightSum="34">

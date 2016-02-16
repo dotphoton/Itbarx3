@@ -62,7 +62,7 @@ public class F_TimelineFragment extends Fragment {
 		btnOpenPopular = (ButtonRegular) t_homeActivity.findViewById(R.id.timeline_fragment_popular_button);
 		btnOpenPopular.setOnClickListener(openPopularClickListener);
 		btnTimeline = (ButtonRegular) t_homeActivity.findViewById(R.id.timeline_fragment_timeline_button);
-		txtTimelineToolbar = (TextViewRegular) t_homeActivity.findViewById(R.id.timeline_toolbar_text);
+
 		//fills up the listView
 		timelineListView = (ListView) getActivity().findViewById(R.id.timeline_fragment_screen_ListView);
 		getTimelineList(sendModel());
@@ -70,7 +70,7 @@ public class F_TimelineFragment extends Fragment {
 	}
 
 	private void setTextSize() {
-		txtTimelineToolbar.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getToolbarTextSize());
+
 		btnOpenPopular.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getFragBtnTextSize());
 		btnTimeline.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getFragBtnTextSize());
 

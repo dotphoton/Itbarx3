@@ -80,7 +80,7 @@ public class TextSizeUtil {
     //TIMELINE FRAGMENT
     private static float TIMELINE_USERNAME_TEXT_SIZE = 19f;
     private static float TIMELINE_MINS_TEXT_SIZE = 17f;
-    private static float TIMELINE_MINI_BUTTON_TEXT_SIZE = 21f;
+    private static float TIMELINE_MINI_BUTTON_TEXT_SIZE = 22f;
 
     //-------------------------------------------------------------------------------------------
     //PROFILE FRAGMENT

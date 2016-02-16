@@ -2,6 +2,7 @@ package com.itbarx.adapter;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.text.Html;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.MediaController;
+import android.widget.RelativeLayout;
 import android.widget.VideoView;
 
 import com.itbarx.R;
@@ -33,6 +35,7 @@ public class PopularFragmentListAdapter extends BaseAdapter {
 	List<PostPopularPostListModel> list;
 	private ImageView imgPlayIcon;
 
+
 	public PopularFragmentListAdapter(BaseActivity activity, List<PostPopularPostListModel> models) {
 		this.activity = activity;
 		this.context = (Context) activity;
@@ -52,21 +55,29 @@ public class PopularFragmentListAdapter extends BaseAdapter {
 	}
 
 	@Override public View getView(int position, View convertView, ViewGroup parent) {
-		LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context
+				.LAYOUT_INFLATER_SERVICE);
 		convertView = layoutInflater.inflate(R.layout.row_fragment_popular_screen_item, parent, false);
-		TextViewListItemReg text = (TextViewListItemReg) convertView.findViewById(R.id.row_fragment_popular_screen_subtitle_textView);
+		TextViewListItemReg text = (TextViewListItemReg) convertView.findViewById(R.id
+				.row_fragment_popular_screen_subtitle_textView);
+
 		PostPopularPostListModel model = (PostPopularPostListModel) getItem(position);
 		imgPlayIcon =(ImageView) convertView.findViewById(R.id.row_fragment_popular_screen_userPlayIcon_videoView);
 		imgPlayIcon.setOnClickListener(choosenImageClickListener);
+
+
 		if (model != null) {
 			if(model.getPostSpeechToText().toString().length()>0)
 			{
-				text.setText(model.getPostSpeechToText().length()>30?model.getPostSpeechToText().substring(0, 30) +" ...":model.getPostSpeechToText());
+				text.setText(model.getPostSpeechToText());
 			}
 			else {
-				text.setText(model.getPostText().length()>30?model.getPostText().substring(0, 30) +" ...":model.getPostText());
+				text.setText(" ...");
 			}
 			imgPlayIcon.setTag(model.getPostID());
+
+
+
 
 			// ImageView video = (ImageView) convertView.findViewById(R.id.row_fragment_popular_screen_user_videoView);
 
@@ -121,6 +132,8 @@ public class PopularFragmentListAdapter extends BaseAdapter {
 			BarkUtility.goBarkDetail(activity, postId);
 		}
 	};
+
+
 
 
 

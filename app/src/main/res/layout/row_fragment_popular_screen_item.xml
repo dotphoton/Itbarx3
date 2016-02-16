@@ -55,9 +55,13 @@ android:scaleType="centerCrop"
         />
 
 <RelativeLayout
+
     android:layout_width="0dip"
     android:layout_height="match_parent"
     android:layout_weight="25"
+
+
+
 
     >
 
@@ -68,7 +72,9 @@ android:scaleType="centerCrop"
     android:gravity="left|center_horizontal"
     android:padding="10dp"
     android:textColor="#666666"
-    android:lines="5"/>
+    android:lines="5"
+    android:ellipsize="end"
+    />
 
 
 
