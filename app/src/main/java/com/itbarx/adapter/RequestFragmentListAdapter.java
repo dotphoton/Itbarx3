@@ -1,27 +1,34 @@
 package com.itbarx.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.itbarx.R;
+import com.itbarx.activity.BaseActivity;
 import com.itbarx.custom.component.TextViewBold;
 import com.itbarx.custom.component.TextViewListItemBold;
+import com.itbarx.listener.OneShotOnClickListener;
 import com.itbarx.model.follow.PendingListByFollowingIdModel;
+import com.itbarx.utils.BarkUtility;
 
 import java.util.List;
 
 public class RequestFragmentListAdapter extends BaseAdapter {
 
 	Context context;
+	BaseActivity activity;
 	List<PendingListByFollowingIdModel> list;
 
-	public RequestFragmentListAdapter(Context context, List<PendingListByFollowingIdModel> models) {
-		this.context = context;
+	public RequestFragmentListAdapter(BaseActivity activity, List<PendingListByFollowingIdModel> models) {
+		this.context = activity;
+		this.activity =activity;
 		list = models;
 	}
 
@@ -44,6 +51,7 @@ public class RequestFragmentListAdapter extends BaseAdapter {
 		PendingListByFollowingIdModel model = (PendingListByFollowingIdModel) getItem(position);
 		if (null != model) {
 
+			LinearLayout layOut =(LinearLayout)convertView.findViewById(R.id.row_fragment_request_screen_clickable_layout);
 			//1. take user photo
 			ImageView imgPhoto = (ImageView) convertView.findViewById(R.id.row_fragment_request_screen_user_imageView);
 			if (model.getUserProfilePhoto() != null && !model.getUserProfilePhoto().equalsIgnoreCase("")) {
@@ -60,9 +68,23 @@ public class RequestFragmentListAdapter extends BaseAdapter {
 			} else {
 				imgBtnFollow.setImageResource(R.drawable.req_icon_unfollow);
 			}
+			layOut.setOnClickListener(openProfileClickListener);
+			if (!model.getUserID().equals("")){
 
+				layOut.setTag(model.getUserID());
+			}
 		}
 
 		return convertView;
 	}
+
+	OneShotOnClickListener openProfileClickListener = new OneShotOnClickListener(500) {
+		@Override
+		public void onOneShotClick(View v) {
+			String makerUserId = v.getTag().toString();
+			Log.d("TEST", "TEST " + makerUserId);
+			BarkUtility.goProfileScreen(activity, makerUserId);
+
+		}
+	};
 }

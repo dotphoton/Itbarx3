@@ -28,6 +28,20 @@ public class BarkUtility {
 
     }
 
+    public static String getPostSenderUserId(OtherUserActivity otherUserActivity)
+    {
+        if (otherUserActivity.getIntent().hasExtra(POST_SENDER_USER_ID)) {
+            String   postId = otherUserActivity.getIntent().getStringExtra(POST_SENDER_USER_ID);
+            return postId;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+
+
     public static  void  goBarkDetail(BaseActivity activity,String postId)
     {
         List<Pair<String,String>> extras = new ArrayList<>();

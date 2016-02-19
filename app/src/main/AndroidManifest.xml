@@ -60,6 +60,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
         </activity>
         <activity
             android:name=".activity.CreateNewAccountActivity"
@@ -92,6 +93,8 @@
         <activity
             android:name=".activity.OtherUserActivity"
             android:screenOrientation="portrait">
+
+
         </activity>
         <activity
             android:name=".activity.MediaPublishActivity"

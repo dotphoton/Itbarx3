@@ -35,6 +35,8 @@ public abstract class BaseActivity extends ActivityGroup {
 
 	private ProgressDialog mProgressDialog;
 
+	private  static String userIdOtherProfileScreen;
+
 	/**
 	 * holds the map of callbacks
 	 */
@@ -247,7 +249,15 @@ public abstract class BaseActivity extends ActivityGroup {
 		dialog.show();
 	}
 
-	public interface ConfigurationChangedListener {
+	protected interface ConfigurationChangedListener {
 		void ConfigurationChanged(Configuration config);
+	}
+
+	public static String getUserIdOtherProfileScreen() {
+		return userIdOtherProfileScreen;
+	}
+
+	public static void setUserIdOtherProfileScreen(String userIdOtherProfileScreen) {
+		BaseActivity.userIdOtherProfileScreen = userIdOtherProfileScreen;
 	}
 }

@@ -2,6 +2,7 @@ package com.itbarx.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import android.widget.RelativeLayout;
 
 import com.itbarx.R;
 import com.itbarx.activity.BaseActivity;
+import com.itbarx.activity.OtherUserActivity;
+import com.itbarx.activity.T_SecondActivity;
 import com.itbarx.custom.component.TextViewBold;
 import com.itbarx.custom.component.TextViewListItemBold;
 import com.itbarx.custom.component.TextViewListItemReg;
@@ -29,11 +32,11 @@ public class ActivityFragmentListAdapter extends BaseAdapter {
 	Context context;
 	List<ActivityListModel> list;
 	RelativeLayout relClickable;
-	BaseActivity activity;
+	T_SecondActivity activity;
 
 	public ActivityFragmentListAdapter(BaseActivity activity, List<ActivityListModel> models) {
 		context = activity;
-		this.activity =activity;
+		this.activity =(T_SecondActivity)activity;
 		list = models;
 	}
 
@@ -84,9 +87,13 @@ public class ActivityFragmentListAdapter extends BaseAdapter {
 	OneShotOnClickListener openProfilDetailClickListener = new OneShotOnClickListener(500) {
 		@Override
 		public void onOneShotClick(View v) {
-			String makerUserId = v.getTag().toString();
-			BarkUtility.goProfileScreen(activity, makerUserId);
 			relClickable.setBackgroundColor(Color.argb(0, 242, 242, 242));
+			//activity.launchSubActivity(OtherUserActivity.class);
+			String makerUserId = v.getTag().toString();
+			Log.d("TEST", "TEST " + makerUserId);
+			BarkUtility.goProfileScreen(activity, makerUserId);
+
+
 		}
 	};
 
