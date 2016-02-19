@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    package="com.itbarx"
+<manifest package="com.itbarx"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:installLocation="preferExternal"
     android:versionCode="3"
@@ -12,21 +11,14 @@
 
     <!-- This app has permission to register and receive data message. -->
     <uses-permission android:name="android.permission.INTERNET"/>
-    <!-- FOR PLUS LOGIN-->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
-    <!--FOR PLUS LOGIN-->
-    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-feature android:name="android.hardware.camera.front"/>
-    <uses-feature android:name="android.hardware.microphone"/>
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
     <!--
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
         <uses-permission android:name="android.permission.CAMERA" >
@@ -37,7 +29,11 @@
             android:required="false" />
     </uses-permission>
     -->
+    <uses-feature android:name="android.hardware.camera.front"/>
+    <uses-feature android:name="android.hardware.microphone"/>
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:name=".application.ItbarxGlobal"
@@ -45,12 +41,6 @@
         android:icon="@drawable/logo_512"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar">
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/app_facebook_id"/>
         <activity
             android:name=".activity.LoginActivity"
             android:label="@string/app_name"
@@ -122,8 +112,7 @@
             android:screenOrientation="portrait"/>
 
         <!--TEST DEBUG-->
-        <activity
-            android:name=".exception.ExceptionActivity"
+        <activity android:name=".exception.ExceptionActivity"
             android:screenOrientation="portrait"/>
 
     </application>

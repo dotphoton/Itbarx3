@@ -30,41 +30,28 @@ android:weightSum="530"
         />
 </RelativeLayout>
 
-<View
-    android:id="@+id/record_start_space_toolbar_layout"
-    android:layout_width="match_parent"
-    android:layout_height="0dip"
-    android:layout_weight="5"
-    android:visibility="invisible"/>
+
 
 <LinearLayout
     android:id="@+id/record_start_fragment_container"
     android:layout_width="match_parent"
     android:layout_height="0dip"
-    android:layout_weight="475"
+    android:layout_weight="480"
     android:background="@color/white"
     android:orientation="horizontal"
     android:weightSum="34">
 
 
-    <View
-        android:layout_width="0dip"
-        android:layout_height="match_parent"
-        android:layout_weight="0.5"
-        android:visibility="invisible"/>
-
     <LinearLayout
         android:id="@+id/record_start_fragment_content"
-        android:layout_width="0dip"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="33"
-        android:orientation="vertical"
-        android:weightSum="50">
+>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="36.75"
+            android:layout_height="match_parent"
+
             android:background="#E5E8ED">
 
 
@@ -80,102 +67,37 @@ android:weightSum="530"
 
             <ImageView
                 android:background="@drawable/video_circle" android:layout_marginTop="20dp"
-                android:layout_height="wrap_content" android:layout_width="wrap_content"
-                android:scaleType="centerInside" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
-                />
-        </RelativeLayout>
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="30dp"
+                android:layout_marginRight="15dp"
+                android:scaleType="fitCenter" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="0.25"
-            android:visibility="invisible"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="13"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:weightSum="31"
-
-            >
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0dip"
-                android:layout_weight="5"
-                android:visibility="invisible"/>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dip"
-                android:layout_weight="15"
-                android:orientation="horizontal"
-                android:weightSum="50"
-
-                >
-
-                <View
-                    android:layout_width="0dip"
-                    android:layout_height="match_parent"
-                    android:layout_weight="20"
-                    android:visibility="invisible"/>
-
-                <RelativeLayout
-                    android:layout_width="0dip"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_weight="10"
-                    >
-
-                    <ImageView
-                        android:id="@+id/record_start_fragment_start_imageView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_centerHorizontal="true"
-                        android:background="#00000000"
-                        android:layout_centerVertical="true"
-                        android:clickable="true"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/record_frag_icon_start"/>
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dip"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_weight="6"
-                >
-
+                <ImageView
+                    android:id="@+id/record_start_fragment_start_imageView"
+                    android:layout_width="82dp"
+                    android:layout_height="82dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="#00000000"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="35dp"
+                    android:clickable="true"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/record_frag_icon_start"/>
                 <com.itbarx.custom.component.TextViewBold
+
                     android:id="@+id/record_start_fragment_start_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"
                     android:text="Start"
                     android:textColor="@color/fragment_orange_button"/>
-            </RelativeLayout>
+        </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0dip"
-                android:layout_weight="5"
-                android:visibility="invisible"/>
-
-
-        </LinearLayout>
-
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="0.5"
-            android:visibility="invisible"/>
 
         <!--
         <LinearLayout
@@ -228,21 +150,9 @@ android:weightSum="530"
 
         </LinearLayout>
 -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="0.5"
-            android:visibility="invisible"/>
 
 
     </LinearLayout>
-
-
-    <View
-        android:layout_width="0dip"
-        android:layout_height="match_parent"
-        android:layout_weight="0.5"
-        android:visibility="invisible"/>
 
 
 </LinearLayout>

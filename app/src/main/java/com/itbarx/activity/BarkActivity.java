@@ -2,17 +2,18 @@ package com.itbarx.activity;
 
 import android.app.Dialog;
 import android.app.FragmentManager;
-import android.app.DownloadManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
-import android.net.Uri;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.util.TypedValue;
@@ -26,7 +27,7 @@ import android.widget.ImageView;
 
 import com.itbarx.R;
 import com.itbarx.application.ItbarxGlobal;
-import com.itbarx.common.DownloadManagerAsync;
+import com.itbarx.common.LoadHttpImage;
 import com.itbarx.custom.component.TextViewBold;
 import com.itbarx.custom.component.TextViewRegular;
 import com.itbarx.exception.ExceptionHandler;
@@ -49,24 +50,20 @@ import com.itbarx.model.post.PostTimelineListForUserModel;
 import com.itbarx.model.post.PostWallListForUserModel;
 import com.itbarx.model.rebark.ReBarkGetPostSharedUserListByPostIdModel;
 import com.itbarx.model.rebark.ReBarkGetSharedPostListByUserIdModel;
-import com.itbarx.model.rebark.ReBarkSendPostSharedUserModel;
 import com.itbarx.model.reply.ReplyListModel;
 import com.itbarx.model.reply.ReplySendModel;
 import com.itbarx.model.send_to_fragment.LikeData;
 import com.itbarx.model.send_to_fragment.ReBarksData;
 import com.itbarx.model.send_to_fragment.ReplyData;
-import com.itbarx.sl.LikeProcessesServiceSL;
 import com.itbarx.sl.LikeSL;
 import com.itbarx.sl.PostProcessesServiceSL;
-import com.itbarx.sl.ReBarkProcessesServiceSL;
-import com.itbarx.sl.ReBarkSL;
-import com.itbarx.sl.ReplyProcessesServiceSL;
 import com.itbarx.sl.ReplySL;
 import com.itbarx.utils.BarkUtility;
 import com.itbarx.utils.TextSizeUtil;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,7 +91,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
 	protected String POST_ID = null;
 	private TextViewRegular txtToolbar, txtSubtitle;
 	private TextViewBold txtLikeCount, txtReBarkCount, txtReplyCount, txtLike, txtReBark, txtReply;
-	private ImageView imgVideoPlay, imgVideoPause;
+	private ImageView imgVideoPlay, imgVideoPause,imgThumbnail;
 	private TextureView videoView;
 	protected boolean isMediaRunning = false;
 	boolean isMirrored = true;
@@ -135,6 +132,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
 		if ((POST_ID = BarkUtility.getPostId(BarkActivity.this)) != null) {
 			ButterKnife.bind(this);
 			imgVideoPlay = (ImageView) findViewById(R.id.bark_activity_screen_video_thumbnail_play_ImageView);
+			imgThumbnail = (ImageView) findViewById(R.id.bark_activity_screen_video_thumbnail_ImageView);
 			imgVideoPause = (ImageView) findViewById(R.id.bark_activity_screen_video_thumbnail_pause_ImageView);
 			imgVideoPause.setVisibility(View.INVISIBLE);
 			imgVideoPlay.setOnClickListener(playVideoClickListener);
@@ -275,6 +273,21 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
 			dismissProgress();
 			setBarkDetail(postDetailModel);
 			if (postDetailModel != null && postDetailModel.getPostURL().length() > 0) {
+				videoView.setVisibility(View.INVISIBLE);
+				if(postDetailModel.getPostPictureURL()!=null) {
+					try {
+						new LoadHttpImage(imgThumbnail).execute(postDetailModel.getPostPictureURL());
+						//new AsyncUploadImage(imgThumbnail).execute(postDetailModel.getPostPictureURL());
+					}
+					catch (Exception e)
+					{
+
+					}
+				}
+				else
+				{
+
+				}
 				/*
 				String url ="https://itbarxmediastorage.blob.core.windows.net"+postDetailModel.getPostURL();
 				int lastIndex = postDetailModel.getPostURL().lastIndexOf("/");
@@ -309,6 +322,15 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
 			finish();
 		}
 	};
+	public static Drawable LoadImageFromWebOperations(String url) {
+		try {
+			InputStream is = (InputStream) new URL(url).getContent();
+			Drawable d = Drawable.createFromStream(is, null);
+			return d;
+		} catch (Exception e) {
+			return null;
+		}
+	}
 	MediaPlayer.OnCompletionListener onCompletionListener = new MediaPlayer.OnCompletionListener() {
 		@Override public void onCompletion(MediaPlayer mp) {
 			if (!mMediaPlayer.isPlaying()) {
@@ -324,7 +346,11 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
 		@Override public void onOneShotClick(View v) {
 			((ImageView) findViewById(R.id.bark_activity_screen_video_thumbnail_play_ImageView)).setVisibility(View.INVISIBLE);
 			((ImageView) findViewById(R.id.bark_activity_screen_video_thumbnail_pause_ImageView)).setVisibility(View.VISIBLE);
+
+			imgThumbnail.setVisibility(View.GONE);
+			videoView.setVisibility(View.VISIBLE);
 			if (isPauseClick) {
+
 				mMediaPlayer.start();
 				isPauseClick = false;
 			} else {

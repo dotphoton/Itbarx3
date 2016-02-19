@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import com.itbarx.R;
 import com.itbarx.activity.BarkActivity;
 import com.itbarx.activity.BaseActivity;
+import com.itbarx.common.LoadHttpImage;
 import com.itbarx.custom.component.TextViewBold;
 import com.itbarx.custom.component.TextViewListItemReg;
 import com.itbarx.custom.component.TextViewRegular;
@@ -31,8 +32,8 @@ public class TimelineFragmentListAdapter extends BaseAdapter {
 	BaseActivity activity;
 	Context context;
 	List<PostTimelineListForUserModel> list;
-
-
+	ImageView imgThumbnail;
+	LayoutInflater layoutInflater;
 	public TimelineFragmentListAdapter(BaseActivity activity, List<PostTimelineListForUserModel> postTimelineListForUserModels) {
 		this.activity = activity;
 		this.context =(Context)activity;
@@ -53,6 +54,8 @@ public class TimelineFragmentListAdapter extends BaseAdapter {
 	}
 
 	@Override public View getView(int position, View convertView, ViewGroup parent) {
+
+
 		LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 		convertView = layoutInflater.inflate(R.layout.row_fragment_timeline_screen_item, parent, false);
@@ -76,7 +79,7 @@ public class TimelineFragmentListAdapter extends BaseAdapter {
 		//video image view
 		//   MediaController controller = new MediaController(context);
 		ImageView videoPlayImg = (ImageView) convertView.findViewById(R.id.row_fragment_timeline_screen_video_thumbnail_play_ImageView);
-
+		imgThumbnail=(ImageView) convertView.findViewById(R.id.row_fragment_timeline_screen_video_thumbnail_ImageView);
 		// VideoView video = (VideoView) convertView.findViewById(R.id.row_fragment_timeline_screen_VideoView);
 
 		PostTimelineListForUserModel model = (PostTimelineListForUserModel) getItem(position);
@@ -98,7 +101,12 @@ public class TimelineFragmentListAdapter extends BaseAdapter {
 				Pair<String, Long> pair = DateUtility.getDateDiff(replyDate, new Date(System.currentTimeMillis()));
 				txtTimeInfo.setText(pair.second + " " + pair.first+ " ago.");
 			}
-
+			if(model.getPostPictureURL()!=null&& model.getPostPictureURL().length()>0)
+			{
+				new LoadHttpImage(imgThumbnail).execute(model.getPostPictureURL());
+			} else{
+				imgThumbnail.setVisibility(View.VISIBLE);//add
+			}
 			videoPlayImg.setTag(model.getPostID());
 			videoPlayImg.setOnClickListener(playClickListener);
 

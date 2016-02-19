@@ -73,6 +73,15 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:id="@+id/bark_activity_screen_video_thumbnail_ImageView"
+            android:layout_centerInParent="true"
+
+            android:scaleType="fitCenter"
+            android:visibility="visible"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:id="@+id/bark_activity_screen_video_thumbnail_play_ImageView"
             android:layout_centerInParent="true"
             android:src="@drawable/bark_play_icon"

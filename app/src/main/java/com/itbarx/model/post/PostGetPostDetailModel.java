@@ -10,6 +10,7 @@ public class PostGetPostDetailModel {
 	private String PostLikeCount;
 	private String PostReplyCount;
 	private String PostRebarkCount;
+	private String PostPictureURL;
 	private String PostURL;
 
 	public String getUserID() {
@@ -90,6 +91,15 @@ public class PostGetPostDetailModel {
 
 	public PostGetPostDetailModel setPostURL(String postURL) {
 		PostURL = postURL;
+		return this;
+	}
+
+	public String getPostPictureURL() {
+		return PostPictureURL;
+	}
+
+	public PostGetPostDetailModel setPostPictureURL(String postPictureURL) {
+		PostPictureURL = postPictureURL;
 		return this;
 	}
 }

@@ -20,6 +20,7 @@ import com.itbarx.R;
 
 import com.itbarx.activity.BaseActivity;
 import com.itbarx.application.ItbarxGlobal;
+import com.itbarx.common.LoadHttpImage;
 import com.itbarx.custom.component.TextViewListItemReg;
 import com.itbarx.custom.component.TextViewRegular;
 import com.itbarx.listener.OneShotOnClickListener;
@@ -34,7 +35,7 @@ public class PopularFragmentListAdapter extends BaseAdapter {
 	BaseActivity activity;
 	List<PostPopularPostListModel> list;
 	private ImageView imgPlayIcon;
-
+	private ImageView imgThumbnail;
 
 	public PopularFragmentListAdapter(BaseActivity activity, List<PostPopularPostListModel> models) {
 		this.activity = activity;
@@ -55,74 +56,38 @@ public class PopularFragmentListAdapter extends BaseAdapter {
 	}
 
 	@Override public View getView(int position, View convertView, ViewGroup parent) {
-		LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context
-				.LAYOUT_INFLATER_SERVICE);
-		convertView = layoutInflater.inflate(R.layout.row_fragment_popular_screen_item, parent, false);
-		TextViewListItemReg text = (TextViewListItemReg) convertView.findViewById(R.id
-				.row_fragment_popular_screen_subtitle_textView);
-
-		PostPopularPostListModel model = (PostPopularPostListModel) getItem(position);
-		imgPlayIcon =(ImageView) convertView.findViewById(R.id.row_fragment_popular_screen_userPlayIcon_videoView);
-		imgPlayIcon.setOnClickListener(choosenImageClickListener);
 
 
-		if (model != null) {
-			if(model.getPostSpeechToText().toString().length()>0)
-			{
-				text.setText(model.getPostSpeechToText());
+		LayoutInflater	layoutInflater = (LayoutInflater) context.getSystemService(Context
+					.LAYOUT_INFLATER_SERVICE);
+
+
+			convertView = layoutInflater.inflate(R.layout.row_fragment_popular_screen_item, parent, false);
+			PostPopularPostListModel model = (PostPopularPostListModel) getItem(position);
+
+//row_fragment_popular_screen_thumbnail
+
+			if (model != null) {
+				TextViewListItemReg text = (TextViewListItemReg) convertView.findViewById(R.id
+						.row_fragment_popular_screen_subtitle_textView);
+				imgPlayIcon = (ImageView) convertView.findViewById(R.id.row_fragment_popular_screen_userPlayIcon_videoView);
+				imgPlayIcon.setOnClickListener(choosenImageClickListener);
+				imgThumbnail = (ImageView) convertView.findViewById(R.id.row_fragment_popular_screen_thumbnail);
+				if (model.getPostSpeechToText().toString().length() > 0) {
+					((TextViewListItemReg) convertView.findViewById(R.id
+							.row_fragment_popular_screen_subtitle_textView)).setText(model.getPostSpeechToText());
+				} else {
+					text.setText(" ...");
+				}
+				imgPlayIcon.setTag(model.getPostID());
+				if (model.getPostPictureURL() != null && model.getPostPictureURL().length() > 0) {
+					new LoadHttpImage(imgThumbnail).execute(model.getPostPictureURL());
+				} else {
+					imgThumbnail.setVisibility(View.VISIBLE);//add
+				}
 			}
-			else {
-				text.setText(" ...");
-			}
-			imgPlayIcon.setTag(model.getPostID());
 
 
-
-
-			// ImageView video = (ImageView) convertView.findViewById(R.id.row_fragment_popular_screen_user_videoView);
-
-			// MediaController controller = new MediaController(context);
-
-            /*
-
-            if (model.getIsAdultContent().equalsIgnoreCase("false") && model.getPostURL() != null && !model.getPostURL().equalsIgnoreCase("") && model.getIsDeleted().equalsIgnoreCase("false")) {
-             //   Uri uri = Uri.parse("http://itbarxapp.azurewebsites.net" + model.getPostURL());
-
-                // video.setSurfaceTextureListener();
-
-                Uri uri = Uri.parse("android.resource://" + ItbarxGlobal.getInstance().getPackageName() + "/" + R.raw.sample);
-                video.setVideoURI(uri);
-                video.setMediaController(controller);
-                controller.requestFocus();
-                text.setText((null != model.getPostSpeechToText()) ? model.getPostSpeechToText() : text.getText());
-                video.stopPlayback();
-                video.pause();
-                //   video.start();
-            //    video.start();
-                controller.show();
-
-
-            } else {
-                Uri uri = Uri.parse("android.resource://" + ItbarxGlobal.getInstance().getPackageName() + "/" + R.raw.sample);
-
-                video.setMediaController(controller);
-                video.setVideoURI(uri);
-                controller.requestFocus();
-                //  video.start();
-                video.stopPlayback();
-                video.pause();
-            //    video.start();
-                controller.show();
-                text.setText(model.getPostSpeechToText());
-
-
-                //      Uri uri = Uri.parse("android.resource://" + IApplication.getContext().getPackageName() + "/" + R.raw.sample);
-                //  video.setVideoURI(uri);
-                //  video.start();
-            }
-            */
-
-		}
 		return convertView;
 	}
 

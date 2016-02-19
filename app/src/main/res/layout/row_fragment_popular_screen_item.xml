@@ -19,7 +19,7 @@
 
 
    <ImageView
-       android:id="@+id/row_fragment_popular_screen_user_videoView"
+       android:id="@+id/row_fragment_popular_screen_thumbnail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
        android:clickable="true"

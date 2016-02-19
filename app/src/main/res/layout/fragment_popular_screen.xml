@@ -86,8 +86,8 @@
                     android:dividerHeight="3dp"
                     android:overScrollMode="ifContentScrolls"
                     android:scrollbars="vertical"
-                    android:scrollingCache="true"
-                    android:transcriptMode="alwaysScroll" >
+
+                     >
                 </ListView>
             </RelativeLayout>
 
