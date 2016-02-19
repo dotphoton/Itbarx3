@@ -21,7 +21,7 @@
             />
 
 
-        <com.itbarx.custom.component.TextViewRegular
+        <com.itbarxproject.custom.component.TextViewRegular
             android:id="@+id/other_user_activity_screen_toolbar_textView"
             android:layout_width="0dip"
             android:layout_height="match_parent"
@@ -115,7 +115,7 @@
                         android:orientation="vertical"
                         android:weightSum="10">
 
-                        <com.itbarx.custom.component.TextViewBold
+                        <com.itbarxproject.custom.component.TextViewBold
                             android:id="@+id/other_user_activity_screen_username_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -124,7 +124,7 @@
                             android:text=""
                             />
 
-                        <com.itbarx.custom.component.TextViewRegular
+                        <com.itbarxproject.custom.component.TextViewRegular
                             android:id="@+id/other_user_activity_screen_place_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
 
                             />
 
-                        <com.itbarx.custom.component.TextViewRegular
+                        <com.itbarxproject.custom.component.TextViewRegular
                             android:id="@+id/other_user_activity_screen_user_bio_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -144,7 +144,7 @@
 
                             />
 
-                        <com.itbarx.custom.component.TextViewBold
+                        <com.itbarxproject.custom.component.TextViewBold
                             android:id="@+id/other_user_activity_screen_itBarkUserName_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -187,7 +187,7 @@
                             android:gravity="center_horizontal"
                             >
 
-                            <com.itbarx.custom.component.TextViewBold
+                            <com.itbarxproject.custom.component.TextViewBold
                                 android:id="@+id/other_user_activity_screen_reBarksCount_TextView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -214,7 +214,7 @@
                             android:gravity="center_vertical|center_horizontal"
                             >
 
-                            <com.itbarx.custom.component.TextViewRegular
+                            <com.itbarxproject.custom.component.TextViewRegular
                                 android:id="@+id/other_user_activity_screen_reBarks_TextView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -247,7 +247,7 @@
                             android:gravity="center_horizontal"
                             >
 
-                            <com.itbarx.custom.component.TextViewBold
+                            <com.itbarxproject.custom.component.TextViewBold
                                 android:id="@+id/other_user_activity_screen_followersCount_TextView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -274,7 +274,7 @@
                             android:gravity="center_vertical|center_horizontal"
                             >
 
-                            <com.itbarx.custom.component.TextViewRegular
+                            <com.itbarxproject.custom.component.TextViewRegular
                                 android:id="@+id/other_user_activity_screen_followers_TextView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -307,7 +307,7 @@
                             android:gravity="center_horizontal"
                             >
 
-                            <com.itbarx.custom.component.TextViewBold
+                            <com.itbarxproject.custom.component.TextViewBold
                                 android:id="@+id/other_user_activity_screen_followingCount_TextView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -334,7 +334,7 @@
                             android:gravity="center_vertical|center_horizontal"
                             >
 
-                            <com.itbarx.custom.component.TextViewRegular
+                            <com.itbarxproject.custom.component.TextViewRegular
                                 android:id="@+id/other_user_activity_screen_following_TextView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -443,7 +443,7 @@
 
 
                     >
-                    <com.itbarx.custom.component.TextViewBold
+                    <com.itbarxproject.custom.component.TextViewBold
                         android:id="@+id/other_user_activity_screen_follow_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -454,7 +454,7 @@
                         android:textSize="20dp"
                         android:visibility="visible"
                         />
-                    <com.itbarx.custom.component.TextViewBold
+                    <com.itbarxproject.custom.component.TextViewBold
                         android:id="@+id/other_user_activity_screen_unFollow_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

@@ -17,7 +17,7 @@
         android:layout_weight="50"
         android:background="@color/toolbar_bg">
 
-        <com.itbarx.custom.component.TextViewRegular
+        <com.itbarxproject.custom.component.TextViewRegular
             android:id="@+id/record_toolbar_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
                     android:layout_weight="6"
                     >
 
-                    <com.itbarx.custom.component.TextViewBold
+                    <com.itbarxproject.custom.component.TextViewBold
                         android:id="@+id/record_start_fragment_start_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

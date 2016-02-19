@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:layout_weight="7">
 
-            <com.itbarx.custom.component.TextViewRegular
+            <com.itbarxproject.custom.component.TextViewRegular
                 android:id="@+id/edit_profile_fragment_screen_toolbar_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -121,7 +121,7 @@
                         android:gravity="center_vertical|center_horizontal"
                         >
 
-                        <com.itbarx.custom.component.TextViewBold
+                        <com.itbarxproject.custom.component.TextViewBold
                             android:id="@+id/edit_profile_fragment_screen_changePhoto_TextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -148,7 +148,7 @@
 
                 >
 
-                <com.itbarx.custom.component.TextViewBold
+                <com.itbarxproject.custom.component.TextViewBold
                     android:id="@+id/edit_profile_fragment_screen_basicInfo_TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -206,7 +206,7 @@
                         android:background="@color/white"
                         android:gravity="left|center_vertical">
 
-                        <com.itbarx.custom.component.EditTextRegular
+                        <com.itbarxproject.custom.component.EditTextRegular
                             android:id="@+id/edit_profile_fragment_screen_name_editText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -219,7 +219,7 @@
                             >
 
                             <requestFocus/>
-                        </com.itbarx.custom.component.EditTextRegular>
+                        </com.itbarxproject.custom.component.EditTextRegular>
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -264,7 +264,7 @@
                         android:background="@color/white"
                         android:gravity="left|center_vertical">
 
-                        <com.itbarx.custom.component.EditTextRegular
+                        <com.itbarxproject.custom.component.EditTextRegular
                             android:id="@+id/edit_profile_fragment_screen_userName_editText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -277,7 +277,7 @@
                             >
 
                             <requestFocus/>
-                        </com.itbarx.custom.component.EditTextRegular>
+                        </com.itbarxproject.custom.component.EditTextRegular>
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -323,7 +323,7 @@
                         android:background="@color/white"
                         android:gravity="left|center_vertical">
 
-                        <com.itbarx.custom.component.EditTextRegular
+                        <com.itbarxproject.custom.component.EditTextRegular
                             android:id="@+id/edit_profile_fragment_screen_location_editText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -336,7 +336,7 @@
                             >
 
                             <requestFocus/>
-                        </com.itbarx.custom.component.EditTextRegular>
+                        </com.itbarxproject.custom.component.EditTextRegular>
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -381,7 +381,7 @@
                         android:background="@color/white"
                         android:gravity="left|center_vertical">
 
-                        <com.itbarx.custom.component.EditTextRegular
+                        <com.itbarxproject.custom.component.EditTextRegular
                             android:id="@+id/edit_profile_fragment_screen_yourWebsite_editText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -394,7 +394,7 @@
                             >
 
                             <requestFocus/>
-                        </com.itbarx.custom.component.EditTextRegular>
+                        </com.itbarxproject.custom.component.EditTextRegular>
                     </RelativeLayout>
                 </LinearLayout>
                 <View
@@ -438,7 +438,7 @@
                         android:background="@color/white"
                         android:gravity="left|center_vertical">
 
-                        <com.itbarx.custom.component.EditTextRegular
+                        <com.itbarxproject.custom.component.EditTextRegular
                             android:id="@+id/edit_profile_fragment_screen_eMail_editText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -451,7 +451,7 @@
                             >
 
                             <requestFocus/>
-                        </com.itbarx.custom.component.EditTextRegular>
+                        </com.itbarxproject.custom.component.EditTextRegular>
                     </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -466,7 +466,7 @@
 
                 >
 
-                <com.itbarx.custom.component.TextViewBold
+                <com.itbarxproject.custom.component.TextViewBold
                     android:id="@+id/edit_profile_fragment_screen_changePassword_TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -524,7 +524,7 @@
                     android:background="@color/white"
                     android:gravity="left|center_vertical">
 
-                    <com.itbarx.custom.component.EditTextRegular
+                    <com.itbarxproject.custom.component.EditTextRegular
                         android:id="@+id/edit_profile_fragment_screen_oldPassword_editText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -537,7 +537,7 @@
                         >
 
                         <requestFocus/>
-                    </com.itbarx.custom.component.EditTextRegular>
+                    </com.itbarxproject.custom.component.EditTextRegular>
                 </RelativeLayout>
             </LinearLayout>
 
@@ -582,7 +582,7 @@
                     android:background="@color/white"
                     android:gravity="left|center_vertical">
 
-                    <com.itbarx.custom.component.EditTextRegular
+                    <com.itbarxproject.custom.component.EditTextRegular
                         android:id="@+id/edit_profile_fragment_screen_newPassword_editText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -595,7 +595,7 @@
                         >
 
                         <requestFocus/>
-                    </com.itbarx.custom.component.EditTextRegular>
+                    </com.itbarxproject.custom.component.EditTextRegular>
                 </RelativeLayout>
             </LinearLayout>
 
@@ -641,7 +641,7 @@
                     android:background="@color/white"
                     android:gravity="left|center_vertical">
 
-                    <com.itbarx.custom.component.EditTextRegular
+                    <com.itbarxproject.custom.component.EditTextRegular
                         android:id="@+id/edit_profile_fragment_screen_rePassword_editText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -654,7 +654,7 @@
                         >
 
                         <requestFocus/>
-                    </com.itbarx.custom.component.EditTextRegular>
+                    </com.itbarxproject.custom.component.EditTextRegular>
                 </RelativeLayout>
             </LinearLayout>
 </LinearLayout>
@@ -668,7 +668,7 @@
 
                 >
 
-                <com.itbarx.custom.component.TextViewBold
+                <com.itbarxproject.custom.component.TextViewBold
                     android:id="@+id/edit_profile_fragment_screen_aboutMe_TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -724,7 +724,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="8.5"
                 android:src="@color/white">
-                <com.itbarx.custom.component.EditTextRegular
+                <com.itbarxproject.custom.component.EditTextRegular
                     android:id="@+id/edit_profile_fragment_screen_aboutMe_editText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -741,7 +741,7 @@
                     >
 
                     <requestFocus/>
-                </com.itbarx.custom.component.EditTextRegular>
+                </com.itbarxproject.custom.component.EditTextRegular>
 
                 </RelativeLayout>
             </LinearLayout>
@@ -761,7 +761,7 @@
             android:background="@drawable/border_edit_profile_boxes"
 
             >
-            <com.itbarx.custom.component.TextViewRegular
+            <com.itbarxproject.custom.component.TextViewRegular
                 android:id="@+id/edit_profile_fragment_screen_notification_TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -804,7 +804,7 @@
                 android:layout_marginRight="10dp"
                 >
 
-                <com.itbarx.custom.component.ButtonBold
+                <com.itbarxproject.custom.component.ButtonBold
                     android:id="@+id/edit_profile_fragment_screen_save_button"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -840,7 +840,7 @@
                        android:layout_height="match_parent"
                        android:layout_weight="28"
                        >
-                <com.itbarx.custom.component.TextViewRegular
+                <com.itbarxproject.custom.component.TextViewRegular
                     android:id="@+id/edit_profile_fragment_screen_deleteAccount_TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

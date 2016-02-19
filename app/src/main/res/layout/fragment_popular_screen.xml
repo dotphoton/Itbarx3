@@ -40,7 +40,7 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-                <com.itbarx.custom.component.ButtonRegular
+                <com.itbarxproject.custom.component.ButtonRegular
                     android:id="@+id/popular_fragment_popular_button"
                     style="@style/fragments_non_clickable_upper_buttons_default"
                     android:layout_width="0dip"
@@ -50,7 +50,7 @@
 
                     />
 
-                <com.itbarx.custom.component.ButtonRegular
+                <com.itbarxproject.custom.component.ButtonRegular
                     android:id="@+id/popular_fragment_timeline_button"
                     style="@style/fragments_clickable_upper_buttons_default"
                     android:background="@drawable/button_fragments"

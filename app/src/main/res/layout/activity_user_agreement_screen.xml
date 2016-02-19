@@ -11,7 +11,7 @@
         android:layout_weight="5"
         android:background="@color/toolbar_bg" >
 
-        <com.itbarx.custom.component.TextViewRegular
+        <com.itbarxproject.custom.component.TextViewRegular
             android:id="@+id/activity_userAgreement_screen_toolbar_Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -93,7 +93,7 @@
                      android:visibility="invisible"
                    />
 
-                    <com.itbarx.custom.component.TextViewRegular
+                    <com.itbarxproject.custom.component.TextViewRegular
                         android:id="@+id/activity_userAgreement_screen_agreement_Text"
                         android:layout_width="0dip"
                         android:layout_height="match_parent"
@@ -133,7 +133,7 @@
         android:layout_weight="6"
         android:orientation="horizontal" >
 
-        <com.itbarx.custom.component.ButtonBold
+        <com.itbarxproject.custom.component.ButtonBold
             android:id="@+id/activity_userAgreement_screen_accept_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

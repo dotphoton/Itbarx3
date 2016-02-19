@@ -22,7 +22,7 @@
             />
 
 
-        <com.itbarx.custom.component.TextViewRegular
+        <com.itbarxproject.custom.component.TextViewRegular
             android:id="@+id/create_new_account_activity_screen_toolbar_textView"
             android:layout_width="0dip"
             android:layout_height="match_parent"
@@ -93,7 +93,7 @@
                             android:background="@color/create_new_user_addPhoto_icon_imageView"
                             android:clickable="@bool/choose_true"/>
 
-                        <com.itbarx.custom.component.TextViewBold
+                        <com.itbarxproject.custom.component.TextViewBold
                             android:id="@+id/create_new_account_activity_screen_addPhoto_textView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -161,7 +161,7 @@
                         android:background="@color/white"
                         android:gravity="left|center_vertical">
 
-                        <com.itbarx.custom.component.EditTextRegular
+                        <com.itbarxproject.custom.component.EditTextRegular
                             android:id="@+id/create_new_account_activity_screen_userName_editText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -174,7 +174,7 @@
                             >
 
                             <requestFocus/>
-                        </com.itbarx.custom.component.EditTextRegular>
+                        </com.itbarxproject.custom.component.EditTextRegular>
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -219,7 +219,7 @@
                         android:background="@color/white"
                         android:gravity="left|center_vertical">
 
-                        <com.itbarx.custom.component.EditTextRegular
+                        <com.itbarxproject.custom.component.EditTextRegular
                             android:id="@+id/create_new_account_activity_screen_eMail_editText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -232,7 +232,7 @@
                             >
 
                             <requestFocus/>
-                        </com.itbarx.custom.component.EditTextRegular>
+                        </com.itbarxproject.custom.component.EditTextRegular>
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -278,7 +278,7 @@
                         android:background="@color/white"
                         android:gravity="left|center_vertical">
 
-                        <com.itbarx.custom.component.EditTextRegular
+                        <com.itbarxproject.custom.component.EditTextRegular
                             android:id="@+id/create_new_account_activity_screen_password_editText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -291,7 +291,7 @@
                             >
 
                             <requestFocus/>
-                        </com.itbarx.custom.component.EditTextRegular>
+                        </com.itbarxproject.custom.component.EditTextRegular>
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -336,7 +336,7 @@
                         android:background="@color/white"
                         android:gravity="left|center_vertical">
 
-                        <com.itbarx.custom.component.EditTextRegular
+                        <com.itbarxproject.custom.component.EditTextRegular
                             android:id="@+id/create_new_account_activity_screen_rePassword_editText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -349,7 +349,7 @@
                             >
 
                             <requestFocus/>
-                        </com.itbarx.custom.component.EditTextRegular>
+                        </com.itbarxproject.custom.component.EditTextRegular>
                     </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -386,7 +386,7 @@
                     android:gravity="left|center"
                     android:orientation="horizontal">
 
-                    <com.itbarx.custom.component.TextViewRegular
+                    <com.itbarxproject.custom.component.TextViewRegular
                         android:id="@+id/create_new_account_activity_screen_agreeTo_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -395,7 +395,7 @@
                         android:textColor="@color/create_new_user_userAgreemnt_text"
                         />
 
-                    <com.itbarx.custom.component.TextViewRegular
+                    <com.itbarxproject.custom.component.TextViewRegular
                         android:id="@+id/create_new_account_activity_screen_userAgreement_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -431,7 +431,7 @@
                         android:src="@drawable/icon_remember_me_checked_createnewaccount"/>
                 </RelativeLayout>
 
-                <com.itbarx.custom.component.TextViewRegular
+                <com.itbarxproject.custom.component.TextViewRegular
                     android:id="@+id/create_new_account_activity_screen_rememberMe_textView"
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
@@ -448,7 +448,7 @@
                 android:layout_height="0dip"
                 android:layout_weight="50">
 
-                <com.itbarx.custom.component.ButtonBold
+                <com.itbarxproject.custom.component.ButtonBold
                     android:id="@+id/create_new_account_activity_screen_ok_button"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -493,7 +493,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="6">
 
-                    <com.itbarx.custom.component.TextViewBold
+                    <com.itbarxproject.custom.component.TextViewBold
                         android:id="@+id/create_new_account_activity_screen_or_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -536,7 +536,7 @@
                 android:orientation="horizontal"
                 android:weightSum="345">
 
-                <com.itbarx.custom.component.ButtonBold
+                <com.itbarxproject.custom.component.ButtonBold
                     android:id="@+id/create_new_account_activity_screen_facebook_button"
                     android:layout_width="0dip"
                     android:layout_height="match_parent"
@@ -550,7 +550,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="15"/>
 
-                <com.itbarx.custom.component.ButtonBold
+                <com.itbarxproject.custom.component.ButtonBold
                     android:id="@+id/create_new_account_activity_screen_twitter_button"
                     android:layout_width="0dip"
                     android:layout_height="match_parent"

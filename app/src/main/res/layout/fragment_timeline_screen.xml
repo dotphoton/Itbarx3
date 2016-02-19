@@ -41,7 +41,7 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-                <com.itbarx.custom.component.ButtonRegular
+                <com.itbarxproject.custom.component.ButtonRegular
                     android:id="@+id/timeline_fragment_popular_button"
                     style="@style/fragments_clickable_upper_buttons_default"
                     android:layout_width="0dip"
@@ -51,7 +51,7 @@
                     android:text="@string/populartimeline_fragment_screen_popular_text"
                     />
 
-                <com.itbarx.custom.component.ButtonRegular
+                <com.itbarxproject.custom.component.ButtonRegular
                     android:id="@+id/timeline_fragment_timeline_button"
                     style="@style/fragments_non_clickable_upper_buttons_default"
                     android:layout_width="0dip"

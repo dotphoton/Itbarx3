@@ -9,7 +9,7 @@
 
     >
 
-    <com.itbarx.custom.component.SquareImageView
+    <com.itbarxproject.custom.component.SquareImageView
         android:id="@+id/column_fragment_search_screen_userProfile_imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -41,7 +41,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             >
-            <com.itbarx.custom.component.TextViewGridItemBold
+            <com.itbarxproject.custom.component.TextViewGridItemBold
                 android:id="@+id/column_fragment_search_screen_name_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 />
-            <com.itbarx.custom.component.TextViewGridItemBold
+            <com.itbarxproject.custom.component.TextViewGridItemBold
                 android:id="@+id/column_fragment_search_screen_surname_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

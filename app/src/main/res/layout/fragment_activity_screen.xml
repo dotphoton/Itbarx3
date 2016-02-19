@@ -15,7 +15,7 @@
         android:layout_weight="50"
         android:background="@color/toolbar_bg">
 
-        <com.itbarx.custom.component.TextViewRegular
+        <com.itbarxproject.custom.component.TextViewRegular
             android:id="@+id/activity_fragment_toolbar_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-                <com.itbarx.custom.component.ButtonRegular
+                <com.itbarxproject.custom.component.ButtonRegular
                     android:id="@+id/activity_fragment_activity_button"
                     style="@style/fragments_non_clickable_upper_buttons_default"
                     android:layout_width="0dip"
@@ -76,7 +76,7 @@
                     android:text="@string/activityrequest_fragment_screen_activity_text"
                      />
 
-                <com.itbarx.custom.component.ButtonRegular
+                <com.itbarxproject.custom.component.ButtonRegular
                     android:id="@+id/activity_fragment_request_button"
                     style="@style/fragments_clickable_upper_buttons_default"
                     android:background="@drawable/button_fragments"

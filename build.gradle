@@ -1,9 +1,10 @@
 buildscript {
     repositories {
-        jcenter()
+        jcenter()       // This is the default repo
+        mavenCentral()  //  This is the Maven Central repo
     }
     dependencies {
-
+        // Adjust the version accordingly
         classpath 'com.android.tools.build:gradle:1.3.0'
         classpath 'com.google.gms:google-services:1.3.0'
 

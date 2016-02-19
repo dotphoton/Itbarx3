@@ -67,7 +67,7 @@ android:background="#FA993A"
                 app:layout_widthPercent="7%"
                 android:layout_toRightOf="@+id/toolbar_content_image_layout"
                 />
-            <com.itbarx.custom.component.TextViewBold
+            <com.itbarxproject.custom.component.TextViewBold
                 android:id="@+id/like_side_fragment_toolbar_text"
                 android:layout_toRightOf="@+id/toolbar_content_left_view2"
                 android:layout_width="wrap_content"

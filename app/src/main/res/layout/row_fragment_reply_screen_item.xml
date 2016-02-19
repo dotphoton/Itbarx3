@@ -28,7 +28,7 @@
             android:orientation="vertical"
 
             >
-            <com.itbarx.custom.component.SquareImageView
+            <com.itbarxproject.custom.component.SquareImageView
                 android:id="@+id/row_fragment_reply_screen_profilePhoto_imageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -58,7 +58,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="9"
                 >
-                <com.itbarx.custom.component.TextViewBold
+                <com.itbarxproject.custom.component.TextViewBold
                     android:id="@+id/row_fragment_reply_screen_name_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -77,14 +77,14 @@
                 android:layout_height="0dp"
                 android:layout_weight="9"
                 >
-                <com.itbarx.custom.component.TextViewRegular
+                <com.itbarxproject.custom.component.TextViewRegular
                     android:id="@+id/row_fragment_reply_screen_time_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="3 Min."
                     android:textColor="#000000"
                     />
-                <com.itbarx.custom.component.TextViewRegular
+                <com.itbarxproject.custom.component.TextViewRegular
                     android:id="@+id/row_fragment_reply_screen_from_textView"
                     android:layout_toRightOf="@+id/row_fragment_reply_screen_time_textView"
                     android:layout_width="wrap_content"
@@ -92,7 +92,7 @@
                     android:text=" ago. from "
                     android:textColor="#000000"
                     />
-                <com.itbarx.custom.component.TextViewRegular
+                <com.itbarxproject.custom.component.TextViewRegular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/row_fragment_reply_screen_place_textView"
@@ -149,7 +149,7 @@
             android:layout_weight="400"
 
             >
-            <com.itbarx.custom.component.TextViewRegular
+            <com.itbarxproject.custom.component.TextViewRegular
                 android:id="@+id/row_fragment_reply_screen_postReply_textView"
                 android:padding="5dp"
                 android:layout_width="wrap_content"

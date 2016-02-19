@@ -65,7 +65,7 @@ android:scaleType="centerCrop"
 
     >
 
-<com.itbarx.custom.component.TextViewListItemReg
+<com.itbarxproject.custom.component.TextViewListItemReg
     android:id="@+id/row_fragment_popular_screen_subtitle_textView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

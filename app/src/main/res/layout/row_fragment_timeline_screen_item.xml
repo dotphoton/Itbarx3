@@ -51,7 +51,7 @@ android:paddingTop="5dp"
            >
 
 
-            <com.itbarx.custom.component.TextViewBold
+            <com.itbarxproject.custom.component.TextViewBold
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Full Name"
@@ -62,7 +62,7 @@ android:paddingTop="5dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"/>
 
-            <com.itbarx.custom.component.TextViewRegular
+            <com.itbarxproject.custom.component.TextViewRegular
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="29 mins ago. from UK"
@@ -149,7 +149,7 @@ android:paddingTop="5dp"
 
               >
 
-            <com.itbarx.custom.component.TextViewListItemReg
+            <com.itbarxproject.custom.component.TextViewListItemReg
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:padding="10dp"
@@ -218,7 +218,7 @@ android:paddingTop="5dp"
                 android:gravity="center_vertical"
                 >
 
-                <com.itbarx.custom.component.TextViewBold
+                <com.itbarxproject.custom.component.TextViewBold
                     android:id="@+id/row_fragment_timeline_screen_like_TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -277,7 +277,7 @@ android:paddingTop="5dp"
                 android:gravity="center_vertical"
                 >
 
-                <com.itbarx.custom.component.TextViewBold
+                <com.itbarxproject.custom.component.TextViewBold
                     android:id="@+id/row_fragment_timeline_screen_rebark_TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -336,7 +336,7 @@ android:paddingTop="5dp"
                 android:gravity="center_vertical"
                 >
 
-                <com.itbarx.custom.component.TextViewBold
+                <com.itbarxproject.custom.component.TextViewBold
                     android:id="@+id/row_fragment_timeline_screen_reply_TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -29,7 +29,7 @@
             />
 
 
-        <com.itbarx.custom.component.TextViewRegular
+        <com.itbarxproject.custom.component.TextViewRegular
             android:id="@+id/bark_activity_screen_toolbar_textView"
             android:layout_width="0dip"
             android:layout_height="match_parent"
@@ -109,7 +109,7 @@
             android:background="@drawable/bg_post_detail_text"
 
             >
-            <com.itbarx.custom.component.TextViewRegular
+            <com.itbarxproject.custom.component.TextViewRegular
                 android:id="@+id/bark_activity_screen_subtitle_TextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -151,7 +151,7 @@
             android:layout_height="match_parent"
             android:layout_weight="9"
             >
-                <com.itbarx.custom.component.TextViewBold
+                <com.itbarxproject.custom.component.TextViewBold
                     android:id="@+id/bark_activity_screen_like_count_TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -174,7 +174,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="9"
                 >
-                <com.itbarx.custom.component.TextViewBold
+                <com.itbarxproject.custom.component.TextViewBold
                     android:id="@+id/bark_activity_screen_like_text_TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -202,7 +202,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="9"
                 >
-                <com.itbarx.custom.component.TextViewBold
+                <com.itbarxproject.custom.component.TextViewBold
                     android:id="@+id/bark_activity_screen_rebark_count_TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -225,7 +225,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="9"
                 >
-                <com.itbarx.custom.component.TextViewBold
+                <com.itbarxproject.custom.component.TextViewBold
                     android:id="@+id/bark_activity_screen_rebark_text_TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -253,7 +253,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="9"
                 >
-                <com.itbarx.custom.component.TextViewBold
+                <com.itbarxproject.custom.component.TextViewBold
                     android:id="@+id/bark_activity_screen_reply_count_TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -276,7 +276,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="9"
                 >
-                <com.itbarx.custom.component.TextViewBold
+                <com.itbarxproject.custom.component.TextViewBold
                     android:id="@+id/bark_activity_screen_reply_text_TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

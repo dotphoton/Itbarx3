@@ -17,7 +17,7 @@
         android:layout_weight="50"
         android:background="@color/toolbar_bg">
 
-        <com.itbarx.custom.component.TextViewRegular
+        <com.itbarxproject.custom.component.TextViewRegular
             android:id="@+id/media_record_publish_toolbar_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -132,7 +132,7 @@
                 android:weightSum="100"
                 >
 
-                <com.itbarx.custom.component.ButtonBold
+                <com.itbarxproject.custom.component.ButtonBold
                     android:id="@+id/media_record_publish_button"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
