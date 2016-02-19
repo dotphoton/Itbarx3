@@ -24,7 +24,7 @@
     android:layout_height="match_parent"
        android:clickable="true"
        android:adjustViewBounds="true"
-       android:src="@drawable/thumbnail_mini"
+       android:src="@null"
 android:scaleType="centerCrop"
        android:background="#00000000"
        />

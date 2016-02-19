@@ -116,7 +116,7 @@ android:paddingTop="5dp"
                 android:layout_height="match_parent"
                 android:id="@+id/row_fragment_timeline_screen_video_thumbnail_ImageView"
                 android:layout_centerInParent="true"
-                android:src="@drawable/thumbnail"
+                android:src="@null"
                 android:scaleType="centerCrop"
                 />
 

@@ -83,7 +83,7 @@ public class PopularFragmentListAdapter extends BaseAdapter {
 				if (model.getPostPictureURL() != null && model.getPostPictureURL().length() > 0) {
 					new LoadHttpImage(imgThumbnail).execute(model.getPostPictureURL());
 				} else {
-					imgThumbnail.setVisibility(View.VISIBLE);//add
+					imgThumbnail.setImageResource(R.drawable.thumbnail);//add
 				}
 			}
 

@@ -1,6 +1,9 @@
 package com.itbarx.adapter;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.Pair;
 import android.util.TypedValue;
@@ -105,22 +108,11 @@ public class TimelineFragmentListAdapter extends BaseAdapter {
 			{
 				new LoadHttpImage(imgThumbnail).execute(model.getPostPictureURL());
 			} else{
-				imgThumbnail.setVisibility(View.VISIBLE);//add
+				imgThumbnail.setImageResource(R.drawable.thumbnail);//add
 			}
 			videoPlayImg.setTag(model.getPostID());
 			videoPlayImg.setOnClickListener(playClickListener);
 
-			if (model.getIsAdultContent().equalsIgnoreCase("false") && model.getPostURL() != null && !model.getPostURL().equalsIgnoreCase("") && model.getIsDeleted().equalsIgnoreCase("false")) {
-				Uri uri = Uri.parse("http://itbarxapp.azurewebsites.net" + model.getPostURL());
-				//    video.setVideoURI(uri);
-				//   video.start();
-
-			} else {
-				//  Uri uri = Uri.parse("android.resource://" + ItbarxGlobal.getInstance().getPackageName() + "/" + R.raw.sample);
-				//  video.setVideoURI(uri);
-				//  video.start();
-			}
-			//text to speech
 			txtSubs.setText((model.getPostSpeechToText() != null&&!model.getPostSpeechToText().equals("")) ? model.getPostSpeechToText() : "...");
 
 			//add like count
