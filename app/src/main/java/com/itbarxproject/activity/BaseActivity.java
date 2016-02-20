@@ -8,6 +8,7 @@ import java.util.Random;
 
 
 import com.itbarxproject.R;
+import com.itbarxproject.common.UserSharedPrefrences;
 
 import android.app.Activity;
 import android.app.ActivityGroup;
@@ -101,7 +102,14 @@ public abstract class BaseActivity extends ActivityGroup {
 
 		Dialog dialog = null;
 		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		dialog = builder.setTitle(getResources().getString(R.string.app_name)).setMessage(msg).setCancelable(false).setIcon(android.R.drawable.ic_dialog_alert).setNegativeButton(NegativeText, negativeListener).setPositiveButton(PositiveBtnText, positiveListener).create();
+		//dialog = builder.setTitle(getResources().getString(R.string.app_name)).
+				//setMessage(msg).setCancelable(false).setIcon(android.R.drawable.ic_dialog_alert)
+			//	.setNegativeButton(NegativeText, negativeListener).
+			//			setPositiveButton(PositiveBtnText, positiveListener).create();
+		dialog = builder.setTitle(null)
+				.setMessage(msg).setCancelable(false).setIcon(android.R.drawable.ic_dialog_alert)
+				.setNegativeButton(NegativeText, negativeListener)
+				.setPositiveButton(PositiveBtnText, positiveListener).create();
 		return dialog;
 
 	}
@@ -112,8 +120,8 @@ public abstract class BaseActivity extends ActivityGroup {
 
 	public void showProgress(String msg) {
 		if (mProgressDialog != null && mProgressDialog.isShowing()) dismissProgress();
-
-		mProgressDialog = ProgressDialog.show(this, getResources().getString(R.string.app_name), msg);
+		mProgressDialog = ProgressDialog.show(this, null, msg);
+		//mProgressDialog = ProgressDialog.show(this, getResources().getString(R.string.app_name), msg);
 	}
 
 	public void dismissProgress() {
@@ -247,6 +255,12 @@ public abstract class BaseActivity extends ActivityGroup {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
+				UserSharedPrefrences.saveLogInClear(getContext());
+				UserSharedPrefrences.clearLoginData(getContext());
+				Intent intent = new Intent(getContext(), SplashActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+				startActivity(intent);
 				finish();
 			}
 		},getString(R.string.No),null);

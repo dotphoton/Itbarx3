@@ -199,7 +199,7 @@ public class LoginActivity extends Activity {
     public void showProgress(String msg) {
         if (mProgressDialog != null && mProgressDialog.isShowing()) dismissProgress();
 
-        mProgressDialog = ProgressDialog.show(getContext(), this.getContext().getString(R.string.app_name), msg);
+        mProgressDialog = ProgressDialog.show(getContext(), null, msg);
     }
 
     public void dismissProgress() {
@@ -538,7 +538,7 @@ public class LoginActivity extends Activity {
     };
     public void showAlert(String msg) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(getResources().getString(R.string.app_name)).setMessage(msg).setCancelable(false).setIcon(android.R.drawable.ic_dialog_alert).setPositiveButton(getString(R.string.Ok), new DialogInterface.OnClickListener() {
+        builder.setTitle(null).setMessage(msg).setCancelable(false).setIcon(android.R.drawable.ic_dialog_alert).setPositiveButton(getString(R.string.Ok), new DialogInterface.OnClickListener() {
             @Override public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
             }

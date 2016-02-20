@@ -155,32 +155,9 @@ public class F_EditProfileFragment extends Fragment {
 		@Override
 		public void onOneShotClick(View v) {
 
-			createAndShowAlertDialog();
+			t_profileActivity.areYoulogOffAccount();
 		}
 	};
-	private void createAndShowAlertDialog() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-		builder.setTitle("My Title");
-		builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
-				//TODO
-				dialog.dismiss();
-			/*
-					if (LoginActivity.isConnect()){
-					LoginActivity.disConnect();
 
-				}
-				*/
-			}
-		});
-		builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
-				//TODO
-				dialog.dismiss();
-			}
-		});
-		AlertDialog dialog = builder.create();
-		dialog.show();
-	}
 
 }
