@@ -42,8 +42,8 @@
             <ImageView
                 android:id="@+id/row_fragment_request_screen_user_imageView"
                 android:background="@android:color/white"
-                android:scaleType="centerInside"
-                android:src="@drawable/person"
+                android:scaleType="fitCenter"
+                android:src="@drawable/user_noimage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"

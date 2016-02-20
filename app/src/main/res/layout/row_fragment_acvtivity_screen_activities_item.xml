@@ -24,9 +24,9 @@
         <ImageView
             android:id="@+id/row_fragment_activity_screen_activities_imageView"
             android:background="@android:color/white"
-            android:src="@drawable/robo"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:src="@drawable/user_noimage_small"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
             android:layout_centerVertical="true"
