@@ -45,6 +45,12 @@ public class SplashActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+
+                if( getIntent().getBooleanExtra("Exit me", false)){
+                    finish();
+                    android.os.Process.killProcess(android.os.Process.myPid());
+                }
+
                 /* Create an Intent that will start the Menu-Activity. */
                 //manuel stringte chache temizlenmesi istenirse temizler
                 UserSharedPrefrences.lookClearStatus(getContext());

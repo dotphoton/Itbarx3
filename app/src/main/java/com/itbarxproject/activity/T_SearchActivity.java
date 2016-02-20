@@ -37,7 +37,7 @@ public class T_SearchActivity extends BaseActivity {
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			areYoulogOffAccount();
+			areYouExitApp();
 			return  true;
 		}
 		return super.onKeyDown(keyCode, event);

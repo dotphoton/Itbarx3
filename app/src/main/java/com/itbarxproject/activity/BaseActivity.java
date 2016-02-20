@@ -252,7 +252,27 @@ public abstract class BaseActivity extends ActivityGroup {
 		},getString(R.string.No),null);
 		dialog.show();
 	}
+	public void closeApp()
+	{
+		Intent intent = new Intent(getContext(), SplashActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		intent.putExtra("Exit me", true);
+		startActivity(intent);
+		finish();
+	}
+	public void areYouExitApp()
+	{
+		Dialog dialog = showAlert(getString(R.string.are_you_exit),getString(R.string.Yes),new Dialog.OnClickListener(){
 
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				//android.os.Process.killProcess(android.os.Process.myPid());
+
+				closeApp();
+			}
+		},getString(R.string.No),null);
+		dialog.show();
+	}
 	protected interface ConfigurationChangedListener {
 		void ConfigurationChanged(Configuration config);
 	}

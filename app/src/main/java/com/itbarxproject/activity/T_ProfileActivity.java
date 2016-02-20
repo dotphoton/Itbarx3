@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -41,7 +42,7 @@ public class T_ProfileActivity extends BaseActivity implements Communicator {
 	}
 
 	@Override protected void initViews() {
-		setFragment(F_ProfileFragment.newInstance(T_ProfileActivity.this),  F_EditProfileFragment.newInstance(T_ProfileActivity.this));
+		setFragment(F_ProfileFragment.newInstance(T_ProfileActivity.this), F_EditProfileFragment.newInstance(T_ProfileActivity.this));
 
 	}
 
@@ -72,4 +73,13 @@ public class T_ProfileActivity extends BaseActivity implements Communicator {
 		}
 
 	}
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			areYouExitApp();
+			return  true;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
 }

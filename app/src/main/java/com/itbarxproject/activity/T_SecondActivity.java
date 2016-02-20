@@ -61,7 +61,7 @@ public class T_SecondActivity extends BaseActivity implements Communicator{
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			areYoulogOffAccount();
+			areYouExitApp();
 return  true;
 		}
 		return super.onKeyDown(keyCode, event);

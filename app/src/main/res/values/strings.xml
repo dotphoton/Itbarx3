@@ -183,8 +183,8 @@
     <string name="row_all_fragments_user_imageView_description">user profile photo</string>
 
 
-    <string name="are_you_logout">Oturumu kapatmak istediinize emin misiniz?</string>
-
+    <string name="are_you_logout">Oturumu kapatmak istediğinize emin misiniz?</string>
+    <string name="are_you_exit">Uygulamadan çıkmak istediğinize emin misiniz?</string>
 
     <string name="action_settings">Settings</string>
 
