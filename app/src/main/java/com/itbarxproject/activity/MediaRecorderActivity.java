@@ -25,6 +25,7 @@ import com.itbarxproject.common.FileAttribute;
 import com.itbarxproject.custom.component.TextViewBold;
 import com.itbarxproject.exception.ExceptionHandler;
 import com.itbarxproject.listener.OneShotOnClickListener;
+import com.itbarxproject.utils.BarkUtility;
 import com.itbarxproject.utils.DateUtility;
 import com.itbarxproject.utils.FileUtility;
 import com.itbarxproject.utils.VideoUtility;
@@ -41,7 +42,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class MediaRecorderActivity extends BaseActivity implements SurfaceHolder.Callback {
 
 
-
+	protected String POST_ID = null;
 
 	private String VIDEO_PATH_NAME = "/data/data/";
 	private String VIDEO_VIRTUAL_PATH_NAME = Environment.getExternalStorageDirectory() + "/com.itbarx/";
@@ -78,6 +79,12 @@ public class MediaRecorderActivity extends BaseActivity implements SurfaceHolder
 	}
 
 	@Override protected void initViews() {
+
+		if(getIntent().getStringExtra(BarkUtility.POST_ID_KEY)!=null)
+		{
+			POST_ID = getIntent().getStringExtra(BarkUtility.POST_ID_KEY);
+		}
+
 
 		VIDEO_PATH_NAME += getContext().getPackageName().toString() + "/";
 		imageView = (ImageView) findViewById(R.id.record_recording_fragment_pause_imageView);
@@ -530,7 +537,7 @@ public class MediaRecorderActivity extends BaseActivity implements SurfaceHolder
 						dismissProgress();
 						if (isConvertImageStatus) {
 							// showAlert(getString(R.string.));
-							launchSubActivity(MediaPreviewActivity.class);
+							launchSubActivityAddString(MediaPreviewActivity.class, BarkUtility.POST_ID_KEY,POST_ID);
 						} else {
 							showAlert(getString(R.string.make_working_failure));
 						}

@@ -186,6 +186,9 @@
     <string name="are_you_logout">Oturumu kapatmak istediğinize emin misiniz?</string>
     <string name="are_you_exit">Uygulamadan çıkmak istediğinize emin misiniz?</string>
     <string name="rebark">rebark</string>
+    <string name="reply">reply</string>
+    <string name="publish_bark">Bark yayınlanıyor...</string>
+    <string name="publish_reply_bark">Reply Bark yayınlanıyor...</string>
     <string name="action_settings">Settings</string>
 
     <string-array name="sports_array">

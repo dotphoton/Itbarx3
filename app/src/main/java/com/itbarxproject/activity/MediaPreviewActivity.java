@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
 import android.os.Environment;
+import android.view.KeyEvent;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
@@ -20,9 +21,11 @@ import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegNotSupportedExceptio
 import com.itbarxproject.R;
 import com.itbarxproject.common.FileAttribute;
 import com.itbarxproject.custom.component.TextViewBold;
+import com.itbarxproject.custom.component.TextViewRegular;
 import com.itbarxproject.exception.ExceptionHandler;
 import com.itbarxproject.listener.OneShotOnClickListener;
 import com.itbarxproject.nuance.NuanceOperatorHelper;
+import com.itbarxproject.utils.BarkUtility;
 import com.itbarxproject.utils.FileUtility;
 import com.itbarxproject.utils.VideoUtility;
 
@@ -33,6 +36,9 @@ import java.io.IOException;
  * Created by Umut Boz on 13.09.2015.
  */
 public class MediaPreviewActivity extends BaseActivity implements NuanceOperatorHelper.NuanceCallback,TextureView.SurfaceTextureListener {
+
+
+	protected String POST_ID = null;
 
 	private String VIDEO_PATH_NAME = "/data/data/";
 	private String FFMPEG_INSTALLATION_PATH = "";
@@ -67,6 +73,12 @@ public class MediaPreviewActivity extends BaseActivity implements NuanceOperator
 	}
 
 	@Override protected void initViews() {
+		if(getIntent().getStringExtra(BarkUtility.POST_ID_KEY)!=null)
+		{
+			POST_ID = getIntent().getStringExtra(BarkUtility.POST_ID_KEY);
+			((TextViewRegular) findViewById(R.id.media_record_preview_toolbar_text)).setText(getString(R.string.reply));
+
+		}
 		VIDEO_PATH_NAME += getContext().getPackageName().toString() + "/";
 		imageView = (ImageView) findViewById(R.id.media_record_preview_pause_imageView);
 		playVideoImageView = (ImageView) findViewById(R.id.media_record_preview_play_imageView);
@@ -247,7 +259,18 @@ public class MediaPreviewActivity extends BaseActivity implements NuanceOperator
 	boolean isPauseEnter = false;
 	boolean isFileDelete = false;
 	boolean isStop = false;
-
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			if (!isStop) {
+				stopPlayer();
+			}
+			deleteTempFile();
+			finish();
+			return  true;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
 	@Override protected void onPause() {
 
 		isPauseEnter = true;
@@ -301,7 +324,7 @@ public class MediaPreviewActivity extends BaseActivity implements NuanceOperator
 	@Override public void onCompleteSpeechConverter(String text) {
 		dismissProgress();
 		MediaPublishActivity.SPEECH_TEXT = text;
-		launchSubActivity(MediaPublishActivity.class);
+		launchSubActivityAddString(MediaPublishActivity.class, BarkUtility.POST_ID_KEY,POST_ID);
 	}
 
 	@Override

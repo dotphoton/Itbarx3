@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,7 +16,11 @@ import com.itbarxproject.R;
 import com.itbarxproject.application.ItbarxGlobal;
 import com.itbarxproject.common.FileAttribute;
 import com.itbarxproject.custom.component.ButtonBold;
+import com.itbarxproject.custom.component.TextViewRegular;
 import com.itbarxproject.exception.ExceptionHandler;
+import com.itbarxproject.listener.ReplyProcessesServiceListener;
+import com.itbarxproject.model.reply.ReplyAddModel;
+import com.itbarxproject.model.reply.ReplyListModel;
 import com.itbarxproject.service.ResponseEventModel;
 import com.itbarxproject.service.error.BarxErrorModel;
 import com.itbarxproject.listener.OneShotOnClickListener;
@@ -28,6 +33,8 @@ import com.itbarxproject.model.post.PostPopularPostListModel;
 import com.itbarxproject.model.post.PostTimelineListForUserModel;
 import com.itbarxproject.model.post.PostWallListForUserModel;
 import com.itbarxproject.sl.PostProcessesServiceSL;
+import com.itbarxproject.sl.ReplySL;
+import com.itbarxproject.utils.BarkUtility;
 import com.itbarxproject.utils.Base64Utility;
 import com.itbarxproject.utils.FileUtility;
 import com.itbarxproject.utils.VideoUtility;
@@ -41,6 +48,7 @@ import java.util.List;
  */
 public class MediaPublishActivity extends BaseActivity {
 
+	protected String POST_ID = null;
 	public static String SPEECH_TEXT = "";
 	private String VIDEO_PATH_NAME = "/Pictures/";
 	private static final String VIDEO_EXTENSION = ".mp4";
@@ -67,7 +75,12 @@ public class MediaPublishActivity extends BaseActivity {
 	}
 
 	@Override protected void initViews() {
+		if(getIntent().getStringExtra(BarkUtility.POST_ID_KEY)!=null)
+		{
+			POST_ID = getIntent().getStringExtra(BarkUtility.POST_ID_KEY);
+			((TextViewRegular) findViewById(R.id.media_record_publish_toolbar_text)).setText(getString(R.string.reply));
 
+		}
 		txtBarkInfo = (EditText) findViewById(R.id.media_record_publish_bark_textView);
 		btnPublish = (ButtonBold)findViewById(R.id.media_record_publish_button);
 		btnPublish.setOnClickListener(publishBarkClickListener);
@@ -134,17 +147,39 @@ public class MediaPublishActivity extends BaseActivity {
 		@Override public void onOneShotClick(View v) {
 
 			String lastVideoFile = VideoUtility.getLastVideoPath(getContext());
-			PostAddPostModel postAddPostModel = new PostAddPostModel();
-			postAddPostModel.setPostSenderIp("127.0.0.1");
-			postAddPostModel.setPostAddedTimeZoneId("2");
-			postAddPostModel.setPostSenderUserId(ItbarxGlobal.getInstance().getAccountModel().getUserID());
-			postAddPostModel.setPostSpeechText(txtBarkInfo.getText().toString());
+
 			try {
 
-				postAddPostModel.setVideoBytes(Base64Utility.encodeFileToBase64Binary(lastVideoFile));
-				PostProcessesServiceSL processesServiceSL = new PostProcessesServiceSL(getContext(),postProcessesServiceListener,R.string.root_service_url);
-				processesServiceSL.setAddPost(postAddPostModel);
-				showProgress("Bark yayınlanıyor...");
+				String sendVideoData = Base64Utility.encodeFileToBase64Binary(lastVideoFile);
+
+				if(POST_ID==null)
+				{
+					PostAddPostModel postAddPostModel = new PostAddPostModel();
+					postAddPostModel.setPostSenderIp("127.0.0.1");
+					postAddPostModel.setPostAddedTimeZoneId("2");
+					postAddPostModel.setPostSenderUserId(ItbarxGlobal.getInstance().getAccountModel().getUserID());
+					postAddPostModel.setPostSpeechText(txtBarkInfo.getText().toString());
+					postAddPostModel.setVideoBytes(sendVideoData);
+
+					PostProcessesServiceSL processesServiceSL = new PostProcessesServiceSL(getContext(),postProcessesServiceListener,R.string.root_service_url);
+					processesServiceSL.setAddPost(postAddPostModel);
+					showProgress(getString(R.string.publish_bark));
+				}else
+				{
+					ReplySL replySL = new ReplySL(getContext(), replyProcessesServiceListener, R.string.root_service_url);
+					ReplyAddModel replyAddModel = new ReplyAddModel();
+					replyAddModel.setPostID(POST_ID);
+					replyAddModel.setPostSpeechToText(txtBarkInfo.getText().toString());
+					replyAddModel.setPostSenderUserId(ItbarxGlobal.getInstance().getAccountModel().getUserID());
+					replyAddModel.setPostSenderIp("127.0.0.1");
+					replyAddModel.setPostText(txtBarkInfo.getText().toString());
+					replyAddModel.setPostReplyByte(sendVideoData);
+					replySL.setAddReply(replyAddModel);
+					showProgress(getString(R.string.publish_reply_bark));
+				}
+
+
+
 			} catch (IOException e) {
 				Log.d("ITbarx", "publishBarkClickListener " + e.getMessage());
 
@@ -220,11 +255,43 @@ public class MediaPublishActivity extends BaseActivity {
 			dismissProgress();
 		}
 	};
+	ReplyProcessesServiceListener replyProcessesServiceListener = new ReplyProcessesServiceListener<String>() {
+		@Override public void deleteReply(String idDeleted) {
+
+		}
+		@Override public void getPostRepliesList(List<ReplyListModel> replyListModel) {
+
+		}
+		@Override public void addReply(String isAdded) {
+			dismissProgress();
+			FileUtility.deleteAllFileUnderFolder(VIDEO_VIRTUAL_PATH_NAME);
+			finish();
+		}
+
+		@Override public void onComplete(ResponseEventModel<String> onComplete) {
+
+		}
+
+		@Override public void onError(BarxErrorModel onError) {
+			dismissProgress();
+			showAlert(onError.getErrMessage());
+		}
+	};
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 
 
+	}
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			FileUtility.deleteAllFileUnderFolder(VIDEO_VIRTUAL_PATH_NAME);
+			finish();
+			return  true;
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 
 }

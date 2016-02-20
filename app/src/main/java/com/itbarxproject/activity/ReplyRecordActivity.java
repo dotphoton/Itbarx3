@@ -64,7 +64,7 @@ public class ReplyRecordActivity extends BaseActivity implements TextureView.Sur
     private void setTextSize() {
         txtToolbarRecord.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getToolbarTextSize());
         txtStartRecord.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getRecordStartTextSize());
-        txtToolbarRecord.setText(getString(R.string.rebark));
+        txtToolbarRecord.setText(getString(R.string.reply));
     }
     void  stopCamera()
     {
@@ -83,9 +83,8 @@ public class ReplyRecordActivity extends BaseActivity implements TextureView.Sur
         @Override public void onOneShotClick(View v) {
 
             stopCamera();
-            //Intent intent =new Intent(t_recordActivity,MediaRecorderActivity.class);
-            //t_recordActivity.startActivityForResult(intent,111);
-            //t_recordActivity.launchSubActivityForResult(MediaRecorderActivity.class);
+            launchSubActivityAddString(MediaRecorderActivity.class,BarkUtility.POST_ID_KEY,POST_ID);
+
         }
     };
     public void  initPreview(SurfaceTexture surface)
