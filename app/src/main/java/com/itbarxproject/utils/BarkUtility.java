@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class BarkUtility {
 
-    protected final static String POST_ID_KEY ="POST_ID";
+    public final static String POST_ID_KEY ="POST_ID";
     protected final static String USER_ID_KEY ="USER_ID";
     protected  final static String POST_SENDER_USER_ID="POST_SENDER_USER_ID";
 

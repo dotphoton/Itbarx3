@@ -114,7 +114,8 @@
         <activity
             android:name=".activity.T_ProfileActivity"
             android:screenOrientation="portrait"/>
-
+        <activity android:name=".activity.ReplyRecordActivity"
+            android:screenOrientation="portrait"/>
         <!--TEST DEBUG-->
         <activity android:name=".exception.ExceptionActivity"
             android:screenOrientation="portrait"/>

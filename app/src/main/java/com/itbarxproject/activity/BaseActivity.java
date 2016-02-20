@@ -156,7 +156,28 @@ public abstract class BaseActivity extends ActivityGroup {
 		_callbackMap.put(correlationId, resultCallbackIF);
 		startActivity(i);
 	}
+	public void launchSubActivityAddString(Class subActivityClass,String key,String value) {
+		Intent i = new Intent(this, subActivityClass);
+		i.putExtra(key,value);
+		Random rand = new Random();
+		int correlationId = rand.nextInt();
 
+		ResultCallbackIF resultCallbackIF = new ResultCallbackIF() {
+			@Override public void resultOk(Intent data) {
+				// TODO Auto-generated method stub
+				Log.i("launchSubActivity", "subactivity completed successfully, result=");
+			}
+
+			@Override public void resultCancel(Intent data) {
+				// TODO Auto-generated method stub
+				Log.i("launchSubActivity", "subactivity was cancelled, result=");
+			}
+		};
+
+		_liveChildActivity.put(correlationId, subActivityClass);
+		_callbackMap.put(correlationId, resultCallbackIF);
+		startActivity(i);
+	}
 	public void launchSubActivityAddExtra(Class subActivityClass, String key, Serializable serializableObje) {
 		Intent i = new Intent(this, subActivityClass);
 		i.putExtra(key, serializableObje);

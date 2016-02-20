@@ -199,13 +199,16 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
 
 			imgReply.setOnClickListener(new OneShotOnClickListener(500) {
 				@Override public void onOneShotClick(View v) {
-					ReplySendModel replySendModel = new ReplySendModel("40BF425A-0853-4DF0-868B-6848978E6239", "1", "10");
+
+					launchSubActivityAddString(ReplyRecordActivity.class, BarkUtility.POST_ID_KEY, POST_ID);
+					finish();
+/*					ReplySendModel replySendModel = new ReplySendModel("40BF425A-0853-4DF0-868B-6848978E6239", "1", "10");
 				//	ReplyProcessesServiceSL replyProcessesServiceSL = new ReplyProcessesServiceSL(getContext(), replyProcessesServiceListener, R.string.root_service_url);
 				//	replyProcessesServiceSL.setGetPostRepliesList(replySendModel);
 					ReplySL replySL = new ReplySL(getContext(), replyProcessesServiceListener, R.string.root_service_url);
 					replySL.setGetPostRepliesList(replySendModel);
 					showProgress(getString(R.string.ItbarxConnecting));
-
+*/
 				}
 			});
 
@@ -319,15 +322,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
 			finish();
 		}
 	};
-	public static Drawable LoadImageFromWebOperations(String url) {
-		try {
-			InputStream is = (InputStream) new URL(url).getContent();
-			Drawable d = Drawable.createFromStream(is, null);
-			return d;
-		} catch (Exception e) {
-			return null;
-		}
-	}
+
 	MediaPlayer.OnCompletionListener onCompletionListener = new MediaPlayer.OnCompletionListener() {
 		@Override public void onCompletion(MediaPlayer mp) {
 			if (!mMediaPlayer.isPlaying()) {
