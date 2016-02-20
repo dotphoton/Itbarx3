@@ -38,10 +38,11 @@ android:paddingTop="5dp"
                 android:id="@+id/row_fragment_timeline_screen_user_imageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:padding="5dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerInParent="true"
                 android:layout_centerVertical="true"
-                android:src="@drawable/user_male_icon" />
+                android:src="@drawable/user_noimage_small" />
 
         </RelativeLayout>
         <RelativeLayout
