@@ -87,6 +87,15 @@ public class UserSharedPrefrences {
         editor.commit();
     }
 
+    public static void clearLoginData(Context context) {
+
+        saveId(context, "");
+        saveEmail(context, "");
+        saveToken(context, "");
+        saveUserName(context, "");
+        savePassword(context, "");
+        saveFacebookId(context,"");
+    }
     public static void saveLogIn(Context context) {
         SharedPreferences sharedPreferences = context.getApplicationContext().getSharedPreferences(
                 "LoginPreferences", 0);
@@ -150,6 +159,7 @@ public class UserSharedPrefrences {
         if(clearStatus.equalsIgnoreCase("1"))
         {
             saveLogInClear(context);
+            clearLoginData(context);
         }
     }
 

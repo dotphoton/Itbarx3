@@ -27,6 +27,7 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.common.ConnectionResult;
@@ -94,24 +95,17 @@ public class LoginActivity extends Activity {
 
 
         super.onCreate(savedInstanceState);
-        //manuel stringte chache temizlenmesi istenirse temizler
-        UserSharedPrefrences.lookClearStatus(getContext());
-        //daha evvelden kullanıcı login yapmış ise
-        boolean didLogon = UserSharedPrefrences.didLogOn(getContext());
-        if(didLogon)
-        {
-            ItbarxGlobal global = ItbarxGlobal.setInstance(LoginActivity.this);
-            AccountGetUserByLoginInfoModel model = UserSharedPrefrences.getLogOnModel(getContext());
-            global.setAccountModel(model);
-            launchSubActivity(TabContainer.class);
-            return;
-        }
-
         FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.activity_login_screen);
         btnfaceLoginButton = (LoginButton) findViewById(R.id.facebook_login_button);
         btnfaceLoginButton.setReadPermissions(Arrays.asList("email"));
+
+        if(UserSharedPrefrences.getToken(getContext())!=null && !UserSharedPrefrences.getToken(getContext()).equalsIgnoreCase(""))
+        {
+            LoginManager.getInstance().logOut();
+            UserSharedPrefrences.clearLoginData(getContext());
+        }
         edtUserName = (EditTextRegular) findViewById(R.id.login_activity_screen_username_edittext);
         edtPassword = (EditTextRegular) findViewById(R.id.login_activity_screen_password_edittext);
         btnLogIn = (ButtonBold) findViewById(R.id.login_activity_screen_login_button);
@@ -495,17 +489,16 @@ public class LoginActivity extends Activity {
 
             ItbarxGlobal global = ItbarxGlobal.setInstance(LoginActivity.this);
             global.setAccountModel(loginModelResponse);
-            SharedPreferences sp = getSharedPreferences("Login", 0);
-            SharedPreferences.Editor Ed = sp.edit();
-            Ed.putString("Unm", strUserName);
-            Ed.putString("Psw", strPassword);
-            Ed.commit();
+
+
+            UserSharedPrefrences.saveLogOnModel(getContext(),loginModelResponse);
+            UserSharedPrefrences.saveUserName(getContext(), strUserName);
+            UserSharedPrefrences.savePassword(getContext(),strPassword);
+
             UserSharedPrefrences.saveLogIn(getContext());
 
             closeKeyboard();
             launchSubActivity(TabContainer.class);
-            // cağırmak
-            // ItbarxGlobal.getInstance().getAccountModel().
 
         }
 
