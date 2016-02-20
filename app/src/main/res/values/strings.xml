@@ -38,6 +38,7 @@
     <string name="start_recording">kayıt başlıyor</string>
     <string name="finish_recording">kayıt tamamlandı</string>
     <string name="record_playing">oynatılıyor</string>
+    <string name="isClearLogInStatus">0</string>
     <!-- create new account activity screen -->
     <string name="createnewaccount_activity_screen_toolbar_text">yeni kullanıcı oluştur</string>
     <string name="createnewaccount_activity_screen_addphoto_text">add\nphoto\nhere</string>

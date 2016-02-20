@@ -26,6 +26,23 @@ public class AccountModelParserJSON {
 	return model;
 	}
 
+	public String getUserLoginInfoJSONFromModel(AccountGetUserByLoginInfoModel model)
+	{
+		String modelString =null;
+		try
+		{
+			Type type = new TypeToken<AccountGetUserByLoginInfoModel>() { }.getType();
+			Gson gson = new Gson();
+			modelString =  gson.toJson(model, type);
+		}
+		catch(Exception ex)
+		{
+			Log.d("getUserLoginInfoJSONFromModel JSON PARSER",ex.getMessage());
+		}
+		return modelString;
+
+	}
+
 	public GetEditProfileModel getGetEditProfileModelFromJSON(String json) {
 	GetEditProfileModel model = null;
 	try {

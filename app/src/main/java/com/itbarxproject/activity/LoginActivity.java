@@ -7,7 +7,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -19,6 +23,10 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.Profile;
+import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.common.ConnectionResult;
@@ -27,6 +35,7 @@ import com.google.android.gms.common.ConnectionResult;
 
 import com.itbarxproject.R;
 import com.itbarxproject.application.ItbarxGlobal;
+import com.itbarxproject.common.UserSharedPrefrences;
 import com.itbarxproject.custom.component.ButtonBold;
 import com.itbarxproject.custom.component.EditTextRegular;
 import com.itbarxproject.custom.component.TextViewBold;
@@ -47,6 +56,15 @@ import com.itbarxproject.model.account.LoginModel;
 import com.itbarxproject.sl.AccountProcessesServiceSL;
 import com.itbarxproject.utils.TextSizeUtil;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import java.util.Arrays;
 import java.util.Random;
 
 public class LoginActivity extends Activity {
@@ -55,6 +73,7 @@ public class LoginActivity extends Activity {
 
     private static final int RC_SIGN_IN = 1000;
     private CallbackManager callbackManager;
+    ProfileTracker profileTracker;
     //private static GoogleApiClient mGoogleApiClient;
     private ConnectionResult mConnectionResult;
     private boolean mIntentInProgress;
@@ -69,24 +88,51 @@ public class LoginActivity extends Activity {
    // private ImageView unCheckedRemMeImageV, checkedRemMeImageV;
    // private SignInButton btnSignInButton;
     private LoginButton btnfaceLoginButton;
-
+    private String facebookEmail;
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
 
         super.onCreate(savedInstanceState);
+        //manuel stringte chache temizlenmesi istenirse temizler
+        UserSharedPrefrences.lookClearStatus(getContext());
+        //daha evvelden kullanıcı login yapmış ise
+        boolean didLogon = UserSharedPrefrences.didLogOn(getContext());
+        if(didLogon)
+        {
+            ItbarxGlobal global = ItbarxGlobal.setInstance(LoginActivity.this);
+            AccountGetUserByLoginInfoModel model = UserSharedPrefrences.getLogOnModel(getContext());
+            global.setAccountModel(model);
+            launchSubActivity(TabContainer.class);
+            return;
+        }
+
         FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.activity_login_screen);
         btnfaceLoginButton = (LoginButton) findViewById(R.id.facebook_login_button);
-
+        btnfaceLoginButton.setReadPermissions(Arrays.asList("email"));
         edtUserName = (EditTextRegular) findViewById(R.id.login_activity_screen_username_edittext);
         edtPassword = (EditTextRegular) findViewById(R.id.login_activity_screen_password_edittext);
         btnLogIn = (ButtonBold) findViewById(R.id.login_activity_screen_login_button);
         btnForgotPwd = (ButtonBold) findViewById(R.id.login_activity_screen_forgotpassword_button);
         btnCreateNewAcc = (ButtonBold) findViewById(R.id
                 .login_activity_screen_createnewaccount_button);
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    "com.itbarxproject",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+              String data = Base64.encodeToString(md.digest(), Base64.DEFAULT);
+                Log.d("KeyHash:",data );
+            }
+        } catch (PackageManager.NameNotFoundException e) {
 
+        } catch (NoSuchAlgorithmException e) {
+
+        }
 
         strUserName = "";
         strPassword = "";
@@ -100,6 +146,25 @@ public class LoginActivity extends Activity {
         btnfaceLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+                String accessToken = loginResult.getAccessToken().getToken();
+                    UserSharedPrefrences.saveToken(getContext(),accessToken);
+                GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+
+                    @Override
+                    public void onCompleted(JSONObject jsonObject, GraphResponse graphResponse) {
+                        Bundle bFacebookData = getFacebookData(jsonObject);
+                        UserSharedPrefrences.saveBundle(getContext(),bFacebookData);
+                        setOtherSignup(bFacebookData.getString("email"), bFacebookData.getString("first_name"),
+                                UserSharedPrefrences.getToken(getContext())
+                                , "2", bFacebookData.getString("idFacebook"));
+                        showProgress(getString(R.string.ItbarxConnecting));
+                    }
+                });
+
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "id, first_name, last_name, email,gender, birthday, location"); // Parámetros que pedimos a facebook
+                request.setParameters(parameters);
+                request.executeAsync();
 
             }
 
@@ -113,7 +178,14 @@ public class LoginActivity extends Activity {
 
             }
         });
-
+        profileTracker = new ProfileTracker() {
+            @Override
+            protected void onCurrentProfileChanged(
+                    Profile oldProfile,
+                    Profile currentProfile) {
+                // App code
+            }
+        };
     }
 
 
@@ -389,6 +461,15 @@ public class LoginActivity extends Activity {
 
     }
 
+    // --- Other signup---
+    protected void setOtherSignup(String Email,String Name, String Token,String LoginCategory,String IdInfo) {
+        AccountProcessesServiceSL accountServiceSL = new AccountProcessesServiceSL(getContext(),
+                accountProcessesServiceListener, R.string.root_service_url);
+        accountServiceSL.setOtherSignup(Email,Name,Token,LoginCategory,IdInfo);
+
+
+    }
+
     // **************************************//
     // ---ACCOUNT SERVICE LISTENER METHODS---
     // **************************************//
@@ -419,6 +500,8 @@ public class LoginActivity extends Activity {
             Ed.putString("Unm", strUserName);
             Ed.putString("Psw", strPassword);
             Ed.commit();
+            UserSharedPrefrences.saveLogIn(getContext());
+
             closeKeyboard();
             launchSubActivity(TabContainer.class);
             // cağırmak
@@ -676,5 +759,45 @@ public class LoginActivity extends Activity {
 
 	}
 */
+private Bundle getFacebookData(JSONObject object) {
 
+    try {
+        Bundle bundle = new Bundle();
+        String id = object.getString("id");
+
+        try {
+            URL profile_pic = new URL("https://graph.facebook.com/" + id + "/picture?width=200&height=150");
+            Log.i("profile_pic", profile_pic + "");
+            bundle.putString("profile_pic", profile_pic.toString());
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        bundle.putString("idFacebook", id);
+        if (object.has("first_name"))
+            bundle.putString("first_name", object.getString("first_name"));
+        if (object.has("last_name"))
+            bundle.putString("last_name", object.getString("last_name"));
+        if (object.has("email"))
+            bundle.putString("email", object.getString("email"));
+        if (object.has("gender"))
+            bundle.putString("gender", object.getString("gender"));
+        if (object.has("birthday"))
+            bundle.putString("birthday", object.getString("birthday"));
+        if (object.has("location"))
+            bundle.putString("location", object.getJSONObject("location").getString("name"));
+
+        return bundle;
+    } catch (JSONException e) {
+        e.printStackTrace();
+    }
+    return  null;
+}
+    @Override
+public void onDestroy() {
+    super.onDestroy();
+    profileTracker.stopTracking();
+}
 }

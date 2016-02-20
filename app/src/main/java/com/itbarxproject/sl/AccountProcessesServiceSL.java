@@ -127,6 +127,34 @@ public class AccountProcessesServiceSL extends BasePostServiceSL<String> {
 	postClient.execute(uri, AccountProcessesLinks.GET_EDIT_PROFILE_LINK.toString());
 	}
 
+	// ---GET_EDIT_PROFILE---KULLANICI EDİT SAYFASI BİLGİLERİ AL
+	public void setOtherSignup(String Email,String Name, String Token,String LoginCategory,String IdInfo) {
+/*
+facebook icin = 2
+google plus icin = 3
+Token:"my token",
+Name :"my name",
+LoginCategory : "2",
+IdInfo : "my id"
+}
+ */
+		List<Pair<String,String>> params = new ArrayList<>();
+		params.add(new Pair(GlobalDataForWS.EMAIL.toString(),Email));
+		params.add(new Pair(GlobalDataForWS.TOKEN.toString(),Token));
+		params.add(new Pair(GlobalDataForWS.NAME.toString(),Name));
+		params.add(new Pair(GlobalDataForWS.LOGIN_CATEGORY.toString(),LoginCategory));
+		params.add(new Pair(GlobalDataForWS.ID_INFO.toString(),IdInfo));
+
+		String postData = ItbarxUtils.formattedData(params);
+		BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
+		postClient.addServiceClientListener(this);
+		postClient.addErrorErrorServiceClientListener(this);
+		postClient.setBasicHttpBinding(true);
+		String uri = getServiceUri();
+		postClient.execute(uri, AccountProcessesLinks.OTHER_SIGNUP.toString());
+	}
+
+
 	// ---EDIT_PROFILE---
 	public void setEditProfile(EditProfileModel editProfileModel) {
 
