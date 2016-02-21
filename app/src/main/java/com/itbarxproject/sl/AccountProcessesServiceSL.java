@@ -222,7 +222,24 @@ IdInfo : "my id"
 
 		}
 	}
+else if(responseEvent.getMethodName().equalsIgnoreCase(AccountProcessesLinks.OTHER_SIGNUP.toString()))
+	{
 
+		ServiceResponseModel model = ItbarxUtils.getServiceResponseModel(result, "SpUserGetUserByOtherLoginInfosResult");
+		if (model != null) {
+
+			AccountModelParserJSON accountModelParserJSON = new AccountModelParserJSON();
+			AccountGetUserByLoginInfoModel loginModelResponse = accountModelParserJSON.getUserLoginInfoModelFromJSON(model.getModel());
+			if (loginModelResponse == null) {
+				BarxErrorModel<String> errorModel = new BarxErrorModel<String>();
+				errorModel.setErrMessage(context.getString(R.string.BrokenData));
+				accountServiceListener.onError(errorModel);
+			} else {
+				accountServiceListener.logInAccount(loginModelResponse);
+			}
+
+		}
+	}
 	// ---SIGNUP---
 	else if (responseEvent.getMethodName().equalsIgnoreCase(AccountProcessesLinks.SIGNUP_LINK.toString()))
 
