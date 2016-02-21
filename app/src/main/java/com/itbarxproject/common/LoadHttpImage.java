@@ -63,7 +63,7 @@ public class LoadHttpImage extends AsyncTask<String, String, Bitmap> {
             img.setImageBitmap(image);
             Log.i(TAG, "image download ok！！！");
         } else {
-            img.setBackgroundResource(R.drawable.video_circle);
+          //  img.setBackgroundResource(R.drawable.video_circle);
             Log.i(TAG, "image download false！！！");
         }
 

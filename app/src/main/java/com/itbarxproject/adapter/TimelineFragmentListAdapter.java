@@ -102,8 +102,6 @@ public class TimelineFragmentListAdapter extends BaseAdapter {
 			if(model.getPostPictureURL()!=null&& model.getPostPictureURL().length()>0)
 			{
 				new LoadHttpImage(imgThumbnail).execute(model.getPostPictureURL());
-			} else{
-				imgThumbnail.setImageResource(R.drawable.thumbnail);//add
 			}
 			videoPlayImg.setTag(model.getPostID());
 			videoPlayImg.setOnClickListener(playClickListener);

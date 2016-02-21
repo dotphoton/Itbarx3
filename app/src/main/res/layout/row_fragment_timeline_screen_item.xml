@@ -100,7 +100,7 @@ android:paddingTop="5dp"
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="10"
-
+            android:background="#E8EDE6"
             >
            <!--
             <VideoView
@@ -117,7 +117,8 @@ android:paddingTop="5dp"
                 android:layout_height="match_parent"
                 android:id="@+id/row_fragment_timeline_screen_video_thumbnail_ImageView"
                 android:layout_centerInParent="true"
-                android:src="@null"
+
+
                 android:scaleType="centerCrop"
                 />
 
