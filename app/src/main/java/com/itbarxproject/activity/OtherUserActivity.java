@@ -45,7 +45,7 @@ public class OtherUserActivity extends BaseActivity {
 	private TextViewBold txtReBarkCount, txtFollowerCount, txtFollowingCount;
 	private TextViewRegular txtBarkText, txtFollowerText, txtFollowingText;
 	private TextViewBold txtFollow, txtUnFollow;
-	//private ButtonBold btnFollow,btnUnFollow;
+
 	private String userID;
 	private ImageView imgUserPhoto, imgFollow, imgUnFollow;
 	private ListView lstPopular;
@@ -78,8 +78,7 @@ public class OtherUserActivity extends BaseActivity {
 			txtLocationName = (TextViewRegular) findViewById(R.id.other_user_activity_screen_place_text);
 			txtUserBio = (TextViewRegular) findViewById(R.id.other_user_activity_screen_user_bio_text);
 			txtItBarkUserName = (TextViewBold) findViewById(R.id.other_user_activity_screen_itBarkUserName_text);
-			//btnFollow = (ButtonBold) findViewById(R.id.other_user_activity_screen_follow_button);
-			//btnUnFollow = (ButtonBold) findViewById(R.id.other_user_activity_screen_unFollow_button);
+
 			txtReBarkCount = (TextViewBold) findViewById(R.id.other_user_activity_screen_reBarksCount_TextView);
 			txtFollowerCount = (TextViewBold) findViewById(R.id.other_user_activity_screen_followersCount_TextView);
 			txtFollowingCount = (TextViewBold) findViewById(R.id.other_user_activity_screen_followingCount_TextView);
@@ -87,8 +86,7 @@ public class OtherUserActivity extends BaseActivity {
 			txtFollowerText = (TextViewRegular) findViewById(R.id.other_user_activity_screen_followers_TextView);
 			txtFollowingText = (TextViewRegular) findViewById(R.id.other_user_activity_screen_following_TextView);
 			lstPopular = (ListView)findViewById(R.id.other_user_activity_screen_listView);
-		//	imgFollow.setOnClickListener(imgFollowClickListener);
-		//	imgUnFollow.setOnClickListener(imgUnFollowClickListener);
+
 			layoutFollowUnFollow.setOnClickListener(layoutFollowProcessesClickListener);
 			setTextSize();
 			getPopularList();
@@ -107,7 +105,7 @@ public class OtherUserActivity extends BaseActivity {
 		if (ItbarxGlobal.getInstance().getPopularListModel() != null) {
 
 			lstPopular.setAdapter(new PopularFragmentListAdapter(this, ItbarxGlobal.getInstance().getPopularListModel()));
-
+			showProgress(getString(R.string.ItbarxConnecting));
 		}
 
 	}
@@ -130,42 +128,21 @@ public class OtherUserActivity extends BaseActivity {
 		txtFollowingText.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getProfileMiniButtonTextSize());
 
 	}
-/*
-	OneShotOnClickListener imgFollowClickListener = new OneShotOnClickListener(500) {
-		@Override public void onOneShotClick(View v) {
-			layoutFollowUnFollow.setBackground(getResources().getDrawable(R.drawable.select_unfollow_button));
-			imgFollow.setVisibility(View.INVISIBLE);
-			imgFollow.setVisibility(View.GONE);
-			imgUnFollow.setVisibility(View.VISIBLE);
-			txtFollow.setVisibility(View.INVISIBLE);
-			txtFollow.setVisibility(View.GONE);
-			txtUnFollow.setVisibility(View.VISIBLE);
-		}
-	};
 
-	OneShotOnClickListener imgUnFollowClickListener = new OneShotOnClickListener(500) {
-		@Override public void onOneShotClick(View v) {
-			layoutFollowUnFollow.setBackground(getResources().getDrawable(R.drawable.select_green_button));
-			imgUnFollow.setVisibility(View.INVISIBLE);
-			imgUnFollow.setVisibility(View.GONE);
-			imgFollow.setVisibility(View.VISIBLE);
-			txtUnFollow.setVisibility(View.INVISIBLE);
-			txtUnFollow.setVisibility(View.GONE);
-			txtFollow.setVisibility(View.VISIBLE);
-		}
-	};
-	*/
 	OneShotOnClickListener layoutFollowProcessesClickListener = new OneShotOnClickListener(500) {
 		@Override
 		public void onOneShotClick(View v) {
+			if(areYouFollowing!=null) {
+				if (areYouFollowing.equals(FinalString.ONE)) {
+					removeFollow(postSenderUserId);
+					showProgress(getString(R.string.ItbarxConnecting));
+				} else {
+					addFollow(postSenderUserId);
+					showProgress(getString(R.string.ItbarxConnecting));
 
-			if (areYouFollowing.equals(FinalString.ONE)){
-			removeFollow(postSenderUserId);
+				}
 			}
-			else {
-				addFollow(postSenderUserId);
-
-			}
+				/*
 
 			if (imgFollow.getVisibility() == View.VISIBLE ){
 
@@ -188,7 +165,7 @@ public class OtherUserActivity extends BaseActivity {
 				txtFollow.setVisibility(View.VISIBLE);
 
 			}
-
+*/
 
 		}
 	};
@@ -197,8 +174,8 @@ public class OtherUserActivity extends BaseActivity {
 	public void addFollow(String id) {
 
 		FollowUserModel model = new FollowUserModel();
-		model.setFollowingID(getUserID());
-		model.setFollowerID(id);
+		model.setFollowingID(id);
+		model.setFollowerID(getUserID());
 		FollowingProcessesServiceSL followingProcessesServiceSL = new FollowingProcessesServiceSL
 				(getContext(), followingProcessesServiceListener, R.string
 						.root_service_url);
@@ -208,8 +185,8 @@ public class OtherUserActivity extends BaseActivity {
 	public void removeFollow(String id) {
 
 		FollowUserModel model = new FollowUserModel();
-		model.setFollowingID(getUserID());
-		model.setFollowerID(id);
+		model.setFollowingID(id);
+		model.setFollowerID(getUserID());
 		FollowingProcessesServiceSL followingProcessesServiceSL = new FollowingProcessesServiceSL
 				(getContext(), followingProcessesServiceListener, R.string
 						.root_service_url);

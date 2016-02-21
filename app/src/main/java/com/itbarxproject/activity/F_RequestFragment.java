@@ -119,8 +119,8 @@ public class F_RequestFragment extends Fragment {
     public void addFollow(String id) {
 
         FollowUserModel model = new FollowUserModel();
-        model.setFollowingID(getUserID());
-        model.setFollowerID(id);
+        model.setFollowingID(id);
+        model.setFollowerID(getUserID());
         FollowingProcessesServiceSL followingProcessesServiceSL = new FollowingProcessesServiceSL
 				(t_secondActivity.getContext(), followingProcessesServiceListener, R.string
 						.root_service_url);
@@ -130,8 +130,8 @@ public class F_RequestFragment extends Fragment {
     public void removeFollow(String id) {
 
         FollowUserModel model = new FollowUserModel();
-        model.setFollowingID(getUserID());
-        model.setFollowerID(id);
+        model.setFollowingID(id);
+        model.setFollowerID(getUserID());
         FollowingProcessesServiceSL followingProcessesServiceSL = new FollowingProcessesServiceSL
                 (t_secondActivity.getContext(), followingProcessesServiceListener, R.string
                         .root_service_url);
@@ -141,8 +141,8 @@ public class F_RequestFragment extends Fragment {
 
     public void acceptRequest(String id){
         FollowUserModel model = new FollowUserModel();
-        model.setFollowingID(getUserID());
-        model.setFollowerID(id);
+        model.setFollowingID(id);
+        model.setFollowerID(getUserID());
         FollowingProcessesServiceSL followingProcessesServiceSL = new FollowingProcessesServiceSL
                 (t_secondActivity.getContext(), followingProcessesServiceListener, R.string
                         .root_service_url);
@@ -151,8 +151,8 @@ public class F_RequestFragment extends Fragment {
 
     public void denyRequest(String id){
         FollowUserModel model = new FollowUserModel();
-        model.setFollowingID(getUserID());
-        model.setFollowerID(id);
+        model.setFollowingID(id);
+        model.setFollowerID(getUserID());
         FollowingProcessesServiceSL followingProcessesServiceSL = new FollowingProcessesServiceSL
                 (t_secondActivity.getContext(), followingProcessesServiceListener, R.string
                         .root_service_url);
