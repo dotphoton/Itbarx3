@@ -1,6 +1,7 @@
 package com.itbarxproject.sl;
 
 import android.content.Context;
+import android.util.Log;
 import android.util.Pair;
 
 import com.itbarxproject.R;
@@ -51,6 +52,7 @@ public class LikeSL  extends BasePostServiceSL<String> {
 		params.add(new Pair(GlobalDataForWS.POST_ID.toString(), likeModel.getPostId()));
 
 		String postData = ItbarxUtils.formattedData(params);
+		Log.d("LIKE SL"," "+postData);
 		BasePostAsyncTask<String> postClient = new BasePostAsyncTask<String>(context, NAME_OF_THE_CLASS, postData);
 		postClient.addServiceClientListener(this);
 		postClient.addErrorErrorServiceClientListener(this);
@@ -136,6 +138,7 @@ public class LikeSL  extends BasePostServiceSL<String> {
 	@Override
 	public void onPOSTCommit(ResponseEventModel<String> responseEvent) {
 		String result = responseEvent.getResponseData();
+		Log.d("TEST LIKE ", result);
 
 		// ADD LIKE
 		if (responseEvent.getMethodName().equalsIgnoreCase(LikeProcessesLinks.ADD.toString())) {
