@@ -12,15 +12,17 @@ public class LikeData implements Parcelable {
 	private String itBarxUserName;
 	private String name;
 	private String areYouFollowing;
+	private String id;
 
 	/**
 	 * Constructs a Question from values
 	 */
-	public LikeData (String photo,String itBarxUserName, String name, String areYouFollowing) {
+	public LikeData (String photo,String itBarxUserName, String name, String areYouFollowing,String id) {
 		this.profilePhoto=photo;
 		this.itBarxUserName = itBarxUserName;
 		this.name = name;
 		this.areYouFollowing = areYouFollowing;
+		this.id = id;
 	}
 	/**
 	 * Constructs a Question from a Parcel
@@ -31,6 +33,7 @@ public class LikeData implements Parcelable {
 		this.itBarxUserName = parcel.readString();
 		this.name = parcel.readString();
 		this.areYouFollowing = parcel.readString();
+		this.id = id;
 			}
 
 	@Override public int describeContents() {
@@ -42,6 +45,7 @@ public class LikeData implements Parcelable {
 		dest.writeString(itBarxUserName);
 		dest.writeString(name);
 		dest.writeString(areYouFollowing);
+		dest.writeString(id);
 
 	}
 
@@ -93,6 +97,15 @@ public class LikeData implements Parcelable {
 
 	public LikeData setAreYouFollowing(String areYouFollowing) {
 		this.areYouFollowing = areYouFollowing;
+		return this;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public LikeData setId(String id) {
+		this.id = id;
 		return this;
 	}
 }

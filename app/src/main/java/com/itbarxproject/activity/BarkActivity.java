@@ -719,7 +719,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                         for (LikeUsersByPostIdModel models : likeUsersByPostIdModel) {
                             LikeData data = new LikeData(null, models.getItBarxUserName(), models
                                     .getName
-                                            (), "true");
+                                            (), "true",getUserID());
 
                             likeDataList.add(data);
                             Log.d("like data list : ", data.getName() + " " + data
@@ -803,7 +803,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                         for (ReBarkGetPostSharedUserListByPostIdModel models :
                                 reBarkPostSharedUserListModel) {
                             ReBarksData data = new ReBarksData(null, models.getSharerName(),
-                                    models.getSharerName(), "true");
+                                    models.getSharerName(), "true",getUserID());
                             reBarksDataList.add(data);
                             Log.d("rebark data list : ", data.getName() + " " + data
                                     .getItBarxUserName());

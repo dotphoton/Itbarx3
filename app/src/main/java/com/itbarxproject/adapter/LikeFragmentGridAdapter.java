@@ -1,6 +1,7 @@
 package com.itbarxproject.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,10 +9,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.itbarxproject.R;
+import com.itbarxproject.activity.BarkActivity;
 import com.itbarxproject.activity.BaseActivity;
 
 import com.itbarxproject.custom.component.TextViewRegular;
+import com.itbarxproject.listener.OneShotOnClickListener;
 import com.itbarxproject.model.send_to_fragment.LikeData;
+import com.itbarxproject.utils.BarkUtility;
 
 import org.apache.commons.lang3.text.WordUtils;
 
@@ -25,12 +29,13 @@ public class LikeFragmentGridAdapter extends BaseAdapter {
 
 	private Context context;
 	private ArrayList<LikeData> models=null;
-
+private BarkActivity activity;
+	private String otherUserId;
 
 	static int index = 1;
 
 	public LikeFragmentGridAdapter(BaseActivity activity, ArrayList<LikeData> models){
-
+this.activity = (BarkActivity)activity;
 		this.context =  activity;
 		this.models=models;
 
@@ -60,7 +65,7 @@ public class LikeFragmentGridAdapter extends BaseAdapter {
 			convertView.setTag(holder);
 		}
 		LikeData model = (LikeData) getItem(position);
-
+		otherUserId = model.getId();
 		holder.txtName.setText((model.getItBarxUserName() == null || model.getItBarxUserName().equals("")) ? holder.txtName.getText().toString() :  WordUtils.capitalize(model.getItBarxUserName()));
 		holder.txtSurname.setText((model.getName() == null || model.getName().equals("")) ? holder.txtSurname.getText().toString(): WordUtils.capitalize(model.getName()).substring(0,1)+"." );
 		String strAreYouFollowing = model.getAreYouFollowing();
@@ -86,6 +91,11 @@ public class LikeFragmentGridAdapter extends BaseAdapter {
 			index++;
 		}
 
+		holder.clickableView.setOnClickListener(openProfileClickListener);
+		if (!model.getId().equals("")) {
+
+			holder.clickableView.setTag(model.getId());
+		}
 		return convertView;
 	}
 
@@ -97,11 +107,21 @@ public class LikeFragmentGridAdapter extends BaseAdapter {
 		@Bind(R.id.column_like_addIcon_imageView) ImageView imgAddIcon;
 		@Bind(R.id.column_like_okIcon_imageView) ImageView imgOkIcon;
 		@Bind(R.id.column_like_userProfile_imageView) ImageView imgProfilePhoto;
-
+@Bind(R.id.column_like_clickable_view) View clickableView;
 		public ViewHolder(View view) {
 			ButterKnife.bind(this, view);
 		}
 	}
+
+	OneShotOnClickListener openProfileClickListener = new OneShotOnClickListener(500) {
+		@Override
+		public void onOneShotClick(View v) {
+			String makerUserId = v.getTag().toString();
+			Log.d("TEST", "TEST " + makerUserId);
+			BarkUtility.goProfileScreen(activity, makerUserId);
+
+		}
+	};
 
 /*
 	private static class ViewHolder {

@@ -87,6 +87,7 @@ public class RequestFragmentListAdapter extends BaseAdapter {
             }
             imgBtnFollow.setOnClickListener(followUnfollowClickListener);
             imgBtnFollow.setOnClickListener(acceptClickListener);
+            imgBtnFollow.setOnClickListener(denyClickListener);
 
             // accept request
             ImageView imgBtnAccept = (ImageView) convertView.findViewById(R.id
