@@ -642,7 +642,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                 @Override
                 public void addLike(String isAdded) {
                     dismissProgress();
-
+                    Log.d("Bark Activity", isAdded + " ");
                     if (isAdded == null || isAdded.equalsIgnoreCase(FinalString.NULL)) {
                         Log.d("Bark Activity", "Added like has been responded as error.");
                     } else if (isAdded.equalsIgnoreCase(FinalString.ONE)) {
@@ -661,6 +661,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                 @Override
                 public void deleteLike(String isDeleted) {
                     dismissProgress();
+                    Log.d("Bark Activity",isDeleted +" ");
                     if (isDeleted == null || isDeleted.equalsIgnoreCase(FinalString.NULL)) {
                         Log.d("Bark Activity", "Deleted like has been responded as error.");
                     } else if (isDeleted.equalsIgnoreCase(FinalString.ONE)) {
