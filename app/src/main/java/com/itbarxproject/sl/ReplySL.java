@@ -69,9 +69,9 @@ public class ReplySL extends BasePostServiceSL<String> {
 		params.add(new Pair(GlobalDataForWS.POST_ID.toString(), replyAddModel.getPostID()));
 		params.add(new Pair(GlobalDataForWS.POST_SENDER_USER_ID.toString(), replyAddModel.getPostSenderUserId()));
 		params.add(new Pair(GlobalDataForWS.POST_SPEECH_TO_TEXT.toString(), replyAddModel.getPostSpeechToText()));
-		params.add(new Pair(GlobalDataForWS.POST_TEXT.toString(), replyAddModel.getPostText()));
-		params.add(new Pair(GlobalDataForWS.POST_SENDER_IP.toString(), replyAddModel.getPostSenderIp()));
-		params.add(new Pair(GlobalDataForWS.POST_REPLY_BYTE.toString(), replyAddModel.getPostReplyByte()));
+		//params.add(new Pair(GlobalDataForWS.POST_TEXT.toString(), replyAddModel.getPostText()));
+		//params.add(new Pair(GlobalDataForWS.POST_SENDER_IP.toString(), replyAddModel.getPostSenderIp()));
+		params.add(new Pair(GlobalDataForWS.POST_REPLY_BYTE_BASE64.toString(), replyAddModel.getPostReplyByte()));
 		String postData = ItbarxUtils.formattedData(params);
 		BasePostAsyncTask<String> postClient = new BasePostAsyncTask<String>(context, NAME_OF_THE_CLASS, postData);
 		postClient.addServiceClientListener(this);
