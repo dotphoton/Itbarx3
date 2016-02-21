@@ -202,6 +202,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                 //Kullanıcın daha önceden beğenmiş olduğu postların listesi
               //  getLikeListByUser();
 
+
                 PostPostDetailModel postDetailModel = new PostPostDetailModel();
                 postDetailModel.setPostID(POST_ID);
                 PostProcessesServiceSL processesServiceSL = new PostProcessesServiceSL(getContext
