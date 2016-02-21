@@ -110,6 +110,8 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
     private TextureView videoView;
     private View likeClickable, replyClickable, reBarkClickable;
 
+    boolean isEnterMediaDataSource =false;
+
     protected boolean isMediaRunning = false;
     boolean isMirrored = true;
     boolean isPauseEnter = false;
@@ -281,6 +283,10 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
         @Override
         public void onOneShotClick(View v) {
 
+            if(selectedModel.getPostRebarkCount().equalsIgnoreCase("0"))
+            {
+                return;
+            }
             ReBarkSendPostSharedUserModel sendUserModel = new
                     ReBarkSendPostSharedUserModel(POST_ID, "1",
                     "20");
@@ -295,6 +301,10 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
     OneShotOnClickListener replyTextClickListener = new OneShotOnClickListener(500) {
         @Override
         public void onOneShotClick(View v) {
+            if(selectedModel.getPostReplyCount().equalsIgnoreCase("0"))
+            {
+                return;
+            }
             ReplySendModel replySendModel = new ReplySendModel
                     (POST_ID, "1", "10");
 
@@ -308,7 +318,10 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
     private OneShotOnClickListener likeTextClickListener = new OneShotOnClickListener(500) {
         @Override
         public void onOneShotClick(View v) {
-
+            if(selectedModel.getPostLikeCount().equalsIgnoreCase("0"))
+            {
+                return;
+            }
             //-------------------------------------------------------------------
             LikeUserListModel likeUserListModel = new LikeUserListModel(POST_ID, "1",
                     "1000");
@@ -326,11 +339,15 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
     };
 
     void getLikeListByUser() {
+        if(selectedModel.getPostLikeCount().equalsIgnoreCase("0"))
+        {
+            return;
+        }
         LikePostListModel model = new LikePostListModel();
         model.setPage("1");
         model.setRecPerPage("1");
-        setUserID(ItbarxGlobal.getInstance().getAccountModel().getUserID());
-        model.setUserId(getUserID());
+
+        model.setUserId(ItbarxGlobal.getInstance().getAccountModel().getUserID());
         LikeSL likeProcessesServiceSL = new LikeSL(BarkActivity.this,
                 likeProcessesServiceListener, R.string.root_service_url);
         likeProcessesServiceSL.setGetLikePostsByUserId(model);
@@ -375,11 +392,11 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
         }
         if(selectedModel.getSharedBefore().equalsIgnoreCase("0"))
         {
-            imgLike.setImageResource(R.drawable.bark_rebark_icon);
+            imgReBark.setImageResource(R.drawable.bark_rebark_icon);
         }
         else
         {
-            imgLike.setImageResource(R.drawable.iconrebarkhover);
+            imgReBark.setImageResource(R.drawable.iconrebarkhover);
         }
 
     }
@@ -442,16 +459,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                             .getPostReplyCount().equals(StringUtils.EMPTY)) {
                         txtReplyCount.setText(postDetailModel.getPostReplyCount());
                     }
-                    /*
-                    String islikedBefore = (postDetailModel.getLikedBefore() != null && !postDetailModel
-                            .getLikedBefore().equals(StringUtils.EMPTY) )? postDetailModel.getLikedBefore() : getResources().getString(R.string.zero);
 
-                    userLikedThisPost =Integer.parseInt(islikedBefore);
-
-                    String isReBrkedBefore = (postDetailModel.getLikedBefore() != null && !postDetailModel
-                            .getSharedBefore().equals(StringUtils.EMPTY) )? postDetailModel.getSharedBefore() : getResources().getString(R.string.zero);
-                    userReBarkedThisPost =Integer.parseInt(isReBrkedBefore);
-*/
 
                     if (postDetailModel != null && postDetailModel.getPostURL().length() > 0) {
                         videoView.setVisibility(View.INVISIBLE);
@@ -460,8 +468,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                                 new LoadHttpImage(imgThumbnail).execute(postDetailModel
                                         .getPostPictureURL
                                                 ());
-                                //new AsyncUploadImage(imgThumbnail).execute(postDetailModel
-                                // .getPostPictureURL());
+
                             } catch (Exception e) {
 
                             }
@@ -479,12 +486,15 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
 				if(file.exists())
 				{
 					*/
-                        try {
-                            //mMediaPlayer.setDataSource(file.getAbsolutePath());
-                            mMediaPlayer.setDataSource(postDetailModel.getPostURL());
-                            mMediaPlayer.prepare();
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                        if(!isEnterMediaDataSource) {
+                            try {
+                                //mMediaPlayer.setDataSource(file.getAbsolutePath());
+                                mMediaPlayer.setDataSource(postDetailModel.getPostURL());
+                                mMediaPlayer.prepare();
+                                isEnterMediaDataSource = true;
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
 
                     }
@@ -589,25 +599,6 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
         }
     };
 
-    /*
-        @Override public void onCompleteFileDownload(Boolean status, String file) {
-            if (status) {
-                File videoFile = new File(file);
-                // videoView.setRotation(270);
-                if (videoFile.exists()) {
-                    hasVideoFile=true;
-                    try {
-                        isConfigOk = true;
-                        mMediaPlayer.setDataSource(videoFile.getAbsolutePath());
-                        mMediaPlayer.prepare();
-                        mMediaPlayer.start();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-    */
     @Override
     public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
         mMediaPlayer = new MediaPlayer();
@@ -783,17 +774,11 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                 @Override
                 public void add(String isAdded) {
                     dismissProgress();
-                    if (isAdded == null || isAdded.equalsIgnoreCase(FinalString.NULL)) {
-                        Log.d("Bark Activity", "isAdded like has been responded as error.");
-                    } else if (isAdded.equalsIgnoreCase(FinalString.TRUE)) {
-                        Log.d("Bark Activity", "isAdded like is accomplished.");
-                    int count=  Integer.parseInt(txtReBarkCount.getText().toString());
 
-                        count++;
-                        txtReBarkCount.setText(String.valueOf(count));
-                    } else if (isAdded.equalsIgnoreCase(FinalString.FALSE)) {
-                        Log.d("Bark Activity", "isAdded like is failed.");
+                    if (isAdded == null || isAdded.equalsIgnoreCase("true")) {
+                       refreshPostDetail();
                     }
+
 
                 }
 
