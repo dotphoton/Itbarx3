@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.itbarxproject.R;
+import com.itbarxproject.application.ItbarxGlobal;
 import com.itbarxproject.service.ResponseEventModel;
 import com.itbarxproject.service.ServiceResponseModel;
 import com.itbarxproject.enums.GlobalDataForWS;
@@ -130,7 +131,7 @@ public class PostProcessesServiceSL extends BasePostServiceSL<String> {
 
 	List<Pair<String,String>> params = new ArrayList<Pair<String,String>>();
 	params.add(new Pair(GlobalDataForWS.POST_ID.toString(), postPostDetailModel.getPostID()));
-
+		params.add(new Pair(GlobalDataForWS.USER_ID.toString(), ItbarxGlobal.getInstance().getAccountModel().getUserID()));
 	String postData = ItbarxUtils.formattedData(params);
 	BaseServicePostClientSL<String> postClient = new BaseServicePostClientSL<String>(context, NAME_OF_THE_CLASS, postData);
 	postClient.addServiceClientListener(this);
