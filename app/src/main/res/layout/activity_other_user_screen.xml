@@ -411,7 +411,7 @@
                          android:visibility="visible"
                          android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:padding="3dip"
+                        android:padding="4dip"
                         android:clickable="false"
                         android:scaleType="fitCenter"
                         android:src="@drawable/icon_follow_profile"/>
@@ -422,7 +422,7 @@
                         android:visibility="gone"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:padding="3dip"
+                        android:padding="4dip"
                         android:clickable="false"
                         android:scaleType="fitCenter"
                         android:src="@drawable/icon_unfollow_profile"/>

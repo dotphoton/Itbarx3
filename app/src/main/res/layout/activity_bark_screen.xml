@@ -159,14 +159,17 @@
                     android:layout_centerVertical="true"
                     android:text="0"
                     android:textColor="@color/white"
+                    android:clickable="true"
 
                     />
 
             </RelativeLayout>
             <View
+                android:id="@+id/bark_activity_screen_like_clickable_view"
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
+                android:clickable="true"
                 />
 
             <RelativeLayout
@@ -182,6 +185,7 @@
                     android:layout_centerVertical="true"
                     android:text="Like"
                     android:textColor="@color/white"
+                    android:clickable="true"
 
                     />
 
@@ -210,7 +214,7 @@
                     android:layout_centerVertical="true"
                     android:text="0"
                     android:textColor="@color/white"
-
+                    android:clickable="true"
                     />
 
             </RelativeLayout>
@@ -218,6 +222,8 @@
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
+                android:clickable="true"
+                android:id="@+id/bark_activity_screen_rebark_clickable_view"
                 />
 
             <RelativeLayout
@@ -233,6 +239,7 @@
                     android:layout_centerVertical="true"
                     android:text="ReBark"
                     android:textColor="@color/white"
+                    android:clickable="true"
 
                     />
 
@@ -261,7 +268,7 @@
                     android:layout_centerVertical="true"
                     android:text="0"
                     android:textColor="@color/white"
-
+android:clickable="true"
                     />
 
             </RelativeLayout>
@@ -269,6 +276,8 @@
                 android:layout_width="0dip"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
+                android:clickable="true"
+                android:id="@+id/bark_activity_screen_reply_clickable_view"
                 />
 
             <RelativeLayout
@@ -284,7 +293,7 @@
                     android:layout_centerVertical="true"
                     android:text="Reply"
                     android:textColor="@color/white"
-
+                    android:clickable="true"
                     />
 
             </RelativeLayout>

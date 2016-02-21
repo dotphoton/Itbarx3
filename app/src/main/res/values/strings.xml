@@ -10,6 +10,11 @@
     <string name="Yes">Evet</string>
     <string name="No">Hayır</string>
 
+    <string name="zero">0</string>
+    <string name="five_dots">.....</string>
+    <string name="update">güncelle</string>
+    <string name="unknown">belirtilmemiş</string>
+
 
     <!-- Webservis Timeout Süresi -->
     <string name="httpCallTimeout">60000</string>

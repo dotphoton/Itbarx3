@@ -20,6 +20,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.util.Pair;
 import android.widget.Toast;
@@ -122,6 +123,13 @@ public abstract class BaseActivity extends ActivityGroup {
 		if (mProgressDialog != null && mProgressDialog.isShowing()) dismissProgress();
 		mProgressDialog = ProgressDialog.show(this, null, msg);
 		//mProgressDialog = ProgressDialog.show(this, getResources().getString(R.string.app_name), msg);
+		new Handler().postDelayed(new Runnable() {
+			public void run() {
+				dismissProgress();
+			}
+		}, 15000);
+
+
 	}
 
 	public void dismissProgress() {

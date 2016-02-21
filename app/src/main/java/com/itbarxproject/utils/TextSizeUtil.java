@@ -72,22 +72,22 @@ public class TextSizeUtil {
 
     //BARK ACTIVITY
     private static float BARK_SUBTITLE_TEXT_SIZE = 20f;
-    private static float BARK_COUNT_TEXT_SIZE = 19f;
-    private static float BARK_MINI_BTN_TEXT_SIZE = 19f;
+    private static float BARK_COUNT_TEXT_SIZE = 21f;
+    private static float BARK_MINI_BTN_TEXT_SIZE = 20f;
 
 
     // -------------------------------------------------------------------------------------------
     //TIMELINE FRAGMENT
     private static float TIMELINE_USERNAME_TEXT_SIZE = 19f;
     private static float TIMELINE_MINS_TEXT_SIZE = 17f;
-    private static float TIMELINE_MINI_BUTTON_TEXT_SIZE = 22f;
+    private static float TIMELINE_MINI_BUTTON_TEXT_SIZE = 23f;
 
     //-------------------------------------------------------------------------------------------
     //PROFILE FRAGMENT
     private static float PROFILE_USERNAME_TEXT_SIZE = 20f;
     private static float PROFILE_USER_BIO_TEXT_SIZE = 18f;
     private static float PROFILE_USER_PLACE_TEXT_SIZE = 18f;
-    private static float PROFILE_MINI_BUTTON_COUNT_TEXT_SIZE = 17f;
+    private static float PROFILE_MINI_BUTTON_COUNT_TEXT_SIZE = 19f;
     private static float PROFILE_MINI_BUTTON_TEXT_SIZE = 17f;
     //-------------------------------------------------------------------------------------------
     //RECORD FRAGMENT

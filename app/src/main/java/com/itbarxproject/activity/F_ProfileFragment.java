@@ -25,8 +25,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.VideoView;
+
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
@@ -35,7 +38,8 @@ public class F_ProfileFragment extends Fragment {
 	private T_ProfileActivity t_profileActivity;
 	private Communicator comm;
 	private AccountGetUserByLoginInfoModel accLoginInfoModel;
-	private TextViewBold txtUserName, txtItBarkUserName;
+	private LinearLayout lytButton;
+	private TextViewBold txtName, txtItBarkUserName;
 	private TextViewRegular txtLocationName, txtUserBio;
 	private TextViewRegular txtProfileToolbar;
 	private TextViewBold txtReBarkCount, txtFollowerCount, txtFollowingCount;
@@ -74,14 +78,16 @@ public class F_ProfileFragment extends Fragment {
 	@Override public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		comm = (Communicator) getActivity();
-		imgEditProfile = (ImageView) t_profileActivity.findViewById(R.id.profile_fragment_screen_settings_imageView);
+
+		imgEditProfile = (ImageView) t_profileActivity.findViewById(R.id
+				.profile_fragment_screen_settings_imageView);
 		txtEditProfile = (TextViewBold) t_profileActivity.findViewById(R.id.profile_fragment_screen_editProfile_textView);
 		txtProfileToolbar = (TextViewRegular) t_profileActivity.findViewById(R.id.profile_fragment_screen_toolbar_text);
-		txtUserName = (TextViewBold) t_profileActivity.findViewById(R.id.profile_fragment_screen_username_text);
+		txtName = (TextViewBold) t_profileActivity.findViewById(R.id.profile_fragment_screen_name_text);
 		txtLocationName = (TextViewRegular) t_profileActivity.findViewById(R.id.profile_fragment_screen_place_text);
 		txtUserBio = (TextViewRegular) t_profileActivity.findViewById(R.id.profile_fragment_screen_user_bio_text);
 		txtItBarkUserName = (TextViewBold) t_profileActivity.findViewById(R.id.profile_fragment_screen_itBarkUserName_text);
-		//btnProfil = (ButtonBold) t_profileActivity.findViewById(R.id.profile_fragment_screen_edit_profile_button);
+		lytButton = (LinearLayout) t_profileActivity.findViewById(R.id.profile_fragment_screen_follow_unFollow__buttonlayout);
 		txtReBarkCount = (TextViewBold) t_profileActivity.findViewById(R.id.profile_fragment_screen_reBarksCount_TextView);
 		txtFollowerCount = (TextViewBold) t_profileActivity.findViewById(R.id.profile_fragment_screen_followersCount_TextView);
 		txtFollowingCount = (TextViewBold) t_profileActivity.findViewById(R.id.profile_fragment_screen_followingCount_TextView);
@@ -89,46 +95,40 @@ public class F_ProfileFragment extends Fragment {
 		txtFollowerText = (TextViewRegular) t_profileActivity.findViewById(R.id.profile_fragment_screen_followers_TextView);
 		txtFollowingText = (TextViewRegular) t_profileActivity.findViewById(R.id.profile_fragment_screen_following_TextView);
 		lstPopular = (ListView) t_profileActivity.findViewById(R.id.profile_fragment_screen_listView);
-		//fills up the listview
-	/*    userProfilePopularPostsListView = (ListView) t_profileActivity.findViewById(R.id.profile_fragment_screen_listView);
-        postPopularPostListModels = ItbarxGlobal.getPopularListModel();
-        userProfilePopularPostsListView.setAdapter(new ProfilFragmentListAdapter(t_profileActivity.getContext(), postPopularPostListModels));
-*/
-		//control the video
-        /*
-        MediaController mc = new MediaController(t_profileActivity.getContext());
-        video = (VideoView) t_profileActivity.findViewById(R.id.row_fragment_popular_screen_user_videoView);
-        video.setMediaController(mc);
-        video.stopPlayback();
-        // video.start();
-        mc.show();
-        */
-		getUserWallInfoModel(sendUserWallInfoModel());
-		setText();
+
+
+
 		setTextSize();
+		getUserWallInfoModel(sendUserWallInfoModel());
 		getPopularList();
-	//	btnProfil.setOnClickListener(openEditProfileClickListener);
+		lytButton.setOnClickListener(openEditProfileClickListener);
 		imgEditProfile.setOnClickListener(openEditProfileClickListener);
 
 	}
 
 	private void setText() {
 
-		txtUserName.setText((null != accLoginInfoModel.getName() && !accLoginInfoModel.getName().equals("")) ? accLoginInfoModel.getName() : txtUserName.getText());
-		txtLocationName.setText((null != accLoginInfoModel.getLocationName() && !accLoginInfoModel.getLocationName().equals("")) ? accLoginInfoModel.getLocationName() : txtLocationName.getText());
-		txtUserBio.setText((null != accLoginInfoModel.getUserBio() && !accLoginInfoModel.getUserBio().equals("")) ? accLoginInfoModel.getUserBio() : txtUserBio.getText());
-		txtItBarkUserName.setText((null != accLoginInfoModel.getItBarxUserName() && !accLoginInfoModel.getItBarxUserName().equals("")) ? accLoginInfoModel.getItBarxUserName() : txtItBarkUserName.getText());
+		txtName.setText((null != accLoginInfoModel.getName() && !accLoginInfoModel.getName()
+				.equals("")) ? accLoginInfoModel.getName() : txtName.getText());
+		txtLocationName.setText((null != accLoginInfoModel.getLocationName() && !accLoginInfoModel
+				.getLocationName().equals("")) ? accLoginInfoModel.getLocationName() :
+				txtLocationName.getText());
+		txtUserBio.setText((null != accLoginInfoModel.getUserBio() && !accLoginInfoModel
+				.getUserBio().equals("")) ? accLoginInfoModel.getUserBio() : txtUserBio.getText());
+		txtItBarkUserName.setText((null != accLoginInfoModel.getItBarxUserName() &&
+				!accLoginInfoModel.getItBarxUserName().equals("")) ? accLoginInfoModel
+				.getItBarxUserName() : txtItBarkUserName.getText());
 
 	}
 
 	private void setTextSize() {
 		txtEditProfile.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getButtonTextSize());
 		txtProfileToolbar.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getToolbarTextSize());
-		txtUserName.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getProfileUsernameTextSize());
+		txtName.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getProfileUsernameTextSize());
 		txtLocationName.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getProfileUserPlaceTextSize());
 		txtUserBio.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getProfileUserBioTextSize());
 		txtItBarkUserName.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getProfileUserBioTextSize());
-		//btnProfil.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getButtonTextSize());
+
 		txtReBarkCount.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getProfileMiniButtonCountTextSize());
 		txtFollowerCount.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getProfileMiniButtonCountTextSize());
 		txtFollowingCount.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getProfileMiniButtonCountTextSize());
@@ -156,9 +156,7 @@ lstPopular.setAdapter(new PopularFragmentListAdapter(t_profileActivity, ItbarxGl
 	}
 
 
-
-
-	//TAKE WALL INFO
+//TAKE WALL INFO
 
 	private PostWallInfoModel sendUserWallInfoModel() {
 		String id = ItbarxGlobal.getInstance().getAccountModel().getUserID();
@@ -191,9 +189,27 @@ lstPopular.setAdapter(new PopularFragmentListAdapter(t_profileActivity, ItbarxGl
 		@Override public void getWallInfo(PostGetWallInfoModel postGetWallInfoModel) {
 			t_profileActivity.dismissProgress();
 			if (postGetWallInfoModel != null) {
-				txtReBarkCount.setText(postGetWallInfoModel.getReBarkCount());
-				txtFollowerCount.setText(postGetWallInfoModel.getFollowerCount());
-				txtFollowingCount.setText(postGetWallInfoModel.getFollowingCount());
+
+				String reBarkCount = (postGetWallInfoModel.getReBarkCount()!=null&& postGetWallInfoModel.getReBarkCount().trim().equals(StringUtils.EMPTY) ) ? postGetWallInfoModel.getReBarkCount() : getResources().getString(R.string.zero) ;
+				String followerCount = (postGetWallInfoModel.getFollowerCount()!=null&& postGetWallInfoModel.getFollowerCount().trim().equals(StringUtils.EMPTY) ) ? postGetWallInfoModel.getFollowerCount() : getResources().getString(R.string.zero) ;
+				String followingCount = (postGetWallInfoModel.getFollowingCount()!=null&& postGetWallInfoModel.getFollowingCount().trim().equals(StringUtils.EMPTY) ) ? postGetWallInfoModel.getFollowingCount() : getResources().getString(R.string.zero) ;
+
+				txtReBarkCount.setText(reBarkCount);
+				txtFollowerCount.setText(followerCount);
+				txtFollowingCount.setText(followingCount);
+
+				String name = (postGetWallInfoModel.getName()!=null&& !postGetWallInfoModel.getName().trim().equals(StringUtils.EMPTY) ) ? postGetWallInfoModel.getName() : getResources().getString(R.string.update) ;
+				String locationName = (postGetWallInfoModel.getLocationName()!=null&& !postGetWallInfoModel.getLocationName().trim().equals(StringUtils.EMPTY) ) ? postGetWallInfoModel.getLocationName() : getResources().getString(R.string.update) ;
+				String bio =   (postGetWallInfoModel.getUserBio()!=null&& !postGetWallInfoModel.getUserBio().trim().equals(StringUtils.EMPTY) ) ? postGetWallInfoModel.getUserBio() : getResources().getString(R.string.update) ;
+				String userName =  (postGetWallInfoModel.getUserName()!=null&& !postGetWallInfoModel.getUserName().trim().equals(StringUtils.EMPTY) ) ? postGetWallInfoModel.getUserName() : getResources().getString(R.string.update) ;
+
+				txtName.setText(name);
+				txtLocationName.setText(locationName);
+				txtUserBio.setText(bio);
+				txtItBarkUserName.setText(userName);
+
+
+
 
 			}
 

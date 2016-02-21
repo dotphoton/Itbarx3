@@ -19,6 +19,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -30,9 +31,6 @@ import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.google.android.gms.common.ConnectionResult;
-//import com.google.android.gms.common.SignInButton;
-//import com.google.android.gms.common.api.GoogleApiClient;
 
 import com.itbarxproject.R;
 import com.itbarxproject.application.ItbarxGlobal;
@@ -75,8 +73,7 @@ public class LoginActivity extends Activity {
     private static final int RC_SIGN_IN = 1000;
     private CallbackManager callbackManager;
     ProfileTracker profileTracker;
-    //private static GoogleApiClient mGoogleApiClient;
-    private ConnectionResult mConnectionResult;
+
     private boolean mIntentInProgress;
     private boolean signedInUser;
     private String dt;
@@ -86,10 +83,14 @@ public class LoginActivity extends Activity {
     private TextViewBold txtViewOr;//txtViewRembMe,
     private EditTextRegular edtUserName, edtPassword;
     private String strUserName, strPassword;
+
    // private ImageView unCheckedRemMeImageV, checkedRemMeImageV;
    // private SignInButton btnSignInButton;
     private LoginButton btnfaceLoginButton;
     private String facebookEmail;
+
+    private ImageView unCheckedRemMeImageV, checkedRemMeImageV;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -112,6 +113,7 @@ public class LoginActivity extends Activity {
         btnForgotPwd = (ButtonBold) findViewById(R.id.login_activity_screen_forgotpassword_button);
         btnCreateNewAcc = (ButtonBold) findViewById(R.id
                 .login_activity_screen_createnewaccount_button);
+
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
                     "com.itbarxproject",
@@ -127,6 +129,14 @@ public class LoginActivity extends Activity {
         } catch (NoSuchAlgorithmException e) {
 
         }
+
+        //btnfaceLoginButton = (LoginButton) findViewById(R.id
+        // .login_activity_screen_facebook_signIn_button);
+        txtViewOr = (TextViewBold) findViewById(R.id.login_activity_screen_or_plaintext);
+
+        txtToolbar = (TextViewRegular) findViewById(R.id.login_activity_screen_toolbar_textView);
+
+
 
         strUserName = "";
         strPassword = "";
@@ -190,12 +200,6 @@ public class LoginActivity extends Activity {
     }
 
 
-
-
-
-
-
-
     public void showProgress(String msg) {
         if (mProgressDialog != null && mProgressDialog.isShowing()) dismissProgress();
 
@@ -253,7 +257,7 @@ public class LoginActivity extends Activity {
     // GOOGLE+ BUTTON EVENTS
     private void googlePlusStart() {
 
-       // btnSignInButton.setOnClickListener(googlePlusClickListener);
+
     }
 
     // FACEBOOK BUTTON EVENTS
@@ -489,6 +493,7 @@ public class LoginActivity extends Activity {
 
             ItbarxGlobal global = ItbarxGlobal.setInstance(LoginActivity.this);
             global.setAccountModel(loginModelResponse);
+            ItbarxGlobal.setUserId(loginModelResponse.getUserID());
 
 
             UserSharedPrefrences.saveLogOnModel(getContext(),loginModelResponse);

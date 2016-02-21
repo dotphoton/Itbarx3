@@ -108,16 +108,17 @@ public class TimelineFragmentListAdapter extends BaseAdapter {
 			videoPlayImg.setTag(model.getPostID());
 			videoPlayImg.setOnClickListener(playClickListener);
 
-			txtSubs.setText((model.getPostSpeechToText() != null&&!model.getPostSpeechToText().equals("")) ? model.getPostSpeechToText() : "...");
+			txtSubs.setText((model.getPostSpeechToText() != null && !model.getPostSpeechToText()
+					.equals("")) ? model.getPostSpeechToText() : context.getResources().getString(R.string.five_dots));
 
 			//add like count
-			txtLike.setText((model.getPostLikeCount() != null && !model.getPostLikeCount().equals("")) ? model.getPostLikeCount() : "0");
+			txtLike.setText((model.getPostLikeCount() != null && !model.getPostLikeCount().equals("")) ? model.getPostLikeCount() : context.getResources().getString(R.string.zero));
 
 			//add rebark / share count
-			txtReBark.setText((model.getPostShareCount() != null && !model.getPostShareCount().equals("")) ? model.getPostShareCount() : "0");
+			txtReBark.setText((model.getPostShareCount() != null && !model.getPostShareCount().equals("")) ? model.getPostShareCount() : context.getResources().getString(R.string.zero));
 
 			//add reply count
-			txtReply.setText((model.getPostReplyCount() != null && !model.getPostReplyCount().equals("")) ? model.getPostReplyCount() : "0");
+			txtReply.setText((model.getPostReplyCount() != null && !model.getPostReplyCount().equals("")) ? model.getPostReplyCount() : context.getResources().getString(R.string.zero));
 
 		}
 		return convertView;

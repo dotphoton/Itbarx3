@@ -27,6 +27,7 @@ import com.itbarxproject.model.follow.SendPendingListByFollowerIdModel;
 import com.itbarxproject.utils.ItbarxUtils;
 
 import android.content.Context;
+import android.util.Log;
 import android.util.Pair;
 
 public class FollowingProcessesServiceSL extends BasePostServiceSL<String> {
@@ -450,7 +451,7 @@ public class FollowingProcessesServiceSL extends BasePostServiceSL<String> {
 	// ---GET PENDING LIST---
 	else if (responseEvent.getMethodName().equalsIgnoreCase(FollowingProcessLinks.GET_PENDING_LIST.toString())) {
 		ServiceResponseModel model = ItbarxUtils.getServiceResponseArrayModelDataKey(result);
-
+		Log.d("TESTS TEST", result+"   helloeee");
 		List<PendingListByFollowingIdModel> getPendingListByFollowerIdModelResponse = null;
 		if (model != null) {
 

@@ -23,6 +23,7 @@ import android.widget.TabHost;
 public class ItbarxGlobal extends Application {
 
 	private String userToken;
+	private static  String userId;
 	private static Bitmap googlePlusPhoto;
 	private AccountGetUserByLoginInfoModel userLoginInfoModel;
 	private List<PostPopularPostListModel> popularListModel;
@@ -184,5 +185,11 @@ public class ItbarxGlobal extends Application {
 		ItbarxGlobal.googlePlusPhoto = sPlusPhoto;
 	}
 
+	public static String getUserId() {
+		return userId;
+	}
 
+	public static void setUserId(String userId) {
+		ItbarxGlobal.userId = userId;
+	}
 }

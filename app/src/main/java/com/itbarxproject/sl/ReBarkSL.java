@@ -1,6 +1,7 @@
 package com.itbarxproject.sl;
 
 import android.content.Context;
+import android.util.Log;
 import android.util.Pair;
 
 import com.itbarxproject.R;
@@ -52,6 +53,7 @@ public class ReBarkSL extends BasePostServiceSL<String> {
 		params.add(new Pair(GlobalDataForWS.POST_ID.toString(), reBarkSendPostShareAddModel.getPostId()));
 		params.add(new Pair(GlobalDataForWS.SHARED_TEXT.toString(), reBarkSendPostShareAddModel.getSharedText()));
 		String postData = ItbarxUtils.formattedData(params);
+		Log.d("ADDED REBARK ", postData+" ");
 		BasePostAsyncTask<String> postClient = new BasePostAsyncTask<String>(context, NAME_OF_THE_CLASS, postData);
 		postClient.addServiceClientListener(this);
 		postClient.addErrorErrorServiceClientListener(this);
@@ -156,7 +158,7 @@ public class ReBarkSL extends BasePostServiceSL<String> {
 			}
 		}
 		// SHAREPOST DELETE
-		else if (responseEvent.getMethodName().equalsIgnoreCase(ReBarkprocessesLinks.SHARE_POST_ADD.toString())) {
+		else if (responseEvent.getMethodName().equalsIgnoreCase(ReBarkprocessesLinks.DELETE.toString())) {
 			ServiceResponseModel model = ItbarxUtils.getServiceResponseModelDataKey(result);
 			String isDeletedResponse = null;
 			if (model != null) {
