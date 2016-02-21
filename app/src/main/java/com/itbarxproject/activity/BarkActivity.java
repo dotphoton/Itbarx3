@@ -103,6 +103,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
     private String filePath = "";
     protected String POST_ID = null;
     private String userID;
+    private String postOwnerId;
     private String postText;
     private TextViewRegular txtToolbar, txtSubtitle;
     private TextViewBold txtLikeCount, txtReBarkCount, txtReplyCount, txtLike, txtReBark, txtReply;
@@ -155,7 +156,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
 
         if ((POST_ID = BarkUtility.getPostId(BarkActivity.this)) != null) {
             ButterKnife.bind(this);
-            setUserID(ItbarxGlobal.getUserId());
+          //  setUserID(ItbarxGlobal.getUserId());
             imgVideoPlay = (ImageView) findViewById(R.id
                     .bark_activity_screen_video_thumbnail_play_ImageView);
             imgThumbnail = (ImageView) findViewById(R.id
@@ -443,6 +444,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                 public void getPostDetail(PostGetPostDetailModel postDetailModel) {
                     dismissProgress();
                     setBarkDetail(postDetailModel);
+                    postOwnerId =postDetailModel.getUserID();
                     setPostText((postDetailModel != null && !postDetailModel.getPostSpeechToText
                             ().equals("")) ?
                             postDetailModel.getPostSpeechToText() : StringUtils.EMPTY);
@@ -719,7 +721,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                         for (LikeUsersByPostIdModel models : likeUsersByPostIdModel) {
                             LikeData data = new LikeData(null, models.getItBarxUserName(), models
                                     .getName
-                                            (), "true",getUserID());
+                                            (), "true",models.getUserID());
 
                             likeDataList.add(data);
                             Log.d("like data list : ", data.getName() + " " + data
@@ -803,7 +805,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                         for (ReBarkGetPostSharedUserListByPostIdModel models :
                                 reBarkPostSharedUserListModel) {
                             ReBarksData data = new ReBarksData(null, models.getSharerName(),
-                                    models.getSharerName(), "true",getUserID());
+                                    models.getSharerName(), "true",models.getShareId());
                             reBarksDataList.add(data);
                             Log.d("rebark data list : ", data.getName() + " " + data
                                     .getItBarxUserName());
