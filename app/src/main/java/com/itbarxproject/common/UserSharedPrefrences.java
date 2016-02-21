@@ -91,7 +91,7 @@ public class UserSharedPrefrences {
 
         saveId(context, "");
         saveEmail(context, "");
-        saveToken(context, "");
+        //saveToken(context, "");
         saveUserName(context, "");
         savePassword(context, "");
         saveFacebookId(context,"");

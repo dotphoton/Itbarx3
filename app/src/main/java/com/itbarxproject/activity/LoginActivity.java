@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
@@ -757,7 +758,21 @@ public class LoginActivity extends Activity {
 
 	}
 */
-private Bundle getFacebookData(JSONObject object) {
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            Intent intent = new Intent(getContext(), SplashActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("Exit me", true);
+            startActivity(intent);
+            finish();
+            return  true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    private Bundle getFacebookData(JSONObject object) {
 
     try {
         Bundle bundle = new Bundle();

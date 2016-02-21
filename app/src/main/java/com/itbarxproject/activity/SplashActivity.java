@@ -60,7 +60,7 @@ public class SplashActivity extends BaseActivity {
                 if(didLogon)
                 {
 
-                    if(UserSharedPrefrences.getToken(getContext())!=null&&!UserSharedPrefrences.getToken(getContext()).equalsIgnoreCase(""))
+                    if(UserSharedPrefrences.getFacebookId(getContext())!=null&&!UserSharedPrefrences.getFacebookId(getContext()).equalsIgnoreCase(""))
                     {
                         //facebookUser
                         setLogInAccountForFace();
@@ -69,19 +69,19 @@ public class SplashActivity extends BaseActivity {
                     {
                         //normal user
                         ItbarxGlobal global = ItbarxGlobal.setInstance(SplashActivity.this);
-                        AccountGetUserByLoginInfoModel model = UserSharedPrefrences.getLogOnModel(getContext());
-                        if(model==null)
+                        if(UserSharedPrefrences.getPassword(getContext())!=null&&!UserSharedPrefrences.getPassword(getContext()).equalsIgnoreCase(""))
+
                         {
-                            launchSubActivity(LoginActivity.class);
-                        }
-                        else
-                        {
-                            global.setAccountModel(model);
                             LoginModel lmodel = new LoginModel();
                             lmodel.setPassword(UserSharedPrefrences.getPassword(getContext()));
                             lmodel.setUsername(UserSharedPrefrences.getUserName(getContext()));
                             setLogInAccount(lmodel);
                         }
+                        else
+                        {
+                            launchSubActivity(LoginActivity.class);
+                        }
+
 
                     }
 
