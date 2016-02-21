@@ -15,6 +15,7 @@
         android:layout_height="match_parent"
         android:layout_weight="8"
         android:layout_marginLeft="10dp"
+        android:background="#E8EDE6"
         >
 
 
@@ -24,9 +25,9 @@
     android:layout_height="match_parent"
        android:clickable="true"
        android:adjustViewBounds="true"
-       android:src="@drawable/nothumb"
-android:scaleType="centerInside"
-       android:background="#E8EDE6"
+
+android:scaleType="fitCenter"
+
        />
         <ImageView
             android:id="@+id/row_fragment_popular_screen_userPlayIcon_videoView"
