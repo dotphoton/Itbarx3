@@ -9,6 +9,9 @@ public class LikeCountPostModel {
 	@SerializedName("PostId")
 	@Expose
 	private String PostId;
+	@SerializedName("UserId")
+	@Expose
+	private String UserId;
 
 	/**
 	 * No args constructor for use in serialization
@@ -43,4 +46,12 @@ public class LikeCountPostModel {
 		this.PostId = PostId;
 	}
 
+	public String getUserId() {
+		return UserId;
+	}
+
+	public LikeCountPostModel setUserId(String userId) {
+		UserId = userId;
+		return this;
+	}
 }

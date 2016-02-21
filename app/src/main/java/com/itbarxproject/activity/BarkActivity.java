@@ -109,7 +109,8 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
     private ImageView imgVideoPlay, imgVideoPause, imgThumbnail;
     private TextureView videoView;
     private View likeClickable, replyClickable, reBarkClickable;
-    private boolean userLikedThisPost;
+    private int userLikedThisPost;
+    private int userReBarkedThisPost;
     protected boolean isMediaRunning = false;
     boolean isMirrored = true;
     boolean isPauseEnter = false;
@@ -199,7 +200,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
             //*******************************************************************************
             try {
                 //Kullanıcın daha önceden beğenmiş olduğu postların listesi
-                getLikeListByUser();
+              //  getLikeListByUser();
 
                 PostPostDetailModel postDetailModel = new PostPostDetailModel();
                 postDetailModel.setPostID(POST_ID);
@@ -230,11 +231,11 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                     LikeSL likeSL = new LikeSL(getContext(), likeProcessesServiceListener, R
                             .string.root_service_url);
 
-                    if (userLikedThisPost) {
+                    if (userLikedThisPost == 1) {
                         likeSL.setDeleteLike(model);
                         showProgress(getString(R.string.ItbarxConnecting));
                     } else {
-
+                        // zero is default value for user liked.
                         likeSL.setAddLike(model);
                         showProgress(getString(R.string.ItbarxConnecting));
 
@@ -254,8 +255,13 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                     ReBarkSL reBarkSL = new ReBarkSL(BarkActivity.this,
                             reBarkProcessesServiceListener, R
                             .string.root_service_url);
-                    reBarkSL.setAddPostShare(model);
+                    if (userReBarkedThisPost == 0) {
 
+                        reBarkSL.setAddPostShare(model);
+                    }else
+                    {
+                        return;
+                    }
 
                 }
             });
@@ -417,6 +423,15 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                             .getPostReplyCount().equals(StringUtils.EMPTY)) {
                         txtReplyCount.setText(postDetailModel.getPostReplyCount());
                     }
+                    String islikedBefore = (postDetailModel.getLikedBefore() != null && !postDetailModel
+                            .getLikedBefore().equals(StringUtils.EMPTY) )? postDetailModel.getLikedBefore() : getResources().getString(R.string.zero);
+
+                    userLikedThisPost =Integer.parseInt(islikedBefore);
+
+                    String isReBrkedBefore = (postDetailModel.getLikedBefore() != null && !postDetailModel
+                            .getSharedBefore().equals(StringUtils.EMPTY) )? postDetailModel.getSharedBefore() : getResources().getString(R.string.zero);
+                    userReBarkedThisPost =Integer.parseInt(isReBrkedBefore);
+
 
                     if (postDetailModel != null && postDetailModel.getPostURL().length() > 0) {
                         videoView.setVisibility(View.INVISIBLE);
@@ -634,7 +649,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                         int count = Integer.parseInt(txtLikeCount.getText().toString());
                         count++;
                         txtLikeCount.setText(String.valueOf(count));
-                        userLikedThisPost = true;
+                        userLikedThisPost = 1;
                     } else if (isAdded.equalsIgnoreCase(FinalString.FALSE)) {
                         Log.d("Bark Activity", "Added like is failed.");
                     }
@@ -653,7 +668,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                         count--;
                         if (count > 0) {
                             txtLikeCount.setText(String.valueOf(count));
-                            userLikedThisPost = false;
+                            userLikedThisPost = 0;
                         }
                     } else if (isDeleted.equalsIgnoreCase(FinalString.FALSE)) {
                         Log.d("Bark Activity", "Deleted like is failed.");
@@ -675,6 +690,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                 public void getLikePostByUserId(List<LikePostsByUserIdModel>
                                                         likePostsByUserIdModel) {
                     dismissProgress();
+                  /*
                     userLikedThisPost = false;
                     String postId = POST_ID;
                     List<String> likedPosts = new ArrayList<>();
@@ -696,8 +712,9 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                             }
 
                         }
-                    }
 
+                    }
+*/
                 }
 
                 @Override
