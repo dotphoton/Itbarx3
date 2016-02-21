@@ -13,6 +13,9 @@ public class PostGetPostDetailModel {
 	private String PostPictureURL;
 	private String PostURL;
 
+	private String SharedBefore;
+	private String LikedBefore;
+
 	public String getUserID() {
 		return userID;
 	}
@@ -100,6 +103,24 @@ public class PostGetPostDetailModel {
 
 	public PostGetPostDetailModel setPostPictureURL(String postPictureURL) {
 		PostPictureURL = postPictureURL;
+		return this;
+	}
+
+	public String getLikedBefore() {
+		return LikedBefore;
+	}
+
+	public PostGetPostDetailModel setLikedBefore(String likedBefore) {
+		LikedBefore = likedBefore;
+		return this;
+	}
+
+	public String getSharedBefore() {
+		return SharedBefore;
+	}
+
+	public PostGetPostDetailModel setSharedBefore(String sharedBefore) {
+		SharedBefore = sharedBefore;
 		return this;
 	}
 }
