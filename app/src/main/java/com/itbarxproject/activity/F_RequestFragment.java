@@ -97,6 +97,7 @@ public class F_RequestFragment extends Fragment {
 				(t_secondActivity.getContext(), followingProcessesServiceListener, R.string
 						.root_service_url);
         followingProcessesServiceSL.setGetPendingList(followerListModel);
+
         t_secondActivity.showProgress(getString(R.string.ItbarxConnecting));
 
     }
@@ -108,6 +109,7 @@ public class F_RequestFragment extends Fragment {
         sendModel.setPage("1");
         sendModel.setRecPerPage("10");
         setUserID(ItbarxGlobal.getInstance().getAccountModel().getUserID());
+        sendModel.setFollowingId(ItbarxGlobal.getInstance().getAccountModel().getUserID());
         //sendModel.setFollowingId(getUserID());
        // sendModel.setFollowingId("10032");
         return sendModel;
