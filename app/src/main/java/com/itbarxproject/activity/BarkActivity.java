@@ -645,13 +645,13 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
 
                     if (isAdded == null || isAdded.equalsIgnoreCase(FinalString.NULL)) {
                         Log.d("Bark Activity", "Added like has been responded as error.");
-                    } else if (isAdded.equalsIgnoreCase(FinalString.TRUE)) {
+                    } else if (isAdded.equalsIgnoreCase(FinalString.ONE)) {
                         Log.d("Bark Activity", "Added like is accomplished.");
                         int count = Integer.parseInt(txtLikeCount.getText().toString());
                         count++;
                         txtLikeCount.setText(String.valueOf(count));
                         userLikedThisPost = 1;
-                    } else if (isAdded.equalsIgnoreCase(FinalString.FALSE)) {
+                    } else if (isAdded.equalsIgnoreCase(FinalString.ZERO)) {
                         Log.d("Bark Activity", "Added like is failed.");
                     }
 
@@ -663,7 +663,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                     dismissProgress();
                     if (isDeleted == null || isDeleted.equalsIgnoreCase(FinalString.NULL)) {
                         Log.d("Bark Activity", "Deleted like has been responded as error.");
-                    } else if (isDeleted.equalsIgnoreCase(FinalString.TRUE)) {
+                    } else if (isDeleted.equalsIgnoreCase(FinalString.ONE)) {
                         Log.d("Bark Activity", "Deleted like is accomplished.");
                         int count = Integer.parseInt(txtLikeCount.getText().toString());
                         count--;
@@ -671,7 +671,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                             txtLikeCount.setText(String.valueOf(count));
                             userLikedThisPost = 0;
                         }
-                    } else if (isDeleted.equalsIgnoreCase(FinalString.FALSE)) {
+                    } else if (isDeleted.equalsIgnoreCase(FinalString.ZERO)) {
                         Log.d("Bark Activity", "Deleted like is failed.");
                     }
 

@@ -5,6 +5,9 @@ package com.itbarxproject.utils;
  */
 public class FinalString {
 
+
+	public final static String ONE ="1";
+	public final static String ZERO ="0";
 	public final static String TRUE ="true";
 	public final static String FALSE ="false";
 	public final static String NULL ="null";

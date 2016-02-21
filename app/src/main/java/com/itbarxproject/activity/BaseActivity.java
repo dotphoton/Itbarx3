@@ -127,7 +127,7 @@ public abstract class BaseActivity extends ActivityGroup {
 			public void run() {
 				dismissProgress();
 			}
-		}, 30000);
+		}, 45000);
 
 
 	}
