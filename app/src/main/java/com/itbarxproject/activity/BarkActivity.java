@@ -248,7 +248,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                 public void onOneShotClick(View v) {
 
                     ReBarkSendPostShareAddModel model = new ReBarkSendPostShareAddModel();
-                    model.setUserId("10032");
+                    model.setUserId(getUserID());
                     model.setPostId(POST_ID);
                     model.setSharedText(getPostText());
                     ReBarkSL reBarkSL = new ReBarkSL(BarkActivity.this,
