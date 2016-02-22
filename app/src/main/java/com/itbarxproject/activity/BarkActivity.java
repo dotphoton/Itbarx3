@@ -857,7 +857,7 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
 
                 @Override
                 public void onError(BarxErrorModel onError) {
-
+                    dismissProgress();
                 }
             };
 
@@ -878,8 +878,10 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                     replyDataList = new ArrayList<>();
                     if (replyListModel != null) {
                         for (ReplyListModel model : replyListModel) {
-                            ReplyData data = new ReplyData("", "", "", model.getPostText(), "",
+                            ReplyData data = new ReplyData("", "", model.getPostPictureURL(), model.getPostText(), "",
                                     model.getAddedDate(), model.getItBarxUserName());
+                            data.setPostId(model.getPostReplyID());
+                            data.setReplyPostText(model.getPostText());
                             replyDataList.add(data);
                             Log.d("reply data list : ", data.getTimeAgo() + " " + data
                                     .getItBarxUserName());

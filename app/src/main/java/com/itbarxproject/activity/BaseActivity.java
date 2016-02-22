@@ -48,7 +48,7 @@ public abstract class BaseActivity extends ActivityGroup {
 	@Override public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		exceptionHandler();
+		//exceptionHandler();
 		setContentView(getLayoutResourceId());
 		initViews();
 	}
@@ -123,12 +123,13 @@ public abstract class BaseActivity extends ActivityGroup {
 		if (mProgressDialog != null && mProgressDialog.isShowing()) dismissProgress();
 		mProgressDialog = ProgressDialog.show(this, null, msg);
 		//mProgressDialog = ProgressDialog.show(this, getResources().getString(R.string.app_name), msg);
+/*
 		new Handler().postDelayed(new Runnable() {
 			public void run() {
 				dismissProgress();
 			}
 		}, 45000);
-
+*/
 
 	}
 

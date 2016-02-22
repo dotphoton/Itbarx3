@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import com.itbarxproject.R;
 import com.itbarxproject.activity.BaseActivity;
+import com.itbarxproject.common.LoadHttpImage;
 import com.itbarxproject.custom.component.TextViewBold;
 import com.itbarxproject.custom.component.TextViewRegular;
 import com.itbarxproject.model.send_to_fragment.ReplyData;
@@ -65,6 +66,11 @@ public class ReplyFragmentListAdapter extends BaseAdapter {
 		holder.txtName.setText((model.getItBarxUserName() == null || model.getItBarxUserName().equals("")) ? holder.txtName.getText().toString() : WordUtils.capitalize(model.getItBarxUserName()));
 		holder.txtPlace.setText((model.getPlace() == null || model.getPlace().equals("")) ? holder.txtPlace.getText().toString() : WordUtils.capitalize(model.getPlace()));
 		holder.txtPostReply.setText((model.getReplyPostText() == null || model.getReplyPostText().equals("")) ? holder.txtPostReply.getText().toString() : model.getReplyPostText());
+
+		if (model.getThumbnail() != null && model.getThumbnail().length() > 0) {
+			new LoadHttpImage(holder.imgThumbnail).execute(model.getThumbnail());
+		}
+
 		if (model.getTimeAgo() != null || !model.getTimeAgo().equals("")) {
 			Date replyDate = DateUtility.itBarxDateParser(model.getTimeAgo());
 			Pair<String, Long> pair = DateUtility.getDateDiff(replyDate, new Date(System.currentTimeMillis()));

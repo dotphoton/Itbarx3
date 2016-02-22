@@ -15,6 +15,7 @@ public class ReplyData implements Parcelable {
 	private String replyPostText;
 	private String thumbnail;
 	private String videoURI;
+	private String postId;
 
 
 	/**
@@ -42,7 +43,7 @@ public class ReplyData implements Parcelable {
 		this.replyPostText = parcel.readString();
 		this.thumbnail = parcel.readString();
 		this.videoURI = parcel.readString();
-
+		this.postId = parcel.readString();
 	}
 
 	@Override public int describeContents() {
@@ -57,7 +58,7 @@ public class ReplyData implements Parcelable {
 		dest.writeString(replyPostText);
 		dest.writeString(thumbnail);
 		dest.writeString(videoURI);
-
+		dest.writeString(postId);
 	}
 
 
@@ -132,6 +133,14 @@ public class ReplyData implements Parcelable {
 
 	public ReplyData setVideoURI(String videoURI) {
 		this.videoURI = videoURI;
+		return this;
+	}
+	public String getPostId() {
+		return postId;
+	}
+
+	public ReplyData setPostId(String PostId) {
+		this.postId = PostId;
 		return this;
 	}
 }

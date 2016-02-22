@@ -84,6 +84,7 @@
                     <RelativeLayout
                         android:layout_width="0dip"
                         android:layout_height="match_parent"
+                        android:visibility="invisible"
                         android:layout_weight="3">
 
                         <ImageView
@@ -411,6 +412,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dip"
                 android:layout_weight="35"
+                android:visibility="invisible"
                 android:orientation="horizontal"
                 android:weightSum="10">
 
@@ -463,6 +465,7 @@
                 android:layout_height="0dip"
                 android:layout_weight="40"
                 android:orientation="horizontal"
+                android:visibility="invisible"
                 android:weightSum="34">
 
                 <View
@@ -490,6 +493,7 @@
 
                 <RelativeLayout
                     android:layout_width="0dip"
+                    android:visibility="invisible"
                     android:layout_height="match_parent"
                     android:layout_weight="6">
 
@@ -533,6 +537,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dip"
                 android:layout_weight="50"
+                android:visibility="invisible"
                 android:orientation="horizontal"
                 android:weightSum="345">
 

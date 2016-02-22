@@ -2,6 +2,7 @@ package com.itbarxproject.activity;
 
 import com.itbarxproject.R;
 import com.itbarxproject.application.ItbarxGlobal;
+import com.itbarxproject.common.UserSharedPrefrences;
 import com.itbarxproject.custom.component.ButtonBold;
 import com.itbarxproject.custom.component.EditTextRegular;
 import com.itbarxproject.custom.component.TextViewBold;
@@ -18,7 +19,10 @@ import com.itbarxproject.model.account.GetEditProfileModel;
 import com.itbarxproject.sl.AccountProcessesServiceSL;
 import com.itbarxproject.utils.TextSizeUtil;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
@@ -34,6 +38,8 @@ public class CreateNewAccountActivity extends BaseActivity implements Communicat
 	private TextViewBold txtViewOr, txtAddPhoto;
 	private ImageView rememberMeIcon;
 
+	private boolean isAgreement =false;
+
 
 	@Override protected int getLayoutResourceId() {
 		// TODO Auto-generated method stub
@@ -48,13 +54,27 @@ public class CreateNewAccountActivity extends BaseActivity implements Communicat
 		Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
 	}
 
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		String value= getIntent().getStringExtra("USER_AGREEMENT");
+		if(value!=null &&value.equals("ACCEPT")){
+			((ImageView)findViewById(R.id.create_new_account_activity_screen_agreeToAgreement_imageView)).setImageResource(R.drawable.req_icon_request_ok);
+			isAgreement =false;
+		}
+		else
+		{
+			isAgreement =false;
+			((ImageView)findViewById(R.id.create_new_account_activity_screen_agreeToAgreement_imageView)).setImageResource(R.drawable.icon_user_agreement_not_checked);
+		}
+	}
+
 	@Override protected void initViews() {
 
 		rememberMeIcon = (ImageView)findViewById(R.id.create_new_account_activity_screen_agreeToAgreement_imageView);
-		String value= getIntent().getStringExtra("USER_AGREEMENT");
-		if(value!=null &&value.equals("ACCEPT")){
-		rememberMeIcon.setImageResource(R.drawable.editprofile_icon_check);
-		}
+
+
 
 		txtToolbar = (TextViewRegular) findViewById(R.id.create_new_account_activity_screen_toolbar_textView);
 		edtUserName = (EditTextRegular) findViewById(R.id.create_new_account_activity_screen_userName_editText);
@@ -102,6 +122,7 @@ public class CreateNewAccountActivity extends BaseActivity implements Communicat
 		@Override public void onOneShotClick(View v) {
 
 			launchSubActivity(UserAgreementActivity.class);
+			//finish();
 
 		}
 	};
@@ -117,10 +138,22 @@ public class CreateNewAccountActivity extends BaseActivity implements Communicat
 	OneShotOnClickListener newUserClickListener = new OneShotOnClickListener(500) {
 
 		@Override public void onOneShotClick(View v) {
+
+			if(!isAgreement) {
+				showAlert("Kullanıcı kaydınızın tamamlanması için kullanıcı şartlarımızı kabul etmenizi rica ederiz");
+				return;
+			}
 			String strUserName = "";
 			String strEmail = "";
 			String strPassword = "";
 			String strRePassword = "";
+
+			if(edtUserName.getText().toString().length() == 0|| edtEmail.getText().toString().length() == 0
+					||edtPassword.getText().toString().length() == 0	||edtRePassword.getText().toString().length() == 0)
+			{
+				showAlert("Lütfen gerekli alanları boş geçmeyiniz!");
+				return;
+			}
 
 			if (edtUserName.getText().toString() != null) {
 				strUserName = edtUserName.getText().toString();
@@ -161,6 +194,10 @@ public class CreateNewAccountActivity extends BaseActivity implements Communicat
 			dismissProgress();
 			ItbarxGlobal global = ItbarxGlobal.setInstance(CreateNewAccountActivity.this);
 			global.setAccountModel(loginModelResponse);
+			UserSharedPrefrences.saveEmail(getContext(), loginModelResponse.getUserEmail());
+			UserSharedPrefrences.saveUserName(getContext(), loginModelResponse.getItBarxUserName());
+			UserSharedPrefrences.savePassword(getContext(), loginModelResponse.getUserPassword());
+			UserSharedPrefrences.saveLogIn(getContext());
 			launchSubActivity(TabContainer.class);
 
 		}
@@ -191,10 +228,28 @@ public class CreateNewAccountActivity extends BaseActivity implements Communicat
 
 		@Override public void onError(BarxErrorModel onError) {
 			dismissProgress();
+			showAlert(onError.getErrMessage());
 		}
 	};
 
 	@Override public void choose(String chosen) {
 
+	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+		if (requestCode == 1) {
+			if(resultCode == Activity.RESULT_OK){
+
+				rememberMeIcon.setImageResource(R.drawable.editprofile_icon_check);
+				isAgreement=true;
+				rememberMeIcon.setImageResource(R.drawable.editprofile_icon_check);
+			}
+			if (resultCode == Activity.RESULT_CANCELED) {
+				isAgreement=false;
+				rememberMeIcon.setImageResource(R.drawable.icon_user_agreement_not_checked);
+			}
+		}
 	}
 }

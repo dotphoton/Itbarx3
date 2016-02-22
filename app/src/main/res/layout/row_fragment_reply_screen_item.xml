@@ -125,14 +125,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                android:scaleType="fitXY"
-                android:src="@drawable/thumbnail" />
+                android:background="#E8EDE6"
+                android:src="@null" />
             <ImageView
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:id="@+id/row_fragment_reply_screen_video_thumbnail_play_ImageView"
                 android:layout_centerInParent="true"
                 android:src="@drawable/play_icon"
-                android:scaleType="centerInside"
+                android:scaleType="fitCenter"
                 android:clickable="true"
                 />
 
@@ -154,7 +155,7 @@
                 android:padding="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/friends_fragment_screen_userinfo_personalinfo_text"
+                android:text=""
                 android:lines="7"
                 android:ellipsize="end"
                 android:textSize="15sp"
