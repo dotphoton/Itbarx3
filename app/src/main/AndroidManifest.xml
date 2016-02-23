@@ -91,6 +91,13 @@
 
         </activity>
         <activity
+            android:name=".activity.EditProfileActivity"
+            android:screenOrientation="portrait">
+
+
+        </activity>
+
+        <activity
             android:name=".activity.MediaPublishActivity"
             android:screenOrientation="portrait">
         </activity>

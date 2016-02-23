@@ -42,15 +42,14 @@ public class T_ProfileActivity extends BaseActivity implements Communicator {
 	}
 
 	@Override protected void initViews() {
-		setFragment(F_ProfileFragment.newInstance(T_ProfileActivity.this), F_EditProfileFragment.newInstance(T_ProfileActivity.this));
+		setFragment(F_ProfileFragment.newInstance(T_ProfileActivity.this));
 
 	}
 
-	protected void setFragment(Fragment fragment1, Fragment fragment2) {
+	protected void setFragment(Fragment fragment1) {
 		FragmentManager fragmentManager = getFragmentManager();
 		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 		fragmentTransaction.add(R.id.profile1_fragment_container, fragment1, "profile");
-		fragmentTransaction.add(R.id.edit_profile1_fragment_container, fragment2, "editProfile");
 		fragmentTransaction.commit();
 	}
 

@@ -57,19 +57,15 @@ public class UploadHttpImage {
         {
             String file_extn = imageUri.substring(imageUri.lastIndexOf(".")+1);
             try {
-                if (file_extn.equals("img") || file_extn.equals("jpg") || file_extn.equals("jpeg") || file_extn.equals("gif") || file_extn.equals("png")) {
-                    //FINE
-                    Bitmap bm = BitmapFactory.decodeFile(imageUri);
-                    ByteArrayOutputStream bao = new ByteArrayOutputStream();
-                    bm.compress(Bitmap.CompressFormat.JPEG, 90, bao);
-                    byte[] byteArray = bao.toByteArray();
-                    //generate base64 string of image
+                if (file_extn.equals("img") || file_extn.equals("JPG")  || file_extn.equals("jpg") || file_extn.equals("jpeg") || file_extn.equals("gif") || file_extn.equals("png") || file_extn.equals("PNG")) {
+
                     if(previewImgView!=null)
                     {
+                        Bitmap bm = BitmapFactory.decodeFile(imageUri);
                         previewImgView.setImageBitmap(bm);
                     }
 
-                    decodedData = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                    decodedData = Base64Util.getEncodedImageFile(imageUri);
                 }
                 else{
                     Log.v("IMAGE_UPLOAD","NOT IN REQUIRED FORMAT for IMAGE");

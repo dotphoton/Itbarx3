@@ -16,7 +16,16 @@ public class RealPathUtil {
     @SuppressLint("NewApi")
     public static String getRealPathFromURI_API19(Context context, Uri uri) {
         String filePath = "";
-        String wholeID = DocumentsContract.getDocumentId(uri);
+        String wholeID=null;
+        try{
+            wholeID = DocumentsContract.getDocumentId(uri);
+        }
+        catch (Exception e)
+        {
+            String p = uri.getPath();
+            return getRealPathFromURI_BelowAPI11(context,uri);
+        }
+
 
         // Split at colon, use second item in the array
         String id = wholeID.split(":")[1];

@@ -94,7 +94,7 @@ public class UserSharedPrefrences {
         //saveToken(context, "");
         saveUserName(context, "");
         savePassword(context, "");
-        saveFacebookId(context,"");
+        saveFacebookId(context, "");
     }
     public static void saveLogIn(Context context) {
         SharedPreferences sharedPreferences = context.getApplicationContext().getSharedPreferences(
@@ -172,5 +172,20 @@ public class UserSharedPrefrences {
             status=true;
         }
         return status;
+    }
+
+
+    public static void saveUserPhoto(Context context,String userPhotoBase64String) {
+        SharedPreferences sharedPreferences = context.getApplicationContext().getSharedPreferences(
+                "LoginPreferences", 0);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("UserPhoto", userPhotoBase64String);
+        editor.commit();
+    }
+
+    public static String getUserPhoto(Context context) {
+        SharedPreferences sharedPreferences = context.getApplicationContext().getSharedPreferences(
+                "LoginPreferences", 0);
+        return sharedPreferences.getString("UserPhoto", "");
     }
 }

@@ -9,6 +9,7 @@ import android.widget.MediaController;
 import android.widget.VideoView;
 
 import com.itbarxproject.R;
+import com.itbarxproject.common.LoadHttpImage;
 import com.itbarxproject.custom.component.TextViewListItemReg;
 import com.itbarxproject.model.post.PostPopularPostListModel;
 
@@ -49,6 +50,8 @@ public class ProfilFragmentListAdapter extends BaseAdapter {
 			VideoView video = (VideoView) convertView.findViewById(R.id.row_fragment_profile_screen_user_videoView);
 			TextViewListItemReg text = (TextViewListItemReg) convertView.findViewById(R.id.row_fragment_profile_screen_subtitle_textView);
 			MediaController controller = new MediaController(context);
+
+
 
 			if (model.getIsAdultContent().equalsIgnoreCase("false") && model.getPostURL() != null && !model.getPostURL().equalsIgnoreCase("") && model.getIsDeleted().equalsIgnoreCase("false")) {
 				//    Uri uri = Uri.parse("http://itbarxapp.azurewebsites.net"+model.getPostURL());

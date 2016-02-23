@@ -384,12 +384,7 @@ public class LoginActivity extends Activity {
         }
     };
 */
-    private void closeKeyboard() {
-        View view = this.getCurrentFocus();
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context
-				.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-    }
+
     // REMEMBER ME CHECKED LISTENER
 
     // *************************************//
@@ -567,7 +562,12 @@ public class LoginActivity extends Activity {
     //
     //********************************************************************************************//
 
-
+    protected void closeKeyboard() {
+        View view = this.getCurrentFocus();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context
+                .INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
 /*
 
 	protected void onStart() {

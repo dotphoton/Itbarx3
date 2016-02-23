@@ -3,6 +3,7 @@ package com.itbarxproject.activity;
 import com.itbarxproject.R;
 import com.itbarxproject.adapter.PopularFragmentListAdapter;
 import com.itbarxproject.application.ItbarxGlobal;
+import com.itbarxproject.common.LoadHttpImage;
 import com.itbarxproject.enums.Fragments;
 import com.itbarxproject.custom.component.TextViewBold;
 import com.itbarxproject.custom.component.TextViewRegular;
@@ -95,9 +96,11 @@ public class F_ProfileFragment extends Fragment {
 		txtFollowerText = (TextViewRegular) t_profileActivity.findViewById(R.id.profile_fragment_screen_followers_TextView);
 		txtFollowingText = (TextViewRegular) t_profileActivity.findViewById(R.id.profile_fragment_screen_following_TextView);
 		lstPopular = (ListView) t_profileActivity.findViewById(R.id.profile_fragment_screen_listView);
+		imgUserPhoto = (ImageView)t_profileActivity.findViewById(R.id.profile_fragment_screen_user_photo_imageView);
 
 
 
+		setImgUserPhoto();
 		setTextSize();
 		getUserWallInfoModel(sendUserWallInfoModel());
 		getPopularList();
@@ -121,6 +124,14 @@ public class F_ProfileFragment extends Fragment {
 
 	}
 
+	private  void setImgUserPhoto()
+	{
+		if (accLoginInfoModel.getUserProfilePhoto() != null && accLoginInfoModel.getUserProfilePhoto().length() > 0) {
+			new LoadHttpImage(imgUserPhoto).execute(accLoginInfoModel.getUserProfilePhoto());
+		}
+	}
+
+
 	private void setTextSize() {
 		txtEditProfile.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getButtonTextSize());
 		txtProfileToolbar.setTextSize(TypedValue.COMPLEX_UNIT_SP, TextSizeUtil.getToolbarTextSize());
@@ -140,7 +151,7 @@ public class F_ProfileFragment extends Fragment {
 	//OPEN EDIT PROFILE FRAGMENT
 	OneShotOnClickListener openEditProfileClickListener = new OneShotOnClickListener(500) {
 		@Override public void onOneShotClick(View v) {
-			comm.choose(Fragments.PROFILE.name());
+			t_profileActivity.launchSubActivity(EditProfileActivity.class);
 		}
 	};
 
