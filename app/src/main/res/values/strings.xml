@@ -52,7 +52,7 @@
     <string name="createnewaccount_activity_screen_password_text">yeni şifre</string>
     <string name="createnewaccount_activity_screen_repassword_text">yeni şifre tekrar</string>
     <string name="createnewaccount_activity_screen_iagreetothe_text">Kabul ediyorum</string>
-    <string name="createnewaccount_activity_screen_user_agreement_text">\u00A0<u>kullanıcı anlaşmasını</u>.</string>
+    <string name="createnewaccount_activity_screen_user_agreement_text">\u00A0<u>Kullanıcı sözleşmesini onaylıyorum</u>.</string>
     <string name="createnewaccount_activity_screen_remembermeafterregister_text">Kayıt sonrası beni hatırla.</string>
     <string name="createnewaccount_activity_screen_done_button_text">tamam!</string>
     <string name="createnewaccount_activity_screen_or_text">veya</string>

@@ -2,6 +2,7 @@ package com.itbarxproject.activity;
 
 import com.itbarxproject.R;
 import com.itbarxproject.application.ItbarxGlobal;
+import com.itbarxproject.common.UploadHttpImage;
 import com.itbarxproject.common.UserSharedPrefrences;
 import com.itbarxproject.custom.component.ButtonBold;
 import com.itbarxproject.custom.component.EditTextRegular;
@@ -22,10 +23,12 @@ import com.itbarxproject.utils.TextSizeUtil;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 public class CreateNewAccountActivity extends BaseActivity implements Communicator {
 
@@ -37,8 +40,14 @@ public class CreateNewAccountActivity extends BaseActivity implements Communicat
 	private ButtonBold btnDone, btnTwitter, btnFacebook;
 	private TextViewBold txtViewOr, txtAddPhoto;
 	private ImageView rememberMeIcon;
+	private RelativeLayout addPhotoRelativeLayout;
+	private ImageView imageViewPhoto,imgViewRemovePhoto;
 
 	private boolean isAgreement =false;
+
+	UploadHttpImage uploadHttpImage;
+	private int IMAGE_UPLOAD_REQUEST_CODE =111;
+	private String DECODE_BASE64_IMAGE =null;
 
 
 	@Override protected int getLayoutResourceId() {
@@ -61,7 +70,7 @@ public class CreateNewAccountActivity extends BaseActivity implements Communicat
 		String value= getIntent().getStringExtra("USER_AGREEMENT");
 		if(value!=null &&value.equals("ACCEPT")){
 			((ImageView)findViewById(R.id.create_new_account_activity_screen_agreeToAgreement_imageView)).setImageResource(R.drawable.req_icon_request_ok);
-			isAgreement =false;
+			isAgreement =true;
 		}
 		else
 		{
@@ -91,8 +100,31 @@ public class CreateNewAccountActivity extends BaseActivity implements Communicat
 		txtRememberMe = (TextViewRegular) findViewById(R.id.create_new_account_activity_screen_rememberMe_textView);
 		rememberMeIcon = (ImageView) findViewById(R.id.create_new_account_activity_screen_rememberMe_imageView);
 		txtUserAgreement.setOnClickListener(openUserAgreementClickListener);
+		imageViewPhoto = (ImageView)findViewById(R.id.activity_createnewaccount_screen_addphoto_image);
+		addPhotoRelativeLayout =(RelativeLayout)findViewById(R.id.activity_createnewaccount_screen_addphoto_relative);
+		addPhotoRelativeLayout.setOnClickListener(new OneShotOnClickListener(500) {
+			@Override
+			public void onOneShotClick(View v) {
+
+				uploadHttpImage.openImgageGallery(IMAGE_UPLOAD_REQUEST_CODE);
+			}
+		});
+		imgViewRemovePhoto = (ImageView)findViewById(R.id.activity_createnewaccount_screen_removephoto_image);
+		imgViewRemovePhoto.setOnClickListener(new OneShotOnClickListener(500) {
+			@Override
+			public void onOneShotClick(View v) {
+				imageViewPhoto.setImageBitmap(null);
+				DECODE_BASE64_IMAGE =null;
+				imgViewRemovePhoto.setVisibility(View.INVISIBLE);
+				txtAddPhoto.setText(getString(R.string.createnewaccount_activity_screen_addphoto_text));
+			}
+		});
+
 		setCompText();
 		signUp();
+
+		//For image Upload
+		uploadHttpImage = new UploadHttpImage(getContext());
 
 	}
 
@@ -239,16 +271,14 @@ public class CreateNewAccountActivity extends BaseActivity implements Communicat
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-		if (requestCode == 1) {
-			if(resultCode == Activity.RESULT_OK){
+		if(requestCode ==IMAGE_UPLOAD_REQUEST_CODE && resultCode == RESULT_OK){
 
-				rememberMeIcon.setImageResource(R.drawable.editprofile_icon_check);
-				isAgreement=true;
-				rememberMeIcon.setImageResource(R.drawable.editprofile_icon_check);
-			}
-			if (resultCode == Activity.RESULT_CANCELED) {
-				isAgreement=false;
-				rememberMeIcon.setImageResource(R.drawable.icon_user_agreement_not_checked);
+			uploadHttpImage.setPath(data);
+			DECODE_BASE64_IMAGE =uploadHttpImage.getImageBase64Decoded(imageViewPhoto);
+			if(DECODE_BASE64_IMAGE!=null)
+			{
+				imgViewRemovePhoto.setVisibility(View.VISIBLE);
+				txtAddPhoto.setText("");
 			}
 		}
 	}

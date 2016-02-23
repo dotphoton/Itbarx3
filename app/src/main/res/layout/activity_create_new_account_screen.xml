@@ -82,17 +82,19 @@
                         android:layout_weight="5"/>
 
                     <RelativeLayout
+                        android:id="@+id/activity_createnewaccount_screen_addphoto_relative"
                         android:layout_width="0dip"
                         android:layout_height="match_parent"
-                        android:visibility="invisible"
+                        android:clickable="true"
                         android:layout_weight="3">
 
                         <ImageView
                             android:id="@+id/activity_createnewaccount_screen_addphoto_image"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:scaleType="fitXY"
                             android:background="@color/create_new_user_addPhoto_icon_imageView"
-                            android:clickable="@bool/choose_true"/>
+                            />
 
                         <com.itbarxproject.custom.component.TextViewBold
                             android:id="@+id/create_new_account_activity_screen_addPhoto_textView"
@@ -104,10 +106,23 @@
                             android:textColor="@color/create_new_user_addPhoto_text"/>
                     </RelativeLayout>
 
-                    <View
+                    <RelativeLayout
                         android:layout_width="0dip"
                         android:layout_height="match_parent"
-                        android:layout_weight="5"/>
+                        android:layout_weight="5">
+
+                        <ImageView
+                            android:id="@+id/activity_createnewaccount_screen_removephoto_image"
+                            android:layout_width="32dp"
+                            android:layout_centerVertical="true"
+                                android:clickable="true"
+                            android:visibility="invisible"
+                                android:layout_height="32dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/remove_icon"
+                            android:background="@color/create_new_user_addPhoto_icon_imageView"
+                            />
+                    </RelativeLayout>
                 </LinearLayout>
 
                 <View
@@ -392,7 +407,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0"
-                        android:text="@string/createnewaccount_activity_screen_iagreetothe_text"
+                        android:text="@null"
                         android:textColor="@color/create_new_user_userAgreemnt_text"
                         />
 

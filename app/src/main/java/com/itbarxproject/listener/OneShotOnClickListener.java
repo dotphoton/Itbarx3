@@ -13,6 +13,8 @@ public abstract class OneShotOnClickListener implements View.OnClickListener {
 	private Map<View, Long> lastClickMap;;
 	private Context context;
 
+
+
 	/**
 	 * Click islemlerimizi artik buraya yazacagiz implements
 	 * 
