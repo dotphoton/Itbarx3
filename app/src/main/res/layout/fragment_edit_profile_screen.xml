@@ -3,7 +3,7 @@
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:background="@drawable/main_bg"
-android:id="@+id/edit_profile1_fragment_container"
+android:id="@+id/edit_profile1_fragment_container_scrollview"
 
     android:orientation="vertical">
     <LinearLayout
@@ -113,7 +113,7 @@ android:id="@+id/edit_profile1_fragment_container"
                         android:layout_centerVertical="true"
                         android:scaleType="centerInside"
                         android:clickable="true"
-                        android:src="@drawable/user_male_icon"/>
+                        android:src="@drawable/user_no_image_icon_new"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -742,7 +742,7 @@ android:id="@+id/edit_profile1_fragment_container"
                 android:textColorHint="@color/hints_editText"
                 >
 
-                <requestFocus/>
+
             </com.itbarxproject.custom.component.EditTextRegular>
 
             </RelativeLayout>

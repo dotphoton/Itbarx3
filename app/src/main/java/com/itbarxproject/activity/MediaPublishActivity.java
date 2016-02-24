@@ -19,6 +19,7 @@ import com.itbarxproject.custom.component.ButtonBold;
 import com.itbarxproject.custom.component.TextViewRegular;
 import com.itbarxproject.exception.ExceptionHandler;
 import com.itbarxproject.listener.ReplyProcessesServiceListener;
+import com.itbarxproject.model.post.PostPopularPostListModel;
 import com.itbarxproject.model.reply.ReplyAddModel;
 import com.itbarxproject.model.reply.ReplyListModel;
 import com.itbarxproject.service.ResponseEventModel;
@@ -29,9 +30,8 @@ import com.itbarxproject.model.post.PostAddPostModel;
 import com.itbarxproject.model.post.PostGetPostDetailModel;
 import com.itbarxproject.model.post.PostGetWallInfoModel;
 import com.itbarxproject.model.post.PostNewPostListModel;
-import com.itbarxproject.model.post.PostPopularPostListModel;
 import com.itbarxproject.model.post.PostTimelineListForUserModel;
-import com.itbarxproject.model.post.PostWallListForUserModel;
+
 import com.itbarxproject.sl.PostProcessesServiceSL;
 import com.itbarxproject.sl.ReplySL;
 import com.itbarxproject.utils.BarkUtility;
@@ -214,7 +214,7 @@ public class MediaPublishActivity extends BaseActivity {
 		}
 
 		@Override
-		public void getWallListForUser(List<PostWallListForUserModel> postWallListForUserModel) {
+		public void getWallListForUser(List<PostPopularPostListModel> popularPostListModel) {
 
 		}
 

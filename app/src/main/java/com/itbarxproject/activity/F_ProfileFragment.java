@@ -7,6 +7,7 @@ import com.itbarxproject.common.LoadHttpImage;
 import com.itbarxproject.enums.Fragments;
 import com.itbarxproject.custom.component.TextViewBold;
 import com.itbarxproject.custom.component.TextViewRegular;
+import com.itbarxproject.model.post.PostWallModel;
 import com.itbarxproject.service.ResponseEventModel;
 import com.itbarxproject.service.error.BarxErrorModel;
 import com.itbarxproject.listener.OneShotOnClickListener;
@@ -103,7 +104,8 @@ public class F_ProfileFragment extends Fragment {
 		setImgUserPhoto();
 		setTextSize();
 		getUserWallInfoModel(sendUserWallInfoModel());
-		getPopularList();
+		//getUserWallList();
+		//getPopularList();
 		lytButton.setOnClickListener(openEditProfileClickListener);
 		imgEditProfile.setOnClickListener(openEditProfileClickListener);
 
@@ -156,19 +158,22 @@ public class F_ProfileFragment extends Fragment {
 	};
 
 
-	//TAKE POPULAR LIST
-	private void getPopularList() {
-		if(ItbarxGlobal.getInstance().getPopularListModel()!=null){
 
-lstPopular.setAdapter(new PopularFragmentListAdapter(t_profileActivity, ItbarxGlobal.getInstance().getPopularListModel()));
-
-		}
-
-	}
 
 
 //TAKE WALL INFO
 
+	private void getUserWallList()
+	{
+		PostProcessesServiceSL postProcessesServiceSL = new PostProcessesServiceSL(t_profileActivity.getContext(), postProcessesServiceListener, R.string.root_service_url);
+		PostWallModel postWallModel = new PostWallModel();
+		postWallModel.setUserID(accLoginInfoModel.getUserID());
+		postWallModel.setPage("1");
+		postWallModel.setRecPerPage("10");
+
+		postProcessesServiceSL.setWall(postWallModel);
+		//setWall
+	}
 	private PostWallInfoModel sendUserWallInfoModel() {
 		String id = ItbarxGlobal.getInstance().getAccountModel().getUserID();
 		return new PostWallInfoModel(id, id);
@@ -185,8 +190,13 @@ lstPopular.setAdapter(new PopularFragmentListAdapter(t_profileActivity, ItbarxGl
 			t_profileActivity.dismissProgress();
 		}
 
-		@Override public void getWallListForUser(List postWallListForUserModel) {
+		@Override public void getWallListForUser(List popularPostListModel) {
 			t_profileActivity.dismissProgress();
+
+			if(popularPostListModel !=null)
+			{
+				lstPopular.setAdapter(new PopularFragmentListAdapter(t_profileActivity, ItbarxGlobal.getInstance().getPopularListModel()));
+			}
 		}
 
 		@Override public void getPopularPostList(List popularPostListModel) {
@@ -223,7 +233,7 @@ lstPopular.setAdapter(new PopularFragmentListAdapter(t_profileActivity, ItbarxGl
 
 
 			}
-
+			getUserWallList();
 		}
 
 		@Override public void getPostDetail(PostGetPostDetailModel postDetailModel) {

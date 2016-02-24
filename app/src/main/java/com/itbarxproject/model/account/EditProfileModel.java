@@ -7,6 +7,7 @@ public class EditProfileModel {
 	private String userName;
 	private String location;
 	private String webSite;
+
 	private String oldPassword;
 	private String newPassword;
 	private String confirmPassword;

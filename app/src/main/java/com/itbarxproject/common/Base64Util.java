@@ -23,7 +23,7 @@ public class Base64Util {
         String encodedString = null;
         String file_extn = filePath.substring(filePath.lastIndexOf(".")+1);
         try {
-            if (file_extn.equals("img") || file_extn.equals("jpg") || file_extn.equals("jpeg") || file_extn.equals("gif") || file_extn.equals("png")) {
+            if (file_extn.equals("img") || file_extn.equals("JPG")  || file_extn.equals("jpg") || file_extn.equals("jpeg") || file_extn.equals("gif") || file_extn.equals("png") || file_extn.equals("PNG")) {
                 //FINE
                 Bitmap bm = BitmapFactory.decodeFile(filePath);
                 ByteArrayOutputStream bao = new ByteArrayOutputStream();

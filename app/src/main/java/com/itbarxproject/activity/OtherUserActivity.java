@@ -315,7 +315,7 @@ public class OtherUserActivity extends BaseActivity {
 			dismissProgress();
 		}
 
-		@Override public void getWallListForUser(List postWallListForUserModel) {
+		@Override public void getWallListForUser(List popularPostListModel) {
 			dismissProgress();
 		}
 

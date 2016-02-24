@@ -25,7 +25,7 @@ import com.itbarxproject.model.post.PostPostDetailModel;
 import com.itbarxproject.model.post.PostTimelineListForUserModel;
 import com.itbarxproject.model.post.PostTimelineModel;
 import com.itbarxproject.model.post.PostWallInfoModel;
-import com.itbarxproject.model.post.PostWallListForUserModel;
+
 import com.itbarxproject.model.post.PostWallModel;
 import com.itbarxproject.utils.ItbarxUtils;
 
@@ -184,9 +184,9 @@ public class PostProcessesServiceSL extends BasePostServiceSL<String> {
 	} // ---GET WALL LIST FOR USER---
 	else if (responseEvent.getMethodName().equalsIgnoreCase(PostProcessLinks.GET_WALL.toString())) {
 		ServiceResponseModel model = ItbarxUtils.getServiceResponseArrayModelDataKey(result);
-		List<PostWallListForUserModel> postWallListForUserModelResponse = null;
+		List<PostPopularPostListModel> postWallListForUserModelResponse = null;
 		if (model != null) {
-		postWallListForUserModelResponse = new PostModelParserJSON().getPostWallListForUserModelFromJSON(model.getModel());
+			postWallListForUserModelResponse = new PostModelParserJSON().getPostWallListForUserModelFromJSON(model.getModel());
 		}
 		if (postWallListForUserModelResponse == null) {
 			BarxErrorModel<String> errorModel = new BarxErrorModel<String>();

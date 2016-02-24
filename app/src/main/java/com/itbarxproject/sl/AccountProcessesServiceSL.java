@@ -156,21 +156,21 @@ IdInfo : "my id"
 
 
 	// ---EDIT_PROFILE---
-	public void setEditProfile(EditProfileModel editProfileModel) {
+	public void setEditProfile(EditProfileModel epm) {
 
 		List<Pair<String,String>>  params = new ArrayList<>();
-	params.add(new Pair(GlobalDataForWS.USER_ID.toString(), editProfileModel.getUserId()));
-	params.add(new Pair(GlobalDataForWS.NAME.toString(), editProfileModel.getName()));
-	params.add(new Pair(GlobalDataForWS.USERNAME.toString(), editProfileModel.getUserName()));
-	params.add(new Pair(GlobalDataForWS.LOCATION.toString(), editProfileModel.getLocation()));
-	params.add(new Pair(GlobalDataForWS.WEBSITE.toString(), editProfileModel.getWebSite()));
-	params.add(new Pair(GlobalDataForWS.OLD_PASSWORD.toString(), editProfileModel.getOldPassword()));
-	params.add(new Pair(GlobalDataForWS.NEW_PASSWORD.toString(), editProfileModel.getNewPassword()));
-	params.add(new Pair(GlobalDataForWS.CONFIRM_PASSWORD.toString(), editProfileModel.getConfirmPassword()));
-	params.add(new Pair(GlobalDataForWS.OLD_PHOTO_URL.toString(), editProfileModel.getOldPhotoUrl()));
-	params.add(new Pair(GlobalDataForWS.NEW_PHOTO_BYTES.toString(), editProfileModel.getNewPhotoBase64String()));
-	params.add(new Pair(GlobalDataForWS.IS_NOTIFICATION_ACTIVE.toString(), editProfileModel.getIsNotificationActive()));
-	params.add(new Pair(GlobalDataForWS.USER_BIO.toString(), editProfileModel.getUserBio()));
+	params.add(new Pair(GlobalDataForWS.USER_ID.toString(), epm.getUserId()));
+	params.add(new Pair(GlobalDataForWS.NAME.toString(), epm.getName()==null?"":epm.getName()));
+	params.add(new Pair(GlobalDataForWS.USERNAME.toString(), epm.getUserName()==null?"":epm.getUserName()));
+	params.add(new Pair(GlobalDataForWS.LOCATION.toString(), epm.getLocation()==null?"":epm.getLocation()));
+	params.add(new Pair(GlobalDataForWS.WEBSITE.toString(), epm.getWebSite()==null?"":epm.getWebSite()));
+	params.add(new Pair(GlobalDataForWS.OLD_PASSWORD.toString(), epm.getOldPassword()==null?"":epm.getOldPassword()));
+	params.add(new Pair(GlobalDataForWS.NEW_PASSWORD.toString(), epm.getNewPassword()==null?"":epm.getNewPassword()));
+	params.add(new Pair(GlobalDataForWS.CONFIRM_PASSWORD.toString(), epm.getConfirmPassword()==null?"":epm.getConfirmPassword()));
+	params.add(new Pair(GlobalDataForWS.OLD_PHOTO_URL.toString(), epm.getOldPhotoUrl()==null?"":epm.getOldPhotoUrl()));
+	params.add(new Pair(GlobalDataForWS.NEW_PHOTO_BYTES.toString(), epm.getNewPhotoBase64String()==null?"":epm.getNewPhotoBase64String()));
+	params.add(new Pair(GlobalDataForWS.IS_NOTIFICATION_ACTIVE.toString(), epm.getIsNotificationActive()==null?"":epm.getIsNotificationActive()));
+	params.add(new Pair(GlobalDataForWS.USER_BIO.toString(), epm.getUserBio()==null?"":epm.getUserBio()));
 
 	String postData = ItbarxUtils.formattedData(params);
 	// Post service CALL

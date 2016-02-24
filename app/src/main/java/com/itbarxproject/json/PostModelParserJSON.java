@@ -10,7 +10,7 @@ import com.itbarxproject.model.post.PostGetWallInfoModel;
 import com.itbarxproject.model.post.PostNewPostListModel;
 import com.itbarxproject.model.post.PostPopularPostListModel;
 import com.itbarxproject.model.post.PostTimelineListForUserModel;
-import com.itbarxproject.model.post.PostWallListForUserModel;
+
 
 import android.util.Log;
 
@@ -32,11 +32,11 @@ public class PostModelParserJSON {
 	return model;
 	}
 
-	public List<PostWallListForUserModel> getPostWallListForUserModelFromJSON(String json) {
+	public List<PostPopularPostListModel> getPostWallListForUserModelFromJSON(String json) {
 
-	List<PostWallListForUserModel> model = null;
+	List<PostPopularPostListModel> model = null;
 	try {
-		Type type = new TypeToken<List<PostWallListForUserModel>>() {
+		Type type = new TypeToken<List<PostPopularPostListModel>>() {
 		}.getType();
 
 		model = new Gson().fromJson(json, type);

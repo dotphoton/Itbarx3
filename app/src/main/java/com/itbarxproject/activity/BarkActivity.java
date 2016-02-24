@@ -2,7 +2,6 @@ package com.itbarxproject.activity;
 
 import android.app.Dialog;
 import android.app.FragmentManager;
-import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -22,15 +21,14 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.facebook.login.widget.LoginButton;
 import com.itbarxproject.R;
 import com.itbarxproject.application.ItbarxGlobal;
 import com.itbarxproject.common.LoadHttpImage;
 import com.itbarxproject.custom.component.TextViewBold;
 import com.itbarxproject.custom.component.TextViewRegular;
-import com.itbarxproject.exception.ExceptionHandler;
 import com.itbarxproject.model.like.LikeModel;
 import com.itbarxproject.model.like.LikePostListModel;
+import com.itbarxproject.model.post.PostPopularPostListModel;
 import com.itbarxproject.model.rebark.ReBarkSendPostShareAddModel;
 import com.itbarxproject.model.rebark.ReBarkSendPostSharedUserModel;
 import com.itbarxproject.service.ResponseEventModel;
@@ -46,10 +44,9 @@ import com.itbarxproject.model.like.LikeUsersByPostIdModel;
 import com.itbarxproject.model.post.PostGetPostDetailModel;
 import com.itbarxproject.model.post.PostGetWallInfoModel;
 import com.itbarxproject.model.post.PostNewPostListModel;
-import com.itbarxproject.model.post.PostPopularPostListModel;
 import com.itbarxproject.model.post.PostPostDetailModel;
 import com.itbarxproject.model.post.PostTimelineListForUserModel;
-import com.itbarxproject.model.post.PostWallListForUserModel;
+
 import com.itbarxproject.model.rebark.ReBarkGetPostSharedUserListByPostIdModel;
 import com.itbarxproject.model.rebark.ReBarkGetSharedPostListByUserIdModel;
 import com.itbarxproject.model.reply.ReplyListModel;
@@ -57,20 +54,16 @@ import com.itbarxproject.model.reply.ReplySendModel;
 import com.itbarxproject.model.send_to_fragment.LikeData;
 import com.itbarxproject.model.send_to_fragment.ReBarksData;
 import com.itbarxproject.model.send_to_fragment.ReplyData;
-import com.itbarxproject.sl.LikeProcessesServiceSL;
 import com.itbarxproject.sl.LikeSL;
 import com.itbarxproject.sl.PostProcessesServiceSL;
 import com.itbarxproject.sl.ReBarkSL;
 import com.itbarxproject.sl.ReplySL;
 import com.itbarxproject.utils.BarkUtility;
-import com.itbarxproject.utils.FinalString;
 import com.itbarxproject.utils.TextSizeUtil;
 
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -419,8 +412,8 @@ public class BarkActivity extends BaseActivity implements TextureView.SurfaceTex
                 }
 
                 @Override
-                public void getWallListForUser(List<PostWallListForUserModel>
-                                                       postWallListForUserModel) {
+                public void getWallListForUser(List<PostPopularPostListModel>
+                                                                       popularPostListModel) {
                     dismissProgress();
                 }
 

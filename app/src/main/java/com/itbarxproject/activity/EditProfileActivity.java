@@ -2,6 +2,7 @@ package com.itbarxproject.activity;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -17,15 +18,29 @@ import android.widget.ScrollView;
 import com.itbarxproject.R;
 import com.itbarxproject.application.ItbarxGlobal;
 import com.itbarxproject.common.LoadHttpImage;
+import com.itbarxproject.common.UploadHttpImage;
+import com.itbarxproject.common.UserSharedPrefrences;
 import com.itbarxproject.custom.component.ButtonBold;
 import com.itbarxproject.custom.component.EditTextRegular;
 import com.itbarxproject.custom.component.TextViewBold;
 import com.itbarxproject.custom.component.TextViewRegular;
+import com.itbarxproject.listener.AccountProcessesServiceListener;
 import com.itbarxproject.listener.OneShotOnClickListener;
 import com.itbarxproject.model.account.AccountGetUserByLoginInfoModel;
+import com.itbarxproject.model.account.AccountSignUpModel;
+import com.itbarxproject.model.account.EditProfileModel;
+import com.itbarxproject.model.account.GetEditProfileIdModel;
+import com.itbarxproject.model.account.GetEditProfileModel;
+import com.itbarxproject.service.ResponseEventModel;
+import com.itbarxproject.service.error.BarxErrorModel;
+import com.itbarxproject.sl.AccountProcessesServiceSL;
 import com.itbarxproject.utils.TextSizeUtil;
 
 public class EditProfileActivity extends BaseActivity {
+
+	UploadHttpImage uploadHttpImage;
+	private int IMAGE_UPLOAD_REQUEST_CODE = 111;
+	private String DECODE_BASE64_IMAGE = null;
 
 	private static float PX_HEIGHT;
 	private static int HEIGHT_BTN_EDT_TOOL;
@@ -42,7 +57,7 @@ public class EditProfileActivity extends BaseActivity {
 		UNIT_VIEW = Math.round((height / 3));
 	}
 
-	private T_ProfileActivity t_profileActivity;
+
 	private LinearLayout layoutToolbar, layoutInfoEdtBoxes, layoutSaveBtn, layoutImage, layoutPasswordEditBoxes;
 	private RelativeLayout relBasicInfo, relChangePassword, relAboutMe, relAboutMeEditBoxes, relNotification, relDeletAcc;
 	private View vBottomDelete, vBottomSaveBtn, vBottomNotification, vUpperNotification;
@@ -111,7 +126,7 @@ public class EditProfileActivity extends BaseActivity {
 		@Override
 		public void onOneShotClick(View v) {
 
-			t_profileActivity.areYoulogOffAccount();
+			areYoulogOffAccount();
 		}
 	};
 
@@ -169,13 +184,164 @@ ScrollView scrollView;
 		Log.d("Tag", "Getting Height * 5  >> " + layoutInfoEdtBoxes.getLayoutParams().height);
 		imgBtnLogOut.setOnClickListener(logOutClickListener);
 		imgUserPhoto =(ImageView)findViewById(R.id.edit_profile_fragment_screen_user_photo_imageView);
+		imgUserPhoto.setOnClickListener(new OneShotOnClickListener(500) {
+			@Override
+			public void onOneShotClick(View v) {
+				uploadHttpImage.openImgageGallery(IMAGE_UPLOAD_REQUEST_CODE);
+			}
+		});
 		setImgUserPhoto();
-		scrollView.smoothScrollTo(0,0);
+		scrollView.smoothScrollTo(0, 0);
 		closeKeyboard();
+		//For image Upload
+		uploadHttpImage = new UploadHttpImage(getContext());
+
+
+		if(logonModel.getItBarxUserName()!=null &&!logonModel.getItBarxUserName().equalsIgnoreCase("") )
+		{
+			userNameEdtTxt.setText(logonModel.getItBarxUserName());
+		}
+
+		if(logonModel.getName()!=null &&!logonModel.getName().equalsIgnoreCase("") )
+		{
+			nameEdtTxt.setText(logonModel.getName());
+		}
+		if(logonModel.getUserEmail()!=null &&!logonModel.getUserEmail().equalsIgnoreCase("") )
+		{
+			eMailEdtTxt.setText(logonModel.getUserEmail());
+		}
+		if(logonModel.getUserwebsite()!=null &&!logonModel.getUserwebsite().equalsIgnoreCase("") )
+		{
+			eMailEdtTxt.setText(logonModel.getUserwebsite());
+		}
+		if(logonModel.getUserBio()!=null &&!logonModel.getUserBio().equalsIgnoreCase("") )
+		{
+			aboutMeEdtTxt.setText(logonModel.getUserBio());
+		}
+	btnSave.setOnClickListener(new OneShotOnClickListener(500) {
+		@Override
+		public void onOneShotClick(View v) {
+			setEditProfil();
+		}
+	});
+		getEditProfil();
 	}
 
 	@Override
 	protected void exceptionHandler() {
 
+	}
+/*
+{
+UserId:"10028",
+Name :"",
+UserName : "",
+Location : "",
+WebSite : "",
+OldPassword : "",
+NewPassword : "",
+ConfirmPassword : "",
+OldPhotoUrl : "",
+NewPhotoBytes : "",
+IsNotificationActive : "",
+UserBio : ""
+}
+
+ */
+	protected void setEditProfil() {
+
+		EditProfileModel epm = new EditProfileModel();
+		epm.setUserName(userNameEdtTxt.getText().toString());
+		epm.setUserBio(aboutMeEdtTxt.getText().toString());
+		epm.setWebSite(webSiteEdtTxt.getText().toString());
+		epm.setName(nameEdtTxt.getText().toString());
+		epm.setConfirmPassword(rePassEdtTxt.getText().toString());
+		epm.setNewPassword(newPassEdtTxt.getText().toString());
+		epm.setUserId(logonModel.getUserID());
+		epm.setOldPassword(logonModel.getUserPassword());
+
+		if(DECODE_BASE64_IMAGE!=null)
+		{
+			epm.setNewPhotoBase64String(DECODE_BASE64_IMAGE);
+		}
+		//epm.setConfirmPassword();
+
+		AccountProcessesServiceSL accountServiceSL = new AccountProcessesServiceSL(getContext(), accountProcessesServiceListener, R.string.root_service_url);
+		accountServiceSL.setEditProfile(epm);
+		showProgress(getString(R.string.ItbarxConnecting));
+
+	}
+	protected void getEditProfil() {
+		AccountProcessesServiceSL accountServiceSL = new AccountProcessesServiceSL(getContext(), accountProcessesServiceListener, R.string.root_service_url);
+		accountServiceSL.setGetEditProfile(new GetEditProfileIdModel(logonModel.getUserID()));
+		showProgress(getString(R.string.ItbarxConnecting));
+
+	}
+	AccountProcessesServiceListener accountProcessesServiceListener = new AccountProcessesServiceListener(){
+
+		@Override
+		public void onComplete(ResponseEventModel onComplete) {
+
+		}
+
+		@Override
+		public void onError(BarxErrorModel onError) {
+			dismissProgress();
+			showAlert(onError.getErrMessage());
+		}
+
+		@Override
+		public void logInAccount(AccountGetUserByLoginInfoModel loginModelResponse) {
+
+		}
+
+		@Override
+		public void signUpAccount(AccountGetUserByLoginInfoModel loginModelResponse) {
+
+		}
+
+		@Override
+		public void forgotAccount(String forgotResponse) {
+
+		}
+
+		@Override
+		public void changePassByCode(AccountGetUserByLoginInfoModel loginModelResponse) {
+
+		}
+
+		@Override
+		public void getEditProfileAccount(GetEditProfileModel getEditProfileModel) {
+			dismissProgress();
+			if(getEditProfileModel.getUserBio()!=null &&!getEditProfileModel.getUserBio().equalsIgnoreCase("") )
+			{
+				aboutMeEdtTxt.setText(getEditProfileModel.getUserBio());
+			}
+
+		}
+
+		@Override
+		public void editProfileAccount(EditProfileModel editProfileModel) {
+			dismissProgress();
+		}
+
+		@Override
+		public void deleteProfileAccount(String isDeleted) {
+
+		}
+	};
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+		if (requestCode == IMAGE_UPLOAD_REQUEST_CODE && resultCode == RESULT_OK) {
+
+			uploadHttpImage.setPath(data);
+			DECODE_BASE64_IMAGE = uploadHttpImage.getImageBase64Decoded(imgUserPhoto);
+			if (DECODE_BASE64_IMAGE != null) {
+				//imgUserPhoto.setVisibility(View.VISIBLE);
+				//txtAddPhoto.setText("");
+				//UserSharedPrefrences.saveUserPhoto(getContext(), DECODE_BASE64_IMAGE);
+			}
+		}
 	}
 }

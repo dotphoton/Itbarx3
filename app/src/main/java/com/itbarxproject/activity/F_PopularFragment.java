@@ -6,6 +6,7 @@ import com.itbarxproject.application.ItbarxGlobal;
 import com.itbarxproject.custom.component.ButtonRegular;
 import com.itbarxproject.custom.component.TextViewRegular;
 import com.itbarxproject.enums.Fragments;
+import com.itbarxproject.model.post.PostPopularPostListModel;
 import com.itbarxproject.service.ResponseEventModel;
 import com.itbarxproject.service.error.BarxErrorModel;
 import com.itbarxproject.listener.OneShotOnClickListener;
@@ -15,9 +16,8 @@ import com.itbarxproject.model.post.PostGetPostDetailModel;
 import com.itbarxproject.model.post.PostGetWallInfoModel;
 import com.itbarxproject.model.post.PostNewPostListModel;
 import com.itbarxproject.model.post.PostPopularModel;
-import com.itbarxproject.model.post.PostPopularPostListModel;
 import com.itbarxproject.model.post.PostTimelineListForUserModel;
-import com.itbarxproject.model.post.PostWallListForUserModel;
+
 import com.itbarxproject.sl.PostProcessesServiceSL;
 import com.itbarxproject.utils.TextSizeUtil;
 
@@ -121,7 +121,7 @@ myFragment.t_homeActivity = t_homeActivity;
 			t_homeActivity.dismissProgress();
 		}
 
-		@Override public void getWallListForUser(List<PostWallListForUserModel> postWallListForUserModel) {
+		@Override public void getWallListForUser(List<PostPopularPostListModel> popularPostListModel) {
 			t_homeActivity.dismissProgress();
 		}
 
