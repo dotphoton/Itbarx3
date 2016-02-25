@@ -221,10 +221,10 @@ ScrollView scrollView;
 	btnSave.setOnClickListener(new OneShotOnClickListener(500) {
 		@Override
 		public void onOneShotClick(View v) {
-			setEditProfil();
+			setEditProfilRequest();
 		}
 	});
-		getEditProfil();
+		getEditProfilFromWs();
 	}
 
 	@Override
@@ -248,7 +248,39 @@ UserBio : ""
 }
 
  */
-	protected void setEditProfil() {
+	protected void setEditProfilUI(EditProfileModel model) {
+
+
+		if(model.getUserName()!=null)
+		{
+			userNameEdtTxt.setText(model.getUserName());
+		}
+		if(model.getName()!=null)
+		{
+			nameEdtTxt.setText(model.getName());
+		}
+		if(model.getUserBio()!=null)
+		{
+			aboutMeEdtTxt.setText(model.getUserBio());
+		}
+		if(model.getWebSite()!=null)
+		{
+			webSiteEdtTxt.setText(model.getWebSite());
+		}
+		if(model.getWebSite()!=null)
+		{
+			webSiteEdtTxt.setText(model.getWebSite());
+		}
+
+
+			//epm.setNewPhotoBase64String(DECODE_BASE64_IMAGE);
+
+
+	}
+
+
+
+	protected void setEditProfilRequest() {
 
 		EditProfileModel epm = new EditProfileModel();
 		epm.setUserName(userNameEdtTxt.getText().toString());
@@ -271,7 +303,7 @@ UserBio : ""
 		showProgress(getString(R.string.ItbarxConnecting));
 
 	}
-	protected void getEditProfil() {
+	protected void getEditProfilFromWs() {
 		AccountProcessesServiceSL accountServiceSL = new AccountProcessesServiceSL(getContext(), accountProcessesServiceListener, R.string.root_service_url);
 		accountServiceSL.setGetEditProfile(new GetEditProfileIdModel(logonModel.getUserID()));
 		showProgress(getString(R.string.ItbarxConnecting));
@@ -317,12 +349,20 @@ UserBio : ""
 			{
 				aboutMeEdtTxt.setText(getEditProfileModel.getUserBio());
 			}
-
+			if(getEditProfileModel.getUserProfilePhoto()!=null &&!getEditProfileModel.getUserProfilePhoto().equalsIgnoreCase("") )
+			{
+				setImgUserPhoto(getEditProfileModel.getUserProfilePhoto());
+			}
 		}
 
 		@Override
 		public void editProfileAccount(EditProfileModel editProfileModel) {
 			dismissProgress();
+
+			if(editProfileModel.getData()!=null&&!editProfileModel.getData().equalsIgnoreCase(""))
+			{
+				getEditProfilFromWs();
+			}
 		}
 
 		@Override
@@ -330,6 +370,12 @@ UserBio : ""
 
 		}
 	};
+	private  void setImgUserPhoto(String imageUrl)
+	{
+		if (imageUrl != null && imageUrl.length() > 0) {
+			new LoadHttpImage(imgUserPhoto).execute(imageUrl);
+		}
+	}
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 

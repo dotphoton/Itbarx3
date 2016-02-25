@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.itbarxproject.R;
 
+import com.itbarxproject.application.ItbarxGlobal;
 import com.itbarxproject.service.ResponseEventModel;
 import com.itbarxproject.service.ServiceResponseModel;
 import com.itbarxproject.enums.AccountProcessesLinks;
@@ -162,15 +163,16 @@ IdInfo : "my id"
 	params.add(new Pair(GlobalDataForWS.USER_ID.toString(), epm.getUserId()));
 	params.add(new Pair(GlobalDataForWS.NAME.toString(), epm.getName()==null?"":epm.getName()));
 	params.add(new Pair(GlobalDataForWS.USERNAME.toString(), epm.getUserName()==null?"":epm.getUserName()));
-	params.add(new Pair(GlobalDataForWS.LOCATION.toString(), epm.getLocation()==null?"":epm.getLocation()));
+	//params.add(new Pair(GlobalDataForWS.LOCATION.toString(), epm.getLocation()==null?"":epm.getLocation()));
 	params.add(new Pair(GlobalDataForWS.WEBSITE.toString(), epm.getWebSite()==null?"":epm.getWebSite()));
 	params.add(new Pair(GlobalDataForWS.OLD_PASSWORD.toString(), epm.getOldPassword()==null?"":epm.getOldPassword()));
 	params.add(new Pair(GlobalDataForWS.NEW_PASSWORD.toString(), epm.getNewPassword()==null?"":epm.getNewPassword()));
 	params.add(new Pair(GlobalDataForWS.CONFIRM_PASSWORD.toString(), epm.getConfirmPassword()==null?"":epm.getConfirmPassword()));
-	params.add(new Pair(GlobalDataForWS.OLD_PHOTO_URL.toString(), epm.getOldPhotoUrl()==null?"":epm.getOldPhotoUrl()));
-	params.add(new Pair(GlobalDataForWS.NEW_PHOTO_BYTES.toString(), epm.getNewPhotoBase64String()==null?"":epm.getNewPhotoBase64String()));
+	//params.add(new Pair(GlobalDataForWS.OLD_PHOTO_URL.toString(), epm.getOldPhotoUrl()==null?"":epm.getOldPhotoUrl()));
+	params.add(new Pair(GlobalDataForWS.NEW_PHOTO_BASE64_STRING.toString(), epm.getNewPhotoBase64String()==null?"":epm.getNewPhotoBase64String()));
 	params.add(new Pair(GlobalDataForWS.IS_NOTIFICATION_ACTIVE.toString(), epm.getIsNotificationActive()==null?"":epm.getIsNotificationActive()));
 	params.add(new Pair(GlobalDataForWS.USER_BIO.toString(), epm.getUserBio()==null?"":epm.getUserBio()));
+	params.add(new Pair(GlobalDataForWS.EMAIL.toString(), ItbarxGlobal.getInstance().getAccountModel().getUserEmail()));
 
 	String postData = ItbarxUtils.formattedData(params);
 	// Post service CALL
@@ -324,8 +326,12 @@ else if(responseEvent.getMethodName().equalsIgnoreCase(AccountProcessesLinks.OTH
 
 		if (model != null) {
 		AccountModelParserJSON accountModelParserJSON = new AccountModelParserJSON();
-		EditProfileModel editProfileModelResponse = accountModelParserJSON.getEditProfileModelFromJSON(model.getModel());
-		if (editProfileModelResponse == null) {
+
+
+			EditProfileModel editProfileModelResponse = accountModelParserJSON.getEditProfileModelFromJSON(model.getModel());
+
+
+			if (editProfileModelResponse == null) {
 			BarxErrorModel<String> errorModel = new BarxErrorModel<String>();
 			errorModel.setErrMessage(context.getString(R.string.BrokenData));
 			accountServiceListener.onError(errorModel);

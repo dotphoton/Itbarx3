@@ -1,5 +1,7 @@
 package com.itbarxproject.model.account;
 
+import com.itbarxproject.common.RealPathUtil;
+
 public class EditProfileModel {
 
 	private String userId;
@@ -15,6 +17,13 @@ public class EditProfileModel {
 	private String newPhotoBase64String;
 	private String isNotificationActive;
 	private String userBio;
+
+
+
+	private String Result;
+	private String Data;
+
+	private Boolean servisResponse;
 
 	public EditProfileModel() {
 
@@ -133,4 +142,30 @@ public class EditProfileModel {
 	this.userBio = userBio;
 	}
 
+	public Boolean getserviceResponse() {
+
+		return servisResponse == null ?false:servisResponse;
+	}
+
+	public void setUserBio(Boolean ServisResponse) {
+		this.servisResponse = ServisResponse;
+	}
+
+
+	public String getResult() {
+		return Result;
+	}
+
+	public void setResult(String result) {
+		this.Result = result;
+	}
+
+
+	public String getData() {
+		return Data;
+	}
+
+	public void setData(String data) {
+		this.Result = data;
+	}
 }

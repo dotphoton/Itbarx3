@@ -211,9 +211,9 @@ public class F_ProfileFragment extends Fragment {
 			t_profileActivity.dismissProgress();
 			if (postGetWallInfoModel != null) {
 
-				String reBarkCount = (postGetWallInfoModel.getReBarkCount()!=null&& postGetWallInfoModel.getReBarkCount().trim().equals(StringUtils.EMPTY) ) ? postGetWallInfoModel.getReBarkCount() : getResources().getString(R.string.zero) ;
-				String followerCount = (postGetWallInfoModel.getFollowerCount()!=null&& postGetWallInfoModel.getFollowerCount().trim().equals(StringUtils.EMPTY) ) ? postGetWallInfoModel.getFollowerCount() : getResources().getString(R.string.zero) ;
-				String followingCount = (postGetWallInfoModel.getFollowingCount()!=null&& postGetWallInfoModel.getFollowingCount().trim().equals(StringUtils.EMPTY) ) ? postGetWallInfoModel.getFollowingCount() : getResources().getString(R.string.zero) ;
+				String reBarkCount = postGetWallInfoModel.getReBarkCount()==null?"0": postGetWallInfoModel.getReBarkCount() ;
+				String followerCount = postGetWallInfoModel.getFollowerCount()==null?"0": postGetWallInfoModel.getFollowerCount();
+				String followingCount = postGetWallInfoModel.getFollowingCount()==null?"0": postGetWallInfoModel.getFollowingCount();
 
 				txtReBarkCount.setText(reBarkCount);
 				txtFollowerCount.setText(followerCount);
