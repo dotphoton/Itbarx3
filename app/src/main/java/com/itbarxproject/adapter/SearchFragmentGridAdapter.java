@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import com.itbarxproject.R;
 import com.itbarxproject.activity.BaseActivity;
+import com.itbarxproject.common.LoadHttpImage;
 import com.itbarxproject.custom.component.TextViewGridItemBold;
 import com.itbarxproject.listener.OneShotOnClickListener;
 import com.itbarxproject.model.follow.FollowerListByFollowingIdModel;
@@ -77,12 +78,18 @@ private	TextViewGridItemBold txtName, txtSurname;
 				imgOkIcon.setVisibility(View.GONE);
 
 			}
+/*
 			if ((index % 2) == 0) {
 				imgProfilePhoto.setImageResource(R.drawable.profile_b);
 				index++;
 			} else {
 				imgProfilePhoto.setImageResource(R.drawable.profile_a);
 				index++;
+			}
+*/
+			if (model.getUserProfilePhoto() != null && !model.getUserProfilePhoto().equalsIgnoreCase("")) {
+				//photo yu al
+				new LoadHttpImage(imgProfilePhoto).execute(model.getUserProfilePhoto());
 			}
 			/*
             int i=0;

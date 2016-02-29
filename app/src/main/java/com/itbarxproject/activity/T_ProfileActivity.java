@@ -1,9 +1,11 @@
 package com.itbarxproject.activity;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -32,6 +34,10 @@ public class T_ProfileActivity extends BaseActivity implements Communicator {
 		super.onAttachFragment(fragment);
 
 	}
+	F_ProfileFragment f_profileFragment =null;
+	public static boolean isEditProfilChange = false;
+
+	public static  int EDIT_PROFIL_REQUEST_CODE =111;
 
 	@Override public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -42,7 +48,9 @@ public class T_ProfileActivity extends BaseActivity implements Communicator {
 	}
 
 	@Override protected void initViews() {
-		setFragment(F_ProfileFragment.newInstance(T_ProfileActivity.this));
+
+		f_profileFragment = F_ProfileFragment.newInstance(T_ProfileActivity.this);
+		setFragment(f_profileFragment);
 
 	}
 
@@ -52,23 +60,14 @@ public class T_ProfileActivity extends BaseActivity implements Communicator {
 		fragmentTransaction.add(R.id.profile1_fragment_container, fragment1, "profile");
 		fragmentTransaction.commit();
 	}
-
+	FrameLayout prof=null;
 	@Override public void choose(String chosen) {
 		if (chosen == Fragments.PROFILE.name()) {
-			FrameLayout prof = (FrameLayout) this.findViewById(R.id.profile1_fragment_container);
+			prof = (FrameLayout) this.findViewById(R.id.profile1_fragment_container);
 			FrameLayout edit = (FrameLayout) this.findViewById(R.id.edit_profile1_fragment_container);
 			prof.setVisibility(View.INVISIBLE);
 			prof.setVisibility(View.GONE);
 			edit.setVisibility(View.VISIBLE);
-		}
-
-		if (chosen == Fragments.EDIT_PROFILE.name()) {
-
-			FrameLayout prof = (FrameLayout) this.findViewById(R.id.popular1_fragment_container);
-			FrameLayout edit = (FrameLayout) this.findViewById(R.id.timeline1_fragment_container);
-			edit.setVisibility(View.INVISIBLE);
-			edit.setVisibility(View.GONE);
-			prof.setVisibility(View.VISIBLE);
 		}
 
 	}
@@ -81,4 +80,24 @@ public class T_ProfileActivity extends BaseActivity implements Communicator {
 		return super.onKeyDown(keyCode, event);
 	}
 
+	@Override
+	public void onActivityResult(int correlationId, int resultCode, Intent data) {
+
+		if(EDIT_PROFIL_REQUEST_CODE==correlationId)
+		{
+			if(resultCode == Activity.RESULT_OK){
+
+				if(f_profileFragment!=null)
+				{
+					f_profileFragment.setImgUserPhoto();
+
+					f_profileFragment.getUserWallInfoModel(f_profileFragment.sendUserWallInfoModel());
+
+				}
+			}
+
+		}
+
+
+	}
 }

@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:scaleType="fitCenter"
-        android:src="@drawable/profile_b"
+        android:src="@drawable/user_no_image_icon_new"
         />
 
     <LinearLayout

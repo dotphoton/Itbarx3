@@ -195,7 +195,7 @@ public class ForgotPasswordActivity extends BaseActivity {
 			dismissProgress();
 		}
 
-		@Override public void editProfileAccount(EditProfileModel editProfileModel) {
+		@Override public void editProfileAccount(AccountGetUserByLoginInfoModel editProfileModel) {
 			dismissProgress();
 		}
 

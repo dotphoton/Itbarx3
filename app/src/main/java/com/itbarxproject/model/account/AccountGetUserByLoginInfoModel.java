@@ -29,6 +29,8 @@ public class AccountGetUserByLoginInfoModel {
 	private String LocationName;
 	private String CountryId;
 
+	private String loginCategory;
+
 	public AccountGetUserByLoginInfoModel() {
 	}
 
@@ -276,5 +278,13 @@ public class AccountGetUserByLoginInfoModel {
 
 	public void setCountryId(String countryId) {
 		CountryId = countryId;
+	}
+
+	public String getLoginCategory() {
+		return loginCategory;
+	}
+
+	public void setLoginCategory(String LoginCategory) {
+		loginCategory = LoginCategory;
 	}
 }

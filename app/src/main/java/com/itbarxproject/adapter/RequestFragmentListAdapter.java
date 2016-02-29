@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import com.itbarxproject.R;
 import com.itbarxproject.activity.BaseActivity;
 import com.itbarxproject.activity.F_RequestFragment;
+import com.itbarxproject.common.LoadHttpImage;
 import com.itbarxproject.custom.component.TextViewListItemBold;
 import com.itbarxproject.listener.OneShotOnClickListener;
 import com.itbarxproject.model.follow.PendingListByFollowingIdModel;
@@ -69,6 +70,7 @@ public class RequestFragmentListAdapter extends BaseAdapter {
             if (model.getUserProfilePhoto() != null && !model.getUserProfilePhoto()
                     .equalsIgnoreCase("")) {
                 //photo yu al
+                new LoadHttpImage(imgPhoto).execute(model.getUserProfilePhoto());
             }
             //2.  take user name
             TextViewListItemBold txtFullname = (TextViewListItemBold) convertView.findViewById(R

@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import com.itbarxproject.R;
 import com.itbarxproject.activity.BaseActivity;
 import com.itbarxproject.activity.T_SecondActivity;
+import com.itbarxproject.common.LoadHttpImage;
 import com.itbarxproject.custom.component.TextViewListItemBold;
 import com.itbarxproject.custom.component.TextViewListItemReg;
 import com.itbarxproject.listener.OneShotOnClickListener;
@@ -58,6 +59,7 @@ public class ActivityFragmentListAdapter extends BaseAdapter {
 			ImageView imgPhoto = (ImageView) convertView.findViewById(R.id.row_fragment_activity_screen_activities_imageView);
 			if (model.getUserProfilePhoto() != null && !model.getUserProfilePhoto().equalsIgnoreCase("")) {
 				//photo yu al
+				new LoadHttpImage(imgPhoto).execute(model.getUserProfilePhoto());
 			}
 
 			 relClickable = (RelativeLayout) convertView.findViewById(R.id.row_fragment_activity_screen_clickable_layout);

@@ -177,7 +177,7 @@ public class SplashActivity extends BaseActivity {
                 }
 
                 @Override
-                public void editProfileAccount(EditProfileModel editProfileModel) {
+                public void editProfileAccount(AccountGetUserByLoginInfoModel editProfileModel) {
                     dismissProgress();
                 }
 

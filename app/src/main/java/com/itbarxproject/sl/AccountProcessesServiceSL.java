@@ -327,8 +327,8 @@ else if(responseEvent.getMethodName().equalsIgnoreCase(AccountProcessesLinks.OTH
 		if (model != null) {
 		AccountModelParserJSON accountModelParserJSON = new AccountModelParserJSON();
 
-
-			EditProfileModel editProfileModelResponse = accountModelParserJSON.getEditProfileModelFromJSON(model.getModel());
+			AccountGetUserByLoginInfoModel editProfileModelResponse = accountModelParserJSON.getUserLoginInfoModelFromJSON(model.getModel());
+			//EditProfileModel editProfileModelResponse = accountModelParserJSON.getEditProfileModelFromJSON(model.getModel());
 
 
 			if (editProfileModelResponse == null) {

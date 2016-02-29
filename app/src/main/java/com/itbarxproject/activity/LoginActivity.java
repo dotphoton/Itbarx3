@@ -526,7 +526,7 @@ public class LoginActivity extends Activity {
         }
 
         @Override
-        public void editProfileAccount(EditProfileModel editProfileModel) {
+        public void editProfileAccount(AccountGetUserByLoginInfoModel editProfileModel) {
             dismissProgress();
         }
 
@@ -618,7 +618,7 @@ public class LoginActivity extends Activity {
 	}
 
 
-
+*/
 
 
 /*

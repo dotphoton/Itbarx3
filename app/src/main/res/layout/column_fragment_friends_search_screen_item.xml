@@ -13,7 +13,7 @@
         android:id="@+id/column_fragment_search_screen_userProfile_imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/profile_b"
+        android:src="@drawable/user_no_image_icon_new"
         android:scaleType="fitCenter"
         android:visibility="visible"
         android:clickable="true"

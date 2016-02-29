@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import com.itbarxproject.R;
 import com.itbarxproject.activity.BarkActivity;
 import com.itbarxproject.activity.BaseActivity;
+import com.itbarxproject.common.LoadHttpImage;
 import com.itbarxproject.custom.component.TextViewRegular;
 import com.itbarxproject.listener.OneShotOnClickListener;
 import com.itbarxproject.model.send_to_fragment.ReBarksData;
@@ -83,6 +84,11 @@ this.activity = (BarkActivity) activity;
 
 		}
 
+		if (model.getProfilePhoto() != null && !model.getProfilePhoto().equalsIgnoreCase("")) {
+			//photo yu al
+			new LoadHttpImage(holder.imgProfilePhoto).execute(model.getProfilePhoto());
+		}
+/*
 		if ((index % 2) == 0) {
 			holder.imgProfilePhoto.setImageResource(R.drawable.profile_b);
 			index++;
@@ -90,7 +96,7 @@ this.activity = (BarkActivity) activity;
 			holder.imgProfilePhoto.setImageResource(R.drawable.profile_a);
 			index++;
 		}
-
+*/
 		holder.clickableView.setOnClickListener(openProfileClickListener);
 		if (!model.getId().equals("")) {
 

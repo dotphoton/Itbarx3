@@ -28,6 +28,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Base64;
 import android.util.TypedValue;
 import android.view.View;
@@ -56,7 +57,7 @@ public class CreateNewAccountActivity extends BaseActivity implements Communicat
 	private int IMAGE_UPLOAD_REQUEST_CODE = 111;
 	private String DECODE_BASE64_IMAGE = null;
 
-
+	private int AGREEMENT_REQUEST_CODE = 222;
 	@Override
 	protected int getLayoutResourceId() {
 		// TODO Auto-generated method stub
@@ -83,10 +84,10 @@ public class CreateNewAccountActivity extends BaseActivity implements Communicat
 	@Override
 	protected void onResume() {
 		super.onResume();
-		String value = getIntent().getStringExtra("USER_AGREEMENT");
-		if (value != null && value.equals("ACCEPT")) {
+
+		if (isAgreement) {
 			((ImageView) findViewById(R.id.create_new_account_activity_screen_agreeToAgreement_imageView)).setImageResource(R.drawable.req_icon_request_ok);
-			isAgreement = true;
+
 
 		DECODE_BASE64_IMAGE = UserSharedPrefrences.getUserPhoto(getContext());
 			if(DECODE_BASE64_IMAGE!=null && !DECODE_BASE64_IMAGE.equalsIgnoreCase(""))
@@ -105,7 +106,7 @@ public class CreateNewAccountActivity extends BaseActivity implements Communicat
 				txtAddPhoto.setText(getString(R.string.createnewaccount_activity_screen_addphoto_text));
 			}
 		} else {
-			isAgreement = false;
+
 			((ImageView) findViewById(R.id.create_new_account_activity_screen_agreeToAgreement_imageView)).setImageResource(R.drawable.icon_user_agreement_not_checked);
 		}
 	}
@@ -184,9 +185,11 @@ public class CreateNewAccountActivity extends BaseActivity implements Communicat
 	OneShotOnClickListener openUserAgreementClickListener = new OneShotOnClickListener(500) {
 		@Override
 		public void onOneShotClick(View v) {
+			Intent intent = new Intent(CreateNewAccountActivity.this, UserAgreementActivity.class);
+			//intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+			//intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			startActivityForResult(intent, AGREEMENT_REQUEST_CODE);
 
-			launchSubActivity(UserAgreementActivity.class);
-			//finish();
 
 		}
 	};
@@ -289,7 +292,7 @@ public class CreateNewAccountActivity extends BaseActivity implements Communicat
 			}
 
 			@Override
-			public void editProfileAccount(EditProfileModel editProfileModel) {
+			public void editProfileAccount(AccountGetUserByLoginInfoModel editProfileModel) {
 				dismissProgress();
 			}
 
@@ -326,6 +329,17 @@ public class CreateNewAccountActivity extends BaseActivity implements Communicat
 					imgViewRemovePhoto.setVisibility(View.VISIBLE);
 					txtAddPhoto.setText("");
 					UserSharedPrefrences.saveUserPhoto(getContext(),DECODE_BASE64_IMAGE);
+				}
+			}
+			 if(requestCode == AGREEMENT_REQUEST_CODE)
+			{
+				if(resultCode == Activity.RESULT_OK){
+					isAgreement =true;
+					((ImageView) findViewById(R.id.create_new_account_activity_screen_agreeToAgreement_imageView)).setImageResource(R.drawable.req_icon_request_ok);
+				}
+				if (resultCode == Activity.RESULT_CANCELED) {
+					isAgreement = false;
+					((ImageView) findViewById(R.id.create_new_account_activity_screen_agreeToAgreement_imageView)).setImageResource(R.drawable.icon_user_agreement_not_checked);
 				}
 			}
 		}

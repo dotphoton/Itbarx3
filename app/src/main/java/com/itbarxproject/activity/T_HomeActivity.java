@@ -1,9 +1,11 @@
 package com.itbarxproject.activity;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -65,6 +67,16 @@ public class T_HomeActivity extends BaseActivity implements Communicator {
 			pop.setVisibility(View.VISIBLE);
 		}
 
+	}
+
+	@Override
+	public void onActivityResult(int correlationId, int resultCode, Intent data) {
+		if(resultCode == Activity.RESULT_OK){
+
+		}
+		if (resultCode == Activity.RESULT_CANCELED) {
+			//Write your code if there's no result
+		}
 	}
 
 	@Override

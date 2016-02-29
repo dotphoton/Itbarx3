@@ -21,6 +21,7 @@ import com.itbarxproject.utils.TextSizeUtil;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -126,7 +127,7 @@ public class F_ProfileFragment extends Fragment {
 
 	}
 
-	private  void setImgUserPhoto()
+	public   void setImgUserPhoto()
 	{
 		if (accLoginInfoModel.getUserProfilePhoto() != null && accLoginInfoModel.getUserProfilePhoto().length() > 0) {
 			new LoadHttpImage(imgUserPhoto).execute(accLoginInfoModel.getUserProfilePhoto());
@@ -153,7 +154,8 @@ public class F_ProfileFragment extends Fragment {
 	//OPEN EDIT PROFILE FRAGMENT
 	OneShotOnClickListener openEditProfileClickListener = new OneShotOnClickListener(500) {
 		@Override public void onOneShotClick(View v) {
-			t_profileActivity.launchSubActivity(EditProfileActivity.class);
+			Intent i = new Intent(t_profileActivity, EditProfileActivity.class);
+			t_profileActivity.startActivityForResult(i, t_profileActivity.EDIT_PROFIL_REQUEST_CODE);
 		}
 	};
 
@@ -174,12 +176,12 @@ public class F_ProfileFragment extends Fragment {
 		postProcessesServiceSL.setWall(postWallModel);
 		//setWall
 	}
-	private PostWallInfoModel sendUserWallInfoModel() {
+	public PostWallInfoModel sendUserWallInfoModel() {
 		String id = ItbarxGlobal.getInstance().getAccountModel().getUserID();
 		return new PostWallInfoModel(id, id);
 	}
 
-	private void getUserWallInfoModel(PostWallInfoModel model) {
+	public void getUserWallInfoModel(PostWallInfoModel model) {
 		PostProcessesServiceSL postProcessesServiceSL = new PostProcessesServiceSL(t_profileActivity.getContext(), postProcessesServiceListener, R.string.root_service_url);
 		postProcessesServiceSL.setWallInfo(model);
 
@@ -208,6 +210,7 @@ public class F_ProfileFragment extends Fragment {
 		}
 
 		@Override public void getWallInfo(PostGetWallInfoModel postGetWallInfoModel) {
+
 			t_profileActivity.dismissProgress();
 			if (postGetWallInfoModel != null) {
 
@@ -252,5 +255,6 @@ public class F_ProfileFragment extends Fragment {
 			t_profileActivity.dismissProgress();
 		}
 	};
+
 
 }

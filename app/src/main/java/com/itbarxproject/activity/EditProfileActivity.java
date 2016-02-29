@@ -1,15 +1,23 @@
 package com.itbarxproject.activity;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.os.PersistableBundle;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -36,7 +44,7 @@ import com.itbarxproject.service.error.BarxErrorModel;
 import com.itbarxproject.sl.AccountProcessesServiceSL;
 import com.itbarxproject.utils.TextSizeUtil;
 
-public class EditProfileActivity extends BaseActivity {
+public class EditProfileActivity extends Activity {
 
 	UploadHttpImage uploadHttpImage;
 	private int IMAGE_UPLOAD_REQUEST_CODE = 111;
@@ -56,6 +64,16 @@ public class EditProfileActivity extends BaseActivity {
 		UNIT_TEN = Math.round((height / 5));
 		UNIT_VIEW = Math.round((height / 3));
 	}
+
+	@Override
+	 public void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+		setContentView(getLayoutResourceId());
+		initViews();
+
+	}
+
 
 
 	private LinearLayout layoutToolbar, layoutInfoEdtBoxes, layoutSaveBtn, layoutImage, layoutPasswordEditBoxes;
@@ -130,18 +148,48 @@ public class EditProfileActivity extends BaseActivity {
 		}
 	};
 
+	public void areYoulogOffAccount()
+	{
+		Dialog dialog = showAlert(getString(R.string.are_you_logout),getString(R.string.Yes),new Dialog.OnClickListener(){
 
-	@Override
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				UserSharedPrefrences.saveLogInClear(getContext());
+				UserSharedPrefrences.clearLoginData(getContext());
+				Intent intent = new Intent(getContext(), SplashActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+				startActivity(intent);
+				finish();
+			}
+		},getString(R.string.No),null);
+		dialog.show();
+	}
+	public Dialog showAlert(String msg, String PositiveBtnText, DialogInterface.OnClickListener positiveListener, String NegativeText, DialogInterface.OnClickListener negativeListener) {
+
+		Dialog dialog = null;
+		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		//dialog = builder.setTitle(getResources().getString(R.string.app_name)).
+		//setMessage(msg).setCancelable(false).setIcon(android.R.drawable.ic_dialog_alert)
+		//	.setNegativeButton(NegativeText, negativeListener).
+		//			setPositiveButton(PositiveBtnText, positiveListener).create();
+		dialog = builder.setTitle(null)
+				.setMessage(msg).setCancelable(false).setIcon(android.R.drawable.ic_dialog_alert)
+				.setNegativeButton(NegativeText, negativeListener)
+				.setPositiveButton(PositiveBtnText, positiveListener).create();
+		return dialog;
+
+	}
 	protected int getLayoutResourceId() {
 		return R.layout.fragment_edit_profile_screen;
 	}
 
-	@Override
+
 	protected Context getContext() {
 		return EditProfileActivity.this;
 	}
 ScrollView scrollView;
-	@Override
+
 	protected void initViews() {
 		logonModel = ItbarxGlobal.getInstance().getAccountModel();
 		scrollView = (ScrollView)findViewById(R.id.edit_profile1_fragment_container_scrollview);
@@ -192,7 +240,7 @@ ScrollView scrollView;
 		});
 		setImgUserPhoto();
 		scrollView.smoothScrollTo(0, 0);
-		closeKeyboard();
+		//closeKeyboard();
 		//For image Upload
 		uploadHttpImage = new UploadHttpImage(getContext());
 
@@ -227,10 +275,7 @@ ScrollView scrollView;
 		getEditProfilFromWs();
 	}
 
-	@Override
-	protected void exceptionHandler() {
 
-	}
 /*
 {
 UserId:"10028",
@@ -356,12 +401,16 @@ UserBio : ""
 		}
 
 		@Override
-		public void editProfileAccount(EditProfileModel editProfileModel) {
+		public void editProfileAccount(AccountGetUserByLoginInfoModel editProfileModel) {
 			dismissProgress();
 
-			if(editProfileModel.getData()!=null&&!editProfileModel.getData().equalsIgnoreCase(""))
+			if(editProfileModel!=null)
 			{
-				getEditProfilFromWs();
+				ItbarxGlobal.getInstance().setAccountModel(editProfileModel);
+				Intent returnIntent = new Intent();
+				setResult(Activity.RESULT_OK,returnIntent);
+				finish();
+
 			}
 		}
 
@@ -370,12 +419,24 @@ UserBio : ""
 
 		}
 	};
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+
+		Intent returnIntent = new Intent();
+		setResult(Activity.RESULT_CANCELED, returnIntent);
+		finish();
+		return false;
+	}
+
 	private  void setImgUserPhoto(String imageUrl)
 	{
 		if (imageUrl != null && imageUrl.length() > 0) {
 			new LoadHttpImage(imgUserPhoto).execute(imageUrl);
 		}
 	}
+
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -389,5 +450,33 @@ UserBio : ""
 				//UserSharedPrefrences.saveUserPhoto(getContext(), DECODE_BASE64_IMAGE);
 			}
 		}
+	}
+	private ProgressDialog mProgressDialog;
+	public void showProgress(String msg) {
+		if (mProgressDialog != null && mProgressDialog.isShowing()) dismissProgress();
+
+		mProgressDialog = ProgressDialog.show(getContext(), null, msg);
+	}
+
+	public void dismissProgress() {
+		if (mProgressDialog != null) {
+			mProgressDialog.dismiss();
+			mProgressDialog = null;
+		}
+	}
+
+	public void showAlert(String msg) {
+		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(null).setMessage(msg).setCancelable(false).setIcon(android.R.drawable.ic_dialog_alert).setPositiveButton(getString(R.string.Ok), new DialogInterface.OnClickListener() {
+			@Override public void onClick(DialogInterface dialogInterface, int i) {
+				dialogInterface.dismiss();
+			}
+		}).create().show();
+	}
+	protected void closeKeyboard() {
+		View view = this.getCurrentFocus();
+		InputMethodManager imm = (InputMethodManager) getSystemService(Context
+				.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 	}
 }

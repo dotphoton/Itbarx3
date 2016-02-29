@@ -220,7 +220,7 @@ android:id="@+id/edit_profile1_fragment_container_scrollview"
                         android:textColorHint="@color/hints_editText"
                         >
 
-                        <requestFocus/>
+
                     </com.itbarxproject.custom.component.EditTextRegular>
                 </RelativeLayout>
             </LinearLayout>
@@ -278,7 +278,7 @@ android:id="@+id/edit_profile1_fragment_container_scrollview"
                         android:textColorHint="@color/hints_editText"
                         >
 
-                        <requestFocus/>
+
                     </com.itbarxproject.custom.component.EditTextRegular>
                 </RelativeLayout>
             </LinearLayout>
@@ -337,7 +337,7 @@ android:id="@+id/edit_profile1_fragment_container_scrollview"
                         android:textColorHint="@color/hints_editText"
                         >
 
-                        <requestFocus/>
+
                     </com.itbarxproject.custom.component.EditTextRegular>
                 </RelativeLayout>
             </LinearLayout>
@@ -395,7 +395,7 @@ android:id="@+id/edit_profile1_fragment_container_scrollview"
                         android:textColorHint="@color/hints_editText"
                         >
 
-                        <requestFocus/>
+
                     </com.itbarxproject.custom.component.EditTextRegular>
                 </RelativeLayout>
             </LinearLayout>
@@ -447,13 +447,16 @@ android:id="@+id/edit_profile1_fragment_container_scrollview"
                         android:background="#00000000"
                         android:hint="@string/edit_profile_fragment_screen_mailAddress_editText"
                         android:editable="false"
+                        android:focusable="false"
+                        android:enabled="false"
+                        android:cursorVisible="false"
                         android:inputType="textPersonName"
                         android:paddingLeft="10dp"
                         android:textColor="@color/texts_editText"
                         android:textColorHint="@color/hints_editText"
                         >
 
-                        <requestFocus/>
+
                     </com.itbarxproject.custom.component.EditTextRegular>
                 </RelativeLayout>
             </LinearLayout>
@@ -539,7 +542,7 @@ android:id="@+id/edit_profile1_fragment_container_scrollview"
                     android:textColorHint="@color/hints_editText"
                     >
 
-                    <requestFocus/>
+
                 </com.itbarxproject.custom.component.EditTextRegular>
             </RelativeLayout>
         </LinearLayout>
@@ -597,7 +600,6 @@ android:id="@+id/edit_profile1_fragment_container_scrollview"
                     android:textColorHint="@color/hints_editText"
                     >
 
-                    <requestFocus/>
                 </com.itbarxproject.custom.component.EditTextRegular>
             </RelativeLayout>
         </LinearLayout>
@@ -656,7 +658,7 @@ android:id="@+id/edit_profile1_fragment_container_scrollview"
                     android:textColorHint="@color/hints_editText"
                     >
 
-                    <requestFocus/>
+
                 </com.itbarxproject.custom.component.EditTextRegular>
             </RelativeLayout>
         </LinearLayout>
@@ -828,6 +830,7 @@ android:id="@+id/edit_profile1_fragment_container_scrollview"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:visibility="invisible"
             android:background="@drawable/border_edit_profile_boxes"
 
             >
